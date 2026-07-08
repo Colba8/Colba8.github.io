@@ -1,0 +1,242 @@
+---
+layout: null
+---
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cooperation — Второй звонок. Партнерство и права</title>
+<meta name="description" content="Сотрудничество с проектом «Второй звонок»: издательские права, экранизация, переводы на иностранные языки.">
+<link rel="canonical" href="https://dmilinauthor.github.io/roman/foreigners.html">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "Второй звонок",
+  "author": { "@type": "Person", "name": "Дмитрий Ильин" },
+  "description": "Интеллектуальный шпионский роман. Предложения по изданию и адаптации."
+}
+</script>
+
+<link rel="icon" href="images/51.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oranienbaum&family=Literatta:opsz,wght@6..72,300;6..72,400;6..72,500;6..72,600;6..72,700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  background:#0b0a08 url('images/62.png') no-repeat center center fixed;
+  background-size: cover;
+  color:#e0d5b0;
+  font-family:'Literatta',Georgia,serif;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+/* СКВОЗНОЕ МЕНЮ */
+.top-navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0; height: 60px;
+  background: #000000;
+  border-bottom: 1px solid rgba(201, 169, 110, 0.15);
+  display: flex; justify-content: center; align-items: center;
+  gap: 1.8rem; z-index: 150; padding: 0 1rem;
+}
+.nav-link {
+  color: #8A7E6B; font-size: 0.75rem; letter-spacing: 0.12em;
+  text-transform: uppercase; text-decoration: none; transition: color 0.3s ease;
+}
+.nav-link:hover, .nav-link.active { color: #C9A96E; }
+.nav-link.highlight { color: #C9A96E; font-weight: 500; }
+
+/* КОНТЕЙНЕР */
+.wrapper {
+  max-width: 1200px;
+  width: 100%;
+  margin-top: 80px;
+  padding: 0 1.5rem 5rem;
+  animation: fadeIn 1.5s ease-out;
+}
+
+.banner {
+  display: block; width: 100%; height: auto;
+  border: 1px solid rgba(201, 169, 110, 0.2);
+  margin-bottom: 2rem;
+}
+
+.split-layout { display: flex; gap: 2rem; }
+.column { flex: 1; display: flex; flex-direction: column; gap: 1.5rem; }
+
+.card {
+  background: rgba(11, 10, 8, 0.95);
+  border: 1px solid rgba(201, 169, 110, 0.12);
+  padding: 2.2rem;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+}
+
+.section-divider {
+  font-family: 'Oranienbaum', serif;
+  color: #C9A96E; font-size: 1.3rem; margin-bottom: 1.5rem;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  border-bottom: 1px solid rgba(201, 169, 110, 0.15);
+  padding-bottom: 0.5rem;
+}
+
+/* СТИЛЬ ПОДРАЗДЕЛОВ (ПАПКИ) */
+.folder-box {
+  background: rgba(17, 16, 14, 0.7);
+  padding: 1.5rem;
+  border: 1px solid rgba(201, 169, 110, 0.15);
+  border-left: 4px solid #C9A96E;
+}
+.folder-tag {
+  font-family: 'Courier New', monospace;
+  color: #C00000; font-weight: bold; font-size: 0.75rem; text-transform: uppercase;
+}
+.folder-title {
+  font-family: 'Oranienbaum', serif;
+  color: #C9A96E; font-size: 1.2rem; margin: 0.4rem 0;
+}
+.folder-desc { font-size: 0.9rem; color: #8A7E6B; line-height: 1.5; }
+
+/* КНОПКИ ПЕРЕВОДА */
+.lang-box {
+  border: 1px solid rgba(201, 169, 110, 0.15);
+  padding: 1.2rem;
+  background: rgba(11, 10, 8, 0.4);
+  margin-bottom: 1.2rem;
+}
+.lang-intro { font-style: italic; color: #b0a68d; margin-bottom: 1rem; font-size: 0.95rem; line-height: 1.5; }
+.lang-link {
+  display: inline-block;
+  color: #C9A96E; text-decoration: none; font-family: 'Oranienbaum', serif;
+  font-size: 1rem; border: 1px solid #C9A96E; padding: 0.5rem 1.2rem; transition: 0.3s;
+}
+.lang-link:hover { background: #C9A96E; color: #0b0a08; }
+
+/* МОДАЛЬНОЕ ОКНО */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(11, 10, 8, 0.95);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none; transition: opacity 0.3s ease; z-index: 200;
+}
+.modal-overlay.show { opacity: 1; pointer-events: auto; }
+.modal-card { background: #0b0a08; border: 1px solid #C9A96E; padding: 2.5rem; max-width: 450px; width: 90%; position: relative; }
+.modal-close { position: absolute; top: 1rem; right: 1rem; background: transparent; border: none; color: #8A7E6B; font-size: 1.5rem; cursor: pointer; }
+
+.feedback-form { display: flex; flex-direction: column; gap: 1rem; }
+.feedback-form input, .feedback-form textarea { background: #161512; border: 1px solid rgba(201, 169, 110, 0.2); color: #e0d5b0; padding: 0.8rem; font-family: inherit; }
+.form-submit { padding: 0.8rem; background: transparent; border: 1px solid #C9A96E; color: #C9A96E; text-transform: uppercase; cursor: pointer; transition: 0.3s; }
+.form-submit:hover { background: #C9A96E; color: #0b0a08; }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+@media(max-width: 900px){
+  .split-layout { flex-direction: column; }
+  .wrapper { margin-top: 70px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="top-navbar">
+  <a href="index.html" class="nav-link">Главная</a>
+  <a href="reader.html" class="nav-link highlight">Читать</a>
+  <a href="materials.html" class="nav-link">Архив</a>
+  <a href="foreigners.html" class="nav-link active">Cooperation</a>
+  <a href="laboratory.html" class="nav-link">За кулисами</a>
+  <button class="nav-link" onclick="toggleModal(true)">Контакты</button>
+</nav>
+
+<div class="wrapper">
+  <img src="images/72.png" alt="Cooperation" class="banner">
+  
+  <div class="split-layout">
+    
+    <!-- ЛЕВАЯ КОЛОНКА -->
+    <div class="column">
+      <section class="card">
+        <h2 class="section-divider">О проекте</h2>
+        <p style="font-size: 1rem; line-height: 1.7; font-weight: 300;">
+          <strong>«Второй звонок»</strong> — интеллектуальный шпионский роман, соединяющий психологическую драму и историческую реконструкцию. 
+          Роман полностью завершен в финальной редакции и готов к публикации. Мы открыты к предложениям литературных агентов и издательств.
+        </p>
+      </section>
+
+      <div class="folder-box">
+        <span class="folder-tag">Издание</span>
+        <h3 class="folder-title">Книжная публикация</h3>
+        <p class="folder-desc">Рассматриваем сотрудничество по изданию бумажной и электронной версии текста в РФ.</p>
+      </div>
+
+      <div class="folder-box">
+        <span class="folder-tag">Адаптация</span>
+        <h3 class="folder-title">Кино и сериалы</h3>
+        <p class="folder-desc">Плотная драматургия и панорамная структура глав проекта подготовлены для экранизации.</p>
+      </div>
+
+      <div class="folder-box">
+        <span class="folder-tag">Аудио</span>
+        <h3 class="folder-title">Радиоспектакли</h3>
+        <p class="folder-desc">Создание многоголосых аудиокниг и атмосферного саунд-дизайна на основе произведения.</p>
+      </div>
+    </div>
+    
+    <!-- ПРАВАЯ КОЛОНКА -->
+    <div class="column">
+      <section class="card" style="height: 100%;">
+        <h2 class="section-divider">International Cooperation</h2>
+        <p style="font-size: 0.95rem; color: #8A7E6B; margin-bottom: 1.5rem; line-height: 1.6;">
+          Demo materials (synopsis and chapters) are available in three European languages for translation and foreign rights inquiries.
+        </p>
+        
+        <!-- English -->
+        <div class="lang-box">
+          <p class="lang-intro">"Second Call" — a spy-noir novel set in post-war Switzerland. We invite publishers to explore translation opportunities.</p>
+          <a href="materials/en-cooperation.html" class="lang-link">English Materials →</a>
+        </div>
+
+        <!-- German -->
+        <div class="lang-box">
+          <p class="lang-intro">Bern, 1946. Ein atmosphärischer Spionageroman über Geheimarchive. Partner für die deutschsprachige Ausgabe gesucht.</p>
+          <a href="materials/de-cooperation.html" class="lang-link">Deutsche Materialien →</a>
+        </div>
+
+        <!-- French -->
+        <div class="lang-box">
+          <p class="lang-intro">Un roman d'espionnage intellectuel se déroulant à Berne. Dossiers secrets et destins brisés. Disponible pour traduction.</p>
+          <a href="materials/fr-cooperation.html" class="lang-link">Documents en Français →</a>
+        </div>
+      </section>
+    </div>
+    
+  </div>
+</div>
+
+<div class="modal-overlay" id="contactModal" onclick="if(event.target === this) toggleModal(false)">
+  <div class="modal-card">
+    <button class="modal-close" onclick="toggleModal(false)">✕</button>
+    <h2>Связь с автором</h2>
+    <form class="feedback-form" action="https://formspree.io/f/mgojzbba" method="POST">
+      <input type="text" name="name" placeholder="Ваш позывной" required>
+      <input type="email" name="email" placeholder="Ваша почта" required>
+      <textarea name="message" placeholder="Донесение" required></textarea>
+      <button type="submit" class="form-submit">Передать</button>
+    </form>
+  </div>
+</div>
+
+<script>
+function toggleModal(show) {
+  document.getElementById('contactModal').classList.toggle('show', show);
+}
+</script>
+
+</body>
+</html>
