@@ -4,15 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Дмитрий Ильин — литературное пространство</title>
-<meta name="description" content="Дмитрий Ильин. Проследуйте в пространство: роман «Второй звонок» и архив Colba8.">
+<meta name="description" content="Дмитрий Ильин. Войти в пространство: роман «Второй звонок» и архив Colba8.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;1,400;1,500&family=Special+Elite&display=swap" rel="stylesheet">
 <style>
   :root {
-    --void-black: #000000; /* Абсолютная вязкая пустота */
+    --void-black: #000000; 
     --ink-0: #020305;      
-    --ink-1: #070a0d;
     --gold: #c9a227;       
     --gold-bright: #e9cd82; 
     --gold-dim: rgba(201,162,39,.55);
@@ -35,7 +34,6 @@
     position: relative;
   }
 
-  /* Эффект кинозерна поверх всего пространства */
   body::before {
     content: "";
     position: fixed; inset: 0;
@@ -46,7 +44,6 @@
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
-  /* Главный контейнер сцены */
   .stage {
     position: relative;
     z-index: 2;
@@ -60,7 +57,6 @@
     overflow: hidden;
   }
 
-  /* Шапка сайта */
   .title-band {
     text-align: center;
     opacity: 0;
@@ -95,29 +91,33 @@
     padding-left: .5em;
   }
 
-  /* Центральная поэтическая композиция (ваши стихи) */
-  .poetic-manifesto {
-    max-width: 650px;
+  /* Поэтический блок */
+  .poetic-block {
+    max-width: 750px;
     text-align: center;
     font-family: var(--f-body);
-    font-size: clamp(1.1rem, 2.2vw, 1.45rem);
-    line-height: 1.8;
-    color: rgba(233,205,130,0.75);
+    font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+    line-height: 1.6;
+    color: rgba(233,205,130,0.8);
     z-index: 10;
     margin: auto 0;
-    padding: 0 20px;
   }
-  .poetic-manifesto p {
-    margin: 0 0 0.5em 0;
+  
+  .poetic-block p {
+    margin: 0 0 1.2em 0;
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(8px);
     animation: revealText 1s ease-out forwards;
   }
-  .poetic-manifesto .line-1 { animation-delay: 0.8s; font-style: italic; }
-  .poetic-manifesto .line-2 { animation-delay: 1.6s; }
-  .poetic-manifesto .line-3 { animation-delay: 2.4s; font-family: var(--f-display); font-size: 0.9em; letter-spacing: 0.1em; color: var(--gold-bright); }
+  
+  /* Плавный построчный тайминг */
+  .p-1 { animation-delay: 0.6s; }
+  .p-2 { animation-delay: 1.4s; }
+  .p-3 { animation-delay: 2.2s; }
+  .p-4 { animation-delay: 3.0s; }
+  .p-5 { animation-delay: 3.8s; }
+  .p-6 { animation-delay: 4.6s; font-family: var(--f-display); font-size: 0.95em; letter-spacing: 0.2em; color: var(--gold-bright); margin-bottom: 0; }
 
-  /* Нижний ярус: Машинка слева, Колба справа */
   .bottom-row {
     width: 100%;
     max-width: 1200px;
@@ -136,7 +136,6 @@
   .relic.typewriter { animation-delay: 0.4s; }
   .relic.logo { animation-delay: 0.9s; pointer-events: auto; }
 
-  /* Контейнер печатной машинки */
   .typewriter figure {
     margin: 0; position: relative; width: min(35vw, 280px);
   }
@@ -147,7 +146,6 @@
     filter: brightness(0.85) contrast(1.05);
   }
   
-  /* Световой луч, падающий на машинку */
   .beam {
     position: absolute; top: -50%; left: -10%;
     width: 60%; height: 160%;
@@ -157,7 +155,6 @@
     pointer-events: none;
   }
 
-  /* Контейнер светящейся колбы */
   .logo-wrapper {
     text-align: center;
     width: min(22vw, 130px);
@@ -183,22 +180,22 @@
     letter-spacing: 0.18rem;
   }
 
-  /* Финальная кнопка-инструкция (призыв к действию) */
+  /* Интерактивная кнопка ввода */
   .enter {
     opacity: 0;
-    animation: fadeIn 1.2s ease-out 3.2s forwards;
+    animation: fadeIn 1.2s ease-out 5.2s forwards;
     z-index: 15;
-    margin-top: 2vh;
+    margin-top: 1vh;
   }
   .enter a {
     display: inline-block;
     font-family: var(--f-display);
-    font-size: .8rem;
-    letter-spacing: .36em;
+    font-size: .85rem;
+    letter-spacing: .4em;
     color: var(--gold-bright);
     text-decoration: none;
     text-transform: uppercase;
-    padding: 1.1em 2.6em;
+    padding: 1.15em 3em;
     border: 1px solid var(--gold-dim);
     position: relative;
     transition: all .4s ease;
@@ -219,18 +216,16 @@
   }
   .enter a:hover::before, .enter a:hover::after { border-color: var(--gold-bright); }
 
-  /* Анимации */
   @keyframes fadeIn { to { opacity: 1; } }
   @keyframes revealText { to { opacity: 1; transform: translateY(0); } }
 
-  /* Адаптивность под мобильные экраны */
   @media (max-width: 768px) {
     .stage { padding: 4vh 5vw 4vh; }
-    .bottom-row { align-items: center; justify-content: center; gap: 4vh; }
-    .typewriter figure { width: min(45vw, 180px); }
-    .logo-wrapper { width: min(30vw, 100px); }
-    .poetic-manifesto { font-size: 1.05rem; }
-    .enter a { padding: 1em 2em; font-size: 0.75rem; }
+    .bottom-row { align-items: center; justify-content: center; gap: 3vh; }
+    .typewriter figure { width: min(45vw, 170px); }
+    .logo-wrapper { width: min(28vw, 95px); }
+    .poetic-block { font-size: 1.05rem; line-height: 1.5; }
+    .enter a { padding: 1em 2.2em; font-size: 0.75rem; }
   }
 </style>
 </head>
@@ -238,7 +233,7 @@
 
   <main class="stage">
 
-    <!-- Заголовок -->
+    <!-- Заголовок портала -->
     <div class="title-band">
       <div class="ornament" aria-hidden="true">
         <span class="line"></span>
@@ -249,33 +244,34 @@
       <span class="subline">литературное&nbsp;пространство</span>
     </div>
 
-    <!-- Поэтический текст из промпта -->
-    <div class="poetic-manifesto">
-      <p class="line-1">«Я видел пустоту — чёрную и вязкую.<br>Луч — неизвестно откуда упавший — прочертил сквозь густоту свет на чёрное тело металла машинки...»</p>
-      <p class="line-2">Дым раскинул свою паутину, поглощая собой пространство.<br>Блеск в углу — это колба блистает.</p>
-      <p class="line-3">И проследуйте дальше. Читайте.</p>
+    <!-- Поэтический текст -->
+    <div class="poetic-block">
+      <p class="p-1">Я видел пустоту — чёрную и вязкую.<br>Луч — неизвестно откуда упавший —</p>
+      <p class="p-2">прочертил сквозь густоту</p>
+      <p class="p-3">свет на чёрное тело металла машинки.</p>
+      <p class="p-4">Дым раскинул свою паутину,<br>поглощая пространство.</p>
+      <p class="p-5">Блеск в углу — это колба сияет.</p>
+      <p class="p-6">Следуйте за светом.</p>
     </div>
 
-    <!-- Нижний визуальный ряд -->
+    <!-- Визуальный ряд (.png из папки images) -->
     <div class="bottom-row">
-      <!-- Левый угол: Машинка в луче света -->
       <div class="relic typewriter">
         <figure>
           <div class="beam" aria-hidden="true"></div>
-          <img src="images/typewriter.jpg" alt="Черное тело металла машинки в луче света и дыму">
+          <img src="images/typewriter.png" alt="Черное тело металла машинки в луче света">
         </figure>
       </div>
 
-      <!-- Правый угол: Блеск колбы Colba8 -->
       <div class="relic logo">
         <a href="https://dmilinauthor.github.io/archive/index.html" class="logo-wrapper" style="display: block; text-decoration: none;">
-          <img src="images/colba8-logo.jpg" alt="Колба блистает в углу">
+          <img src="images/colba8-logo.png" alt="Колба сияет в углу">
           <div class="colba-id">Colba8</div>
         </a>
       </div>
     </div>
 
-    <!-- Главная кнопка перехода -->
+    <!-- Кнопка перехода -->
     <p class="enter">
       <a href="https://dmilinauthor.github.io/roman/index.html">Войти в пространство</a>
     </p>
