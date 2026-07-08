@@ -58,13 +58,14 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
-    mix-blend-mode: screen; /* Чисто убирает черный фон у обоих файлов */
-    transition: opacity 0.5s ease-in-out; /* Плавное перетекание */
+    mix-blend-mode: screen; /* Убирает черный фон */
+    transition: opacity 0.5s ease-in-out, filter 0.5s ease-in-out; /* Плавное перетекание */
   }
 
-  /* По умолчанию затемненная колба полностью видима */
+  /* По умолчанию затемненная колба видима, но мы ПРИОТКРЫВАЕМ её из темноты */
   .layer-shadowed {
     opacity: 1;
+    filter: brightness(2.5) contrast(1.2); /* Сделайте цифру больше (например, 3.5), если нужно еще ярче в покое */
   }
 
   /* Яркая колба изначально скрыта */
@@ -88,15 +89,15 @@
 
   <div class="scene-container">
     
-    <!-- Сцена без колбы — теперь строго .png и с маленькой буквы -->
+    <!-- Сцена без колбы -->
     <img src="images/invite colbe.png" alt="Дмитрий Ильин. Литературное пространство" class="scene-image">
 
     <!-- Интерактивная зона с двухслойной анимацией -->
     <a href="https://dmilinauthor.github.io/roman/index.html" class="flask-portal" title="Войти в пространство">
-      <!-- Слой 1: Затемненная колба (.png) в режиме покоя -->
+      <!-- Слой 1: Затемненная колба (теперь слегка подсвеченная фильтром) -->
       <img src="images/colba main shadowed.png" alt="" class="flask-layer layer-shadowed">
       
-      <!-- Слой 2: Яркая золотая колба — теперь тоже строго .png -->
+      <!-- Слой 2: Яркая золотая колба при наведении -->
       <img src="images/colba main bright.png" alt="Эмблема проекта" class="flask-layer layer-bright">
     </a>
 
