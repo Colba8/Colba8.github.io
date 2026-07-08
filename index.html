@@ -4,181 +4,302 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Дмитрий Ильин — литературное пространство</title>
-<meta name="description" content="Дмитрий Ильин. Проследуйте в пространство: роман «Второй звонок» и архив Colba8.">
+<meta name="description" content="Дмитрий Ильин. Вход в пространство: роман «Второй звонок» и архив Colba8.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;1,400;1,500&family=Special+Elite&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --void-black: #000000; 
-    --ink-0: #020305;      
-    --gold: #c9a227;       
-    --gold-bright: #e9cd82; 
-    --paper: #f1ede1;      
-    --f-display: 'Cinzel', serif;
-    --f-body: 'Cormorant Garamond', serif;
-    --f-type: 'Special Elite', 'Courier New', monospace;
+  :root{
+    --ink-0:#070a0d;
+    --ink-1:#0c1319;
+    --ink-2:#132430;
+    --gold:#c9a227;
+    --gold-bright:#e9cd82;
+    --gold-dim:rgba(201,162,39,.55);
+    --gold-faint:rgba(201,162,39,.22);
+    --teal:#5fe4dc;
+    --paper:#e9e1cd;
+    --f-display:'Cinzel', serif;
+    --f-body:'Cormorant Garamond', serif;
+    --f-type:'Special Elite', 'Courier New', monospace;
   }
 
-  * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
 
-  body {
-    background-color: var(--void-black);
+  body{
+    background: radial-gradient(120% 90% at 50% 8%, var(--ink-1) 0%, var(--ink-0) 45%, #05070a 100%);
     color: var(--paper);
     font-family: var(--f-body);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    min-height:100vh;
+    overflow-x:hidden;
+    position:relative;
   }
 
-  .stage {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    padding: 2vh 2vw;
-    overflow: hidden;
+  /* film grain */
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    z-index:5;
+    pointer-events:none;
+    opacity:.05;
+    mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
-  /* Путь изменен: картинка теперь берется из папки images */
-  .visual-anchor {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    background-image: url('images/typewriter.jpg'); 
-    background-size: cover;
-    background-position: center;
+  /* ambient drifting smoke, echoes the photographic smoke below */
+  .smoke{
+    position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden;
+  }
+  .smoke span{
+    position:absolute;
+    border-radius:50%;
+    filter: blur(60px);
+    opacity:.35;
+    background: radial-gradient(circle, rgba(95,228,220,.10), rgba(19,36,48,0) 70%);
+    animation: drift 34s ease-in-out infinite;
+  }
+  .smoke span:nth-child(1){ width:520px; height:520px; left:-8%; bottom:-10%; animation-delay:0s; }
+  .smoke span:nth-child(2){ width:420px; height:420px; right:-6%; bottom:6%; animation-delay:-11s;
+    background: radial-gradient(circle, rgba(201,162,39,.08), rgba(19,36,48,0) 70%); }
+  .smoke span:nth-child(3){ width:680px; height:680px; left:30%; top:-18%; animation-delay:-22s; opacity:.22; }
+
+  @keyframes drift{
+    0%,100%{ transform: translate(0,0) scale(1); }
+    50%{ transform: translate(4%, -3%) scale(1.08); }
   }
 
-  .spotlight {
-    position: absolute;
-    top: -30%; left: 0;
-    width: 50vw; height: 150vh;
-    background: radial-gradient(40% 50% at 30% 0%, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 80%);
-    z-index: 2;
-    transform: rotate(5deg);
-    pointer-events: none;
-    filter: blur(10px);
+  .stage{
+    position:relative;
+    z-index:2;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-start;
+    padding: 6vh 6vw 8vh;
+    gap: 6vh;
   }
 
-  /* Путь изменен: дым тоже в папке images */
-  .smoke-web {
-    position: absolute;
-    inset: 0;
-    z-index: 3;
-    pointer-events: none;
-    opacity: 0.7;
-    mix-blend-mode: screen;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  /* ---------- Title band ---------- */
+  .title-band{
+    text-align:center;
+    opacity:0;
+    animation: reveal 1.1s ease-out .3s forwards;
   }
-
-  .colba-logo-anchor {
-    position: absolute;
-    bottom: 4vh;
-    right: 4vw;
-    z-index: 10;
-    width: min(25vw, 150px);
-    text-align: center;
-    opacity: 0;
-    animation: fadeInRelic 1.5s ease-out 0.8s forwards;
+  .ornament{
+    display:flex; align-items:center; justify-content:center; gap:14px;
+    margin-bottom:14px;
   }
+  .ornament svg{ display:block; }
+  .ornament .line{ width:64px; height:1px; background:linear-gradient(90deg, transparent, var(--gold-dim)); }
+  .ornament .line.right{ background:linear-gradient(90deg, var(--gold-dim), transparent); }
 
-  .colba-logo-anchor img {
-    width: 100%;
-    height: auto;
-    mix-blend-mode: screen;
-    filter: brightness(1.2) contrast(1.1);
-  }
-
-  .colba-id {
-    font-family: var(--f-type);
-    font-size: 0.8rem;
-    color: var(--gold);
-    margin-top: 5px;
-    letter-spacing: 0.2rem;
-  }
-
-  .colba-manifest {
-    font-family: var(--f-body);
-    font-size: 0.6rem;
-    color: rgba(201,162,39,.6);
-    text-transform: uppercase;
-    letter-spacing: 0.15rem;
-  }
-
-  .enter-call {
-    position: absolute;
-    bottom: 4vh;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 10;
-    opacity: 0;
-    animation: fadeInCTA 1.2s ease-out 1.2s forwards;
-  }
-
-  .enter-call a {
-    display: inline-block;
+  h1{
+    margin:0;
     font-family: var(--f-display);
-    font-size: 0.8rem;
-    letter-spacing: 0.35em;
+    font-weight:500;
+    letter-spacing:.42em;
+    font-size: clamp(1.5rem, 4.6vw, 2.7rem);
     color: var(--gold-bright);
-    text-decoration: none;
-    text-transform: uppercase;
-    padding: 1.1em 2.5em;
-    border: 1px solid var(--gold);
-    transition: all 0.4s ease;
-    text-shadow: 0 0 10px rgba(233,205,130,0.3);
+    text-shadow: 0 0 18px rgba(233,205,130,.28), 0 0 2px rgba(233,205,130,.5);
+    padding-left:.42em; /* optical centering vs letter-spacing */
+  }
+  .subline{
+    display:block;
+    margin-top:10px;
+    font-family: var(--f-type);
+    font-size:.62rem;
+    letter-spacing:.5em;
+    text-transform:uppercase;
+    color: var(--gold-dim);
+    padding-left:.5em;
   }
 
-  .enter-call a:hover {
+  /* ---------- Manifesto ---------- */
+  .manifesto{
+    max-width: 620px;
+    text-align:center;
+    font-style:italic;
+    font-weight:400;
+    font-size: clamp(1.05rem, 2vw, 1.32rem);
+    line-height:1.75;
+    color: rgba(233,205,130,.62);
+    flex: 1 1 auto;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap: 1.1em;
+  }
+  .manifesto p{ margin:0; opacity:0; transform: translateY(6px); animation: reveal .9s ease-out forwards; }
+  .manifesto .q1{ animation-delay: 1.15s; }
+  .manifesto .q2{ animation-delay: 2.05s; }
+  .manifesto strong{
+    font-style:normal;
+    font-family: var(--f-display);
+    font-weight:500;
+    letter-spacing:.08em;
+    color: var(--gold-bright);
+    font-size:.85em;
+  }
+  .cursor{
+    display:inline-block;
+    font-family: var(--f-type);
+    color: var(--teal);
+    animation: blink 1.05s step-end infinite;
+  }
+
+  @keyframes reveal{
+    to{ opacity:1; transform:none; }
+  }
+  @keyframes blink{
+    0%,100%{ opacity:0; } 50%{ opacity:1; }
+  }
+
+  /* ---------- Bottom composition ---------- */
+  .bottom-row{
+    width:100%;
+    max-width:1180px;
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap: 4vw;
+  }
+
+  .relic{
+    position:relative;
+    opacity:0;
+    animation: reveal 1.2s ease-out forwards;
+  }
+  .relic.typewriter{ animation-delay: .15s; flex:0 0 auto; }
+  .relic.logo{ animation-delay: .55s; flex:0 0 auto; text-align:right; }
+
+  .typewriter figure{
+    margin:0; position:relative; width:min(38vw, 300px);
+  }
+  .typewriter img{
+    display:block; width:100%; height:auto;
+    -webkit-mask-image: radial-gradient(120% 100% at 30% 45%, black 45%, transparent 82%);
+            mask-image: radial-gradient(120% 100% at 30% 45%, black 45%, transparent 82%);
+    filter: saturate(1.05) brightness(.98);
+  }
+  .beam{
+    position:absolute; top:-40%; left:6%;
+    width:46%; height:150%;
+    background: linear-gradient(200deg, rgba(255,244,214,.16), rgba(255,244,214,0) 70%);
+    filter: blur(6px);
+    transform: skewX(-8deg);
+    pointer-events:none;
+  }
+  .scene-caption{
+    margin-top:10px;
+    font-family: var(--f-type);
+    font-size:.6rem;
+    letter-spacing:.32em;
+    text-transform:uppercase;
+    color: rgba(201,162,39,.4);
+  }
+
+  .logo img{
+    width:min(20vw, 150px);
+    height:auto;
+    -webkit-mask-image: radial-gradient(85% 85% at 50% 42%, black 55%, transparent 88%);
+            mask-image: radial-gradient(85% 85% at 50% 42%, black 55%, transparent 88%);
+    mix-blend-mode: screen;
+  }
+
+  /* ---------- CTA ---------- */
+  .enter{
+    opacity:0;
+    animation: reveal 1s ease-out 2.9s forwards;
+  }
+  .enter a{
+    display:inline-block;
+    font-family: var(--f-display);
+    font-size: .78rem;
+    letter-spacing:.34em;
+    color: var(--gold-bright);
+    text-decoration:none;
+    text-transform:uppercase;
+    padding: 1.05em 2.4em;
+    border: 1px solid var(--gold-dim);
+    position:relative;
+    transition: color .4s ease, border-color .4s ease, box-shadow .4s ease, background-color .4s ease;
+  }
+  .enter a::before,
+  .enter a::after{
+    content:""; position:absolute; width:7px; height:7px; border: 1px solid var(--gold-dim);
+    transition: all .4s ease;
+  }
+  .enter a::before{ top:-4px; left:-4px; border-width:1px 0 0 1px; }
+  .enter a::after{ bottom:-4px; right:-4px; border-width:0 1px 1px 0; }
+  .enter a:hover, .enter a:focus-visible{
     color: var(--ink-0);
     background-color: var(--gold-bright);
-    box-shadow: 0 0 30px rgba(233,205,130,0.5);
+    border-color: var(--gold-bright);
+    box-shadow: 0 0 34px rgba(233,205,130,.35);
+    outline:none;
+  }
+  .enter a:hover::before, .enter a:hover::after,
+  .enter a:focus-visible::before, .enter a:focus-visible::after{
+    border-color: var(--gold-bright);
   }
 
-  .stage::before {
-    content: "";
-    position: absolute; inset: 0;
-    z-index: 5;
-    pointer-events: none;
-    opacity: .04;
-    mix-blend-mode: overlay;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  /* ---------- Responsive ---------- */
+  @media (max-width: 720px){
+    .stage{ gap:4.5vh; padding:6vh 7vw 6vh; }
+    h1{ letter-spacing:.28em; }
+    .bottom-row{ flex-direction:column; align-items:center; gap:5vh; }
+    .relic.logo{ text-align:center; }
+    .typewriter figure{ width:min(58vw, 260px); }
+    .logo img{ width:min(34vw, 140px); }
+    .manifesto{ font-size:1rem; }
   }
 
-  @keyframes fadeInRelic {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes fadeInCTA {
-    from { opacity: 0; transform: translate(-50%, 15px); }
-    to { opacity: 1; transform: translate(-50%, 0); }
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:.01ms !important; animation-delay:0s !important; }
+    .cursor{ animation:none; opacity:1; }
+    .smoke span{ animation:none; }
   }
 </style>
 </head>
 <body>
 
+  <div class="smoke" aria-hidden="true"><span></span><span></span><span></span></div>
+
   <main class="stage">
 
-    <div class="visual-anchor" aria-hidden="true"></div>
-
-    <div class="spotlight" aria-hidden="true"></div>
-    <!-- Дым берется из папки images -->
-    <img src="images/typewriter.jpg" class="smoke-web" alt="Клубы дыма в луче света">
-    
-    <!-- Логотип Colba8 берется из папки images -->
-    <div class="colba-logo-anchor">
-        <img src="images/colba8-logo.jpg" alt="Colba8">
-        <div class="colba-id">Colba8</div>
-        <div class="colba-manifest">СТРУКТУРА. ТРАНСФОРМАЦИЯ. БЕСКОНЕЧНОСТЬ.</div>
+    <div class="title-band">
+      <div class="ornament" aria-hidden="true">
+        <span class="line"></span>
+        <svg width="18" height="18" viewBox="0 0 18 18"><path d="M9 0 L18 9 L9 18 L0 9 Z" fill="none" stroke="var(--gold-dim)" stroke-width="1"/></svg>
+        <span class="line right"></span>
+      </div>
+      <h1>ДМИТРИЙ ИЛЬИН</h1>
+      <span class="subline">литературное&nbsp;пространство</span>
     </div>
 
-    <p class="enter-call">
-      <a href="https://dmilinauthor.github.io/roman/index.html">Проследуйте дальше в пространство</a>
+    <div class="manifesto">
+      <p class="q1"><strong>Почему я пишу?</strong> Это не сразу можно сформулировать… Наверное, потому что иногда я не могу не писать. Слово — упорядоченное и точное — порой творит со мной чудеса. Слово лечит.</p>
+      <p class="q2"><strong>Для чего я пишу?</strong> Я пишу, потому что не нахожу другого способа конвертировать сложные внутренние состояния в что-то рациональное. Я пишу, чтобы зафиксировать что-то важное и поделиться этим<span class="cursor">▌</span></p>
+    </div>
+
+    <div class="bottom-row">
+      <div class="relic typewriter">
+        <figure>
+          <div class="beam" aria-hidden="true"></div>
+          <img src="assets/typewriter.png" alt="Портативная печатная машинка сороковых годов с заправленным чистым листом бумаги">
+        </figure>
+        <span class="scene-caption">Берн, 1946</span>
+      </div>
+
+      <div class="relic logo">
+        <img src="assets/colba8-logo.png" alt="Colba8 — алхимическая колба со знаком бесконечности">
+      </div>
+    </div>
+
+    <p class="enter">
+      <a href="https://dmilinauthor.github.io/roman/index.html">Войти в пространство</a>
     </p>
 
   </main>
