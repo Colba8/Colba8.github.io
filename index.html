@@ -28,7 +28,7 @@
     max-height: 100vh;
   }
 
-  /* Фоновое изображение стола без встроенных колб */
+  /* Фоновое изображение стола */
   .scene-image {
     display: block;
     max-width: 100vw;
@@ -39,7 +39,7 @@
     pointer-events: none;
   }
 
-  /* Интерактивный портал-колба */
+  /* Интерактивный портал: теперь это золотая рамка, которая видна ВСЕГДА */
   .flask-portal {
     position: absolute;
     bottom: 9.5%;
@@ -49,36 +49,38 @@
     z-index: 999;
     cursor: pointer;
     text-decoration: none;
+    
+    /* Рисуем вертикальный прямоугольник с закругленными краями */
+    border: 2px solid #d4af37; /* Золотой цвет рамки */
+    border-radius: 12px;       /* Скругление углов */
+    box-shadow: 0 0 8px rgba(212, 175, 55, 0.3); /* Легкое золотистое свечение рамки */
+    
+    /* Чтобы колба внутри не вылезала за границы рамки при масштабировании */
+    padding: 4px; 
+    transition: box-shadow 0.3s ease-in-out;
   }
 
-  /* Общие правила для обоих слоев колбы */
-  .flask-layer {
+  /* При наведении рамка начинает слегка подсвечиваться ярче */
+  .flask-portal:hover,
+  .flask-portal:focus-visible {
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.8);
+  }
+
+  /* Яркая золотая колба внутри рамки */
+  .layer-bright {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     object-fit: contain;
     mix-blend-mode: screen; /* Убирает черный фон */
-    transition: opacity 0.5s ease-in-out, filter 0.5s ease-in-out; /* Плавное перетекание */
+    
+    /* Изначально колба полностью прозрачна */
+    opacity: 0; 
+    transition: opacity 0.4s ease-in-out; /* Плавное появление */
   }
 
-  /* По умолчанию затемненная колба видима, но мы ПРИОТКРЫВАЕМ её из темноты */
-  .layer-shadowed {
-    opacity: 1;
-    filter: brightness(2.5) contrast(1.2); /* Сделайте цифру больше (например, 3.5), если нужно еще ярче в покое */
-  }
-
-  /* Яркая колба изначально скрыта */
-  .layer-bright {
-    opacity: 0;
-  }
-
-  /* При наведении слои плавно меняются местами */
-  .flask-portal:hover .layer-shadowed,
-  .flask-portal:focus-visible .layer-shadowed {
-    opacity: 0;
-  }
-
+  /* МАГИЯ: При наведении на рамку проявляется яркая колба */
   .flask-portal:hover .layer-bright,
   .flask-portal:focus-visible .layer-bright {
     opacity: 1;
@@ -92,13 +94,12 @@
     <!-- Сцена без колбы -->
     <img src="images/invite colbe.png" alt="Дмитрий Ильин. Литературное пространство" class="scene-image">
 
-    <!-- Интерактивная зона с двухслойной анимацией -->
+    <!-- Интерактивный золотой прямоугольник (всегда на экране) -->
     <a href="https://dmilinauthor.github.io/roman/index.html" class="flask-portal" title="Войти в пространство">
-      <!-- Слой 1: Затемненная колба (теперь слегка подсвеченная фильтром) -->
-      <img src="images/colba main shadowed.png" alt="" class="flask-layer layer-shadowed">
       
-      <!-- Слой 2: Яркая золотая колба при наведении -->
-      <img src="images/colba main bright.png" alt="Эмблема проекта" class="flask-layer layer-bright">
+      <!-- Яркая золотая колба, которая плавно проявится внутри рамки при наведении -->
+      <img src="images/colba main bright.png" alt="Эмблема проекта" class="layer-bright">
+      
     </a>
 
   </div>
