@@ -39,7 +39,7 @@
     pointer-events: none;
   }
 
-  /* Интерактивный портал: теперь это золотая рамка, которая видна ВСЕГДА */
+  /* Интерактивный портал-колба */
   .flask-portal {
     position: absolute;
     bottom: 9.5%;
@@ -49,41 +49,24 @@
     z-index: 999;
     cursor: pointer;
     text-decoration: none;
-    
-    /* Рисуем вертикальный прямоугольник с закругленными краями */
-    border: 2px solid #d4af37; /* Золотой цвет рамки */
-    border-radius: 12px;       /* Скругление углов */
-    box-shadow: 0 0 8px rgba(212, 175, 55, 0.3); /* Легкое золотистое свечение рамки */
-    
-    /* Чтобы колба внутри не вылезала за границы рамки при масштабировании */
-    padding: 4px; 
-    transition: box-shadow 0.3s ease-in-out;
   }
 
-  /* При наведении рамка начинает слегка подсвечиваться ярче */
-  .flask-portal:hover,
-  .flask-portal:focus-visible {
-    box-shadow: 0 0 15px rgba(212, 175, 55, 0.8);
-  }
-
-  /* Яркая золотая колба внутри рамки */
+  /* Яркая золотая колба — видна ВСЕГДА */
   .layer-bright {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     object-fit: contain;
-    mix-blend-mode: screen; /* Убирает черный фон */
-    
-    /* Изначально колба полностью прозрачна */
-    opacity: 0; 
-    transition: opacity 0.4s ease-in-out; /* Плавное появление */
+    mix-blend-mode: screen; /* Идеально убирает черный фон файла */
+    opacity: 1;             /* Колба всегда полностью видима */
+    transition: filter 0.3s ease-in-out; /* Плавное включение свечения */
   }
 
-  /* МАГИЯ: При наведении на рамку проявляется яркая колба */
+  /* ЭФФЕКТ НАВЕДЕНИЯ: Сама колба начинает мягко светиться изнутри */
   .flask-portal:hover .layer-bright,
   .flask-portal:focus-visible .layer-bright {
-    opacity: 1;
+    filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.9));
   }
 </style>
 </head>
@@ -91,13 +74,13 @@
 
   <div class="scene-container">
     
-    <!-- Сцена без колбы -->
+    <!-- Основной фон стола -->
     <img src="images/invite colbe.png" alt="Дмитрий Ильин. Литературное пространство" class="scene-image">
 
-    <!-- Интерактивный золотой прямоугольник (всегда на экране) -->
+    <!-- Активная ссылка-колба -->
     <a href="https://dmilinauthor.github.io/roman/index.html" class="flask-portal" title="Войти в пространство">
       
-      <!-- Яркая золотая колба, которая плавно проявится внутри рамки при наведении -->
+      <!-- Золотая колба, которая всегда в кадре -->
       <img src="images/colba main bright.png" alt="Эмблема проекта" class="layer-bright">
       
     </a>
