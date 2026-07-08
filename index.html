@@ -6,11 +6,6 @@
 <title>Дмитрий Ильин — литературное пространство</title>
 <meta name="description" content="Литературное пространство Дмитрия Ильина.">
 <style>
-  :root {
-    --void-black: #000000;
-    --teal-glow: rgba(95, 228, 220, 0.55); /* Мягкое бирюзовое сияние Colba8 */
-  }
-
   * { box-sizing: border-box; }
   
   html, body {
@@ -18,91 +13,86 @@
     padding: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--void-black);
+    background-color: #000000;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
-  /* Контейнер сцены */
-  .theater-container {
+  /* Контейнер, который всегда занимает весь экран и центрирует контент */
+  .scene-wrapper {
     position: relative;
     width: 100vw;
     height: 100vh;
-    max-width: 100%;
-    max-height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
-  /* Фоновое изображение Invite.jpg */
-  .background-scene {
-    width: 100%;
-    height: 100%;
+  /* Картинка, которая гарантированно проявится и впишется в любые экраны */
+  .scene-image {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    display: block;
     object-fit: contain;
-    pointer-events: none;
-    opacity: 0;
-    animation: fadeInScene 2s ease-out forwards;
+    pointer-events: none; /* Защита от случайного перетаскивания мышью */
   }
 
-  /* Секретная зона СТРОГО на колбе рядом с машинкой */
+  /* Секретная зона клика вокруг колбы — привязана к экрану пропорционально */
   .secret-flask-zone {
     position: absolute;
-    /* Координаты перенесены ближе к центру, прямо к правой стороне машинки */
-    bottom: 14%;
-    left: 70.8%; 
-    width: 4.5%;
+    
+    /* Точные координаты колбы, которая стоит справа от печатной машинки */
+    bottom: 15%;
+    left: 70.5%;
+    width: 5%;
     height: 13%;
     
-    border-radius: 40% 40% 25% 25%;
+    border-radius: 40% 40% 20% 20%;
     cursor: pointer;
     text-decoration: none;
-    z-index: 10;
+    z-index: 999;
     
+    /* Мягкое неоновое бирюзовое свечение при наведении */
     box-shadow: 0 0 0px transparent;
     background-color: rgba(95, 228, 220, 0);
     filter: blur(3px);
-    transition: box-shadow 0.5s ease-in-out, background-color 0.5s ease-in-out;
+    transition: box-shadow 0.4s ease-in-out, background-color 0.4s ease-in-out;
   }
 
-  /* Проявление сияния колбы при наведении */
+  /* Эффект сияния Colba8 при наведении */
   .secret-flask-zone:hover,
   .secret-flask-zone:focus-visible {
     outline: none;
     background-color: rgba(95, 228, 220, 0.05);
     box-shadow: 
-      0 0 12px 3px var(--teal-glow),
+      0 0 15px 4px rgba(95, 228, 220, 0.6),
       0 0 25px 6px rgba(19, 36, 48, 0.4);
   }
 
-  @keyframes fadeInScene {
-    to { opacity: 1; }
-  }
-
-  /* Коррекция координат под разные типы экранов, чтобы зона не съезжала с колбы */
+  /* Магическая адаптивность: удерживаем зону клика строго на колбе при изменении пропорций */
   @media (min-aspect-ratio: 16/9) {
     .secret-flask-zone {
-      left: calc(50% + 20.8%);
+      left: calc(50% + 20.5%);
     }
   }
   @media (max-aspect-ratio: 16/9) {
     .secret-flask-zone {
-      bottom: calc(50% - 36%);
-      left: 70.8%;
+      bottom: calc(50% - 35%);
+      left: 70.5%;
     }
   }
 </style>
 </head>
 <body>
 
-  <div class="theater-container">
+  <div class="scene-wrapper">
     
-    <!-- Атмосферный фон -->
-    <img src="images/Invite.jpg" alt="Дмитрий Ильин. Литературное пространство" class="background-scene">
+    <img src="images/Invite.jpg" alt="Дмитрий Ильин. Литературное пространство" class="scene-image">
 
-    <!-- Исправленная скрытая зона на колбе у машинки -->
     <a href="https://dmilinauthor.github.io/roman/index.html" class="secret-flask-zone" title="Войти в пространство"></a>
 
   </div>
