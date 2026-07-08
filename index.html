@@ -20,7 +20,7 @@
     align-items: center;
   }
 
-  /* Контейнер сцены — держит пропорции подложки Invite.png */
+  /* Контейнер сцены */
   .scene-container {
     position: relative;
     display: inline-block;
@@ -28,7 +28,7 @@
     max-height: 100vh;
   }
 
-  /* Основное изображение стола с машинкой */
+  /* Фоновое изображение стола без встроенных колб */
   .scene-image {
     display: block;
     max-width: 100vw;
@@ -39,10 +39,9 @@
     pointer-events: none;
   }
 
-  /* Интерактивная ссылка-эмблема */
-  .flask-emblem-link {
+  /* Интерактивный портал-колба */
+  .flask-portal {
     position: absolute;
-    /* Позиция строго на краю стола, справа от пишущей машинки */
     bottom: 9.5%;
     left: 71.3%;
     width: 4.4%;
@@ -50,35 +49,38 @@
     z-index: 999;
     cursor: pointer;
     text-decoration: none;
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 
-  /* Сама картинка эмблемы */
-  .emblem-img {
+  /* Общие правила для обоих слоев колбы */
+  .flask-layer {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: contain;
-    
-    /* Слияние черного фона эмблемы с темнотой стола */
-    mix-blend-mode: screen; 
-    
-    /* Изначально делаем эмблему сильно затемненной, приглушенной и сливающейся с тенью */
-    opacity: 0.18;
-    filter: brightness(0.4) contrast(0.9) blur(0.3px);
-    
-    /* Очень плавная кинематографическая анимация проявления (0.6 секунды) */
-    transition: opacity 0.6s ease-in-out, filter 0.6s ease-in-out, transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    mix-blend-mode: screen; /* Чисто убирает черный фон у обоих файлов */
+    transition: opacity 0.5s ease-in-out; /* Плавное перетекание */
   }
 
-  /* ЭФФЕКТ «ОЖИВЛЕНИЯ»: При наведении эмблема загорается своим истинным чистым светом */
-  .flask-emblem-link:hover .emblem-img,
-  .flask-emblem-link:focus-visible .emblem-img {
-    opacity: 1; /* Возвращаем полную видимость */
-    filter: brightness(1.2) contrast(1.1) drop-shadow(0 0 10px rgba(95, 228, 220, 0.5)); /* Яркое неоновое свечение */
-    transform: scale(1.04); /* Легкий эффект приближения к зрителю */
+  /* По умолчанию затемненная колба полностью видима */
+  .layer-shadowed {
+    opacity: 1;
+  }
+
+  /* Яркая колба изначально скрыта */
+  .layer-bright {
+    opacity: 0;
+  }
+
+  /* При наведении слои плавно меняются местами */
+  .flask-portal:hover .layer-shadowed,
+  .flask-portal:focus-visible .layer-shadowed {
+    opacity: 0;
+  }
+
+  .flask-portal:hover .layer-bright,
+  .flask-portal:focus-visible .layer-bright {
+    opacity: 1;
   }
 </style>
 </head>
@@ -86,10 +88,16 @@
 
   <div class="scene-container">
     
-    <img src="images/Invite.png" alt="Дмитрий Ильин. Литературное пространство" class="scene-image">
+    <!-- Сцена без колбы -->
+    <img src="images/invite colbe.jpg" alt="Дмитрий Ильин. Литературное пространство" class="scene-image">
 
-    <a href="https://dmilinauthor.github.io/roman/index.html" class="flask-emblem-link" title="Войти в пространство">
-      <img src="images/colba8-logo.png" alt="Эмблема проекта" class="emblem-img">
+    <!-- Интерактивная зона с двухслойной анимацией -->
+    <a href="https://dmilinauthor.github.io/roman/index.html" class="flask-portal" title="Войти в пространство">
+      <!-- Слой 1: Затемненная колба (.png) в режиме покоя -->
+      <img src="images/colba main shadowed.png" alt="" class="flask-layer layer-shadowed">
+      
+      <!-- Слой 2: Яркая золотая колба (.jpg) при наведении -->
+      <img src="images/colba main bright.jpg" alt="Эмблема проекта" class="flask-layer layer-bright">
     </a>
 
   </div>
