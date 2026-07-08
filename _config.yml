@@ -1,3 +1,4 @@
 collections:
   chapters:
-    output: false
+    output: true
+    directory: roman/_chapters
