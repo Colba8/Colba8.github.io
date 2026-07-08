@@ -20,78 +20,63 @@
     align-items: center;
   }
 
-  /* Контейнер, который всегда занимает весь экран и центрирует контент */
-  .scene-wrapper {
+  /* Контейнер сцены подстраивается под размеры картинки */
+  .scene-container {
     position: relative;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: inline-block;
+    max-width: 100vw;
+    max-height: 100vh;
   }
 
-  /* Картинка, которая гарантированно проявится и впишется в любые экраны */
+  /* Картинка (теперь строго .png) */
   .scene-image {
-    max-width: 100%;
-    max-height: 100%;
+    display: block;
+    max-width: 100vw;
+    max-height: 100vh;
     width: auto;
     height: auto;
-    display: block;
     object-fit: contain;
-    pointer-events: none; /* Защита от случайного перетаскивания мышью */
+    pointer-events: none; /* Защита от перетаскивания */
   }
 
-  /* Секретная зона клика вокруг колбы — привязана к экрану пропорционально */
+  /* Точная интерактивная зона прямо поверх колбы справа от машинки */
   .secret-flask-zone {
     position: absolute;
     
-    /* Точные координаты колбы, которая стоит справа от печатной машинки */
-    bottom: 15%;
-    left: 70.5%;
-    width: 5%;
-    height: 13%;
+    /* Процентные координаты от размеров самой картинки */
+    bottom: 11.5%;
+    left: 71.3%;
+    width: 4.2%;
+    height: 13.5%;
     
-    border-radius: 40% 40% 20% 20%;
+    border-radius: 45% 45% 20% 20%;
     cursor: pointer;
     text-decoration: none;
     z-index: 999;
     
-    /* Мягкое неоновое бирюзовое свечение при наведении */
+    /* Эффект мягкого бирюзового свечения при наведении */
     box-shadow: 0 0 0px transparent;
     background-color: rgba(95, 228, 220, 0);
-    filter: blur(3px);
+    filter: blur(2px);
     transition: box-shadow 0.4s ease-in-out, background-color 0.4s ease-in-out;
   }
 
-  /* Эффект сияния Colba8 при наведении */
+  /* Подсветка колбы при наведении курсора */
   .secret-flask-zone:hover,
   .secret-flask-zone:focus-visible {
     outline: none;
-    background-color: rgba(95, 228, 220, 0.05);
+    background-color: rgba(95, 228, 220, 0.08);
     box-shadow: 
-      0 0 15px 4px rgba(95, 228, 220, 0.6),
-      0 0 25px 6px rgba(19, 36, 48, 0.4);
-  }
-
-  /* Магическая адаптивность: удерживаем зону клика строго на колбе при изменении пропорций */
-  @media (min-aspect-ratio: 16/9) {
-    .secret-flask-zone {
-      left: calc(50% + 20.5%);
-    }
-  }
-  @media (max-aspect-ratio: 16/9) {
-    .secret-flask-zone {
-      bottom: calc(50% - 35%);
-      left: 70.5%;
-    }
+      0 0 16px 4px rgba(95, 228, 220, 0.65),
+      0 0 28px 8px rgba(19, 36, 48, 0.4);
   }
 </style>
 </head>
 <body>
 
-  <div class="scene-wrapper">
+  <div class="scene-container">
     
-    <img src="images/Invite.jpg" alt="Дмитрий Ильин. Литературное пространство" class="scene-image">
+    <img src="images/Invite.png" alt="Дмитрий Ильин. Литературное пространство" class="scene-image">
 
     <a href="https://dmilinauthor.github.io/roman/index.html" class="secret-flask-zone" title="Войти в пространство"></a>
 
