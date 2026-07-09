@@ -38,7 +38,7 @@ body{
   border-radius: 3px;
 }
 
-/* СКВОЗНОЕ МЕНЮ */
+/* СКВОЗНОЕ МЕНЮ (С КОНТАКТАМИ) */
 .top-navbar {
   position: fixed;
   top: 0; left: 0; right: 0; height: 60px;
@@ -83,7 +83,7 @@ body{
 }
 .sb-item:hover { color: #C9A96E; }
 
-/* КОНТЕЙНЕР ТЕКСТА */
+/* КОНТЕЙНЕР ТЕКСТА (РАСШИРЕННЫЙ) */
 .content {
   flex: 1;
   margin-left: 260px;
@@ -93,10 +93,10 @@ body{
   align-items: center;
 }
 .content-inner {
-  max-width: 800px;
-  width: 90%;
+  max-width: 1050px; /* Увеличено с 800px для простора на компьютерах */
+  width: 92%;
   background: #0b0a08;
-  padding: 4rem 3.5rem;
+  padding: 4rem 4.5rem;
   box-shadow: 0 0 80px #000;
   border: 1px solid rgba(201, 169, 110, 0.1);
 }
@@ -107,11 +107,11 @@ body{
   text-transform: uppercase; letter-spacing: 0.1em;
 }
 
-/* ХУДОЖЕСТВЕННЫЙ ТЕКСТ РОМАНА (СТРОГО БЕЗ КРАСНЫХ СТРОК) */
+/* ХУДОЖЕСТВЕННЫЙ ТЕКСТ РОМАНА (БЕЗ КРАСНЫХ СТРОК) */
 .novel-text, .chapter-body p {
   font-size: 1.35rem; line-height: 1.85; margin-bottom: 1.8rem;
   font-weight: 300; text-align: justify; 
-  text-indent: 0 !important; /* Убираем красную строку */
+  text-indent: 0 !important;
   color: #e0d5b0;
 }
 
@@ -125,8 +125,8 @@ body{
 
 /* СТИЛИЗАЦИЯ ПСЕВДОДОКУМЕНТОВ 40-Х */
 .document {
-  background: #e4dcc4 !important; /* Цвет старой бумаги */
-  color: #1a1713 !important; /* Чернила печатной машинки */
+  background: #e4dcc4 !important;
+  color: #1a1713 !important;
   font-family: 'Courier Prime', 'Courier New', monospace !important;
   padding: 3rem; 
   margin: 3rem 0;
@@ -137,13 +137,13 @@ body{
   border-radius: 2px;
 }
 
-/* Текст внутри архивного бланка (Строго без красных строк) */
+/* Текст внутри архивного бланка (Без красных строк) */
 .document p {
   color: #1a1713 !important;
   font-family: 'Courier Prime', 'Courier New', monospace !important;
   font-size: 1.1rem !important;
   line-height: 1.5 !important;
-  text-indent: 0 !important; /* Без красных строк */
+  text-indent: 0 !important;
   text-align: left !important;
   margin-bottom: 1.2rem;
   letter-spacing: -0.02em;
@@ -179,6 +179,7 @@ body{
   <a href="materials.html" class="nav-link">Архив</a>
   <a href="foreigners.html" class="nav-link">Cooperation</a>
   <a href="laboratory.html" class="nav-link">За кулисами</a>
+  <a href="contacts.html" class="nav-link">Контакты</a>
 </nav>
 
 <div class="main-layout">
