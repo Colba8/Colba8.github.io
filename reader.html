@@ -56,19 +56,72 @@ layout: null
 
     .nav-link:hover, .nav-link.active { color: #C9A96E; }
 
-    /* КОНТЕЙНЕР ДЛЯ ТЕКСТА РОМАНА */
-    .reader-container {
+    /* ДВУХКОЛОНОЧНЫЙ РАБОЧИЙ СТОЛ ЧИТАТЕЛЯ */
+    .workspace-wrapper {
       flex: 1;
       width: 100%;
-      max-width: 800px;
-      margin: 90px auto 4rem;
+      max-width: 1400px;
+      margin: 80px auto 2rem;
       padding: 0 1.5rem;
+      display: flex;
+      gap: 2.5rem;
+      position: relative;
+    }
+
+    /* ЛЕВАЯ КОЛОНКА: СТАЦИОНАРНОЕ МЕНЮ ГЛАВ */
+    .chapters-sidebar {
+      width: 280px;
+      position: fixed;
+      top: 90px;
+      bottom: 2rem;
+      overflow-y: auto;
+      background: rgba(0, 0, 0, 0.85);
+      border: 1px solid rgba(201, 169, 110, 0.15);
+      padding: 1.5rem;
+    }
+
+    .sidebar-title {
+      font-family: 'Oranienbaum', serif;
+      color: #C9A96E;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1.2rem;
+      border-bottom: 1px solid rgba(201, 169, 110, 0.2);
+      padding-bottom: 0.5rem;
+    }
+
+    .sidebar-menu {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .sidebar-item a {
+      color: #8A7E6B;
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+      display: block;
+      line-height: 1.3;
+    }
+
+    .sidebar-item a:hover {
+      color: #C9A96E;
+    }
+
+    /* ПРАВАЯ КОЛОНКА: ШИРОКОЕ ПОЛЕ ТЕКСТА */
+    .reader-content-area {
+      flex: 1;
+      margin-left: 310px; /* Отступ равен ширине сайдбара + gap */
+      max-width: 900px;
     }
 
     .chapter-block {
-      margin-bottom: 5rem;
-      background: rgba(5, 5, 5, 0.75);
-      padding: 2.5rem;
+      margin-bottom: 4rem;
+      background: rgba(5, 5, 5, 0.8);
+      padding: 3.5rem;
       border: 1px solid rgba(201, 169, 110, 0.08);
       box-shadow: 0 20px 50px rgba(0,0,0,0.9);
     }
@@ -76,21 +129,21 @@ layout: null
     .chapter-title {
       font-family: 'Oranienbaum', serif;
       color: #C9A96E;
-      font-size: 1.8rem;
+      font-size: 2.2rem;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 2rem;
+      letter-spacing: 0.08em;
+      margin-bottom: 2.5rem;
       text-align: center;
       border-bottom: 1px solid rgba(201, 169, 110, 0.15);
-      padding-bottom: 1rem;
+      padding-bottom: 1.5rem;
     }
 
     /* СТИЛИ ДЛЯ ВНУТРЕННЕГО ТЕКСТА ГЛАВ */
-    .novel-text {
+    .chapter-content p {
       font-size: 1.15rem;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.5rem;
       text-align: justify;
-      text-indent: 2rem;
+      text-indent: 2.5rem;
     }
 
     /* Оформление встроенных картинок в главах */
@@ -102,29 +155,38 @@ layout: null
       border: 1px solid rgba(201, 169, 110, 0.15);
     }
 
-    /* СТИЛИ ДЛЯ СПАНОВ, КОТОРЫЕ ВЫЛЕЗАЛИ ТЕКСТОМ */
+    /* СТИЛИ ДЛЯ СПАНОВ ИНОСТРАННОЙ РЕЧИ И ПЕРЕВОДА */
     .foreign {
       font-style: italic;
-      color: #d4cba7;
+      color: #e0d5b0;
     }
 
     .translation {
       font-size: 0.95rem;
       color: #8A7E6B;
       margin-left: 0.4rem;
+      font-style: normal;
+    }
+
+    /* АДАПТИВНОСТЬ ДЛЯ ПЛАНШЕТОВ И ТЕЛЕФОНОВ */
+    @media(max-width: 1024px) {
+      .workspace-wrapper { flex-direction: column; gap: 1rem; margin-top: 80px; }
+      .chapters-sidebar { position: static; width: 100%; height: auto; }
+      .reader-content-area { margin-left: 0; width: 100%; max-width: 100%; }
+      .chapter-block { padding: 2rem; }
     }
 
     @media(max-width: 768px) {
       .top-navbar { gap: 0.8rem; }
       .nav-link { font-size: 0.65rem; }
-      .chapter-block { padding: 1.5rem; }
-      .novel-text { text-align: left; font-size: 1.05rem; }
+      .chapter-title { font-size: 1.6rem; }
+      .chapter-content p { text-align: left; font-size: 1.05rem; text-indent: 1.5rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Навигация -->
+  <!-- Верхняя панель -->
   <nav class="top-navbar">
     <a href="index.html" class="nav-link">Главная</a>
     <a href="reader.html" class="nav-link active">Читать</a>
@@ -133,22 +195,37 @@ layout: null
     <a href="laboratory.html" class="nav-link">За кулисами</a>
   </nav>
 
-  <!-- Основной контент (Вывод глав) -->
-  <main class="reader-container">
+  <!-- Двухколоночный контейнер -->
+  <div class="workspace-wrapper">
     
     {% assign sorted_chapters = site.chapters | sort: 'idx' %}
-    {% for ch in sorted_chapters %}
-      <article class="chapter-block">
-        <h2 class="chapter-title">{{ ch.title }}</h2>
-        
-        <!-- Фильтр markdownify заставит теги обрабатываться корректно -->
-        <div class="chapter-content">
-          {{ ch.content | markdownify }}
-        </div>
-      </article>
-    {% endfor %}
 
-  </main>
+    <!-- ЛЕВОЕ МЕНЮ: Автоматический список глав -->
+    <aside class="chapters-sidebar">
+      <h3 class="sidebar-title">Содержание</h3>
+      <ul class="sidebar-menu">
+        {% for ch in sorted_chapters %}
+          <li class="sidebar-item">
+            <a href="#chapter-{{ forloop.index }}">{{ ch.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </aside>
+
+    <!-- ПРАВОЕ ПОЛЕ: Широкие бланки с текстом романа -->
+    <main class="reader-content-area">
+      {% for ch in sorted_chapters %}
+        <article class="chapter-block" id="chapter-{{ forloop.index }}">
+          <h2 class="chapter-title">{{ ch.title }}</h2>
+          
+          <div class="chapter-content">
+            {{ ch.content | markdownify }}
+          </div>
+        </article>
+      {% endfor %}
+    </main>
+
+  </div>
 
 </body>
 </html>
