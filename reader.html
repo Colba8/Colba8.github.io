@@ -6,6 +6,7 @@ layout: null
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Второй звонок — Читальный зал</title>
 
 <link rel="icon" href="images/51.png" type="image/png">
@@ -80,7 +81,7 @@ body{
   align-items: center;
 }
 .content-inner {
-  max-width: 800px;
+  max-width: 1200px;
   width: 90%;
   background: #0b0a08;
   padding: 4rem 3.5rem;
@@ -96,6 +97,19 @@ body{
 .novel-text {
   font-size: 1.35rem; line-height: 1.85; margin-bottom: 1.8rem;
   font-weight: 300;
+}
+
+/* ЛАТИНИЦА КУРСИВОМ */
+.latin {
+  font-style: italic;
+  color: #d4c5a0;
+}
+
+/* ПЕРЕВОД В СКОБКАХ */
+.translation {
+  font-style: normal;
+  color: #8A7E6B;
+  font-size: 0.95em;
 }
 
 /* КАРТИНКИ ВНУТРИ ГЛАВ */
@@ -133,7 +147,6 @@ body{
 <div class="main-layout">
   <aside class="sidebar">
     <div class="sb-title">Второй звонок</div>
-    <!-- Автоматический список глав -->
     {% assign sorted_chapters = site.chapters | sort: 'idx' %}
     {% for ch in sorted_chapters %}
       <button class="sb-item" onclick="document.getElementById('ch-{{ ch.idx }}').scrollIntoView({behavior:'smooth'})">
@@ -144,7 +157,6 @@ body{
 
   <main class="content">
     <article class="content-inner">
-      <!-- Автоматическая подгрузка всех глав -->
       {% for ch in sorted_chapters %}
         <section id="ch-{{ ch.idx }}" style="margin-bottom: 5rem;">
           <h2 class="chapter-title">{{ ch.title }}</h2>
@@ -158,6 +170,22 @@ body{
     </article>
   </main>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.novel-text, .chapter-body p').forEach(function(p) {
+    let html = p.innerHTML;
+    
+    // Латинские слова → курсив
+    html = html.replace(/\b([A-Za-z]+(?:-[A-Za-z]+)*)\b/g, '<span class="latin">$1</span>');
+    
+    // Текст в квадратных скобках → обычный шрифт
+    html = html.replace(/\[([^\]]+)\]/g, '<span class="translation">[$1]</span>');
+    
+    p.innerHTML = html;
+  });
+});
+</script>
 
 </body>
 </html>
