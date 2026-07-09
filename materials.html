@@ -7,12 +7,10 @@ layout: null
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- МЕТА-ДАННЫЕ -->
 <title>Архив материалов дела — Второй звонок</title>
 <meta name="description" content="Документальное пространство романа «Второй звонок»: аналитические записки, рапорты, досье персонажей и исторические справки о Берне 1946 года.">
 <link rel="canonical" href="https://dmilinauthor.github.io/roman/materials.html">
 
-<!-- РАЗМЕТКА ДЛЯ ИИ (JSON-LD) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -52,33 +50,19 @@ body{
   align-items:center;
 }
 
-/* СКВОЗНОЕ МЕНЮ (Унифицировано) */
+/* СКВОЗНОЕ МЕНЮ */
 .top-navbar {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 60px;
+  top: 0; left: 0; right: 0; height: 60px;
   background: #000000;
   border-bottom: 1px solid rgba(201, 169, 110, 0.15);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1.8rem;
-  z-index: 150;
-  padding: 0 1rem;
+  display: flex; justify-content: center; align-items: center;
+  gap: 1.8rem; z-index: 150; padding: 0 1rem;
 }
 .nav-link {
-  color: #8A7E6B;
-  font-family: inherit;
-  font-size: 0.75rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  text-decoration: none;
-  transition: color 0.3s ease;
-  cursor: pointer;
-  background: transparent;
-  border: none;
+  color: #8A7E6B; font-family: inherit; font-size: 0.75rem; letter-spacing: 0.12em;
+  text-transform: uppercase; text-decoration: none; transition: color 0.3s ease;
+  cursor: pointer; background: transparent; border: none;
 }
 .nav-link:hover, .nav-link.active { color: #C9A96E; }
 .nav-link.highlight { color: #C9A96E; font-weight: 500; }
@@ -93,18 +77,12 @@ body{
 }
 
 .archive-header-banner {
-  display: block;
-  width: 100%;
-  height: auto;
+  display: block; width: 100%; height: auto;
   border: 1px solid rgba(201, 169, 110, 0.2);
   margin-bottom: 2rem;
 }
 
-.split-layout {
-  display: flex;
-  gap: 2rem;
-}
-
+.split-layout { display: flex; gap: 2rem; }
 .left-column { flex: 1.1; }
 .right-column { flex: 1.9; display: flex; flex-direction: column; gap: 1.5rem; }
 
@@ -117,21 +95,13 @@ body{
 
 .section-divider {
   font-family: 'Oranienbaum', serif;
-  color: #C9A96E;
-  font-size: 1.3rem;
-  margin-bottom: 1.5rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  color: #C9A96E; font-size: 1.3rem; margin-bottom: 1.5rem;
+  text-transform: uppercase; letter-spacing: 0.08em;
   border-bottom: 1px solid rgba(201, 169, 110, 0.15);
   padding-bottom: 0.5rem;
 }
 
-.synopsis-text {
-  font-size: 1.1rem;
-  line-height: 1.7;
-  margin-bottom: 1.5rem;
-  font-weight: 300;
-}
+.synopsis-text { font-size: 1.1rem; line-height: 1.7; margin-bottom: 1.5rem; font-weight: 300; }
 
 /* СТИЛИЗАЦИЯ ПАПОК */
 .sub-btn-link { text-decoration: none; color: inherit; display: block; }
@@ -150,61 +120,69 @@ body{
 
 .folder-tag {
   font-family: 'Courier New', monospace;
-  color: #C00000;
-  font-weight: bold;
-  font-size: 0.75rem;
-  text-transform: uppercase;
+  color: #C00000; font-weight: bold; font-size: 0.75rem; text-transform: uppercase;
 }
 .folder-title {
   font-family: 'Oranienbaum', serif;
-  color: #C9A96E;
-  font-size: 1.25rem;
-  margin: 0.4rem 0;
+  color: #C9A96E; font-size: 1.25rem; margin: 0.4rem 0;
 }
 .folder-desc { font-size: 0.9rem; color: #8A7E6B; line-height: 1.4; }
 
 /* ВИДЕО */
-.promo-video-wrap {
-  width: 100%;
-  border: 1px solid #C9A96E;
-  background: #000;
-}
+.promo-video-wrap { width: 100%; border: 1px solid #C9A96E; background: #000; }
 video { width: 100%; display: block; }
 
-/* МОДАЛЬНОЕ ОКНО (Исправлено) */
+/* МОДАЛЬНОЕ ОКНО КОНТАКТОВ (СТРОГИЙ ТЕМНЫЙ СТИЛЬ) */
 .modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(11, 10, 8, 0.95);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-  z-index: 200;
+  position: fixed; inset: 0; background: rgba(11, 10, 8, 0.85);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none; transition: opacity 0.3s ease; z-index: 200;
 }
 .modal-overlay.show { opacity: 1; pointer-events: auto; }
-.modal-card {
-  background: #0b0a08;
-  border: 1px solid #C9A96E;
-  padding: 2.5rem;
-  max-width: 450px;
-  width: 90%;
-  position: relative;
-}
-.modal-close {
-  position: absolute; top: 1rem; right: 1rem;
-  background: transparent; border: none; color: #8A7E6B; font-size: 1.5rem; cursor: pointer;
-}
-.modal-card h2 { font-family: 'Oranienbaum', serif; color: #C9A96E; text-align: center; margin-bottom: 1rem; }
 
-.feedback-form { display: flex; flex-direction: column; gap: 1rem; }
-.feedback-form input, .feedback-form textarea {
-  background: #161512; border: 1px solid rgba(201, 169, 110, 0.2); color: #e0d5b0; padding: 0.8rem; font-family: inherit;
+.modal-card { 
+  background: #0b0a08; 
+  border: 1px solid rgba(201, 169, 110, 0.3); 
+  padding: 2.5rem; 
+  max-width: 450px; 
+  width: 90%; 
+  position: relative;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.9);
 }
-.form-submit {
-  padding: 0.8rem; background: transparent; border: 1px solid #C9A96E; color: #C9A96E; text-transform: uppercase; cursor: pointer;
+.modal-card h2 {
+  font-family: 'Oranienbaum', serif;
+  color: #C9A96E; font-size: 1.6rem; text-align: center; margin-bottom: 1.5rem;
+  text-transform: uppercase; letter-spacing: 0.05em;
+}
+.modal-close { position: absolute; top: 1rem; right: 1rem; background: transparent; border: none; color: #8A7E6B; font-size: 1.5rem; cursor: pointer; transition: color 0.3s; }
+.modal-close:hover { color: #C9A96E; }
+
+.feedback-form { display: flex; flex-direction: column; gap: 1.2rem; }
+.feedback-form input, .feedback-form textarea { 
+  background: #11100e !important; 
+  border: 1px solid rgba(201, 169, 110, 0.25); 
+  color: #e0d5b0 !important; 
+  padding: 0.9rem; 
+  font-family: inherit; font-size: 0.95rem; outline: none;
+  -webkit-text-fill-color: #e0d5b0 !important;
+}
+.feedback-form input:focus, .feedback-form textarea:focus { border-color: #C9A96E; }
+
+/* Сброс автозаполнения браузера */
+.feedback-form input:-webkit-autofill,
+.feedback-form input:-webkit-autofill:hover, 
+.feedback-form input:-webkit-autofill:focus,
+.feedback-form textarea:-webkit-autofill,
+.feedback-form textarea:-webkit-autofill:hover,
+.feedback-form textarea:-webkit-autofill:focus {
+  -webkit-text-fill-color: #e0d5b0 !important;
+  -webkit-box-shadow: 0 0 0px 1000px #11100e inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.form-submit { 
+  padding: 0.9rem; background: transparent; border: 1px solid #C9A96E; color: #C9A96E; 
+  text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.85rem; cursor: pointer; transition: 0.3s; 
 }
 .form-submit:hover { background: #C9A96E; color: #0b0a08; }
 
@@ -220,7 +198,7 @@ video { width: 100%; display: block; }
 
 <nav class="top-navbar">
   <a href="index.html" class="nav-link">Главная</a>
-  <a href="reader.html" class="nav-link highlight">Читать</a>
+  <a href="roman/reader.html" class="nav-link highlight">Читать</a>
   <a href="materials.html" class="nav-link active">Архив</a>
   <a href="foreigners.html" class="nav-link">Cooperation</a>
   <a href="laboratory.html" class="nav-link">За кулисами</a>
@@ -240,15 +218,15 @@ video { width: 100%; display: block; }
     </div>
     
     <div class="right-column">
-      <a href="materials/note.html" class="sub-btn-link">
+      <a href="roman/materials/note.html" class="sub-btn-link">
         <div class="folder-box">
           <span class="folder-tag">ОСОБАЯ ПАПКА &middot; СОВ. СЕКРЕТНО</span>
           <h3 class="folder-title">ДЕЛО № 11/С: Аналитическая записка</h3>
-          <p class="folder-desc">Оценка оперативной обстановки в Берне, транзит активов рейха.</p>
+          <p class="folder-desc">Оценка оперативной обстановки в Берне, transit активов рейха.</p>
         </div>
       </a>
 
-      <a href="materials/report.html" class="sub-btn-link">
+      <a href="roman/materials/report.html" class="sub-btn-link">
         <div class="folder-box">
           <span class="folder-tag">ЛИЧНО ЦЕНТРУ &middot; СОВ. СЕКРЕТНО</span>
           <h3 class="folder-title">ДЕЛО № 47/Б: Рапорт Мастера</h3>
@@ -256,7 +234,7 @@ video { width: 100%; display: block; }
         </div>
       </a>
 
-      <a href="materials/reference.html" class="sub-btn-link">
+      <a href="roman/materials/reference.html" class="sub-btn-link">
         <div class="folder-box">
           <span class="folder-tag">СПРАВОЧНЫЕ МАТЕРИАЛЫ</span>
           <h3 class="folder-title">Исторический комментарий</h3>
@@ -264,7 +242,7 @@ video { width: 100%; display: block; }
         </div>
       </a>
 
-      <a href="materials/dossier_characters.html" class="sub-btn-link">
+      <a href="roman/materials/dossier_characters.html" class="sub-btn-link">
         <div class="folder-box">
           <span class="folder-tag">ЛИЧНЫЕ ДЕЛА &middot; СЕТКА</span>
           <h3 class="folder-title">Dramatis Personae: Действующие лица</h3>
@@ -276,7 +254,7 @@ video { width: 100%; display: block; }
         <h2 class="section-divider">Промо-презентация</h2>
         <div class="promo-video-wrap">
           <video controls loop playsinline>
-            <source src="../Video.mp4" type="video/mp4">
+            <source src="Video.mp4" type="video/mp4">
           </video>
         </div>
       </section>
