@@ -4,247 +4,210 @@ layout: null
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Второй звонок — Читальный зал</title>
-  
-  <link rel="icon" href="images/51.png" type="image/png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Oranienbaum&family=Literatta:opsz,wght@6..72,300;6..72,400;6..72,500;6..72,600;6..72,700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Второй звонок — Читальный зал</title>
 
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    
-    body {
-      background: #000000 url('images/68.png') no-repeat center center fixed;
-      background-size: cover;
-      color: #e0d5b0;
-      font-family: 'Literatta', Georgia, serif;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
+<link rel="icon" href="images/51.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Подключаем Literatta для романа и специальный Courier Prime для печатной машинки -->
+<link href="https://fonts.googleapis.com/css2?family=Oranienbaum&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Literatta:opsz,wght@6..72,300;6..72,400;6..72,500;6..72,600;6..72,700&display=swap" rel="stylesheet">
 
-    /* МАСКИРОВКА СКРОЛЛБАРА */
-    ::-webkit-scrollbar {
-      width: 6px;
-      height: 6px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #000000;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #C9A96E;
-      border-radius: 3px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #e0d5b0;
-    }
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
 
-    /* НАВИГАЦИЯ */
-    .top-navbar {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      height: 60px;
-      background: #000000;
-      border-bottom: 1px solid rgba(201, 169, 110, 0.15);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 1.8rem;
-      z-index: 150;
-    }
+body{
+  background:#0b0a08 url('images/69.png') no-repeat center center fixed;
+  background-size: cover;
+  color:#e0d5b0;
+  font-family:'Literatta', Georgia, serif;
+  min-height:100vh;
+}
 
-    .nav-link {
-      color: #8A7E6B;
-      font-size: 0.75rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      text-decoration: none;
-      transition: color 0.3s;
-      cursor: pointer;
-      background: transparent;
-      border: none;
-    }
+/* МАСКИРОВКА СТАНДАРТНОГО СКРОЛЛБАРА */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+::-webkit-scrollbar-thumb {
+  background: #C9A96E;
+  border-radius: 3px;
+}
 
-    .nav-link:hover, .nav-link.active { color: #C9A96E; }
+/* СКВОЗНОЕ МЕНЮ */
+.top-navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0; height: 60px;
+  background: #000000;
+  border-bottom: 1px solid rgba(201, 169, 110, 0.2);
+  display: flex; justify-content: center; align-items: center;
+  gap: 1.8rem; z-index: 1000;
+}
+.nav-link {
+  color: #8A7E6B; font-size: 0.75rem; letter-spacing: 0.12em;
+  text-transform: uppercase; text-decoration: none;
+}
+.nav-link:hover, .nav-link.active { color: #C9A96E; }
 
-    /* СТОЛ ЧИТАТЕЛЯ */
-    .workspace-wrapper {
-      flex: 1;
-      width: 100%;
-      max-width: 1400px;
-      margin: 80px auto 2rem;
-      padding: 0 1.5rem;
-      display: flex;
-      gap: 2.5rem;
-      position: relative;
-    }
+/* МАКЕТ ПАНЕЛЕЙ */
+.main-layout {
+  display: flex;
+  margin-top: 60px;
+}
 
-    /* САЙДБАР (МЕНЮ ГЛАВ) */
-    .chapters-sidebar {
-      width: 250px;
-      position: fixed;
-      top: 90px;
-      bottom: 2rem;
-      overflow-y: auto;
-      background: rgba(5, 5, 5, 0.9);
-      border: 1px solid rgba(201, 169, 110, 0.15);
-      padding: 1.5rem;
-    }
+/* БОКОВОЕ МЕНЮ (ОГЛАВЛЕНИЕ) */
+.sidebar {
+  width: 260px;
+  background: rgba(11, 10, 8, 0.95);
+  border-right: 1px solid rgba(201, 169, 110, 0.15);
+  position: fixed;
+  top: 60px; bottom: 0;
+  overflow-y: auto;
+  padding: 2rem 1rem;
+  z-index: 100;
+}
+.sb-title {
+  font-family: 'Oranienbaum', serif; color: #C9A96E;
+  font-size: 1.2rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(201, 169, 110, 0.2);
+}
+.sb-item {
+  display: block; width: 100%; padding: 0.6rem 0;
+  background: transparent; border: none;
+  color: #8A7E6B; text-align: left; cursor: pointer;
+  font-family: inherit; font-size: 0.85rem;
+}
+.sb-item:hover { color: #C9A96E; }
 
-    .sidebar-title {
-      font-family: 'Oranienbaum', serif;
-      color: #C9A96E;
-      font-size: 1.1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 1.2rem;
-      border-bottom: 1px solid rgba(201, 169, 110, 0.2);
-      padding-bottom: 0.5rem;
-    }
+/* КОНТЕЙНЕР ТЕКСТА */
+.content {
+  flex: 1;
+  margin-left: 260px;
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.content-inner {
+  max-width: 800px;
+  width: 90%;
+  background: #0b0a08;
+  padding: 4rem 3.5rem;
+  box-shadow: 0 0 80px #000;
+  border: 1px solid rgba(201, 169, 110, 0.1);
+}
 
-    .sidebar-menu {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
-    }
+.chapter-title {
+  font-family: 'Oranienbaum', serif; color: #C9A96E;
+  font-size: 2rem; text-align: center; margin: 3rem 0;
+  text-transform: uppercase; letter-spacing: 0.1em;
+}
 
-    .sidebar-item a {
-      color: #8A7E6B;
-      text-decoration: none;
-      font-size: 0.85rem;
-      transition: color 0.2s;
-      display: block;
-      line-height: 1.3;
-    }
+/* Художественный текст романа (Работает как текст) */
+.novel-text, .chapter-body p {
+  font-size: 1.35rem; line-height: 1.85; margin-bottom: 1.8rem;
+  font-weight: 300; text-align: justify; text-indent: 2.5rem;
+  color: #e0d5b0;
+}
 
-    .sidebar-item a:hover {
-      color: #C9A96E;
-    }
+/* КАРТИНКИ ВНУТРИ ГЛАВ */
+.img-inline, img {
+  max-width: 100%; height: auto;
+  margin: 3rem auto; display: block;
+  border: 1px solid rgba(201, 169, 110, 0.2);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+}
 
-    /* РАБОЧАЯ ОБЛАСТЬ ТЕКСТА */
-    .reader-content-area {
-      flex: 1;
-      margin-left: 280px;
-      max-width: 900px;
-    }
+/* СТИЛИЗАЦИЯ ПСЕВДОДОКУМЕНТОВ 40-Х (Работает как образ-вещдок) */
+.document {
+  background: #e4dcc4 !important; /* Фактурный цвет пожелтевшей архивной бумаги */
+  color: #1a1713 !important; /* Чернила печатной машинки */
+  font-family: 'Courier Prime', 'Courier New', monospace !important; /* Аутентичный моноширинный шрифт */
+  padding: 3rem; 
+  margin: 3rem 0;
+  border-left: 5px solid #C9A96E;
+  box-shadow: 
+    0 5px 15px rgba(0,0,0,0.5), 
+    0 20px 40px rgba(0,0,0,0.8);
+  border-radius: 2px;
+}
 
-    /* ТЕМНЫЙ ФОН-ПОДЛОЖКА ПОД КНИЖНЫЙ ТЕКСТ */
-    .chapter-block {
-      margin-bottom: 5rem;
-      background: rgba(0, 0, 0, 0.75); 
-      padding: 3.5rem;
-      border: 1px solid rgba(201, 169, 110, 0.1);
-      box-shadow: 0 20px 50px rgba(0,0,0,0.9);
-    }
+/* Настройки текста исключительно внутри архивного бланка */
+.document p {
+  color: #1a1713 !important;
+  font-family: 'Courier Prime', 'Courier New', monospace !important;
+  font-size: 1.1rem !important;
+  line-height: 1.5 !important;
+  text-indent: 0 !important; /* Убираем абзацный отступ книги */
+  text-align: left !important; /* Машинописное выравнивание по левому краю */
+  margin-bottom: 1.2rem;
+  letter-spacing: -0.02em;
+}
 
-    .chapter-title {
-      font-family: 'Oranienbaum', serif;
-      color: #C9A96E;
-      font-size: 2rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 2.5rem;
-      text-align: center;
-      border-bottom: 1px solid rgba(201, 169, 110, 0.15);
-      padding-bottom: 1.5rem;
-    }
+/* СТИЛИ ДЛЯ ИНОСТРАННОЙ РЕЧИ И ПЕРЕВОДА */
+.foreign {
+  font-style: italic;
+  color: #e0d5b0;
+}
 
-    /* СТИЛИ ДЛЯ ОБЫЧНОГО ЦИФРОВОГО ТЕКСТА (РАБОТАЕТ КАК ТЕКСТ) */
-    .chapter-content p {
-      font-size: 1.15rem;
-      margin-bottom: 1.5rem;
-      text-align: justify;
-      text-indent: 2.5rem;
-      color: #e0d5b0;
-    }
+.translation {
+  font-size: 1.05rem;
+  color: #8A7E6B;
+  margin-left: 0.4rem;
+  font-style: normal;
+}
 
-    /* СТИЛИ ДЛЯ КАРТИНОК-ДОКУМЕНТОВ (РАБОТАЮТ КАК ОБРАЗ-АРТЕФАКТ 40-Х) */
-    .chapter-content img {
-      display: block;
-      max-width: 100%;
-      height: auto;
-      margin: 3rem auto;
-      border: 1px solid #1a1712;
-      box-shadow: 
-        0 4px 10px rgba(0, 0, 0, 0.9),
-        0 20px 40px rgba(0, 0, 0, 0.8);
-      filter: sepia(0.1) contrast(1.02);
-    }
-
-    /* ТЕГИ ИНОСТРАННОЙ РЕЧИ ВНУТРИ ГЛАВ */
-    .foreign {
-      font-style: italic;
-      color: #e0d5b0;
-    }
-
-    .translation {
-      font-size: 0.95rem;
-      color: #8A7E6B;
-      margin-left: 0.4rem;
-      font-style: normal;
-    }
-
-    /* АДАПТИВНОСТЬ ДЛЯ СМАРТФОНОВ */
-    @media(max-width: 1024px) {
-      .workspace-wrapper { flex-direction: column; gap: 1rem; margin-top: 80px; }
-      .chapters-sidebar { position: static; width: 100%; height: auto; }
-      .reader-content-area { margin-left: 0; width: 100%; max-width: 100%; }
-      .chapter-block { padding: 2rem; }
-    }
-
-    @media(max-width: 768px) {
-      .top-navbar { gap: 0.8rem; }
-      .nav-link { font-size: 0.65rem; }
-      .chapter-title { font-size: 1.6rem; }
-      .chapter-content p { text-align: left; font-size: 1.05rem; text-indent: 1.5rem; }
-    }
-  </style>
+@media(max-width: 950px) {
+  .sidebar { display: none; }
+  .content { margin-left: 0; }
+  .content-inner { padding: 2rem 1.2rem; width: 100%; }
+  .document { padding: 1.5rem; }
+  .novel-text, .chapter-body p { text-align: left; text-indent: 1.5rem; font-size: 1.15rem; }
+}
+</style>
 </head>
 <body>
 
-  <nav class="top-navbar">
-    <a href="index.html" class="nav-link">Главная</a>
-    <a href="reader.html" class="nav-link active">Читать</a>
-    <a href="materials.html" class="nav-link">Архив</a>
-    <a href="foreigners.html" class="nav-link">Cooperation</a>
-    <a href="laboratory.html" class="nav-link">За кулисами</a>
-  </nav>
+<nav class="top-navbar">
+  <a href="index.html" class="nav-link">Главная</a>
+  <a href="reader.html" class="nav-link active">Читать</a>
+  <a href="materials.html" class="nav-link">Архив</a>
+  <a href="foreigners.html" class="nav-link">Cooperation</a>
+  <a href="laboratory.html" class="nav-link">За кулисами</a>
+</nav>
 
-  <div class="workspace-wrapper">
-    
+<div class="main-layout">
+  <aside class="sidebar">
+    <div class="sb-title">Второй звонок</div>
     {% assign sorted_chapters = site.chapters | sort: 'idx' %}
+    {% for ch in sorted_chapters %}
+      <button class="sb-item" onclick="document.getElementById('ch-{{ ch.idx }}').scrollIntoView({behavior:'smooth'})">
+        {{ ch.title }}
+      </button>
+    {% endfor %}
+  </aside>
 
-    <aside class="chapters-sidebar">
-      <h3 class="sidebar-title">Содержание</h3>
-      <ul class="sidebar-menu">
-        {% for ch in sorted_chapters %}
-          <li class="sidebar-item">
-            <a href="#chapter-{{ forloop.index }}">{{ ch.title }}</a>
-          </li>
-        {% endfor %}
-      </ul>
-    </aside>
-
-    <main class="reader-content-area">
+  <main class="content">
+    <article class="content-inner">
       {% for ch in sorted_chapters %}
-        <article class="chapter-block" id="chapter-{{ forloop.index }}">
+        <section id="ch-{{ ch.idx }}" style="margin-bottom: 5rem;">
           <h2 class="chapter-title">{{ ch.title }}</h2>
-          
-          <div class="chapter-content">
+          <!-- Выводим чистый HTML-контент, чтобы ваши теги картинок и документов подгружались без искажений -->
+          <div class="chapter-body">
             {{ ch.content }}
           </div>
-        </article>
+        </section>
+      {% else %}
+        <p style="text-align:center; padding: 50px;">Идет синхронизация архива глав... Пожалуйста, обновите страницу через минуту.</p>
       {% endfor %}
-    </main>
-
-  </div>
+    </article>
+  </main>
+</div>
 
 </body>
 </html>
