@@ -8,16 +8,13 @@ layout: null
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Рапорт № 47/Б — Второй звонок</title>
 <link rel="icon" href="../../images/51.png" type="image/png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oranienbaum&family=Literatta:opsz,wght@6..72,300;6..72,400;6..72,500;6..72,600;6..72,700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{
   background:#0b0a08 url('../../images/62.png') no-repeat center center fixed;
   background-size: cover;
   color:#e0d5b0;
-  font-family:'Literatta',Georgia,serif;
+  font-family: 'Georgia', 'Times New Roman', serif;
   min-height:100vh;
   overflow-x:hidden;
   overflow-y:auto;
@@ -25,47 +22,159 @@ body{
   flex-direction:column;
   align-items:center;
 }
+
+/* УЗКАЯ ЧЕРНАЯ ПОЛОСКА МЕНЮ СВЕРХУ */
 .top-navbar {
   position: fixed;
-  top: 0; left: 0; right: 0; height: 55px;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 55px;
   background: #000000;
   border-bottom: 1px solid rgba(201, 169, 110, 0.15);
-  display: flex; justify-content: center; align-items: center;
-  gap: 2.5rem; z-index: 150;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+  z-index: 150;
 }
 .nav-link {
-  color: #8A7E6B; font-family: 'Literatta', Georgia, serif;
-  font-size: 0.85rem; letter-spacing: 0.15em;
-  text-transform: uppercase; text-decoration: none; 
-  transition: color 0.3s ease; cursor: pointer; background: transparent; border: none; outline: none;
+  color: #8A7E6B;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  outline: none;
 }
-.nav-link:hover, .nav-link.active { color: #C9A96E; }
-.document-wrapper { max-width: 900px; width: 100%; margin: 95px auto 4rem; padding: 0 1.5rem; z-index: 10; animation: fadeIn 1.5s ease-out; }
+.nav-link:hover, .nav-link.active {
+  color: #C9A96E;
+}
+
+/* КОНТЕЙНЕР ДЛЯ ЛИСТА БУМАГИ */
+.document-wrapper {
+  max-width: 900px;
+  width: 100%;
+  margin: 95px auto 4rem;
+  padding: 0 1.5rem;
+  z-index: 10;
+  animation: fadeIn 1.5s ease-out;
+}
+
+/* АРХИВНЫЙ ЛИСТ БУМАГИ */
 .paper-sheet {
-  background: #f4e4bc; color: #1a1a1a; font-family: 'Courier New', Courier, monospace;
-  font-weight: 700; font-size: 1.15rem; line-height: 1.3; padding: 4rem 4rem 5rem 6rem;
-  box-shadow: 0 15px 50px rgba(0,0,0,0.85); position: relative; border-left: 1px solid rgba(0, 0, 0, 0.05);
+  background: #f4e4bc;
+  color: #1a1a1a;
+  /* Строгая стилистика псевдодокумента: Courier New Bold */
+  font-family: 'Courier New', 'Courier', 'Nimbus Mono L', monospace;
+  font-weight: 700;
+  font-size: 1.15rem;
+  line-height: 1.3;
+  padding: 4rem 4rem 5rem 6rem;
+  box-shadow: 0 15px 50px rgba(0,0,0,0.85);
+  position: relative;
+  border-left: 1px solid rgba(0, 0, 0, 0.05);
 }
 .paper-sheet::before {
-  content: ''; position: absolute; inset: 0;
+  content: '';
+  position: absolute;
+  inset: 0;
   background: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.03'/%3E%3C/svg%3E");
   pointer-events: none;
 }
-.binder-hole { position: absolute; left: 2rem; width: 16px; height: 16px; background: #0b0a08; border-radius: 50%; box-shadow: inset 2px 2px 4px rgba(0,0,0,0.6); }
+
+/* ДЫРКИ ОТ ДЫРОКОЛА СЛЕВА */
+.binder-hole {
+  position: absolute;
+  left: 2rem;
+  width: 16px;
+  height: 16px;
+  background: #0b0a08;
+  border-radius: 50%;
+  box-shadow: inset 2px 2px 4px rgba(0,0,0,0.6);
+}
 .hole-top { top: 15%; }
 .hole-mid { top: 50%; transform: translateY(-50%); }
 .hole-bot { bottom: 15%; }
-.doc-header { display: flex; justify-content: space-between; margin-bottom: 3rem; border-bottom: 2px double #1a1a1a; padding-bottom: 1rem; }
-.stamp-red { color: #C00000; font-weight: 900; letter-spacing: 0.15em; text-transform: uppercase; }
-.handwritten-blue { font-family: 'Literatta', Georgia, serif; font-style: italic; font-weight: normal; color: #1e3d59; font-size: 1.2rem; transform: rotate(-3deg); display: inline-block; }
-.doc-title { text-align: center; font-size: 1.35rem; margin-bottom: 1rem; letter-spacing: 0.05em; text-transform: uppercase; }
-.doc-subtitle { text-align: center; font-size: 1.15rem; margin-bottom: 2.5rem; font-weight: 700; }
-.doc-section-title { font-size: 1.2rem; margin: 2.5rem 0 1rem; text-transform: uppercase; text-decoration: underline; }
-.doc-paragraph { margin-bottom: 1.5rem; text-align: justify; }
-.doc-list { margin-bottom: 1.5rem; padding-left: 2rem; list-style-type: none; }
-.doc-list li { margin-bottom: 0.8rem; text-align: justify; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(1%) scale(0.99); } to { opacity: 1; transform: translateY(0) scale(1); } }
-@media(max-width: 768px){ .paper-sheet { padding: 3rem 1.5rem 3rem 3rem; } .binder-hole { left: 0.8rem; width: 10px; height: 10px; } }
+
+/* ОФОРМЛЕНИЕ МАШИНОПИСНОГО ТЕКСТА */
+.doc-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+  border-bottom: 2px double #1a1a1a;
+  padding-bottom: 1rem;
+}
+.stamp-red {
+  color: #C00000;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.handwritten-blue {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-style: italic;
+  font-weight: normal;
+  color: #1e3d59;
+  font-size: 1.2rem;
+  transform: rotate(-3deg);
+  display: inline-block;
+}
+.doc-title {
+  text-align: center;
+  font-size: 1.35rem;
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.doc-subtitle {
+  text-align: center;
+  font-size: 1.15rem;
+  margin-bottom: 2.5rem;
+  font-weight: 700;
+}
+.doc-section-title {
+  font-size: 1.2rem;
+  margin: 2.5rem 0 1rem;
+  text-transform: uppercase;
+  text-decoration: underline;
+}
+.doc-paragraph {
+  margin-bottom: 1.5rem;
+  text-align: justify;
+}
+.doc-list {
+  margin-bottom: 1.5rem;
+  padding-left: 2rem;
+  list-style-type: none;
+}
+.doc-list li {
+  margin-bottom: 0.8rem;
+  text-align: justify;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(1%) scale(0.99); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media(max-width: 768px){
+  .top-navbar { gap: 0.8rem; }
+  .nav-link { font-size: 0.65rem; }
+  .paper-sheet {
+    padding: 3rem 1.5rem 3rem 3rem;
+  }
+  .binder-hole {
+    left: 0.8rem;
+    width: 10px;
+    height: 10px;
+  }
+}
 </style>
 </head>
 <body oncontextmenu="return false;">
@@ -74,12 +183,13 @@ body{
   <a href="../../index.html" class="nav-link">Главная</a>
   <a href="../reader.html" class="nav-link">Читать</a>
   <a href="../../materials.html" class="nav-link active">Архив</a>
+  <a href="../../foreigners.html" class="nav-link">Cooperation</a>
   <a href="../../laboratory.html" class="nav-link">За кулисами</a>
-  <a href="../../foreigners.html?openModal=true" class="nav-link">Контакты</a>
 </nav>
 
 <div class="document-wrapper">
   <div class="paper-sheet">
+    
     <div class="binder-hole hole-top"></div>
     <div class="binder-hole hole-mid"></div>
     <div class="binder-hole hole-bot"></div>
@@ -111,18 +221,4 @@ body{
       <li><strong>1. Нарушение режима секретности.</strong> Из показаний Объекта, полученных в ходе допроса 5 февраля с.г., установлено, что информация о готовящемся покушении стала ему известна заблаговременно через негласный дипломатический канал. Источник информации — лицо, действующее в интересах Сетки. На основании устных показаний Объекта и анализа последующих событий, факт утечки следует считать доказанным.</li>
       <li><strong>2. Перехват исполнителя.</strong> Исполнитель Вальтер был захвачен людьми Объекта в период с 13:20 по 13:35 13 декабря 1946 года при попытке установки взрывного устройства. Захват произведён на этапе вскрытия канализационного люка. Установка взрывного устройства не произведена.</li>
       <li><strong>3. Допрос исполнителя.</strong> В ходе допроса Вальтер был подвергнут физическому воздействию с применением средств, вызвавших разрыв обеих барабанных перепонок. Под воздействием боли и страха Вальтер выдал Объекту маршрут Плана «А» (включая время, станцию отправления, маршрут следования, конечную точку маршрута в Бари). Допрос проводился в период с 14:30 до 16:00 13 декабря 1946 года.</li>
-      <li><strong>4. Использование Объектом фон Круге.</strong> Обладая информацией о Плане «А», Объект принял решение использовать гражданина фон Круге (скрывавшегося в пригороде Берна) для столкновения с Хозяином. Цель — установить, кто из них (Хозяин или фон Круге) обладает сведениями о содержимом «серой папки» 1943 года. Объект предоставил фон Круге документы для выезда и обеспечил его посадку в тот же грузовой состав, где следовал Хозяин. Факт столкновения зафиксирован, однако оно не привело к раскрытию информации о папке. Хозяин устранил фон Круге путём отравления (см. Акт судебно-медицинского освидетельствования № 11/С-47).</li>
-    </ul>
-
-    <h3 class="doc-section-title">II. ПРИЧИНЫ ПРОВАЛА ПЕРВОНАЧАЛЬНОЙ ОПЕРАЦИИ</h3>
-    <p class="doc-paragraph">По итогам проведённого расследования установлены следующие причины:</p>
-    <ul class="doc-list">
-      <li><strong>1. Утечка информации.</strong> Является наиболее вероятной и основной причиной срыва. Без предварительного осведомления Объект не мог бы организовать засаду и перехватить Вальтера.</li>
-      <li><strong>2. Недостаточная конспирация.</strong> Исполнитель не провёл предварительной разведки маршрута следования и не имел резервного плана эвакуации на случай внештатной ситуации.</li>
-      <li><strong>3. Психологическая неготовность исполнителя.</strong> Вальтер, являясь коммерческим исполнителем, мотивированным исключительно материальным интересом, оказался неспособен к сопротивлению в условиях плена и допроса. Отсутствие оперативной психологической защиты и подготовки к допросу усугубило провал задания.</li>
-      <li><strong>4. Отсутствие резервных мер.</strong> Операция проводилась без внешнего наблюдения за действиями исполнителя и без резервного плана на случай провала.</li>
-    </ul>
-
-    <h3 class="doc-section-title">III. ЗАВЕРШЕНИЕ ОПЕРАТИВНЫХ МЕРОПРИЯТИЙ 5 ФЕВРАЛЯ 1947 ГОДА</h3>
-    <p class="doc-paragraph">В соответствии с утверждённым планом перехвата и ликвидации, 5 февраля 1947 года Объект, не подозревая о принадлежности составителя рапорта к Сетке, пригласил его на совместную охоту на территории охотничьих угодий кантона Берн. В ходе охоты составителем рапорта было применено психоактивное вещество «Кола-8» (кубинское происхождение, состав № 8 по классификации Школы «Кола»), активированное температурой горячего напитка (глинтвейн). Под воздействием препарата Объект дал полные показания, подтвердившие факт перехвата Вальтера, его допроса, использования фон Круге как наживки для Хозяина, а также содержания «серой папки» 1943 года. Имя куратора Объектом не названо, однако из его показаний следует, что куратор действует в интересах Королевы (предположительно Виолетты) или её представителей.</p>
-    <p class="doc-paragraph">После получения необходимых сведений Объект, находившийся в состоянии острого психотического возбуждения, предпринял попытку бегства, произвёл несколько беспорядочных выстрелов по направлению, не представлявшему угрозы для жизни и
+      <li><strong>4. Использование Объектом фон Круге.</strong> Обладая информацией о Плане «А», Объект принял решение использовать гражданина фон Круге (скры
