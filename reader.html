@@ -100,7 +100,7 @@ body{
 }
 
 /* ЛАТИНИЦА КУРСИВОМ */
-.latin {
+.foreign {
   font-style: italic;
   color: #d4c5a0;
 }
@@ -172,12 +172,20 @@ body{
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.novel-text, .chapter-body p').forEach(function(p) {
-    let html = p.innerHTML;
+// Ждём полной загрузки страницы
+window.addEventListener('load', function() {
+  // Находим все параграфы в главах
+  const paragraphs = document.querySelectorAll('.chapter-body p');
+  
+  paragraphs.forEach(function(p) {
+    // Получаем текст
+    const text = p.textContent;
     
-    // Латинские слова → курсив
-    html = html.replace(/\b([A-Za-z]+(?:-[A-Za-z]+)*)\b/g, '<span class="latin">$1</span>');
+    // Если уже обработан (есть span), пропускаем
+    if (p.querySelector('span')) return;
+    
+    // Латинские слова → курсив (class="foreign")
+    let html = text.replace(/\b([A-Za-zÀ-ÿ][A-Za-zÀ-ÿ'-]*)\b/g, '<span class="foreign">$1</span>');
     
     // Текст в квадратных скобках → обычный шрифт
     html = html.replace(/\[([^\]]+)\]/g, '<span class="translation">[$1]</span>');
