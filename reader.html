@@ -68,7 +68,7 @@ layout: null
       position: relative;
     }
 
-    /* ЛЕВАЯ КОЛОНКА: СТАЦИОНАРНОЕ МЕНЮ ГЛАВ */
+    /* ЛЕВАЯ КОЛОНКА: МЕНЮ ГЛАВ */
     .chapters-sidebar {
       width: 280px;
       position: fixed;
@@ -114,7 +114,7 @@ layout: null
     /* ПРАВАЯ КОЛОНКА: ШИРОКОЕ ПОЛЕ ТЕКСТА */
     .reader-content-area {
       flex: 1;
-      margin-left: 310px; /* Отступ равен ширине сайдбара + gap */
+      margin-left: 310px;
       max-width: 900px;
     }
 
@@ -146,16 +146,17 @@ layout: null
       text-indent: 2.5rem;
     }
 
-    /* Оформление встроенных картинок в главах */
+    /* ОФОРМЛЕНИЕ ВСТРОЕННЫХ КАРТИНОК В ГЛАВАХ */
     .img-inline {
       display: block;
       max-width: 100%;
       height: auto;
       margin: 2.5rem auto;
       border: 1px solid rgba(201, 169, 110, 0.15);
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
     }
 
-    /* СТИЛИ ДЛЯ СПАНОВ ИНОСТРАННОЙ РЕЧИ И ПЕРЕВОДА */
+    /* СТИЛИ ДЛЯ ИНОСТРАННОЙ РЕЧИ И ПЕРЕВОДА */
     .foreign {
       font-style: italic;
       color: #e0d5b0;
@@ -168,7 +169,7 @@ layout: null
       font-style: normal;
     }
 
-    /* АДАПТИВНОСТЬ ДЛЯ ПЛАНШЕТОВ И ТЕЛЕФОНОВ */
+    /* АДАПТИВНОСТЬ */
     @media(max-width: 1024px) {
       .workspace-wrapper { flex-direction: column; gap: 1rem; margin-top: 80px; }
       .chapters-sidebar { position: static; width: 100%; height: auto; }
@@ -186,7 +187,6 @@ layout: null
 </head>
 <body>
 
-  <!-- Верхняя панель -->
   <nav class="top-navbar">
     <a href="index.html" class="nav-link">Главная</a>
     <a href="reader.html" class="nav-link active">Читать</a>
@@ -195,12 +195,10 @@ layout: null
     <a href="laboratory.html" class="nav-link">За кулисами</a>
   </nav>
 
-  <!-- Двухколоночный контейнер -->
   <div class="workspace-wrapper">
     
     {% assign sorted_chapters = site.chapters | sort: 'idx' %}
 
-    <!-- ЛЕВОЕ МЕНЮ: Автоматический список глав -->
     <aside class="chapters-sidebar">
       <h3 class="sidebar-title">Содержание</h3>
       <ul class="sidebar-menu">
@@ -212,14 +210,13 @@ layout: null
       </ul>
     </aside>
 
-    <!-- ПРАВОЕ ПОЛЕ: Широкие бланки с текстом романа -->
     <main class="reader-content-area">
       {% for ch in sorted_chapters %}
         <article class="chapter-block" id="chapter-{{ forloop.index }}">
           <h2 class="chapter-title">{{ ch.title }}</h2>
           
           <div class="chapter-content">
-            {{ ch.content | markdownify }}
+            {{ ch.content }}
           </div>
         </article>
       {% endfor %}
