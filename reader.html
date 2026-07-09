@@ -11,7 +11,6 @@ layout: null
 <link rel="icon" href="images/51.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Подключаем Literatta для романа и специальный Courier Prime для печатной машинки -->
 <link href="https://fonts.googleapis.com/css2?family=Oranienbaum&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Literatta:opsz,wght@6..72,300;6..72,400;6..72,500;6..72,600;6..72,700&display=swap" rel="stylesheet">
 
 <style>
@@ -108,10 +107,11 @@ body{
   text-transform: uppercase; letter-spacing: 0.1em;
 }
 
-/* Художественный текст романа (Работает как текст) */
+/* ХУДОЖЕСТВЕННЫЙ ТЕКСТ РОМАНА (СТРОГО БЕЗ КРАСНЫХ СТРОК) */
 .novel-text, .chapter-body p {
   font-size: 1.35rem; line-height: 1.85; margin-bottom: 1.8rem;
-  font-weight: 300; text-align: justify; text-indent: 2.5rem;
+  font-weight: 300; text-align: justify; 
+  text-indent: 0 !important; /* Убираем красную строку */
   color: #e0d5b0;
 }
 
@@ -123,11 +123,11 @@ body{
   box-shadow: 0 10px 30px rgba(0,0,0,0.8);
 }
 
-/* СТИЛИЗАЦИЯ ПСЕВДОДОКУМЕНТОВ 40-Х (Работает как образ-вещдок) */
+/* СТИЛИЗАЦИЯ ПСЕВДОДОКУМЕНТОВ 40-Х */
 .document {
-  background: #e4dcc4 !important; /* Фактурный цвет пожелтевшей архивной бумаги */
+  background: #e4dcc4 !important; /* Цвет старой бумаги */
   color: #1a1713 !important; /* Чернила печатной машинки */
-  font-family: 'Courier Prime', 'Courier New', monospace !important; /* Аутентичный моноширинный шрифт */
+  font-family: 'Courier Prime', 'Courier New', monospace !important;
   padding: 3rem; 
   margin: 3rem 0;
   border-left: 5px solid #C9A96E;
@@ -137,14 +137,14 @@ body{
   border-radius: 2px;
 }
 
-/* Настройки текста исключительно внутри архивного бланка */
+/* Текст внутри архивного бланка (Строго без красных строк) */
 .document p {
   color: #1a1713 !important;
   font-family: 'Courier Prime', 'Courier New', monospace !important;
   font-size: 1.1rem !important;
   line-height: 1.5 !important;
-  text-indent: 0 !important; /* Убираем абзацный отступ книги */
-  text-align: left !important; /* Машинописное выравнивание по левому краю */
+  text-indent: 0 !important; /* Без красных строк */
+  text-align: left !important;
   margin-bottom: 1.2rem;
   letter-spacing: -0.02em;
 }
@@ -167,7 +167,7 @@ body{
   .content { margin-left: 0; }
   .content-inner { padding: 2rem 1.2rem; width: 100%; }
   .document { padding: 1.5rem; }
-  .novel-text, .chapter-body p { text-align: left; text-indent: 1.5rem; font-size: 1.15rem; }
+  .novel-text, .chapter-body p { text-align: left; text-indent: 0 !important; font-size: 1.15rem; }
 }
 </style>
 </head>
@@ -197,7 +197,6 @@ body{
       {% for ch in sorted_chapters %}
         <section id="ch-{{ ch.idx }}" style="margin-bottom: 5rem;">
           <h2 class="chapter-title">{{ ch.title }}</h2>
-          <!-- Выводим чистый HTML-контент, чтобы ваши теги картинок и документов подгружались без искажений -->
           <div class="chapter-body">
             {{ ch.content }}
           </div>
