@@ -51,6 +51,7 @@ body{
 .nav-link {
   color: #8A7E6B; font-size: 0.75rem; letter-spacing: 0.12em;
   text-transform: uppercase; text-decoration: none; transition: color 0.3s ease;
+  background: transparent; border: none; cursor: pointer; font-family: inherit;
 }
 .nav-link:hover, .nav-link.active { color: #C9A96E; }
 .nav-link.highlight { color: #C9A96E; font-weight: 500; }
@@ -120,19 +121,58 @@ body{
 }
 .lang-link:hover { background: #C9A96E; color: #0b0a08; }
 
-/* МОДАЛЬНОЕ ОКНО */
+/* МОДАЛЬНОЕ ОКНО КОНТАКТОВ (СТРОГИЙ ТЕМНЫЙ СТИЛЬ) */
 .modal-overlay {
-  position: fixed; inset: 0; background: rgba(11, 10, 8, 0.95);
+  position: fixed; inset: 0; background: rgba(11, 10, 8, 0.85);
   display: flex; align-items: center; justify-content: center;
   opacity: 0; pointer-events: none; transition: opacity 0.3s ease; z-index: 200;
 }
 .modal-overlay.show { opacity: 1; pointer-events: auto; }
-.modal-card { background: #0b0a08; border: 1px solid #C9A96E; padding: 2.5rem; max-width: 450px; width: 90%; position: relative; }
-.modal-close { position: absolute; top: 1rem; right: 1rem; background: transparent; border: none; color: #8A7E6B; font-size: 1.5rem; cursor: pointer; }
 
-.feedback-form { display: flex; flex-direction: column; gap: 1rem; }
-.feedback-form input, .feedback-form textarea { background: #161512; border: 1px solid rgba(201, 169, 110, 0.2); color: #e0d5b0; padding: 0.8rem; font-family: inherit; }
-.form-submit { padding: 0.8rem; background: transparent; border: 1px solid #C9A96E; color: #C9A96E; text-transform: uppercase; cursor: pointer; transition: 0.3s; }
+.modal-card { 
+  background: #0b0a08; 
+  border: 1px solid rgba(201, 169, 110, 0.3); 
+  padding: 2.5rem; 
+  max-width: 450px; 
+  width: 90%; 
+  position: relative;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.9);
+}
+.modal-card h2 {
+  font-family: 'Oranienbaum', serif;
+  color: #C9A96E;
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.modal-close { position: absolute; top: 1rem; right: 1rem; background: transparent; border: none; color: #8A7E6B; font-size: 1.5rem; cursor: pointer; transition: color 0.3s; }
+.modal-close:hover { color: #C9A96E; }
+
+.feedback-form { display: flex; flex-direction: column; gap: 1.2rem; }
+.feedback-form input, .feedback-form textarea { 
+  background: #11100e !important; 
+  border: 1px solid rgba(201, 169, 110, 0.25); 
+  color: #e0d5b0 !important; 
+  padding: 0.9rem; 
+  font-family: inherit;
+  font-size: 0.95rem;
+  outline: none;
+}
+.feedback-form input:focus, .feedback-form textarea:focus {
+  border-color: #C9A96E;
+}
+.form-submit { 
+  padding: 0.9rem; 
+  background: transparent; 
+  border: 1px solid #C9A96E; 
+  color: #C9A96E; 
+  text-transform: uppercase; 
+  letter-spacing: 0.1em;
+  font-size: 0.85rem;
+  cursor: pointer; 
+  transition: 0.3s; 
+}
 .form-submit:hover { background: #C9A96E; color: #0b0a08; }
 
 @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
@@ -159,11 +199,12 @@ body{
   
   <div class="split-layout">
     
+    <!-- ЛЕВАЯ КОЛОНКА -->
     <div class="column">
       <section class="card">
         <h2 class="section-divider">О проекте</h2>
         <p style="font-size: 1rem; line-height: 1.7; font-weight: 300;">
-          <strong>«Второй звонок»</strong> — интеллектуальный шпионский роман, соединяющий психологическую drama и историческую реконструкцию. 
+          <strong>«Второй звонок»</strong> — интеллектуальный шпионский роман, соединяющий психологическую драму и историческую реконструкцию. 
           Роман полностью завершен в финальной редакции и готов к публикации. Мы открыты к предложениям литературных агентов и издательств.
         </p>
       </section>
@@ -187,6 +228,7 @@ body{
       </div>
     </div>
     
+    <!-- ПРАВАЯ КОЛОНКА -->
     <div class="column">
       <section class="card" style="height: 100%;">
         <h2 class="section-divider">International Cooperation</h2>
@@ -194,16 +236,19 @@ body{
           Demo materials (synopsis and chapters) are available in three European languages for translation and foreign rights inquiries.
         </p>
         
+        <!-- English -->
         <div class="lang-box">
           <p class="lang-intro">"Second Call" — a spy-noir novel set in post-war Switzerland. We invite publishers to explore translation opportunities.</p>
           <a href="en-cooperation.html" class="lang-link">English Materials →</a>
         </div>
 
+        <!-- German -->
         <div class="lang-box">
           <p class="lang-intro">Bern, 1946. Ein atmosphärischer Spionageroman über Geheimarchive. Partner für die deutschsprachige Ausgabe gesucht.</p>
           <a href="de-cooperation.html" class="lang-link">Deutsche Materialien →</a>
         </div>
 
+        <!-- French -->
         <div class="lang-box">
           <p class="lang-intro">Un roman d'espionnage intellectuel se déroulant à Berne. Dossiers secrets et destins brisés. Disponible pour traduction.</p>
           <a href="fr-cooperation.html" class="lang-link">Documents en Français →</a>
