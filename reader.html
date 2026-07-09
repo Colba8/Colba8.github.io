@@ -18,7 +18,7 @@ layout: null
     html { scroll-behavior: smooth; }
     
     body {
-      background: #0a0a09 url('images/68.png') no-repeat center center fixed;
+      background: #000000 url('images/68.png') no-repeat center center fixed;
       background-size: cover;
       color: #e0d5b0;
       font-family: 'Literatta', Georgia, serif;
@@ -26,9 +26,26 @@ layout: null
       display: flex;
       flex-direction: column;
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
-    /* ВЕРХНЯЯ ПАНЕЛЬ НАВИГАЦИИ */
+    /* МАСКИРОВКА СКРОЛЛБАРА */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #000000;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #C9A96E;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #e0d5b0;
+    }
+
+    /* НАВИГАЦИЯ */
     .top-navbar {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -56,7 +73,7 @@ layout: null
 
     .nav-link:hover, .nav-link.active { color: #C9A96E; }
 
-    /* ДВУХКОЛОНОЧНЫЙ РАБОЧИЙ СТОЛ ЧИТАТЕЛЯ */
+    /* СТОЛ ЧИТАТЕЛЯ */
     .workspace-wrapper {
       flex: 1;
       width: 100%;
@@ -68,14 +85,14 @@ layout: null
       position: relative;
     }
 
-    /* ЛЕВАЯ КОЛОНКА: МЕНЮ ГЛАВ */
+    /* САЙДБАР (МЕНЮ ГЛАВ) */
     .chapters-sidebar {
-      width: 280px;
+      width: 250px;
       position: fixed;
       top: 90px;
       bottom: 2rem;
       overflow-y: auto;
-      background: rgba(0, 0, 0, 0.85);
+      background: rgba(5, 5, 5, 0.9);
       border: 1px solid rgba(201, 169, 110, 0.15);
       padding: 1.5rem;
     }
@@ -111,25 +128,26 @@ layout: null
       color: #C9A96E;
     }
 
-    /* ПРАВАЯ КОЛОНКА: ШИРОКОЕ ПОЛЕ ТЕКСТА */
+    /* РАБОЧАЯ ОБЛАСТЬ ТЕКСТА */
     .reader-content-area {
       flex: 1;
-      margin-left: 310px;
+      margin-left: 280px;
       max-width: 900px;
     }
 
+    /* ТЕМНЫЙ ФОН-ПОДЛОЖКА ПОД КНИЖНЫЙ ТЕКСТ */
     .chapter-block {
-      margin-bottom: 4rem;
-      background: rgba(5, 5, 5, 0.8);
+      margin-bottom: 5rem;
+      background: rgba(0, 0, 0, 0.75); 
       padding: 3.5rem;
-      border: 1px solid rgba(201, 169, 110, 0.08);
+      border: 1px solid rgba(201, 169, 110, 0.1);
       box-shadow: 0 20px 50px rgba(0,0,0,0.9);
     }
 
     .chapter-title {
       font-family: 'Oranienbaum', serif;
       color: #C9A96E;
-      font-size: 2.2rem;
+      font-size: 2rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       margin-bottom: 2.5rem;
@@ -138,25 +156,29 @@ layout: null
       padding-bottom: 1.5rem;
     }
 
-    /* СТИЛИ ДЛЯ ВНУТРЕННЕГО ТЕКСТА ГЛАВ */
+    /* СТИЛИ ДЛЯ ОБЫЧНОГО ЦИФРОВОГО ТЕКСТА (РАБОТАЕТ КАК ТЕКСТ) */
     .chapter-content p {
       font-size: 1.15rem;
       margin-bottom: 1.5rem;
       text-align: justify;
       text-indent: 2.5rem;
+      color: #e0d5b0;
     }
 
-    /* ОФОРМЛЕНИЕ ВСТРОЕННЫХ КАРТИНОК В ГЛАВАХ */
-    .img-inline {
+    /* СТИЛИ ДЛЯ КАРТИНОК-ДОКУМЕНТОВ (РАБОТАЮТ КАК ОБРАЗ-АРТЕФАКТ 40-Х) */
+    .chapter-content img {
       display: block;
       max-width: 100%;
       height: auto;
-      margin: 2.5rem auto;
-      border: 1px solid rgba(201, 169, 110, 0.15);
-      box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+      margin: 3rem auto;
+      border: 1px solid #1a1712;
+      box-shadow: 
+        0 4px 10px rgba(0, 0, 0, 0.9),
+        0 20px 40px rgba(0, 0, 0, 0.8);
+      filter: sepia(0.1) contrast(1.02);
     }
 
-    /* СТИЛИ ДЛЯ ИНОСТРАННОЙ РЕЧИ И ПЕРЕВОДА */
+    /* ТЕГИ ИНОСТРАННОЙ РЕЧИ ВНУТРИ ГЛАВ */
     .foreign {
       font-style: italic;
       color: #e0d5b0;
@@ -169,7 +191,7 @@ layout: null
       font-style: normal;
     }
 
-    /* АДАПТИВНОСТЬ */
+    /* АДАПТИВНОСТЬ ДЛЯ СМАРТФОНОВ */
     @media(max-width: 1024px) {
       .workspace-wrapper { flex-direction: column; gap: 1rem; margin-top: 80px; }
       .chapters-sidebar { position: static; width: 100%; height: auto; }
