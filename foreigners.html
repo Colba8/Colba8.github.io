@@ -121,6 +121,20 @@ body{
 }
 .lang-link:hover { background: #C9A96E; color: #0b0a08; }
 
+/* ЛОГОТИП КОЛБЫ В СВОБОДНОМ ПРОСТРАНСТВЕ */
+.colba-space-img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-top: auto; /* Прижимает картинку к низу колонки */
+  padding-top: 2rem;
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+}
+.colba-space-img:hover {
+  opacity: 1;
+}
+
 /* МОДАЛЬНОЕ ОКНО КОНТАКТОВ (СТРОГИЙ ТЕМНЫЙ СТИЛЬ) */
 .modal-overlay {
   position: fixed; inset: 0; background: rgba(11, 10, 8, 0.85);
@@ -180,6 +194,7 @@ body{
 @media(max-width: 900px){
   .split-layout { flex-direction: column; }
   .wrapper { margin-top: 70px; }
+  .colba-space-img { margin-top: 2rem; max-width: 50%; margin-left: auto; margin-right: auto; }
 }
 </style>
 </head>
@@ -226,6 +241,10 @@ body{
         <h3 class="folder-title">Радиоспектакли</h3>
         <p class="folder-desc">Создание многоголосых аудиокниг и атмосферного саунд-дизайна на основе произведения.</p>
       </div>
+
+      <!-- КОЛБА В СВОБОДНОМ ПРОСТРАНСТВЕ -->
+      <img src="images/colba-main-bright2.png" alt="Символ проекта Колба" class="colba-space-img">
+
     </div>
     
     <!-- ПРАВАЯ КОЛОНКА -->
