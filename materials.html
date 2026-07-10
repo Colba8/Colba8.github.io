@@ -84,7 +84,7 @@ body{
 }
 
 .split-layout { display: flex; gap: 2rem; }
-.left-column { flex: 1.1; }
+.left-column { flex: 1.1; display: flex; flex-direction: column; }
 .right-column { flex: 1.9; display: flex; flex-direction: column; gap: 1.5rem; }
 
 .archive-card {
@@ -132,6 +132,20 @@ body{
 /* ВИДЕО */
 .promo-video-wrap { width: 100%; border: 1px solid #C9A96E; background: #000; }
 video { width: 100%; display: block; }
+
+/* ЛОГОТИП КОЛБЫ В СВОБОДНОМ ПРОСТРАНСТВЕ */
+.colba-space-img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-top: auto; /* Прижимает картинку к низу колонки */
+  padding-top: 2rem;
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+}
+.colba-space-img:hover {
+  opacity: 1;
+}
 
 /* МОДАЛЬНОЕ ОКНО КОНТАКТОВ (СТРОГИЙ ТЕМНЫЙ СТИЛЬ) */
 .modal-overlay {
@@ -196,6 +210,7 @@ video { width: 100%; display: block; }
   .nav-link { font-size: 0.65rem; }
   .split-layout { flex-direction: column; }
   .archive-wrapper { margin-top: 70px; }
+  .colba-space-img { margin-top: 2rem; max-width: 50%; margin-left: auto; margin-right: auto; }
 }
 </style>
 </head>
@@ -220,6 +235,10 @@ video { width: 100%; display: block; }
         <p class="synopsis-text"><strong>«Второй звонок»</strong> — интеллектуальный шпионский нуар, разворачивающийся в послевоенной Европе с декабря 1946 по май 1948 года.</p>
         <p class="synopsis-text">Это история о фигурах безжалостной игры, выходящих за рамки протоколов ради обретения имени, и о праве человека не ждать сигнала к действию, а просто начать жить дальше.</p>
       </section>
+
+      <!-- КОЛБА В СВОБОДНОМ ПРОСТРАНСТВЕ -->
+      <img src="images/colba main bright2.png" alt="Символ проекта Колба" class="colba-space-img">
+
     </div>
     
     <div class="right-column">
