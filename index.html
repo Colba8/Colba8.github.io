@@ -4,248 +4,276 @@ layout: null
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta name="yandex-verification" content="eb68c619e04d0797" />
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="yandex-verification" content="eb68c619e04d0797" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Второй звонок — Дмитрий Ильин. Шпионский роман и архив</title>
-  <meta name="description" content="«Второй звонок» — шпионский роман Дмитрия Ильина о Берне 1946–1948. Цифровой архив документов, секретные рапорты и лаборатория смыслов.">
-  <link rel="canonical" href="https://dmilinauthor.github.io/roman/">
+<title>Второй звонок — Дмитрий Ильин. Творческое пространство и роман-архив</title>
+<meta name="description" content="«Второй звонок» — шпионский роман Дмитрия Ильина. Творческое пространство, нуар, рассекреченные документы и архивы.">
+<link rel="canonical" href="https://colba8.ru/">
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "CreativeWork",
-    "name": "Второй звонок",
-    "author": { "@type": "Person", "name": "Дмитрий Ильин" },
-    "genre": "Spy Fiction",
-    "url": "https://dmilinauthor.github.io/roman/"
-  }
-  </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "Второй звонок",
+  "author": { "@type": "Person", "name": "Дмитрий Ильин" },
+  "genre": "Spy Fiction",
+  "url": "https://colba8.ru/"
+}
+</script>
 
-  <link rel="icon" href="images/51.png" type="image/png">
+<link rel="icon" href="images/51.png" type="image/png">
 
-  <style>
-    /* ОБЩИЕ СТИЛИ */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    
-    body {
-      background-color: #050505; 
-      color: #e0d5b0;
-      /* Безопасные системные шрифты с засечками без внешних загрузок */
-      font-family: 'Georgia', 'Times New Roman', 'New York', serif;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      overflow-x: hidden;
-    }
+<style>
+/* ОБЩИЕ СТИЛИ */
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* СКРЫТЫЙ ТЕКСТ ДЛЯ SEO */
-    .visually-hidden {
-      position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
-      overflow: hidden; clip: rect(0,0,0,0); border: 0;
-    }
+body {
+  background-color: #050505;
+  color: #e0d5b0;
+  font-family: 'Literatta', Georgia, serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
 
-    /* 1. СТИЛИ ИНТЕРАКТИВНОГО ОВЕРЛЕЯ (СТРАНИЦА СО СТОЛОМ) */
-    #overlay-machine {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 9999;
-      background: #000000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transition: opacity 0.8s ease, visibility 0.8s ease;
-    }
+/* СКВОЗНОЕ МЕНЮ */
+.top-navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0; height: 60px;
+  background: #000000;
+  border-bottom: 1px solid rgba(201, 169, 110, 0.15);
+  display: flex; justify-content: center; align-items: center;
+  gap: 1.8rem; z-index: 150; padding: 0 1rem;
+}
+.nav-link {
+  color: #8A7E6B; font-size: 0.75rem; letter-spacing: 0.12em;
+  text-transform: uppercase; text-decoration: none; transition: color 0.3s ease;
+  cursor: pointer; background: transparent; border: none; font-family: inherit;
+}
+.nav-link:hover, .nav-link.active { color: #C9A96E; }
+.nav-link.highlight { color: #C9A96E; font-weight: 500; }
 
-    .scene-container {
-      position: relative;
-      display: inline-block;
-      max-width: 100vw;
-      max-height: 100vh;
-    }
+/* ЗАДНИЙ ФОН СО СПОКОЙНЫМ ДВИЖЕНИЕМ ДЫМА */
+.smoke-bg {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: url('images/62.png') no-repeat center center fixed;
+  background-size: cover;
+  opacity: 0.45;
+  z-index: 1;
+  pointer-events: none;
+  /* Спокойная, очень медленная анимация движения дыма */
+  animation: smokeDrift 45s ease-in-out infinite;
+}
 
-    .scene-image {
-      display: block;
-      max-width: 100vw;
-      max-height: 100vh;
-      width: auto;
-      height: auto;
-      object-fit: contain;
-      pointer-events: none;
-    }
+/* ГЛАВНЫЙ КОНТЕНТ */
+.hero-container {
+  position: relative;
+  z-index: 10;
+  max-width: 1000px;
+  width: 100%;
+  margin-top: 110px;
+  padding: 0 1.5rem 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn 2s ease-out;
+}
 
-    /* Ссылка-портал позиционируется поверх картинки стола */
-    .flask-portal {
-      position: absolute;
-      bottom: 9.5%;
-      left: 71.3%;
-      width: 4.4%;
-      height: 15%;
-      z-index: 10000;
-      cursor: pointer;
-    }
+/* ОБЛОЖКА-КОЛЛАЖ (СТАТИЧНАЯ) */
+.cover-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 850px;
+  margin-bottom: 3.5rem;
+  box-shadow: 0 20px 80px rgba(0,0,0,0.9);
+  border: 1px solid rgba(201, 169, 110, 0.15);
+}
+.cover-img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
 
-    .layer-bright {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      opacity: 1; 
-      transition: filter 0.3s ease-in-out;
-    }
+/* КНОПКА ЧИТАТЬ */
+.read-btn {
+  display: inline-block;
+  padding: 1.2rem 3.5rem;
+  background: transparent;
+  border: 1px solid #C9A96E;
+  color: #C9A96E;
+  font-family: 'Oranienbaum', Georgia, serif;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  text-decoration: none;
+  transition: all 0.4s ease;
+  box-shadow: 0 5px 25px rgba(201, 169, 110, 0.05);
+}
+.read-btn:hover {
+  background: #C9A96E;
+  color: #050505;
+  box-shadow: 0 10px 40px rgba(201, 169, 110, 0.2);
+  transform: translateY(-2px);
+}
 
-    .flask-portal:hover .layer-bright,
-    .flask-portal:focus-visible .layer-bright {
-      filter: drop-shadow(0 0 14px rgba(212, 175, 55, 0.9));
-    }
+/* СТИЛИ ДЛЯ КЛИКАБЕЛЬНОГО ТВОРЧЕСКОГО ПРОСТРАНСТВА ПОД ЗАГОЛОВКОМ */
+.brand-sub {
+  font-family: 'Literatta', Georgia, serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #8A7E6B;
+  margin-top: 0.5rem;
+  text-decoration: none;
+  display: inline-block;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+  border-bottom: 1px dotted transparent;
+}
+.brand-sub:hover {
+  color: #C9A96E;
+  border-bottom-color: rgba(201, 169, 110, 0.4);
+}
 
-    /* 2. СТИЛИ ОСНОВНОГО САЙТА (ОБЛОЖКА И НАВИГАЦИЯ) */
-    .top-navbar {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      height: 60px;
-      background: #000000;
-      border-bottom: 1px solid rgba(201, 169, 110, 0.15);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 1.8rem;
-      z-index: 150;
-    }
+/* МОДАЛЬНОЕ ОКНО КОНТАКТОВ */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(11, 10, 8, 0.85);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none; transition: opacity 0.3s ease; z-index: 200;
+}
+.modal-overlay.show { opacity: 1; pointer-events: auto; }
 
-    .nav-link {
-      color: #8A7E6B;
-      font-size: 0.75rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      text-decoration: none;
-      /* Строгий системный шрифт для элементов интерфейса */
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      font-weight: 600;
-      transition: color 0.3s;
-      cursor: pointer;
-      background: transparent;
-      border: none;
-      outline: none;
-    }
+.modal-card { 
+  background: #0b0a08; 
+  border: 1px solid rgba(201, 169, 110, 0.3); 
+  padding: 2.5rem; 
+  max-width: 450px; 
+  width: 90%; 
+  position: relative;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.9);
+}
+.modal-card h2 {
+  font-family: 'Oranienbaum', serif;
+  color: #C9A96E;
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.modal-close { position: absolute; top: 1rem; right: 1rem; background: transparent; border: none; color: #8A7E6B; font-size: 1.5rem; cursor: pointer; transition: color 0.3s; }
+.modal-close:hover { color: #C9A96E; }
 
-    .nav-link:hover, .nav-link.active { color: #C9A96E; }
+.feedback-form { display: flex; flex-direction: column; gap: 1.2rem; }
+.feedback-form input, .feedback-form textarea { 
+  background: #11100e !important; 
+  border: 1px solid rgba(201, 169, 110, 0.25); 
+  color: #e0d5b0 !important; 
+  padding: 0.9rem; 
+  font-family: inherit;
+  font-size: 0.95rem;
+  outline: none;
+  -webkit-text-fill-color: #e0d5b0 !important;
+}
+.feedback-form input:focus, .feedback-form textarea:focus {
+  border-color: #C9A96E;
+}
 
-    .main-wrapper {
-      flex: 1;
-      width: 100%;
-      max-width: 1200px;
-      margin: 60px auto 0;
-      padding: 2rem 1.5rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
+/* Сброс автозаполнения браузера */
+.feedback-form input:-webkit-autofill,
+.feedback-form input:-webkit-autofill:hover, 
+.feedback-form input:-webkit-autofill:focus,
+.feedback-form textarea:-webkit-autofill,
+.feedback-form textarea:-webkit-autofill:hover,
+.feedback-form textarea:-webkit-autofill:focus {
+  -webkit-text-fill-color: #e0d5b0 !important;
+  -webkit-box-shadow: 0 0 0px 1000px #11100e inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
 
-    .cover-image {
-      display: block;
-      width: 100%;
-      max-width: 1100px;
-      height: auto;
-      border: 1px solid rgba(201, 169, 110, 0.1);
-      box-shadow: 0 0 60px rgba(0, 0, 0, 0.8);
-      margin-bottom: 3rem;
-    }
+.form-submit { 
+  padding: 0.9rem; 
+  background: transparent; 
+  border: 1px solid #C9A96E; 
+  color: #C9A96E; 
+  text-transform: uppercase; 
+  letter-spacing: 0.1em;
+  font-size: 0.85rem;
+  cursor: pointer; 
+  transition: 0.3s; 
+}
+.form-submit:hover { background: #C9A96E; color: #0b0a08; }
 
-    .custom-read-btn {
-      display: inline-block;
-      padding: 0.8rem 2.8rem;
-      background: rgba(0, 0, 0, 0.7);
-      border: 1.5px solid rgba(201, 169, 110, 0.5);
-      color: #C9A96E;
-      font-family: 'Georgia', 'Times New Roman', serif;
-      font-size: 1rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
+/* Спокойное покачивание дыма */
+@keyframes smokeDrift {
+  0% { transform: scale(1) translate(0, 0); }
+  50% { transform: scale(1.06) translate(10px, -8px); }
+  100% { transform: scale(1) translate(0, 0); }
+}
 
-    .custom-read-btn:hover {
-      background: #C9A96E;
-      color: #000;
-    }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
-    /* МОДАЛЬНОЕ ОКНО */
-    .modal-overlay {
-      position: fixed; inset: 0; background: rgba(0,0,0,0.9);
-      display: none; align-items: center; justify-content: center; z-index: 200;
-    }
-
-    .modal-card {
-      background: #0b0a08; border: 1px solid #C9A96E; padding: 2.5rem;
-      max-width: 450px; width: 90%; position: relative;
-    }
-
-    .modal-close {
-      position: absolute; top: 1rem; right: 1rem;
-      background: transparent; border: none; color: #8A7E6B; font-size: 1.5rem; cursor: pointer;
-    }
-
-    .modal-card h2 {
-      color: #C9A96E; text-align: center; margin-bottom: 1rem; font-family: 'Georgia', 'Times New Roman', serif;
-    }
-
-    @media(max-width: 900px) {
-      .top-navbar { gap: 0.8rem; }
-      .nav-link { font-size: 0.65rem; }
-    }
-  </style>
+@media (max-width: 768px) {
+  .hero-container { margin-top: 90px; }
+  .cover-wrapper { margin-bottom: 2.5rem; }
+  .read-btn { padding: 1rem 2.5rem; font-size: 1.1rem; width: 100%; text-align: center; }
+}
+</style>
 </head>
-<body>
+<body oncontextmenu="return false;">
 
-  <div id="overlay-machine">
-    <div class="scene-container">
-      <img src="images/invite colbe.png" alt="Дмитрий Ильин. Творческое пространство" class="scene-image">
+<!-- СКВОЗНОЕ МЕНЮ (НАВИГАТОР) -->
+<nav class="top-navbar">
+  <a href="index.html" class="nav-link active">Главная</a>
+  <a href="reader.html" class="nav-link highlight">Читать</a>
+  <a href="materials.html" class="nav-link">Архив</a>
+  <a href="foreigners.html" class="nav-link">Cooperation</a>
+  <a href="laboratory.html" class="nav-link">За кулисами</a>
+  <button class="nav-link" onclick="toggleModal(true)">Контакты</button>
+</nav>
 
-      <a href="#" class="flask-portal" onclick="document.getElementById('overlay-machine').style.opacity='0'; document.getElementById('overlay-machine').style.visibility='hidden'; return false;">
-        <img src="images/colba main bright2.png" alt="Эмблема проекта" class="layer-bright">
-      </a>
-    </div>
+<!-- ДЫМНЫЙ ФОН СО СПОКОЙНЫМ ДВИЖЕНИЕМ -->
+<div class="smoke-bg"></div>
+
+<!-- ГЛАВНАЯ СТРАНИЦА -->
+<main class="hero-container">
+  
+  <!-- ОБЛОЖКА-КОЛЛАЖ (СТАТИЧНАЯ) -->
+  <div class="cover-wrapper">
+    <img src="images/70.png" alt="Обложка: Дмитрий Ильин — Второй звонок" class="cover-img">
   </div>
 
-  <h1 class="visually-hidden">Второй звонок — шпионский роман Дмитрия Ильина</h1>
+  <!-- КНОПКА «ЧИТАТЬ» -->
+  <a href="reader.html" class="read-btn">Читать</a>
 
-  <div class="visually-hidden">
-    <p>Берн, 1946 год. Послевоенная Европа — гигантский полигон для шпионов. Хозяин бернской резидентуры получает сигнал: его раскрыли. За ним следуют тени прошлого — Вальтер, Мастер и таинственная Королева. «Второй звонок» — это роман-архив, где каждый документ хранит тайну, а каждая сцена — шифр.</p>
+</main>
+
+<!-- МОДАЛЬНОЕ ОКНО КОНТАКТОВ -->
+<div class="modal-overlay" id="contactModal" onclick="if(event.target === this) toggleModal(false)">
+  <div class="modal-card">
+    <button class="modal-close" onclick="toggleModal(false)">✕</button>
+    <h2>Связь с автором</h2>
+    <form class="feedback-form" action="https://formspree.io/f/mgojzbba" method="POST">
+      <input type="text" name="name" placeholder="Ваш позывной" required>
+      <input type="email" name="email" placeholder="Ваша почта" required>
+      <textarea name="message" placeholder="Донесение" required></textarea>
+      <button type="submit" class="form-submit">Передать</button>
+    </form>
   </div>
+</div>
 
-  <nav class="top-navbar">
-    <a href="index.html" class="nav-link active">Главная</a>
-    <a href="roman/reader.html" class="nav-link">Читать</a>
-    <a href="materials.html" class="nav-link">Архив</a>
-    <a href="foreigners.html" class="nav-link">Cooperation</a>
-    <a href="laboratory.html" class="nav-link">За кулисами</a>
-    <button class="nav-link" onclick="document.getElementById('contactModal').style.display='flex'">Контакты</button>
-  </nav>
-
-  <main class="main-wrapper">
-    <img src="images/64.png" alt="Второй звонок — шпионский роман Дмитрия Ильина. Берн, 1946." class="cover-image">
-    <a href="roman/reader.html" class="custom-read-btn">Читать</a>
-  </main>
-
-  <div class="modal-overlay" id="contactModal">
-    <div class="modal-card">
-      <button class="modal-close" onclick="document.getElementById('contactModal').style.display='none'">✕</button>
-      <h2>Контакты</h2>
-      <form style="display:flex; flex-direction:column; gap:1rem;" action="https://formspree.io/f/mgojzbba" method="POST">
-        <input type="text" name="name" placeholder="Ваш позывной" required style="background:#161512; border:1px solid #333; color:#e0d5b0; padding:0.8rem; font-family:inherit;">
-        <input type="email" name="email" placeholder="Ваша почта" required style="background:#161512; border:1px solid #333; color:#e0d5b0; padding:0.8rem; font-family:inherit;">
-        <textarea name="message" placeholder="Сообщение" required style="background:#161512; border:1px solid #333; color:#e0d5b0; padding:0.8rem; min-height:80px; font-family:inherit;"></textarea>
-        <button type="submit" style="background:transparent; border:1px solid #C9A96E; color:#C9A96E; padding:0.8rem; cursor:pointer; text-transform:uppercase; font-family:inherit; font-weight:600;">Отправить</button>
-      </form>
-    </div>
-  </div>
+<script>
+function toggleModal(show) {
+  document.getElementById('contactModal').classList.toggle('show', show);
+}
+</script>
 
 </body>
 </html>
