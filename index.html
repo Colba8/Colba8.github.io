@@ -19,7 +19,8 @@ layout: null
   "name": "Второй звонок",
   "author": { "@type": "Person", "name": "Дмитрий Ильин" },
   "genre": "Spy Fiction",
-  "url": "https://colba8.ru/"
+  "url": "https://colba8.ru/",
+  "keywords": "Второй звонок, Дмитрий Ильин, шпионский детектив, шпионский нуар, роман-архив, Сетка, Берн 1946, spy noir, Dmitry Ilyin, Second Call"
 }
 </script>
 
@@ -58,16 +59,16 @@ body {
 .nav-link:hover, .nav-link.active { color: #C9A96E; }
 .nav-link.highlight { color: #C9A96E; font-weight: 500; }
 
-/* ЗАДНИЙ ФОН СО СПОКОЙНЫМ ДВИЖЕНИЕМ ДЫМА */
+/* ЗАДНИЙ ФОН - ПЕЧАТНАЯ МАШИНКА В ЛУЧЕ СВЕТА С АНИМАЦИЕЙ ДЫМА */
 .smoke-bg {
   position: fixed;
   top: 0; left: 0; width: 100%; height: 100%;
-  background: url('images/62.png') no-repeat center center fixed;
+  background: #050505 url('images/70.png') no-repeat center center fixed;
   background-size: cover;
   opacity: 0.45;
   z-index: 1;
   pointer-events: none;
-  /* Спокойная, очень медленная анимация движения дыма */
+  /* Спокойная медленная анимация дыма на фоне машинки */
   animation: smokeDrift 45s ease-in-out infinite;
 }
 
@@ -85,7 +86,40 @@ body {
   animation: fadeIn 2s ease-out;
 }
 
-/* ОБЛОЖКА-КОЛЛАЖ (СТАТИЧНАЯ) */
+/* НАДПИСИ ПОВЕРХ ПЕЧАТНОЙ МАШИНКИ (ВВЕРХУ ЭКРАНА) */
+.brand-group {
+  text-align: center;
+  margin-top: 3.5rem;
+  margin-bottom: 25rem; /* Большой отступ, чтобы прокрутить экран до портрета */
+  z-index: 20;
+}
+.brand-title {
+  font-family: 'Oranienbaum', Georgia, serif;
+  font-size: 2.4rem;
+  color: #C9A96E;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* СТИЛИ КЛИКАБЕЛЬНОГО ТВОРЧЕСКОГО ПРОСТРАНСТВА ПОД ИМЕНЕМ */
+.brand-sub {
+  font-family: 'Literatta', Georgia, serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #8A7E6B;
+  margin-top: 0.5rem;
+  text-decoration: none;
+  display: inline-block;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+  border-bottom: 1px dotted transparent;
+}
+.brand-sub:hover {
+  color: #C9A96E;
+  border-bottom-color: rgba(201, 169, 110, 0.4);
+}
+
+/* ОБЛОЖКА-ПОРТРЕТ ЗА СТОЛОМ (НИЗ ЭКРАНА) */
 .cover-wrapper {
   position: relative;
   width: 100%;
@@ -100,7 +134,7 @@ body {
   height: auto;
 }
 
-/* КНОПКА ЧИТАТЬ */
+/* КНОПКА ЧИТАТЬ ПОД ПОРТРЕТОМ */
 .read-btn {
   display: inline-block;
   padding: 1.2rem 3.5rem;
@@ -120,24 +154,6 @@ body {
   color: #050505;
   box-shadow: 0 10px 40px rgba(201, 169, 110, 0.2);
   transform: translateY(-2px);
-}
-
-/* СТИЛИ ДЛЯ КЛИКАБЕЛЬНОГО ТВОРЧЕСКОГО ПРОСТРАНСТВА ПОД ЗАГОЛОВКОМ */
-.brand-sub {
-  font-family: 'Literatta', Georgia, serif;
-  font-size: 0.9rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: #8A7E6B;
-  margin-top: 0.5rem;
-  text-decoration: none;
-  display: inline-block;
-  transition: color 0.3s ease, border-bottom 0.3s ease;
-  border-bottom: 1px dotted transparent;
-}
-.brand-sub:hover {
-  color: #C9A96E;
-  border-bottom-color: rgba(201, 169, 110, 0.4);
 }
 
 /* МОДАЛЬНОЕ ОКНО КОНТАКТОВ */
@@ -208,7 +224,7 @@ body {
 }
 .form-submit:hover { background: #C9A96E; color: #0b0a08; }
 
-/* Спокойное покачивание дыма */
+/* АНИМАЦИИ */
 @keyframes smokeDrift {
   0% { transform: scale(1) translate(0, 0); }
   50% { transform: scale(1.06) translate(10px, -8px); }
@@ -222,8 +238,11 @@ body {
 
 @media (max-width: 768px) {
   .hero-container { margin-top: 90px; }
+  .brand-group { margin-bottom: 15rem; }
   .cover-wrapper { margin-bottom: 2.5rem; }
   .read-btn { padding: 1rem 2.5rem; font-size: 1.1rem; width: 100%; text-align: center; }
+  .brand-title { font-size: 1.8rem; }
+  .brand-sub { font-size: 0.75rem; }
 }
 </style>
 </head>
@@ -239,15 +258,23 @@ body {
   <button class="nav-link" onclick="toggleModal(true)">Контакты</button>
 </nav>
 
-<!-- ДЫМНЫЙ ФОН СО СПОКОЙНЫМ ДВИЖЕНИЕМ -->
+<!-- ЗАДНИЙ ФОН - ПЕЧАТНАЯ МАШИНКА В ЛУЧЕ СВЕТА С АНИМАЦИЕЙ ДЫМА -->
 <div class="smoke-bg"></div>
 
 <!-- ГЛАВНАЯ СТРАНИЦА -->
 <main class="hero-container">
   
-  <!-- ОБЛОЖКА-КОЛЛАЖ (СТАТИЧНАЯ) -->
+  <!-- ИМЯ И ТВОРЧЕСКОЕ ПРОСТРАНСТВО ПОВЕРХ ПЕЧАТНОЙ МАШИНКИ -->
+  <div class="brand-group">
+    <h1 class="brand-title">Дмитрий Ильин</h1>
+    <!-- Текст заменен на Творческое пространство и сделан ссылкой на reader.html -->
+    <a href="reader.html" class="brand-sub">творческое пространство</a>
+  </div>
+
+  <!-- ОБЛОЖКА-КОЛЛАЖ (СТАТИЧНАЯ) - ПОРТРЕТ ЗА СТОЛОМ -->
   <div class="cover-wrapper">
-    <img src="images/70.png" alt="Обложка: Дмитрий Ильин — Второй звонок" class="cover-img">
+    <!-- Вернули правильный файл 74.png (коллаж за столом) -->
+    <img src="images/74.png" alt="Обложка: Дмитрий Ильин — Второй звонок" class="cover-img">
   </div>
 
   <!-- КНОПКА «ЧИТАТЬ» -->
