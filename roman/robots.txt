@@ -1,4 +1,6 @@
-User-agent: *
+user-agent: *
 Allow: /
-Host: https://dmilinauthor.github.io
-Sitemap: https://dmilinauthor.github.io/roman/sitemap.xml
+Disallow: /admin/
+Disallow: /private/
+Host: https://colba8.ru
+Sitemap: https://colba8.ru/sitemap.xml
