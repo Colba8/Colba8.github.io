@@ -83,10 +83,10 @@ layout: null
     /* Ссылка-портал поверх нарисованного текста "творческое пространство" */
     .brand-text-portal {
       position: absolute;
-      top: 25%;
+      top: 15%; /* Сдвинуто выше */
       left: 50%;
       transform: translateX(-50%);
-      width: 44%;
+      width: 55%; /* Увеличенный размер для мониторов */
       z-index: 10000;
       cursor: pointer;
       transition: filter 0.3s ease-in-out;
@@ -230,10 +230,11 @@ layout: null
 
   <div id="overlay-machine">
     <div class="scene-container">
+      <!-- Изображение чистой печатной машинки высокого разрешения -->
       <img src="images/001.png" alt="Дмитрий Ильин. Творческое пространство" class="scene-image">
 
-      <!-- Кликабельный портал-ссылка над надписью "творческое пространство" -->
-      <a href="reader.html" class="brand-text-portal" title="Читать роман">
+      <!-- Кликабельный портал над надписью "творческое пространство" -->
+      <a href="#" class="brand-text-portal" title="Открыть Творческое пространство" onclick="document.getElementById('overlay-machine').style.opacity='0'; document.getElementById('overlay-machine').style.visibility='hidden'; return false;">
         <img src="images/002.png" alt="Дмитрий Ильин. Творческое пространство" class="brand-text-img">
       </a>
 
@@ -251,7 +252,7 @@ layout: null
 
   <nav class="top-navbar">
     <a href="index.html" class="nav-link active">Главная</a>
-    <a href="roman.html" class="nav-link">Читать</a>
+    <a href="reader.html" class="nav-link">Читать</a>
     <a href="materials.html" class="nav-link">Архив</a>
     <a href="foreigners.html" class="nav-link">Cooperation</a>
     <a href="laboratory.html" class="nav-link">За кулисами</a>
