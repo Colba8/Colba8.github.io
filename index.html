@@ -9,7 +9,6 @@ layout: null
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Второй звонок — Дмитрий Ильин. Шпионский роман и архив</title>
- <!-- ЗАМЕНИТЬ НА: -->
  <meta name="description" content="«Второй звонок» — шпионский нуар-роман Дмитрия Ильина. Интерактивный роман-архив, погружающий в атмосферу Берна 1946 года. Творческое пространство автора, черновики, рецензии и рассекреченные материалы.">
  <meta name="keywords" content="Второй звонок, Дмитрий Ильин, шпионский детектив, шпионский нуар, исторический нуар, роман-архив, интерактивная книга, Сетка, Вальтер, Берн 1946, послевоенная Европа, секретные архивы, spy noir, Dmitry Ilyin, Second Call, творческое пространство">
  <link rel="canonical" href="https://colba8.ru/">
@@ -79,6 +78,28 @@ layout: null
       height: auto;
       object-fit: contain;
       pointer-events: none;
+    }
+
+    /* Ссылка-портал поверх нарисованного текста "творческое пространство" */
+    .brand-text-portal {
+      position: absolute;
+      top: 25%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 44%;
+      z-index: 10000;
+      cursor: pointer;
+      transition: filter 0.3s ease-in-out;
+    }
+
+    .brand-text-portal:hover {
+      filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.5));
+    }
+
+    .brand-text-img {
+      width: 100%;
+      height: auto;
+      display: block;
     }
 
     /* Ссылка-портал позиционируется поверх картинки стола */
@@ -210,6 +231,11 @@ layout: null
   <div id="overlay-machine">
     <div class="scene-container">
       <img src="images/001.png" alt="Дмитрий Ильин. Творческое пространство" class="scene-image">
+
+      <!-- Кликабельный портал-ссылка над надписью "творческое пространство" -->
+      <a href="reader.html" class="brand-text-portal" title="Читать роман">
+        <img src="images/002.png" alt="Дмитрий Ильин. Творческое пространство" class="brand-text-img">
+      </a>
 
       <a href="#" class="flask-portal" onclick="document.getElementById('overlay-machine').style.opacity='0'; document.getElementById('overlay-machine').style.visibility='hidden'; return false;">
         <img src="images/colba main bright2.png" alt="Эмблема проекта" class="layer-bright">
