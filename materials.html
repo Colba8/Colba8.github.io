@@ -196,4 +196,95 @@ body{
   .materials-wrapper { margin-top: 70px; }
 }
 </style>
-</h
+</head>
+<body oncontextmenu="return false;">
+
+<nav class="top-navbar">
+  <a href="index.html" class="nav-link">Главная</a>
+  <a href="reader.html" class="nav-link highlight">Читать</a>
+  <a href="materials.html" class="nav-link active">Архив</a>
+  <a href="foreigners.html" class="nav-link">Cooperation</a>
+  <a href="laboratory.html" class="nav-link">За кулисами</a>
+  <button class="nav-link" onclick="toggleModal(true)">Контакты</button>
+</nav>
+
+<div class="materials-wrapper">
+  <!-- Исправили баннер с 72.png на правильный 71.png (Архив дела романа) -->
+  <img src="images/71.png" alt="Архив дела романа" class="banner">
+
+  <div class="split-layout">
+    <div class="left-column">
+      <section class="card">
+        <h2 class="section-divider">Синопсис проекта</h2>
+        <p class="synopsis-text"><strong>«Второй звонок»</strong> — интеллектуальный шпионский нуар, разворачивающийся в послевоенной Европе с декабря 1946 по май 1948 года.</p>
+        <p class="synopsis-text">Это история о фигурах безжалостной игры, выходящих за рамки протоколов ради обретения имени, и о праве человека не ждать сигнала к действию, а просто начать жить дальше.</p>
+      </section>
+      
+      <!-- Золотая колба в левой колонке (размер зафиксирован на 300px для полной идентичности) -->
+      <img src="images/00.png" alt="Символ Колбы" style="display: block; margin: 2rem auto 0; width: 300px; max-width: 90%; height: auto; border: none; box-shadow: none;">
+    </div>
+
+    <div class="right-column">
+      <a href="roman/materials/report.html" class="sub-btn-link">
+        <div class="folder-box">
+          <span class="folder-tag">ОСОБАЯ ПАПКА &middot; СОВ. СЕКРЕТНО</span>
+          <h3 class="folder-title">ДЕЛО № 11/С: Аналитическая записка</h3>
+          <p class="folder-desc">Оценка оперативной обстановки в Берне, transit активов рейха.</p>
+        </div>
+      </a>
+
+      <a href="roman/materials/note.html" class="sub-btn-link">
+        <div class="folder-box">
+          <span class="folder-tag">ЛИЧНО ЦЕНТРУ &middot; СОВ. СЕКРЕТНО</span>
+          <h3 class="folder-title">ДЕЛО № 47/Б: Рапорт Мастера</h3>
+          <p class="folder-desc">Детальный отчет о ликвидации Объекта и причинах провала Вальтера.</p>
+        </div>
+      </a>
+
+      <a href="roman/materials/literary_essay.html" class="sub-btn-link">
+        <div class="folder-box">
+          <span class="folder-tag">СПРАВОЧНЫЕ МАТЕРИАЛЫ</span>
+          <h3 class="folder-title">Исторический комментарий</h3>
+          <p class="folder-desc">Подлинная судьба «папки Канариса» и кризис 1948 года.</p>
+        </div>
+      </a>
+
+      <a href="roman/materials/dossier_characters.html" class="sub-btn-link">
+        <div class="folder-box">
+          <span class="folder-tag">ЛИЧНЫЕ ДЕЛА &middot; СЕТКА</span>
+          <h3 class="folder-title">Dramatis Personae: Действующие лица</h3>
+          <p class="folder-desc">Развернутые досье на Алекса, Мастера, Виолетту и Майю-Розу.</p>
+        </div>
+      </a>
+
+      <section class="card">
+        <h2 class="section-divider">Промо-презентация</h2>
+        <div class="video-container">
+          <video src="Video.mp4" controls preload="metadata"></video>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="contactModal" onclick="if(event.target === this) toggleModal(false)">
+  <div class="modal-card">
+    <button class="modal-close" onclick="toggleModal(false)">✕</button>
+    <h2>Связь с автором</h2>
+    <form class="feedback-form" action="https://formspree.io/f/mgojzbba" method="POST">
+      <input type="text" name="name" placeholder="Ваш позывной" required>
+      <input type="email" name="email" placeholder="Ваша почта" required>
+      <textarea name="message" placeholder="Донесение" required></textarea>
+      <button type="submit" class="form-submit">Передать</button>
+    </form>
+  </div>
+</div>
+
+<script>
+function toggleModal(show) {
+  document.getElementById('contactModal').classList.toggle('show', show);
+}
+</script>
+
+</body>
+</html>
