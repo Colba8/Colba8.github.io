@@ -77,4 +77,205 @@ body{
 
 .split-layout { display: flex; gap: 2rem; }
 .left-column { flex: 1.1; }
-.right-column { flex: 1.9; display: flex;
+.right-column { flex: 1.9; display: flex; flex-direction: column; gap: 1.5rem; }
+
+.card {
+  background: rgba(11, 10, 8, 0.95);
+  border: 1px solid rgba(201, 169, 110, 0.12);
+  padding: 2.5rem;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+}
+
+.section-divider {
+  font-family: 'Oranienbaum', serif;
+  color: #C9A96E; font-size: 1.3rem; margin-bottom: 1.5rem;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  border-bottom: 1px solid rgba(201, 169, 110, 0.15);
+  padding-bottom: 0.5rem;
+}
+
+.synopsis-text { font-size: 1.1rem; line-height: 1.75; margin-bottom: 1.5rem; font-weight: 300; }
+
+.sub-btn-link { text-decoration: none; color: inherit; display: block; }
+.folder-box {
+  background: #11100e;
+  padding: 1.5rem;
+  border: 1px solid rgba(201, 169, 110, 0.15);
+  border-left: 4px solid #C9A96E;
+  transition: all 0.3s ease;
+}
+.folder-box:hover:not(.disabled) {
+  border-color: #C9A96E;
+  transform: translateY(-2px);
+  background: #161512;
+}
+
+.folder-tag {
+  font-family: 'Courier New', monospace;
+  color: #C00000; font-weight: bold; font-size: 0.75rem;
+}
+.folder-title {
+  font-family: 'Oranienbaum', serif;
+  color: #C9A96E; font-size: 1.25rem; margin: 0.4rem 0;
+}
+.folder-desc { font-size: 0.9rem; color: #8A7E6B; line-height: 1.5; }
+
+.disabled { opacity: 0.5; filter: grayscale(1); cursor: default; }
+
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(11, 10, 8, 0.85);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none; transition: opacity 0.3s ease; z-index: 200;
+}
+.modal-overlay.show { opacity: 1; pointer-events: auto; }
+
+.modal-card { 
+  background: #0b0a08; 
+  border: 1px solid rgba(201, 169, 110, 0.3); 
+  padding: 2.5rem; 
+  max-width: 450px; 
+  width: 90%; 
+  position: relative;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.9);
+}
+.modal-card h2 {
+  font-family: 'Oranienbaum', serif;
+  color: #C9A96E;
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.modal-close { position: absolute; top: 1rem; right: 1rem; background: transparent; border: none; color: #8A7E6B; font-size: 1.5rem; cursor: pointer; transition: color 0.3s; }
+.modal-close:hover { color: #C9A96E; }
+
+.feedback-form { display: flex; flex-direction: column; gap: 1.2rem; }
+.feedback-form input, .feedback-form textarea { 
+  background: #11100e !important; 
+  border: 1px solid rgba(201, 169, 110, 0.25); 
+  color: #e0d5b0 !important; 
+  padding: 0.9rem; 
+  font-family: inherit;
+  font-size: 0.95rem;
+  outline: none;
+  -webkit-text-fill-color: #e0d5b0 !important;
+}
+.feedback-form input:focus, .feedback-form textarea:focus {
+  border-color: #C9A96E;
+}
+
+.feedback-form input:-webkit-autofill,
+.feedback-form input:-webkit-autofill:hover, 
+.feedback-form input:-webkit-autofill:focus,
+.feedback-form textarea:-webkit-autofill,
+.feedback-form textarea:-webkit-autofill:hover,
+.feedback-form textarea:-webkit-autofill:focus {
+  -webkit-text-fill-color: #e0d5b0 !important;
+  -webkit-box-shadow: 0 0 0px 1000px #11100e inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.form-submit { 
+  padding: 0.9rem; 
+  background: transparent; 
+  border: 1px solid #C9A96E; 
+  color: #C9A96E; 
+  text-transform: uppercase; 
+  letter-spacing: 0.1em;
+  font-size: 0.85rem;
+  cursor: pointer; 
+  transition: 0.3s; 
+}
+.form-submit:hover { background: #C9A96E; color: #0b0a08; }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+@media(max-width: 900px){
+  .split-layout { flex-direction: column; }
+  .laboratory-wrapper { margin-top: 70px; }
+}
+</style>
+</head>
+<body oncontextmenu="return false;">
+
+<nav class="top-navbar">
+  <a href="index.html" class="nav-link">Главная</a>
+  <a href="reader.html" class="nav-link highlight">Читать</a>
+  <a href="materials.html" class="nav-link">Архив</a>
+  <a href="foreigners.html" class="nav-link">Cooperation</a>
+  <a href="laboratory.html" class="nav-link active">За кулисами</a>
+  <button class="nav-link" onclick="toggleModal(true)">Контакты</button>
+</nav>
+
+<div class="laboratory-wrapper">
+  <img src="images/73.png" alt="За кулисами: Лаборатория проекта" class="banner">
+
+  <div class="split-layout">
+    <div class="left-column">
+      <section class="card">
+        <h2 class="section-divider">Лаборатория проекта</h2>
+        <p class="synopsis-text"><strong>«За кулисами»</strong> — рабочее пространство, где роман обретал форму: от первых набросков до финальной вёрстки.</p>
+        <p class="synopsis-text">Здесь собраны черновики, аналитические схемы и, главное, документы эксперимента по взаимодействию автора и искусственного интеллекта. Это живая история создания, где каждая деталь — ключ к пониманию целого.</p>
+      </section>
+    </div>
+
+    <div class="right-column">
+      <a href="laboratory/master.html" class="sub-btn-link">
+        <div class="folder-box">
+          <span class="folder-tag">РАБОЧИЕ МАТЕРИАЛЫ</span>
+          <h3 class="folder-title">Сюжетная судьба Мастера</h3>
+          <p class="folder-desc">Трансформация героя от Гостя к Мастеру: наброски, схемы, эволюция характера.</p>
+        </div>
+      </a>
+
+      <a href="laboratory/experiment.html" class="sub-btn-link">
+        <div class="folder-box">
+          <span class="folder-tag">ИССЛЕДОВАНИЕ</span>
+          <h3 class="folder-title">Эксперимент с ИИ</h3>
+          <p class="folder-desc">Полная хроника взаимодействия автора с Gemini и DeepSeek: анализ, претензии и результаты.</p>
+        </div>
+      </a>
+
+      <a href="laboratory/stolen.html" class="sub-btn-link">
+        <div class="folder-box">
+          <span class="folder-tag">СВИДЕТЕЛЬСТВА</span>
+          <h3 class="folder-title">Хроника утраты</h3>
+          <p class="folder-desc">Документальное свидетельство утраты контента: от сбоев доступа до осознания кражи.</p>
+        </div>
+      </a>
+
+      <a href="laboratory/criticism.html" class="sub-btn-link">
+        <div class="folder-box">
+          <span class="folder-tag">КРИТИКА</span>
+          <h3 class="folder-title">Литературные обсуждения</h3>
+          <p class="folder-desc">Суждения о романе, не претендующие на отсутствие предвзятости.</p>
+        </div>
+      </a>
+    </div>
+  </div>
+  
+  <img src="images/00.png" alt="Символ Колбы" style="display: block; margin: 4rem auto 0; width: 300px; max-width: 90%; height: auto; border: none; box-shadow: none;">
+
+</div>
+
+<div class="modal-overlay" id="contactModal" onclick="if(event.target === this) toggleModal(false)">
+  <div class="modal-card">
+    <button class="modal-close" onclick="toggleModal(false)">✕</button>
+    <h2>Связь с автором</h2>
+    <form class="feedback-form" action="https://formspree.io/f/mgojzbba" method="POST">
+      <input type="text" name="name" placeholder="Ваш позывной" required>
+      <input type="email" name="email" placeholder="Ваша почта" required>
+      <textarea name="message" placeholder="Донесение" required></textarea>
+      <button type="submit" class="form-submit">Передать</button>
+    </form>
+  </div>
+</div>
+
+<script>
+function toggleModal(show) {
+  document.getElementById('contactModal').classList.toggle('show', show);
+}
+</script>
+
+</body>
+</html>
