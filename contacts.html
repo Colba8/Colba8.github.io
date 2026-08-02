@@ -15,18 +15,18 @@ layout: null
     html, body {
       width: 100%;
       height: 100%;
-      background-color: #050505;
+      background-color: #000000;
       color: #e0d5b0;
       font-family: 'Georgia', 'Times New Roman', serif;
       overflow-x: hidden;
     }
 
-    /* КАРТИНКА Contacts00.png НА 100% ЧИСТАЯ, БЕЗ ЗАТЕМНЯЮЩИХ ОВЕРЛЕЕВ */
+    /* ЕДИНЫЙ ЧЕРНЫЙ ФОН СЦЕНЫ */
     .scene-wrapper {
       position: relative;
       width: 100%;
       min-height: 100vh;
-      background: #050505 url('images/Contacts00.png') center center / contain no-repeat;
+      background: #000000 url('images/Contacts00.png') center center / contain no-repeat;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -66,48 +66,17 @@ layout: null
       height: auto;
     }
 
-    /* АР-ДЕКО КАРТОЧКА ФОРМЫ */
+    /* АБСОЛЮТНО ПРОЗРАЧНАЯ ФОРМА (БЕЗ СЕРЫХ КВАДРАТОВ И ПОДЛОЖЕК) */
     .contact-card {
       position: relative;
       z-index: 5;
       width: 100%;
-      max-width: 440px;
-      margin-top: 2.5rem;
-      background: rgba(10, 9, 7, 0.88);
-      border: 1px solid #C5A059;
-      padding: 2.2rem 1.8rem;
-      box-shadow: 0 0 40px rgba(0, 0, 0, 0.9);
-      backdrop-filter: blur(3px);
-    }
-
-    /* ЗОЛОТЫЕ УГОЛКИ */
-    .corner-decor {
-      position: absolute;
-      width: 12px;
-      height: 12px;
-      border: 2px solid #C5A059;
-    }
-    .c-tl { top: -4px; left: -4px; border-right: none; border-bottom: none; }
-    .c-tr { top: -4px; right: -4px; border-left: none; border-bottom: none; }
-    .c-bl { bottom: -4px; left: -4px; border-right: none; border-top: none; }
-    .c-br { bottom: -4px; right: -4px; border-left: none; border-top: none; }
-
-    .art-deco-divider {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      color: #C5A059;
-      margin-bottom: 1.2rem;
-    }
-
-    .art-deco-divider::before,
-    .art-deco-divider::after {
-      content: '';
-      display: block;
-      width: 40px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, #C5A059, transparent);
+      max-width: 400px;
+      margin-top: 2rem;
+      background: transparent; /* Никакого собственного фона */
+      border: none;
+      padding: 0;
+      box-shadow: none;
     }
 
     .form-group-list {
@@ -116,10 +85,10 @@ layout: null
       gap: 1.2rem;
     }
 
-    /* ПОЛЯ ВВОДА И ЗОЛОТОЙ КУРСОР */
+    /* ПОЛЯ ВВОДА — ПРОЗРАЧНЫЕ С ЧЕТКОЙ ЗОЛОТОЙ РАМКОЙ */
     .form-field {
-      background: rgba(18, 16, 13, 0.95);
-      border: 1px solid rgba(197, 160, 89, 0.4);
+      background: rgba(0, 0, 0, 0.6); /* Легкое затемнение только для читаемости текста */
+      border: 1px solid rgba(197, 160, 89, 0.5);
       color: #F0E6D2;
       padding: 0.95rem 1.1rem;
       font-family: inherit;
@@ -131,8 +100,8 @@ layout: null
 
     .form-field:focus {
       border-color: #D4AF37;
-      box-shadow: 0 0 12px rgba(212, 175, 55, 0.35);
-      background: #161410;
+      box-shadow: 0 0 12px rgba(212, 175, 55, 0.4);
+      background: rgba(0, 0, 0, 0.85);
     }
 
     .form-field::placeholder {
@@ -145,14 +114,14 @@ layout: null
       resize: none;
     }
 
-    /* ЕДИНАЯ КНОПКА ОТПРАВИТЬ */
+    /* КНОПКА ОТПРАВИТЬ В ЕДИНОМ СТИЛЕ */
     .submit-button-container {
-      margin-top: 0.8rem;
+      margin-top: 0.5rem;
     }
 
     .btn-art-deco {
       width: 100%;
-      background: rgba(10, 9, 7, 0.95);
+      background: #000000;
       border: 1.5px solid #C5A059;
       color: #C5A059;
       padding: 1rem 1.5rem;
@@ -178,7 +147,7 @@ layout: null
 
     .btn-art-deco:hover {
       background: #C5A059;
-      color: #050505;
+      color: #000000;
       border-color: #F3E5AB;
       box-shadow: 0 0 25px rgba(197, 160, 89, 0.6);
     }
@@ -191,7 +160,7 @@ layout: null
     @media (max-width: 768px) {
       .scene-wrapper { padding: 1.5rem 1rem; background-size: cover; }
       .brand-header { top: 1rem; left: 1rem; }
-      .contact-card { padding: 1.5rem 1rem; }
+      .contact-card { max-width: 90%; }
     }
   </style>
 </head>
@@ -207,15 +176,8 @@ layout: null
       </a>
     </header>
 
-    <!-- ФОРМА СВЯЗИ -->
+    <!-- ФОРМА (ПРОЗРАЧНАЯ) -->
     <main class="contact-card">
-      <div class="corner-decor c-tl"></div>
-      <div class="corner-decor c-tr"></div>
-      <div class="corner-decor c-bl"></div>
-      <div class="corner-decor c-br"></div>
-
-      <div class="art-deco-divider">◆</div>
-
       <form action="https://formspree.io/f/mgojzbba" method="POST" class="form-group-list">
         <input type="text" name="name" class="form-field" placeholder="Ваше имя" required autocomplete="off">
         <input type="email" name="email" class="form-field" placeholder="Ваш e-mail" required autocomplete="off">
