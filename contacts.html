@@ -1,1 +1,188 @@
-00
+---
+layout: null
+---
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Контакты — Дмитрий Ильин. Литературный проект «Театр теней»</title>
+  <link rel="icon" href="images/51.png" type="image/png">
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: #050505;
+      color: #e0d5b0;
+      font-family: 'Georgia', 'Times New Roman', serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+      position: relative;
+    }
+
+    /* КНОПКА ВОЗВРАТА В ФОЙЕ (ВЕРХНИЙ ЛЕВЫЙ УГОЛ) */
+    .top-bar {
+      position: absolute;
+      top: 1.5rem;
+      left: 2rem;
+      display: flex;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .home-link {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: #C5A059;
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      transition: opacity 0.3s ease;
+    }
+
+    .home-link:hover {
+      opacity: 0.8;
+    }
+
+    .flask-icon {
+      width: 24px;
+      height: auto;
+      filter: drop-shadow(0 0 5px rgba(197, 160, 89, 0.4));
+    }
+
+    /* КАРТОЧКА ФОРМЫ КОНТАКТОВ */
+    .contact-card {
+      background: #0b0a08;
+      border: 1px solid rgba(197, 160, 89, 0.5);
+      padding: 3rem 2.5rem;
+      max-width: 480px;
+      width: 100%;
+      box-shadow: 0 0 50px rgba(0, 0, 0, 0.9), 0 0 20px rgba(197, 160, 89, 0.1);
+      position: relative;
+    }
+
+    .contact-title {
+      color: #C5A059;
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: normal;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+
+    .contact-subtitle {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #8A7E6B;
+      letter-spacing: 0.1em;
+      margin-bottom: 2rem;
+      font-style: italic;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .form-input, .form-textarea {
+      background: #161512;
+      border: 1px solid rgba(197, 160, 89, 0.25);
+      color: #e0d5b0;
+      padding: 1rem;
+      font-family: inherit;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .form-input:focus, .form-textarea:focus {
+      border-color: #C5A059;
+      box-shadow: 0 0 10px rgba(197, 160, 89, 0.2);
+    }
+
+    .form-input::placeholder, .form-textarea::placeholder {
+      color: #6e6556;
+    }
+
+    .form-textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      background: transparent;
+      border: 1px solid #C5A059;
+      color: #C5A059;
+      padding: 1rem;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 0.85rem;
+      transition: all 0.3s ease;
+      margin-top: 0.5rem;
+    }
+
+    .submit-btn:hover {
+      background: #C5A059;
+      color: #050505;
+    }
+
+    /* ЛОГОТИП ВНИЗУ КАРТОЧКИ */
+    .card-footer {
+      display: flex;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .footer-logo {
+      width: 38px;
+      opacity: 0.6;
+    }
+
+    @media (max-width: 600px) {
+      .top-bar { top: 1rem; left: 1rem; }
+      .contact-card { padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ССЫЛКА ВОЗВРАТА В ФОЙЕ -->
+  <header class="top-bar">
+    <a href="index.html" class="home-link" title="Вернуться в Фойе">
+      <img src="images/colba main bright2.png" alt="Колба" class="flask-icon">
+      <span>Театр теней</span>
+    </a>
+  </header>
+
+  <!-- ФОРМА КОНТАКТОВ -->
+  <main class="contact-card">
+    <h1 class="contact-title">Контакты</h1>
+    <p class="contact-subtitle">Связь с автором и резидентурой проекта</p>
+
+    <form class="contact-form" action="https://formspree.io/f/mgojzbba" method="POST">
+      <input type="text" name="name" class="form-input" placeholder="Ваш позывной" required>
+      <input type="email" name="email" class="form-input" placeholder="Ваша почта" required>
+      <textarea name="message" class="form-textarea" placeholder="Сообщение" required></textarea>
+      
+      <button type="submit" class="submit-btn">Отправить</button>
+    </form>
+
+    <div class="card-footer">
+      <img src="images/colba main bright2.png" alt="Colba8" class="footer-logo">
+    </div>
+  </main>
+
+</body>
+</html>
