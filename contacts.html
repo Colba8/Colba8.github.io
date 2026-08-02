@@ -26,7 +26,7 @@ layout: null
       position: relative;
     }
 
-    /* ССЫЛКА ВОЗВРАТА В ФОЙЕ (ВЕРХНИЙ ЛЕВЫЙ УГОЛ) */
+    /* ВОЗВРАТ В ФОЙЕ (ВЕРХНИЙ ЛЕВЫЙ УГОЛ) */
     .brand-header {
       position: absolute;
       top: 2rem;
@@ -67,14 +67,14 @@ layout: null
       z-index: 5;
     }
 
-    /* ПРОЗРАЧНЫЙ ГЕРБ «КОНТАКТЫ» */
+    /* НОВЫЙ ПРОЗРАЧНЫЙ ГЕРБ «КОНТАКТЫ» */
     .contacts-banner-img {
       width: 100%;
       max-width: 380px;
       height: auto;
       display: block;
       margin-bottom: 2rem;
-      filter: drop-shadow(0 0 12px rgba(197, 160, 89, 0.2));
+      filter: drop-shadow(0 0 12px rgba(197, 160, 89, 0.25));
     }
 
     /* ФОРМА СВЯЗИ */
@@ -95,7 +95,7 @@ layout: null
       font-size: 0.95rem;
       outline: none;
       transition: all 0.3s ease;
-      caret-color: #C5A059; /* Золотой курсор */
+      caret-color: #C5A059;
     }
 
     .form-field:focus {
@@ -110,7 +110,7 @@ layout: null
 
     textarea.form-field {
       min-height: 120px;
-      resize: none; /* Без уголка ресайза */
+      resize: none;
     }
 
     /* ЕДИНАЯ КНОПКА ОТПРАВИТЬ */
@@ -162,7 +162,7 @@ layout: null
 </head>
 <body>
 
-  <!-- ВЕРХНИЙ ЛЕВЫЙ УГОЛ: ВОЗВРАТ В ФОЙЕ -->
+  <!-- ССЫЛКА В ВЕРХНЕМ ЛЕВОМ УГЛУ -->
   <header class="brand-header">
     <a href="index.html" class="brand-link" title="Вернуться в Фойе Театра">
       <img src="images/colba main bright2.png" alt="Колба" class="brand-flask-img">
@@ -170,13 +170,12 @@ layout: null
     </a>
   </header>
 
-  <!-- ОСНОВНАЯ ФОРМА КОНТАКТОВ -->
+  <!-- ФОРМА СВЯЗИ -->
   <main class="contact-container">
     
-    <!-- ПРОЗРАЧНЫЙ ЗОЛОТОЙ ГЕРБ «КОНТАКТЫ» -->
+    <!-- НОВАЯ КАРТИНКА contacts02.png -->
     <img src="images/contacts02.png" alt="Контакты" class="contacts-banner-img">
 
-    <!-- ФОРМА СВЯЗИ -->
     <form action="https://formspree.io/f/mgojzbba" method="POST" class="contact-form">
       <input type="text" name="name" class="form-field" placeholder="Ваше имя" required autocomplete="off">
       <input type="email" name="email" class="form-field" placeholder="Ваш e-mail" required autocomplete="off">
