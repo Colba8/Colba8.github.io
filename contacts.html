@@ -14,27 +14,19 @@ layout: null
 
     html, body {
       width: 100%;
-      height: 100%;
+      min-height: 100vh;
       background-color: #000000;
       color: #e0d5b0;
       font-family: 'Georgia', 'Times New Roman', serif;
-      overflow-x: hidden;
-    }
-
-    /* ЕДИНЫЙ ЧЕРНЫЙ ФОН СЦЕНЫ */
-    .scene-wrapper {
-      position: relative;
-      width: 100%;
-      min-height: 100vh;
-      background: #000000 url('images/Contacts00.png') center center / contain no-repeat;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       padding: 2rem 1rem;
+      position: relative;
     }
 
-    /* БРЕНДИНГ ВВЕРХУ СЛЕВА */
+    /* ССЫЛКА ВОЗВРАТА В ФОЙЕ (ВЕРХНИЙ ЛЕВЫЙ УГОЛ) */
     .brand-header {
       position: absolute;
       top: 2rem;
@@ -53,7 +45,6 @@ layout: null
       letter-spacing: 0.22em;
       text-transform: uppercase;
       transition: all 0.3s ease;
-      filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.9));
     }
 
     .brand-link:hover {
@@ -66,82 +57,87 @@ layout: null
       height: auto;
     }
 
-    /* АБСОЛЮТНО ПРОЗРАЧНАЯ ФОРМА (БЕЗ СЕРЫХ КВАДРАТОВ И ПОДЛОЖЕК) */
-    .contact-card {
-      position: relative;
-      z-index: 5;
+    /* ОСНОВНОЙ БЛОК СТРАНИЦЫ */
+    .contact-container {
       width: 100%;
-      max-width: 400px;
-      margin-top: 2rem;
-      background: transparent; /* Никакого собственного фона */
-      border: none;
-      padding: 0;
-      box-shadow: none;
+      max-width: 440px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 5;
     }
 
-    .form-group-list {
+    /* ПРОЗРАЧНЫЙ ГЕРБ «КОНТАКТЫ» */
+    .contacts-banner-img {
+      width: 100%;
+      max-width: 380px;
+      height: auto;
+      display: block;
+      margin-bottom: 2rem;
+      filter: drop-shadow(0 0 12px rgba(197, 160, 89, 0.2));
+    }
+
+    /* ФОРМА СВЯЗИ */
+    .contact-form {
+      width: 100%;
       display: flex;
       flex-direction: column;
       gap: 1.2rem;
     }
 
-    /* ПОЛЯ ВВОДА — ПРОЗРАЧНЫЕ С ЧЕТКОЙ ЗОЛОТОЙ РАМКОЙ */
+    /* ПОЛЯ ВВОДА — НА ЧИСТОМ ЧЕРНОМ ФОНЕ С ЗОЛОТОЙ РАМКОЙ */
     .form-field {
-      background: rgba(0, 0, 0, 0.6); /* Легкое затемнение только для читаемости текста */
+      background: #000000;
       border: 1px solid rgba(197, 160, 89, 0.5);
       color: #F0E6D2;
-      padding: 0.95rem 1.1rem;
+      padding: 1rem 1.2rem;
       font-family: inherit;
       font-size: 0.95rem;
       outline: none;
       transition: all 0.3s ease;
-      caret-color: #C5A059;
+      caret-color: #C5A059; /* Золотой курсор */
     }
 
     .form-field:focus {
       border-color: #D4AF37;
-      box-shadow: 0 0 12px rgba(212, 175, 55, 0.4);
-      background: rgba(0, 0, 0, 0.85);
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.35);
     }
 
     .form-field::placeholder {
-      color: #a0937a;
+      color: #8c8068;
       font-style: italic;
     }
 
     textarea.form-field {
-      min-height: 110px;
-      resize: none;
+      min-height: 120px;
+      resize: none; /* Без уголка ресайза */
     }
 
-    /* КНОПКА ОТПРАВИТЬ В ЕДИНОМ СТИЛЕ */
-    .submit-button-container {
-      margin-top: 0.5rem;
-    }
-
+    /* ЕДИНАЯ КНОПКА ОТПРАВИТЬ */
     .btn-art-deco {
       width: 100%;
       background: #000000;
       border: 1.5px solid #C5A059;
       color: #C5A059;
-      padding: 1rem 1.5rem;
+      padding: 1.05rem 1.5rem;
       cursor: pointer;
       text-transform: uppercase;
       letter-spacing: 0.3em;
       font-family: inherit;
       font-weight: 600;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 0.8rem;
       transition: all 0.4s ease;
+      margin-top: 0.4rem;
     }
 
     .btn-flask-icon {
       width: 20px;
       height: auto;
-      filter: drop-shadow(0 0 3px rgba(197, 160, 89, 0.5));
+      filter: drop-shadow(0 0 4px rgba(197, 160, 89, 0.5));
       transition: transform 0.3s ease;
     }
 
@@ -157,42 +153,42 @@ layout: null
       transform: scale(1.15);
     }
 
-    @media (max-width: 768px) {
-      .scene-wrapper { padding: 1.5rem 1rem; background-size: cover; }
-      .brand-header { top: 1rem; left: 1rem; }
-      .contact-card { max-width: 90%; }
+    @media (max-width: 600px) {
+      .brand-header { top: 1.2rem; left: 1.2rem; }
+      .contact-container { max-width: 90%; }
+      .contacts-banner-img { max-width: 300px; }
     }
   </style>
 </head>
 <body>
 
-  <div class="scene-wrapper">
+  <!-- ВЕРХНИЙ ЛЕВЫЙ УГОЛ: ВОЗВРАТ В ФОЙЕ -->
+  <header class="brand-header">
+    <a href="index.html" class="brand-link" title="Вернуться в Фойе Театра">
+      <img src="images/colba main bright2.png" alt="Колба" class="brand-flask-img">
+      <span>Театр теней</span>
+    </a>
+  </header>
 
-    <!-- БРЕНДИНГ ВВЕРХУ СЛЕВА -->
-    <header class="brand-header">
-      <a href="index.html" class="brand-link" title="Вернуться в Фойе Театра">
-        <img src="images/colba main bright2.png" alt="Колба" class="brand-flask-img">
-        <span>Театр теней</span>
-      </a>
-    </header>
+  <!-- ОСНОВНАЯ ФОРМА КОНТАКТОВ -->
+  <main class="contact-container">
+    
+    <!-- ПРОЗРАЧНЫЙ ЗОЛОТОЙ ГЕРБ «КОНТАКТЫ» -->
+    <img src="images/contacts01.png" alt="Контакты" class="contacts-banner-img">
 
-    <!-- ФОРМА (ПРОЗРАЧНАЯ) -->
-    <main class="contact-card">
-      <form action="https://formspree.io/f/mgojzbba" method="POST" class="form-group-list">
-        <input type="text" name="name" class="form-field" placeholder="Ваше имя" required autocomplete="off">
-        <input type="email" name="email" class="form-field" placeholder="Ваш e-mail" required autocomplete="off">
-        <textarea name="message" class="form-field" placeholder="Ваше сообщение" required></textarea>
-        
-        <div class="submit-button-container">
-          <button type="submit" class="btn-art-deco">
-            <img src="images/colba main bright2.png" alt="" class="btn-flask-icon">
-            <span>Отправить</span>
-          </button>
-        </div>
-      </form>
-    </main>
+    <!-- ФОРМА СВЯЗИ -->
+    <form action="https://formspree.io/f/mgojzbba" method="POST" class="contact-form">
+      <input type="text" name="name" class="form-field" placeholder="Ваше имя" required autocomplete="off">
+      <input type="email" name="email" class="form-field" placeholder="Ваш e-mail" required autocomplete="off">
+      <textarea name="message" class="form-field" placeholder="Ваше сообщение" required></textarea>
+      
+      <button type="submit" class="btn-art-deco">
+        <img src="images/colba main bright2.png" alt="" class="btn-flask-icon">
+        <span>Отправить</span>
+      </button>
+    </form>
 
-  </div>
+  </main>
 
 </body>
 </html>
