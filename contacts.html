@@ -13,7 +13,7 @@ layout: null
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      background-color: #050505;
+      background: #050505 url('images/main_foyer_bg.jpg') center center / cover no-repeat;
       color: #e0d5b0;
       font-family: 'Georgia', 'Times New Roman', serif;
       min-height: 100vh;
@@ -23,6 +23,15 @@ layout: null
       justify-content: center;
       padding: 2rem 1rem;
       position: relative;
+      overflow-x: hidden;
+    }
+
+    /* ВИНЬЕТКА/ЗАТЕМНЕНИЕ ТЕАТРАЛЬНОГО ФОНА */
+    .bg-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle, rgba(5,5,5,0.55) 0%, rgba(5,5,5,0.92) 100%);
+      z-index: 1;
     }
 
     /* КНОПКА ВОЗВРАТА В ФОЙЕ (ВЕРХНИЙ ЛЕВЫЙ УГОЛ) */
@@ -44,38 +53,70 @@ layout: null
       font-size: 0.85rem;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      transition: opacity 0.3s ease;
+      transition: all 0.3s ease;
     }
 
     .home-link:hover {
-      opacity: 0.8;
+      color: #f0d59e;
+      filter: drop-shadow(0 0 8px rgba(197, 160, 89, 0.6));
     }
 
     .flask-icon {
-      width: 24px;
+      width: 26px;
       height: auto;
-      filter: drop-shadow(0 0 5px rgba(197, 160, 89, 0.4));
     }
 
-    /* КАРТОЧКА ФОРМЫ КОНТАКТОВ */
+    /* КАРТОЧКА В СТИЛЕ АР-ДЕКО */
     .contact-card {
-      background: #0b0a08;
-      border: 1px solid rgba(197, 160, 89, 0.5);
-      padding: 3rem 2.5rem;
-      max-width: 480px;
-      width: 100%;
-      box-shadow: 0 0 50px rgba(0, 0, 0, 0.9), 0 0 20px rgba(197, 160, 89, 0.1);
       position: relative;
+      z-index: 2;
+      background: rgba(11, 10, 8, 0.92);
+      border: 1px solid #C5A059;
+      outline: 4px solid rgba(11, 10, 8, 0.9);
+      padding: 3rem 2.5rem;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 0 60px rgba(0, 0, 0, 0.95), 0 0 25px rgba(197, 160, 89, 0.2);
+      backdrop-filter: blur(6px);
+    }
+
+    /* ДЕКОРАТИВНЫЕ ЗОЛОТЫЕ УГОЛКИ АР-ДЕКО */
+    .art-deco-corner {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border: 2px solid #C5A059;
+    }
+    .corner-tl { top: -6px; left: -6px; border-right: none; border-bottom: none; }
+    .corner-tr { top: -6px; right: -6px; border-left: none; border-bottom: none; }
+    .corner-bl { bottom: -6px; left: -6px; border-right: none; border-top: none; }
+    .corner-br { bottom: -6px; right: -6px; border-left: none; border-top: none; }
+
+    .art-deco-line {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: #C5A059;
+      margin: 0.4rem 0 1.2rem;
+    }
+
+    .art-deco-line::before,
+    .art-deco-line::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #C5A059, transparent);
     }
 
     .contact-title {
       color: #C5A059;
       text-align: center;
-      font-size: 1.8rem;
+      font-size: 2rem;
       font-weight: normal;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      margin-bottom: 0.4rem;
     }
 
     .contact-subtitle {
@@ -94,19 +135,20 @@ layout: null
     }
 
     .form-input, .form-textarea {
-      background: #161512;
-      border: 1px solid rgba(197, 160, 89, 0.25);
+      background: rgba(22, 21, 18, 0.9);
+      border: 1px solid rgba(197, 160, 89, 0.3);
       color: #e0d5b0;
       padding: 1rem;
       font-family: inherit;
       font-size: 0.9rem;
       outline: none;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      transition: all 0.3s ease;
     }
 
     .form-input:focus, .form-textarea:focus {
       border-color: #C5A059;
-      box-shadow: 0 0 10px rgba(197, 160, 89, 0.2);
+      box-shadow: 0 0 12px rgba(197, 160, 89, 0.3);
+      background: #181612;
     }
 
     .form-input::placeholder, .form-textarea::placeholder {
@@ -114,40 +156,52 @@ layout: null
     }
 
     .form-textarea {
-      min-height: 120px;
+      min-height: 110px;
       resize: vertical;
     }
 
+    /* АР-ДЕКО КНОПКА С ИКОНКОЙ КОЛБЫ */
+    .submit-btn-wrapper {
+      margin-top: 0.8rem;
+      display: flex;
+      justify-content: center;
+    }
+
     .submit-btn {
-      background: transparent;
-      border: 1px solid #C5A059;
+      width: 100%;
+      background: rgba(11, 10, 8, 0.9);
+      border: 1.5px solid #C5A059;
       color: #C5A059;
-      padding: 1rem;
+      padding: 0.9rem 1.5rem;
       cursor: pointer;
       text-transform: uppercase;
       letter-spacing: 0.2em;
       font-family: inherit;
       font-weight: 600;
-      font-size: 0.85rem;
-      transition: all 0.3s ease;
-      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+      transition: all 0.4s ease;
+    }
+
+    .submit-btn-flask {
+      width: 22px;
+      height: auto;
+      filter: drop-shadow(0 0 4px rgba(197, 160, 89, 0.5));
+      transition: transform 0.3s ease;
     }
 
     .submit-btn:hover {
       background: #C5A059;
       color: #050505;
+      box-shadow: 0 0 20px rgba(197, 160, 89, 0.4);
     }
 
-    /* ЛОГОТИП ВНИЗУ КАРТОЧКИ */
-    .card-footer {
-      display: flex;
-      justify-content: center;
-      margin-top: 2rem;
-    }
-
-    .footer-logo {
-      width: 38px;
-      opacity: 0.6;
+    .submit-btn:hover .submit-btn-flask {
+      filter: brightness(0.2);
+      transform: scale(1.1);
     }
 
     @media (max-width: 600px) {
@@ -158,7 +212,10 @@ layout: null
 </head>
 <body>
 
-  <!-- ССЫЛКА ВОЗВРАТА В ФОЙЕ -->
+  <!-- ФОНОВЫЙ ОВЕРЛЕЙ -->
+  <div class="bg-overlay"></div>
+
+  <!-- КНОПКА ВОЗВРАТА В ФОЙЕ -->
   <header class="top-bar">
     <a href="index.html" class="home-link" title="Вернуться в Фойе">
       <img src="images/colba main bright2.png" alt="Колба" class="flask-icon">
@@ -166,9 +223,15 @@ layout: null
     </a>
   </header>
 
-  <!-- ФОРМА КОНТАКТОВ -->
+  <!-- АР-ДЕКО КАРТОЧКА -->
   <main class="contact-card">
+    <div class="art-deco-corner corner-tl"></div>
+    <div class="art-deco-corner corner-tr"></div>
+    <div class="art-deco-corner corner-bl"></div>
+    <div class="art-deco-corner corner-br"></div>
+
     <h1 class="contact-title">Контакты</h1>
+    <div class="art-deco-line">◆</div>
     <p class="contact-subtitle">Связь с автором и резидентурой проекта</p>
 
     <form class="contact-form" action="https://formspree.io/f/mgojzbba" method="POST">
@@ -176,12 +239,13 @@ layout: null
       <input type="email" name="email" class="form-input" placeholder="Ваша почта" required>
       <textarea name="message" class="form-textarea" placeholder="Сообщение" required></textarea>
       
-      <button type="submit" class="submit-btn">Отправить</button>
+      <div class="submit-btn-wrapper">
+        <button type="submit" class="submit-btn">
+          <img src="images/colba main bright2.png" alt="Колба" class="submit-btn-flask">
+          <span>Отправить</span>
+        </button>
+      </div>
     </form>
-
-    <div class="card-footer">
-      <img src="images/colba main bright2.png" alt="Colba8" class="footer-logo">
-    </div>
   </main>
 
 </body>
