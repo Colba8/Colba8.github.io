@@ -12,30 +12,25 @@ layout: null
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    body {
+    html, body {
+      width: 100%;
+      height: 100%;
       background-color: #050505;
       color: #e0d5b0;
       font-family: 'Georgia', 'Times New Roman', serif;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      overflow-x: hidden;
-      position: relative;
     }
 
-    /* ФОНОВАЯ СЦЕНА С ЗАДНИКОМ ontacts00.png */
+    /* ФОНОВАЯ СЦЕНА С КАРТИНКОЙ Contacts00.png */
     .contacts-wrapper {
       position: relative;
-      width: 100vw;
+      width: 100%;
       min-height: 100vh;
-      background: #050505 url('images/ontacts00.png') center center / contain no-repeat;
+      background: #050505 url('images/Contacts00.png') center center / contain no-repeat;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 1rem;
+      padding: 2rem 1rem;
     }
 
     /* ВОЗВРАТ В ФОЙЕ (ВЕРХНИЙ ЛЕВЫЙ УГОЛ) */
@@ -68,14 +63,14 @@ layout: null
       height: auto;
     }
 
-    /* КОНТЕЙНЕР ФОРМЫ (ВПИСАН В ЦЕНТР КАРТИНКИ) */
+    /* ФОРМА (ВПИСАНА В ТЕМНЫЙ ЦЕНТР КАРТИНКИ) */
     .contact-form-container {
       position: relative;
       z-index: 5;
       width: 100%;
       max-width: 420px;
-      margin-top: 3rem;
-      margin-bottom: 2rem;
+      margin-top: 1.5rem;
+      padding: 1rem;
     }
 
     .contact-form {
@@ -85,7 +80,7 @@ layout: null
     }
 
     .form-input, .form-textarea {
-      background: rgba(18, 17, 14, 0.92);
+      background: rgba(18, 17, 14, 0.95);
       border: 1px solid rgba(197, 160, 89, 0.4);
       color: #e0d5b0;
       padding: 0.9rem 1.1rem;
@@ -110,7 +105,7 @@ layout: null
       resize: vertical;
     }
 
-    /* ТЕКСТОВАЯ КНОПКА ОТПРАВИТЬ */
+    /* КНОПКА ОТПРАВИТЬ */
     .submit-btn {
       width: 100%;
       background: rgba(10, 10, 8, 0.95);
@@ -124,7 +119,7 @@ layout: null
       font-weight: 600;
       font-size: 0.95rem;
       transition: all 0.3s ease;
-      margin-top: 0.3rem;
+      margin-top: 0.2rem;
     }
 
     .submit-btn:hover {
@@ -133,20 +128,21 @@ layout: null
       box-shadow: 0 0 20px rgba(197, 160, 89, 0.5);
     }
 
-    /* ИНТЕРАКТИВНАЯ КНОПКА-КОЛБА ВНИЗУ ПО ЦЕНТРУ */
+    /* ИНТЕРАКТИВНАЯ КОЛБА ВНИЗУ */
     .flask-submit-trigger {
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-top: 1.5rem;
+      margin-top: 1rem;
       background: transparent;
       border: none;
       cursor: pointer;
       outline: none;
+      width: 100%;
     }
 
     .flask-submit-img {
-      width: 55px;
+      width: 52px;
       height: auto;
       filter: drop-shadow(0 0 6px rgba(197, 160, 89, 0.3));
       transition: all 0.4s ease;
@@ -157,23 +153,8 @@ layout: null
       transform: scale(1.08);
     }
 
-    .flask-submit-hint {
-      font-size: 0.7rem;
-      color: #8A7E6B;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      margin-top: 0.4rem;
-      transition: color 0.3s;
-    }
-
-    .flask-submit-trigger:hover .flask-submit-hint {
-      color: #C5A059;
-    }
-
     @media (max-width: 768px) {
-      .contacts-wrapper {
-        background-size: cover;
-      }
+      .contacts-wrapper { background-size: cover; }
       .top-bar { top: 1rem; left: 1rem; }
       .contact-form-container { max-width: 90%; }
     }
@@ -183,5 +164,31 @@ layout: null
 
   <div class="contacts-wrapper">
 
-    <!-- КНОПКА ВОЗВРАТА В ФОЙЕ -->
-    <he
+    <!-- ВОЗВРАТ В ФОЙЕ -->
+    <header class="top-bar">
+      <a href="index.html" class="home-link" title="Вернуться в Фойе">
+        <img src="images/colba main bright2.png" alt="Колба" class="flask-icon">
+        <span>Театр теней</span>
+      </a>
+    </header>
+
+    <!-- ФОРМА СВЯЗИ В ЦЕНТРЕ КАРТИНКИ -->
+    <main class="contact-form-container">
+      <form id="contactForm" class="contact-form" action="https://formspree.io/f/mgojzbba" method="POST">
+        <input type="text" name="name" class="form-input" placeholder="Ваше имя" required>
+        <input type="email" name="email" class="form-input" placeholder="Ваш e-mail" required>
+        <textarea name="message" class="form-textarea" placeholder="Ваше сообщение" required></textarea>
+        
+        <button type="submit" class="submit-btn">Отправить</button>
+      </form>
+
+      <!-- ИНТЕРАКТИВНАЯ КОЛБА-КНОПКА -->
+      <button type="submit" form="contactForm" class="flask-submit-trigger" title="Нажмите на Колбу для отправки">
+        <img src="images/colba main bright2.png" alt="Отправить через Колбу" class="flask-submit-img">
+      </button>
+    </main>
+
+  </div>
+
+</body>
+</html>
