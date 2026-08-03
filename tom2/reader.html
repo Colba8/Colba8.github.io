@@ -1,1 +1,423 @@
-00
+---
+layout: null
+---
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Том II: Одуванчики — Читалка | Дмитрий Ильин</title>
+  <link rel="icon" href="/images/51.png" type="image/png">
+
+  <!-- Подключение каллиграфического рукописного шрифта для писем и стандартного Serif -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: #050505;
+      color: #E0D5B0;
+      font-family: 'Georgia', 'Times New Roman', serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ФИКСИРОВАННАЯ ВЕРХНЯЯ ПАНЕЛЬ С ЗАКЛАДКОЙ И БРЕНДОМ */
+    .reader-navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 55px;
+      background: #000000;
+      border-bottom: 1px solid rgba(197, 160, 89, 0.3);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1.5rem;
+      z-index: 1000;
+    }
+
+    .brand-back-link {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: #C5A059;
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+
+    .brand-back-link:hover { color: #F3E5AB; }
+    .brand-flask-icon { width: 22px; height: auto; }
+
+    /* КНОПКА ЗАКЛАДКИ */
+    .bookmark-controls {
+      display: flex;
+      gap: 0.8rem;
+    }
+
+    .btn-bookmark {
+      background: rgba(20, 18, 14, 0.9);
+      border: 1px solid #C5A059;
+      color: #C5A059;
+      padding: 0.4rem 0.9rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn-bookmark:hover {
+      background: #C5A059;
+      color: #050505;
+    }
+
+    /* ОСНОВНОЙ СЕТОЧНЫЙ СЛОЙ ЧИТАЛКИ */
+    .reader-container {
+      display: flex;
+      margin-top: 55px;
+      min-height: calc(100vh - 55px);
+    }
+
+    /* ЛЕВАЯ ПАНЕЛЬ НАВИГАЦИИ ПО ДАТАМ */
+    .sidebar-dates {
+      width: 320px;
+      background: #080706;
+      border-right: 1px solid rgba(197, 160, 89, 0.2);
+      padding: 1.5rem 1rem;
+      position: sticky;
+      top: 55px;
+      height: calc(100vh - 55px);
+      overflow-y: auto;
+      flex-shrink: 0;
+    }
+
+    .sidebar-title {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      color: #8A7E6B;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(197, 160, 89, 0.15);
+    }
+
+    .date-menu-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .date-menu-item a {
+      display: block;
+      color: #A0957D;
+      text-decoration: none;
+      font-size: 0.82rem;
+      line-height: 1.35;
+      padding: 0.5rem 0.6rem;
+      border-left: 2px solid transparent;
+      transition: all 0.25s;
+    }
+
+    .date-menu-item a:hover,
+    .date-menu-item a.active {
+      color: #C5A059;
+      background: rgba(197, 160, 89, 0.06);
+      border-left-color: #C5A059;
+    }
+
+    /* ПРАВОЕ ПОЛЕ ТЕКСТА КНИГИ */
+    .book-content-area {
+      flex: 1;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 3rem 2.5rem 6rem;
+    }
+
+    /* ОФОРМЛЕНИЕ ЗАГОЛОВКОВ ГЛАВ И ДАТ */
+    .chapter-block {
+      margin-bottom: 5rem;
+      scroll-margin-top: 80px;
+    }
+
+    .chapter-date-header {
+      font-size: 1.15rem;
+      font-weight: bold;
+      color: #C5A059;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.2rem;
+    }
+
+    .chapter-location {
+      font-size: 0.9rem;
+      color: #8A7E6B;
+      font-style: italic;
+      margin-bottom: 1.8rem;
+    }
+
+    /* ПРАВИЛА ОФОРМЛЕНИЯ ТЕКСТА */
+    .book-text p {
+      font-size: 1.05rem;
+      line-height: 1.48; /* КОМПАКТНЫЙ КНИЖНЫЙ ИНТЕРЛИНЬЯЖ */
+      margin-bottom: 1.1rem;
+      text-indent: 0; /* НИКАКОЙ КРАСНОЙ СТРОКИ */
+      text-align: justify;
+      hyphens: auto;
+    }
+
+    /* БУКВИЦА (DROP CAP) В НАЧАЛЕ ГЛАВЫ */
+    .chapter-block p.first-paragraph::first-letter {
+      font-size: 3.2rem;
+      float: left;
+      line-height: 0.8;
+      margin-right: 0.5rem;
+      color: #C5A059;
+      font-family: 'Times New Roman', serif;
+    }
+
+    /* ИНОСТРАННЫЙ ТЕКСТ И ПЕРЕВОД */
+    i, em {
+      font-style: italic;
+      color: #F0E6D2;
+    }
+
+    .trans {
+      font-style: normal;
+      color: #A0957D; /* Приглушенный оттенок для перевода в [квадратных скобках] */
+      font-size: 0.98em;
+    }
+
+    /* СТИЛИЗАЦИЯ ПИСЕМ ПОД РУКОПИСНЫЙ ПОЧЕРК */
+    .letter-box {
+      background: rgba(180, 205, 230, 0.08); /* Голубоватый бумажный тон */
+      border: 1px solid rgba(180, 205, 230, 0.3);
+      padding: 1.8rem 2rem;
+      margin: 2rem 0;
+      position: relative;
+    }
+
+    .letter-box p {
+      font-family: 'Marck Script', 'Caveat', cursive; /* Рукописный шрифт */
+      font-size: 1.3rem;
+      line-height: 1.5;
+      color: #E8F0FE;
+      margin-bottom: 0.8rem;
+      text-align: left;
+    }
+
+    /* ИЛЛЮСТРАЦИИ В ТЕКСТЕ */
+    .book-illustration-wrapper {
+      margin: 2.5rem 0;
+      text-align: center;
+    }
+
+    .book-illustration {
+      max-width: 100%;
+      height: auto;
+      border: 1px solid rgba(197, 160, 89, 0.4);
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
+      display: inline-block;
+    }
+
+    .illustration-caption {
+      font-size: 0.8rem;
+      color: #8A7E6B;
+      font-style: italic;
+      margin-top: 0.6rem;
+    }
+
+    /* МОБИЛЬНАЯ АДАПТИВНОСТЬ */
+    @media (max-width: 900px) {
+      .sidebar-dates { display: none; } /* Сворачивание панели на телефонах */
+      .book-content-area { padding: 1.5rem 1rem 4rem; }
+      .book-text p { font-size: 1rem; text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ФИКСИРОВАННАЯ ВЕРХНЯЯ ПАНЕЛЬ С ЗАКЛАДКОЙ -->
+  <header class="reader-navbar">
+    <a href="/index.html" class="brand-back-link" title="Вернуться в Фойе Театра">
+      <img src="/images/colba main bright2.png" alt="Колба" class="brand-flask-icon">
+      <span>Театр теней | Том II</span>
+    </a>
+
+    <!-- УПРАВЛЕНИЕ ЗАКЛАДКОЙ -->
+    <div class="bookmark-controls">
+      <button class="btn-bookmark" onclick="saveBookmark()">🔖 Поставить закладку</button>
+      <button class="btn-bookmark" onclick="goToBookmark()">📍 К закладке</button>
+    </div>
+  </header>
+
+  <div class="reader-container">
+
+    <!-- ЛЕВАЯ НАВИГАЦИОННАЯ ПАНЕЛЬ ПО ДАТАМ -->
+    <nav class="sidebar-dates">
+      <p class="sidebar-title">Оглавление (Даты)</p>
+      <ul class="date-menu-list">
+        <li class="date-menu-item"><a href="#date-5-jan">5–8 января 1947 г., Гарлиндж</a></li>
+        <li class="date-menu-item"><a href="#date-18-jan">18 января 1947 г., Гарлиндж</a></li>
+        <li class="date-menu-item"><a href="#date-23-jan">23 января 1947 г., Кентербери</a></li>
+        <li class="date-menu-item"><a href="#date-8-feb">8 февраля 1947 г., Гарлиндж</a></li>
+        <li class="date-menu-item"><a href="#date-10-feb">10 февраля 1947 г., Париж</a></li>
+        <li class="date-menu-item"><a href="#date-11-feb">11 февраля 1947 г., Поезд</a></li>
+        <li class="date-menu-item"><a href="#date-20-feb">20 февраля 1947 г., Под Люцерном</a></li>
+        <li class="date-menu-item"><a href="#date-1-mar">1 марта 1947 г., Поезд</a></li>
+        <li class="date-menu-item"><a href="#date-5-mar">5 марта 1947 г., Милан</a></li>
+        <li class="date-menu-item"><a href="#date-15-mar">15 марта 1947 г., Милан</a></li>
+        <li class="date-menu-item"><a href="#date-18-mar">18 марта 1947 г., Милан</a></li>
+        <li class="date-menu-item"><a href="#date-15-apr">15 апреля 1947 г., Ломбардия</a></li>
+        <li class="date-menu-item"><a href="#date-28-may">28 мая 1947 г., Ла Скала</a></li>
+        <li class="date-menu-item"><a href="#date-29-may">29 мая 1947 г., Поезд</a></li>
+        <li class="date-menu-item"><a href="#date-6-jun">6 июня 1947 г., Марсель</a></li>
+        <li class="date-menu-item"><a href="#date-15-jul">15 июля 1947 г., Милан</a></li>
+        <li class="date-menu-item"><a href="#date-28-aug">28 августа 1947 г., Милан</a></li>
+        <li class="date-menu-item"><a href="#date-5-sep">5 сентября 1947 г., Марсель</a></li>
+        <li class="date-menu-item"><a href="#date-appendix">Историческая справка</a></li>
+      </ul>
+    </nav>
+
+    <!-- ОСНОВНОЕ ПОЛЕ ТЕКСТА КНИГИ -->
+    <main class="book-content-area book-text">
+
+      <!-- РАЗДЕЛ 1 -->
+      <article id="date-5-jan" class="chapter-block">
+        <h2 class="chapter-date-header">5 – 8 января 1947 г.</h2>
+        <p class="chapter-location">Графство Кент, Гарлиндж</p>
+
+        <p class="first-paragraph">Алекс поселился в глухой деревушке, до Дувра на машине можно добраться за 40 минут, а на поезде — ещё быстрее. Ветхий дом повидал много горестей и радостей, теперь им предстояло подружиться: Алексу и его новой берлоге. Ключевым критерием, который перекричал все "но" и "всё же", была акустика: как это могло случится с деревенским домом — большая загадка. А может и не загадка вовсе, может так должно быть у всех, но не всегда получается...</p>
+
+        <p>Говорят, что старые дома дышат. Его дом не просто дышал, а переливался звонким дрожанием жестяной крыши, скрипами в диапазоне трёх октав, гулкими откликами стёкол в рассохшихся рамах на порывы ветра.</p>
+
+        <!-- ИЛЛЮСТРАЦИЯ 01 -->
+        <div class="book-illustration-wrapper">
+          <img src="images/01.jpg" alt="Гарлиндж" class="book-illustration">
+        </div>
+
+        <p>Большой домашней неожиданностью стал рояль. Старый, почти некрасивый, но настоящий. Трое слегка хмельных бездельников, праздно болтавшихся на деревенской площади, были весьма любезны, ответив на коммерчески привлекательное предложение незнакомца с акцентом.</p>
+
+        <p>Рояль был не так уж и плох. Конечно, он ждал своего часа. Распаковывали его сутки, снимая одежду слоями: сначала брезент, потом шерстяное сукно, потом картон, потом снова сукно. Медленно раздевшись, он стал неоспоримым премьером этого дома. Теперь оставалось лишь настроить его под голос зимы.</p>
+      </article>
+
+      <!-- РАЗДЕЛ 2 -->
+      <article id="date-18-jan" class="chapter-block">
+        <h2 class="chapter-date-header">18 января 1947 года</h2>
+        <p class="chapter-location">Графство Кент, Гарлиндж</p>
+
+        <p class="first-paragraph">Он поселился в Гарлиндже из-за акустики его удивительного дома на краю океана. А крупнейшая военная авиабаза юга страны оказалась рядом по случайности. И также совершенно случайно <i>Group Captain Stanislaw Zurawski</i> <span class="trans">[групп-капитан Станислав Журавски]</span>, тот самый, который радушно встретил его в декабре на Мальте, был её новым командиром.</p>
+
+        <!-- ИЛЛЮСТРАЦИЯ 02 -->
+        <div class="book-illustration-wrapper">
+          <img src="images/02.jpg" alt="Церковь Св. Иакова" class="book-illustration">
+        </div>
+
+        <p>На доске объявлений приходской церкви Св. Иакова, что была совсем неподалёку, большими буквами было написано о скорой замене её органа, который 74 года верой и правдой служил англиканской церкви на новый беструбный аппарат производства фирмы <i>Compton</i>.</p>
+      </article>
+
+      <!-- ПРИМЕР СТИЛИЗОВАННОГО ПИСЬМА -->
+      <article id="date-letter-demo" class="chapter-block">
+        <h2 class="chapter-date-header">Письмо Майи-Розы</h2>
+        <p class="chapter-location">Из пансиона под Люцерном</p>
+
+        <!-- ПИСЬМО В ГОЛУБОВАТОЙ РАМКЕ С РУКОПИСНЫМ ШРИФТОМ -->
+        <div class="letter-box">
+          <p>Дорогой господин фон Планта.</p>
+          <p>Мне сказали, что вы живёте в Берне и что мама знала вас.</p>
+          <p>Меня зовут Майя-Роза. Несколько дней назад мне исполнилось 17 лет. В пансионе перепутали цифры и написали, что я родилась 27 июля, а на самом деле – 27 января. Я знаю, что это может быть важно.</p>
+          <p>Я живу в пансионе под Люцерном. Я никогда не видела своего отца. Мама никогда не говорила о нём... Если вы знаете что-то — напишите мне, пожалуйста.</p>
+          <p>С уважением, Мая-Роза Пфланц</p>
+        </div>
+
+        <!-- ИЛЛЮСТРАЦИЯ 22 -->
+        <div class="book-illustration-wrapper">
+          <img src="images/22.jpg" alt="Письмо Майи" class="book-illustration">
+        </div>
+      </article>
+
+      <!-- ПРИМЕР ИНОСТРАННОГО ТЕКСТА С ПЕРЕВОДОМ -->
+      <article id="date-foreign-demo" class="chapter-block">
+        <h2 class="chapter-date-header">Разговор в поезде</h2>
+        <p class="chapter-location">Поезд Париж — Кале</p>
+
+        <p class="first-paragraph">Незнакомец сел напротив, не спрашивая разрешения. Молчание. Доктор задержался на перевязанной руке, потом медленно скользнул по лицу Алекса.</p>
+
+        <p>— <i>Merci, camarada</i> <span class="trans">[Спасибо, товарищ]</span>, — сказал он. Голос был первым, что Алекс от него услышал, — низкий, с сильным славянским акцентом.</p>
+
+        <p>— <i>Spasibo, tovarishch!</i> <span class="trans">[Спасибо, товарищ!]</span> — подумал Алекс, но промолчал.</p>
+      </article>
+
+      <!-- ПОРТРЕТ МАЙИ-РОЗЫ -->
+      <article id="date-portrait-maya" class="chapter-block">
+        <h2 class="chapter-date-header">15 июля 1947 года</h2>
+        <p class="chapter-location">Милан, via San Damiano</p>
+
+        <p class="first-paragraph">Фотография лежала на столе восемь дней, прежде чем он решился её тронуть. Не потому, что не знал, с чего начать. Наоборот — знал слишком хорошо, и именно это пугало. В прошлый раз, зимой, у него не было ничего, кроме воображения, и воображение подвело его так честно, что вместо лица получились одуванчики...</p>
+
+        <!-- КУЛЬМИНАЦИОННАЯ ИЛЛЮСТРАЦИЯ 54 (ПОРТРЕТ МАЙИ) -->
+        <div class="book-illustration-wrapper">
+          <img src="images/54.jpg" alt="Портрет Майи-Розы с одуванчиком" class="book-illustration">
+          <p class="illustration-caption">«Дочь». Портрет с одуванчиком в волосах</p>
+        </div>
+      </article>
+
+    </main>
+
+  </div>
+
+  <!-- СКРИПТ ИНТЕРАКТИВНОЙ ЗАКЛАДКИ -->
+  <script>
+    // СОХРАНЕНИЕ ЗАКЛАДКИ В МЕСТНОЙ ПАМЯТИ
+    function saveBookmark() {
+      const currentScroll = window.scrollY;
+      localStorage.setItem('colba8_tom2_bookmark', currentScroll);
+      alert('🔖 Закладка успешно поставлена!');
+    }
+
+    // ПЕРЕХОД К ЗАКЛАДКЕ
+    function goToBookmark() {
+      const savedScroll = localStorage.getItem('colba8_tom2_bookmark');
+      if (savedScroll) {
+        window.scrollTo({ top: parseInt(savedScroll), behavior: 'smooth' });
+      } else {
+        alert('У вас пока нет сохранённой закладки.');
+      }
+    }
+
+    // ПОДСВЕТКА АКТИВНОГО ПУНКТА МЕНЮ ПРИ СКРОЛЛЕ
+    window.addEventListener('scroll', () => {
+      let chapters = document.querySelectorAll('.chapter-block');
+      let navLinks = document.querySelectorAll('.date-menu-item a');
+
+      chapters.forEach(chapter => {
+        let top = window.scrollY;
+        let offset = chapter.offsetTop - 100;
+        let height = chapter.offsetHeight;
+        let id = chapter.getAttribute('id');
+
+        if (top >= offset && top < offset + height) {
+          navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + id) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
