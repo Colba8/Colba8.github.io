@@ -35,7 +35,7 @@ layout: null
       align-items: center;
     }
 
-    /* ПРЯМАЯ КАРТИНКА-ПОСТЕР */
+    /* ПРЯМАЯ КАРТИНКА-ПОСТЕР (БЕЗ КОЛБЫ ВНИЗУ) */
     .poster-img {
       max-width: 100vw;
       max-height: 100vh;
@@ -76,12 +76,16 @@ layout: null
       height: auto;
     }
 
-    /* КНОПКА "ВХОД" (ПОДНЯТА ДО 20% ВЫШЕ НАД КОЛБОЙ) */
-    .bottom-enter-container {
+    /* НИЖНИЙ БЛОК: КНОПКА "ВХОД" + КЛИКАБЕЛЬНАЯ КОЛБА */
+    .bottom-action-container {
       position: absolute;
-      bottom: 20%; /* Значительно выше над горлышком колбы */
+      bottom: 5%; /* Привязано к нижней части постера */
       left: 50%;
       transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.8rem;
       z-index: 10;
     }
 
@@ -106,9 +110,30 @@ layout: null
       box-shadow: 0 0 20px rgba(197, 160, 89, 0.6);
     }
 
+    /* КЛИКАБЕЛЬНЫЙ ЛОГОТИП КОЛБЫ */
+    .flask-click-link {
+      display: inline-block;
+      text-decoration: none;
+      outline: none;
+    }
+
+    .bottom-flask-img {
+      width: 55px;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 0 8px rgba(197, 160, 89, 0.4));
+      transition: all 0.35s ease;
+    }
+
+    .flask-click-link:hover .bottom-flask-img {
+      filter: drop-shadow(0 0 22px rgba(212, 175, 55, 0.9));
+      transform: scale(1.08);
+    }
+
     @media (max-width: 768px) {
       .top-bar { top: 1rem; left: 1rem; }
-      .bottom-enter-container { bottom: 18%; }
+      .bottom-action-container { bottom: 4%; }
+      .bottom-flask-img { width: 45px; }
     }
   </style>
 </head>
@@ -124,15 +149,7 @@ layout: null
       </a>
     </header>
 
-    <!-- ПОСТЕР -->
+    <!-- ПОСТЕР (ОЧИЩЕННЫЙ ОТ НАРИСОВАННОЙ КОЛБЫ) -->
     <img src="/tom2/images/tom02.png" alt="Том II: Одуванчики" class="poster-img">
 
-    <!-- КНОПКА "ВХОД" -->
-    <div class="bottom-enter-container">
-      <a href="/tom2/reader.html" class="enter-btn">ВХОД</a>
-    </div>
-
-  </div>
-
-</body>
-</html>
+    <!-- НИЖНИЙ БЛОК: КНОПКА "ВХОД" И КЛИКАБЕЛЬНАЯ КО
