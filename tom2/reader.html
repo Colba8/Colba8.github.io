@@ -9,7 +9,6 @@ layout: null
   <title>Том II: Одуванчики — Читалка | Дмитрий Ильин</title>
   <link rel="icon" href="/images/51.png" type="image/png">
 
-  <!-- Подключение каллиграфического рукописного шрифта для писем и стандартного Serif -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet">
@@ -17,12 +16,10 @@ layout: null
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
-      background-color: #050505;
+      background-color: #000000;
       color: #E0D5B0;
       font-family: 'Georgia', 'Times New Roman', serif;
       min-height: 100vh;
@@ -30,7 +27,7 @@ layout: null
       flex-direction: column;
     }
 
-    /* ФИКСИРОВАННАЯ ВЕРХНЯЯ ПАНЕЛЬ С ЗАКЛАДКОЙ И БРЕНДОМ */
+    /* ФИКСИРОВАННАЯ ВЕРХНЯЯ ПАНЕЛЬ */
     .reader-navbar {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -59,18 +56,18 @@ layout: null
     .brand-back-link:hover { color: #F3E5AB; }
     .brand-flask-icon { width: 22px; height: auto; }
 
-    /* КНОПКА ЗАКЛАДКИ */
-    .bookmark-controls {
+    .reader-controls {
       display: flex;
+      align-items: center;
       gap: 0.8rem;
     }
 
-    .btn-bookmark {
+    .btn-control {
       background: rgba(20, 18, 14, 0.9);
       border: 1px solid #C5A059;
       color: #C5A059;
       padding: 0.4rem 0.9rem;
-      font-size: 0.75rem;
+      font-size: 0.78rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       font-family: inherit;
@@ -78,12 +75,11 @@ layout: null
       transition: all 0.3s;
     }
 
-    .btn-bookmark:hover {
+    .btn-control:hover {
       background: #C5A059;
       color: #050505;
     }
 
-    /* ОСНОВНОЙ СЕТОЧНЫЙ СЛОЙ ЧИТАЛКИ */
     .reader-container {
       display: flex;
       margin-top: 55px;
@@ -104,7 +100,7 @@ layout: null
     }
 
     .sidebar-title {
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       letter-spacing: 0.2em;
       color: #8A7E6B;
       text-transform: uppercase;
@@ -117,16 +113,16 @@ layout: null
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 0.4rem;
+      gap: 0.35rem;
     }
 
     .date-menu-item a {
       display: block;
       color: #A0957D;
       text-decoration: none;
-      font-size: 0.82rem;
+      font-size: 0.85rem;
       line-height: 1.35;
-      padding: 0.5rem 0.6rem;
+      padding: 0.45rem 0.6rem;
       border-left: 2px solid transparent;
       transition: all 0.25s;
     }
@@ -141,48 +137,65 @@ layout: null
     /* ПРАВОЕ ПОЛЕ ТЕКСТА КНИГИ */
     .book-content-area {
       flex: 1;
-      max-width: 860px;
+      max-width: 880px;
       margin: 0 auto;
-      padding: 3rem 2.5rem 6rem;
+      padding: 2.5rem 2rem 6rem;
     }
 
-    /* ОФОРМЛЕНИЕ ЗАГОЛОВКОВ ГЛАВ И ДАТ */
+    /* НАЧАЛЬНАЯ ПЛАШКА (plate00.png) */
+    .header-plate-wrapper {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .header-plate-img {
+      width: 100%;
+      max-width: 820px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      border: 1px solid rgba(197, 160, 89, 0.3);
+      box-shadow: 0 0 30px rgba(0,0,0,0.9);
+    }
+
     .chapter-block {
       margin-bottom: 5rem;
       scroll-margin-top: 80px;
     }
 
     .chapter-date-header {
-      font-size: 1.15rem;
+      font-size: 1.35rem;
       font-weight: bold;
       color: #C5A059;
       letter-spacing: 0.1em;
-      margin-bottom: 0.2rem;
+      margin-bottom: 0.3rem;
     }
 
     .chapter-location {
-      font-size: 0.9rem;
+      font-size: 1rem;
       color: #8A7E6B;
       font-style: italic;
-      margin-bottom: 1.8rem;
+      margin-bottom: 2rem;
     }
 
     /* ПРАВИЛА ОФОРМЛЕНИЯ ТЕКСТА */
     .book-text p {
-      font-size: 1.05rem;
-      line-height: 1.48; /* КОМПАКТНЫЙ КНИЖНЫЙ ИНТЕРЛИНЬЯЖ */
-      margin-bottom: 1.1rem;
-      text-indent: 0; /* НИКАКОЙ КРАСНОЙ СТРОКИ */
+      font-size: 1.25rem; /* КРУПНЫЙ КНИЖНЫЙ ШРИФТ 21px */
+      line-height: 1.48;   /* ПЛОТНЫЙ КНИЖНЫЙ ИНТЕРЛИНЬЯЖ */
+      margin-bottom: 1.2rem;
+      text-indent: 0 !important; /* СТРОГИЙ ЗАПРЕТ КРАСНОЙ СТРОКИ */
+      padding-left: 0 !important;
+      margin-left: 0 !important;
       text-align: justify;
       hyphens: auto;
     }
 
-    /* БУКВИЦА (DROP CAP) В НАЧАЛЕ ГЛАВЫ */
+    /* БУКВИЦА (DROP CAP) */
     .chapter-block p.first-paragraph::first-letter {
-      font-size: 3.2rem;
+      font-size: 3.8rem;
       float: left;
       line-height: 0.8;
-      margin-right: 0.5rem;
+      margin-right: 0.6rem;
       color: #C5A059;
       font-family: 'Times New Roman', serif;
     }
@@ -195,31 +208,32 @@ layout: null
 
     .trans {
       font-style: normal;
-      color: #A0957D; /* Приглушенный оттенок для перевода в [квадратных скобках] */
-      font-size: 0.98em;
+      color: #A0957D;
+      font-size: 0.95em;
     }
 
     /* СТИЛИЗАЦИЯ ПИСЕМ ПОД РУКОПИСНЫЙ ПОЧЕРК */
     .letter-box {
-      background: rgba(180, 205, 230, 0.08); /* Голубоватый бумажный тон */
+      background: rgba(180, 205, 230, 0.08);
       border: 1px solid rgba(180, 205, 230, 0.3);
-      padding: 1.8rem 2rem;
-      margin: 2rem 0;
+      padding: 2rem 2.2rem;
+      margin: 2.2rem 0;
       position: relative;
     }
 
     .letter-box p {
-      font-family: 'Marck Script', 'Caveat', cursive; /* Рукописный шрифт */
-      font-size: 1.3rem;
+      font-family: 'Marck Script', 'Caveat', cursive;
+      font-size: 1.45rem;
       line-height: 1.5;
       color: #E8F0FE;
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.9rem;
       text-align: left;
+      text-indent: 0 !important;
     }
 
     /* ИЛЛЮСТРАЦИИ В ТЕКСТЕ */
     .book-illustration-wrapper {
-      margin: 2.5rem 0;
+      margin: 2.8rem 0;
       text-align: center;
     }
 
@@ -227,22 +241,14 @@ layout: null
       max-width: 100%;
       height: auto;
       border: 1px solid rgba(197, 160, 89, 0.4);
-      box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.85);
       display: inline-block;
     }
 
-    .illustration-caption {
-      font-size: 0.8rem;
-      color: #8A7E6B;
-      font-style: italic;
-      margin-top: 0.6rem;
-    }
-
-    /* МОБИЛЬНАЯ АДАПТИВНОСТЬ */
     @media (max-width: 900px) {
-      .sidebar-dates { display: none; } /* Сворачивание панели на телефонах */
+      .sidebar-dates { display: none; }
       .book-content-area { padding: 1.5rem 1rem 4rem; }
-      .book-text p { font-size: 1rem; text-align: left; }
+      .book-text p { font-size: 1.1rem; text-align: left; }
     }
   </style>
 </head>
@@ -255,10 +261,9 @@ layout: null
       <span>Театр теней | Том II</span>
     </a>
 
-    <!-- УПРАВЛЕНИЕ ЗАКЛАДКОЙ -->
-    <div class="bookmark-controls">
-      <button class="btn-bookmark" onclick="saveBookmark()">🔖 Поставить закладку</button>
-      <button class="btn-bookmark" onclick="goToBookmark()">📍 К закладке</button>
+    <div class="reader-controls">
+      <button class="btn-control" onclick="saveBookmark()">🔖 Поставить закладку</button>
+      <button class="btn-control" onclick="goToBookmark()">📍 К закладке</button>
     </div>
   </header>
 
@@ -268,10 +273,12 @@ layout: null
     <nav class="sidebar-dates">
       <p class="sidebar-title">Оглавление (Даты)</p>
       <ul class="date-menu-list">
-        <li class="date-menu-item"><a href="#date-5-jan">5–8 января 1947 г., Гарлиндж</a></li>
-        <li class="date-menu-item"><a href="#date-18-jan">18 января 1947 г., Гарлиндж</a></li>
+        <li class="date-menu-item"><a href="#date-prologue">Вступление</a></li>
+        <li class="date-menu-item"><a href="#date-meteo">Метеодоклад 1946–1947</a></li>
+        <li class="date-menu-item"><a href="#date-5-jan">5–8 января 1947 г., Кент</a></li>
+        <li class="date-menu-item"><a href="#date-18-jan">18 января 1947 г., Кент</a></li>
         <li class="date-menu-item"><a href="#date-23-jan">23 января 1947 г., Кентербери</a></li>
-        <li class="date-menu-item"><a href="#date-8-feb">8 февраля 1947 г., Гарлиндж</a></li>
+        <li class="date-menu-item"><a href="#date-8-feb">8 февраля 1947 г., Кент</a></li>
         <li class="date-menu-item"><a href="#date-10-feb">10 февраля 1947 г., Париж</a></li>
         <li class="date-menu-item"><a href="#date-11-feb">11 февраля 1947 г., Поезд</a></li>
         <li class="date-menu-item"><a href="#date-20-feb">20 февраля 1947 г., Под Люцерном</a></li>
@@ -293,100 +300,98 @@ layout: null
     <!-- ОСНОВНОЕ ПОЛЕ ТЕКСТА КНИГИ -->
     <main class="book-content-area book-text">
 
-      <!-- РАЗДЕЛ 1 -->
+      <!-- НАЧАЛЬНАЯ ПЛАШКА plate00.png ВВЕРХУ -->
+      <div class="header-plate-wrapper">
+        <img src="images/plate00.png" alt="Одуванчики — Вариант III" class="header-plate-img">
+      </div>
+
+      <!-- ВСТУПЛЕНИЕ (СИНОПСИС / ПРОЛОГ) -->
+      <article id="date-prologue" class="chapter-block">
+        <p class="first-paragraph">Второй звонок так и не прозвенел. В 1947 мир не стал безопаснее: старая бернская Сетка растворилась, уступив место жестким структурам новой эпохи.</p>
+
+        <p>В 1947 году скрытые оперативные каналы протянулись по оси Лондон — Париж — Марсель — Милан. За дипломатическими спорами вокруг Палестины разворачивался противоречивый израильский конфликт.</p>
+
+        <p>Первые заморозки Холодной войны ударили по культурным связям, превратив концертные залы и музыкантов в дипломатические инструменты: политические убийства планируются под музыку великих мастеров на подмостках великих сцен.</p>
+
+        <p>Фигуры на доске те же, но партия больше не принадлежит им. У каждой остался один ход. Каждый решает за себя, но решение порой принимают другие. Одуванчики – это выносливые многолетние цветы, которые каждый июнь отцветают, чтобы проснуться следующей весной.</p>
+
+        <!-- ИЛЛЮСТРАЦИЯ 01: ШАХМАТЫ -->
+        <div class="book-illustration-wrapper">
+          <img src="images/01.jpg" alt="Шахматная партия" class="book-illustration">
+        </div>
+      </article>
+
+      <!-- МЕТЕОРОЛОГИЧЕСКИЙ ДОКЛАД (стр. 5 PDF) -->
+      <article id="date-meteo" class="chapter-block">
+        <h2 class="chapter-date-header">МЕТЕОРОЛОГИЧЕСКОЕ БЮРО МИНИСТЕРСТВА АВИАЦИИ</h2>
+        <p class="chapter-location">КОРОЛЕВСКАЯ ОБСЕРВАТОРИЯ В ГРИНВИЧЕ</p>
+
+        <p>СПЕЦИАЛЬНЫЙ СИНОПТИЧЕСКИЙ ДОКЛАД:<br>
+        ЗИМА 1946–1947 гг. АНОМАЛЬНЫЙ ПОЛЯРНЫЙ ФРОНТ (<i>«THE BIG FREEZE»</i> <span class="trans">[«Большие морозы»]</span>)</p>
+
+        <p><strong>1. ОБЩАЯ СИНОПТИЧЕСКАЯ ОБСТАНОВКА</strong><br>
+        В январе 1947 года устойчивый арктический антициклон над Северным морем сформировал зону сверхнизких температур, охватившую Великобританию, Францию, Швейцарию и Северную Италию. Захваченные полярным фронтом регионы столкнулись с рекордным выпадением осадков и оледенением.</p>
+
+        <p><strong>2. РЕГИОНАЛЬНЫЕ НАБЛЮДЕНИЯ И ПАРАЛИЧ ЛОГИСТИКИ</strong><br>
+        — Графство Кент и Юго-Восток Англии: Зафиксированы рекордные морозы (до -21,3°C). Снежные заносы высотой до 4 метров блокировали магистрали к Дувру. Поставки угля на электростанции остановлены.<br>
+        — Франция (Париж): Температура опустилась до -18°C. Сена и судоходные каналы полностью замерзли. Аэропорты Орли и Ле-Бурже закрыты.<br>
+        — Северная Италия (Милан): Аномальный снегопад сформировал покров в 40 см в центре Милана. Городской транспорт и аэропорт Линате не функционируют.</p>
+
+        <p><strong>3. АЛЬПИЙСКИЙ КОРИДОР И МЕЖДУНАРОДНЫЕ МАРШРУТЫ</strong><br>
+        Движение по горным перевалам и Симплонскому тоннелю осуществляется в аварийном режиме из-за наледи. Поезда международных направлений задерживаются от 24 до 48 часов.</p>
+
+        <!-- ИЛЛЮСТРАЦИЯ 02: КАРТА -->
+        <div class="book-illustration-wrapper">
+          <img src="images/02.jpg" alt="Карта полярного фронта" class="book-illustration">
+        </div>
+      </article>
+
+      <!-- ГЛАВА 1: 5-8 ЯНВАРЯ 1947 г. (стр. 6 PDF) -->
       <article id="date-5-jan" class="chapter-block">
-        <h2 class="chapter-date-header">5 – 8 января 1947 г.</h2>
-        <p class="chapter-location">Графство Кент, Гарлиндж</p>
+        <h2 class="chapter-date-header">ГЛАВА 1</h2>
+        <p class="chapter-location">5 – 8 января 1947 г., Графство Кент, Гарлиндж</p>
 
         <p class="first-paragraph">Алекс поселился в глухой деревушке, до Дувра на машине можно добраться за 40 минут, а на поезде — ещё быстрее. Ветхий дом повидал много горестей и радостей, теперь им предстояло подружиться: Алексу и его новой берлоге. Ключевым критерием, который перекричал все "но" и "всё же", была акустика: как это могло случится с деревенским домом — большая загадка. А может и не загадка вовсе, может так должно быть у всех, но не всегда получается...</p>
 
-        <p>Говорят, что старые дома дышат. Его дом не просто дышал, а переливался звонким дрожанием жестяной крыши, скрипами в диапазоне трёх октав, гулкими откликами стёкол в рассохшихся рамах на порывы ветра.</p>
+        <p>Говорят, что старые дома дышат. Его дом не просто дышал, а переливался звонким дрожанием жестяной крыши, скрипами в диапазоне трёх октав, гулкими откликами стёкол в рассохшихся рамах на порывы ветра. Была современная ванна и домашний бойлер, которые солировали в пик своей активности настолько вдохновенно, что никто и не мог себе представить наличие другой доминанты, заправляющей настроением дома, нежели как медный бак с водными трубами и угольной топкой.</p>
 
-        <!-- ИЛЛЮСТРАЦИЯ 01 -->
-        <div class="book-illustration-wrapper">
-          <img src="images/01.jpg" alt="Гарлиндж" class="book-illustration">
-        </div>
-
-        <p>Большой домашней неожиданностью стал рояль. Старый, почти некрасивый, но настоящий. Трое слегка хмельных бездельников, праздно болтавшихся на деревенской площади, были весьма любезны, ответив на коммерчески привлекательное предложение незнакомца с акцентом.</p>
+        <p>Большой домашней неожиданностью стал рояль. Старый, почти некрасивый, но настоящий. Трое слегка хмельных бездельников, праздно болтавшихся на деревенской площади (что недалеко от вокзала), были весьма любезны, ответив на коммерчески привлекательное предложение незнакомца с акцентом. Словарный запас Алекса не позволил в полной мере оценить красноречие, перемешанное с портовой бранью, потугами достойно выглядеть в глазах джентльмена и риском надорваться, когда они, перевернув тело рояля на длинный бок, протискивались в узкие проходы.</p>
 
         <p>Рояль был не так уж и плох. Конечно, он ждал своего часа. Распаковывали его сутки, снимая одежду слоями: сначала брезент, потом шерстяное сукно, потом картон, потом снова сукно. Медленно раздевшись, он стал неоспоримым премьером этого дома. Теперь оставалось лишь настроить его под голос зимы.</p>
-      </article>
 
-      <!-- РАЗДЕЛ 2 -->
-      <article id="date-18-jan" class="chapter-block">
-        <h2 class="chapter-date-header">18 января 1947 года</h2>
-        <p class="chapter-location">Графство Кент, Гарлиндж</p>
-
-        <p class="first-paragraph">Он поселился в Гарлиндже из-за акустики его удивительного дома на краю океана. А крупнейшая военная авиабаза юга страны оказалась рядом по случайности. И также совершенно случайно <i>Group Captain Stanislaw Zurawski</i> <span class="trans">[групп-капитан Станислав Журавски]</span>, тот самый, который радушно встретил его в декабре на Мальте, был её новым командиром.</p>
-
-        <!-- ИЛЛЮСТРАЦИЯ 02 -->
+        <!-- ИЛЛЮСТРАЦИЯ 03: ЗАСНЕЖЕННЫЙ ГАРЛИНДЖ -->
         <div class="book-illustration-wrapper">
-          <img src="images/02.jpg" alt="Церковь Св. Иакова" class="book-illustration">
+          <img src="images/03.jpg" alt="Заснеженный Гарлиндж" class="book-illustration">
         </div>
 
-        <p>На доске объявлений приходской церкви Св. Иакова, что была совсем неподалёку, большими буквами было написано о скорой замене её органа, который 74 года верой и правдой служил англиканской церкви на новый беструбный аппарат производства фирмы <i>Compton</i>.</p>
-      </article>
+        <p>Была середина января, и холод поселился в округе на законных основаниях, скрипя под сапогами прохожих, гудя в печных и каминных трубах, он не собирался отступать. А снег, так непривычно вольготно разложивший свои покровы по аккуратным фермерским угодьям, смешался с прошлогодней травой и совсем не намеревался таять. В сумеречный час грязное тучное небо сливалось с бескрайними серыми полями. Низко пролетел очередной самолёт, за последние четыре часа это был уже шестой транспорт. Активность на <i>RAF Manston</i> была крайне высокой.</p>
 
-      <!-- ПРИМЕР СТИЛИЗОВАННОГО ПИСЬМА -->
-      <article id="date-letter-demo" class="chapter-block">
-        <h2 class="chapter-date-header">Письмо Майи-Розы</h2>
-        <p class="chapter-location">Из пансиона под Люцерном</p>
+        <p>Отойдя от дел, Алекс по привычке собирал разведывательные данные. Не записывал их, не передавал шифровки, не вербовал. Но продолжал всё регистрировать, анализировать и архивировать. Не по приказу, не по убеждению и даже не по инерции — он это делал для себя. Точно так же, как каждый день в течение 20 с лишним лет он играл разминку, потом что-то очень сложное, а потом — простое в технике, но сложное по содержанию. Играл каждый день. Без инструмента. В голове.</p>
 
-        <!-- ПИСЬМО В ГОЛУБОВАТОЙ РАМКЕ С РУКОПИСНЫМ ШРИФТОМ -->
-        <div class="letter-box">
-          <p>Дорогой господин фон Планта.</p>
-          <p>Мне сказали, что вы живёте в Берне и что мама знала вас.</p>
-          <p>Меня зовут Майя-Роза. Несколько дней назад мне исполнилось 17 лет. В пансионе перепутали цифры и написали, что я родилась 27 июля, а на самом деле – 27 января. Я знаю, что это может быть важно.</p>
-          <p>Я живу в пансионе под Люцерном. Я никогда не видела своего отца. Мама никогда не говорила о нём... Если вы знаете что-то — напишите мне, пожалуйста.</p>
-          <p>С уважением, Мая-Роза Пфланц</p>
-        </div>
-
-        <!-- ИЛЛЮСТРАЦИЯ 22 -->
+        <!-- ИЛЛЮСТРАЦИЯ 04: РОЯЛЬ И АЛЕКС -->
         <div class="book-illustration-wrapper">
-          <img src="images/22.jpg" alt="Письмо Майи" class="book-illustration">
+          <img src="images/04.jpg" alt="Алекс за роялем" class="book-illustration">
         </div>
-      </article>
 
-      <!-- ПРИМЕР ИНОСТРАННОГО ТЕКСТА С ПЕРЕВОДОМ -->
-      <article id="date-foreign-demo" class="chapter-block">
-        <h2 class="chapter-date-header">Разговор в поезде</h2>
-        <p class="chapter-location">Поезд Париж — Кале</p>
+        <p>Рояль был идеально настроен: как и положено, два раза с интервалом 24 часа. Чтобы новые струны растянулись и дали усадку, и только потом их можно было сводить в строй. Настройщик был хорош: чисто выбритый и в белоснежной манишке — он приехал из Кентербери заранее и ждал у калитки назначенного часа. На следующий день он был также безупречен и малословен.</p>
 
-        <p class="first-paragraph">Незнакомец сел напротив, не спрашивая разрешения. Молчание. Доктор задержался на перевязанной руке, потом медленно скользнул по лицу Алекса.</p>
+        <p>Закончив, он жестом пригласил Алекса попробовать звучание рояля, предварительно протерев белоснежной фланелью клавиши. Алекс тихо подошёл, одобрительно кивнул и аккуратно закрыл крышку инструмента.</p>
 
-        <p>— <i>Merci, camarada</i> <span class="trans">[Спасибо, товарищ]</span>, — сказал он. Голос был первым, что Алекс от него услышал, — низкий, с сильным славянским акцентом.</p>
-
-        <p>— <i>Spasibo, tovarishch!</i> <span class="trans">[Спасибо, товарищ!]</span> — подумал Алекс, но промолчал.</p>
-      </article>
-
-      <!-- ПОРТРЕТ МАЙИ-РОЗЫ -->
-      <article id="date-portrait-maya" class="chapter-block">
-        <h2 class="chapter-date-header">15 июля 1947 года</h2>
-        <p class="chapter-location">Милан, via San Damiano</p>
-
-        <p class="first-paragraph">Фотография лежала на столе восемь дней, прежде чем он решился её тронуть. Не потому, что не знал, с чего начать. Наоборот — знал слишком хорошо, и именно это пугало. В прошлый раз, зимой, у него не было ничего, кроме воображения, и воображение подвело его так честно, что вместо лица получились одуванчики...</p>
-
-        <!-- КУЛЬМИНАЦИОННАЯ ИЛЛЮСТРАЦИЯ 54 (ПОРТРЕТ МАЙИ) -->
-        <div class="book-illustration-wrapper">
-          <img src="images/54.jpg" alt="Портрет Майи-Розы с одуванчиком" class="book-illustration">
-          <p class="illustration-caption">«Дочь». Портрет с одуванчиком в волосах</p>
-        </div>
+        <p>Время пока не пришло.</p>
       </article>
 
     </main>
 
   </div>
 
-  <!-- СКРИПТ ИНТЕРАКТИВНОЙ ЗАКЛАДКИ -->
+  <!-- СКРИПТ ИНТЕРАКТИВНОЙ ЗАКЛАДКИ И ПОДСВЕТКИ ОГЛАВЛЕНИЯ -->
   <script>
-    // СОХРАНЕНИЕ ЗАКЛАДКИ В МЕСТНОЙ ПАМЯТИ
     function saveBookmark() {
       const currentScroll = window.scrollY;
       localStorage.setItem('colba8_tom2_bookmark', currentScroll);
       alert('🔖 Закладка успешно поставлена!');
     }
 
-    // ПЕРЕХОД К ЗАКЛАДКЕ
     function goToBookmark() {
       const savedScroll = localStorage.getItem('colba8_tom2_bookmark');
       if (savedScroll) {
@@ -396,10 +401,9 @@ layout: null
       }
     }
 
-    // ПОДСВЕТКА АКТИВНОГО ПУНКТА МЕНЮ ПРИ СКРОЛЛЕ
     window.addEventListener('scroll', () => {
       let chapters = document.querySelectorAll('.chapter-block');
-      let navLinks = document.querySelectorAll('.date-menu-item a');
+      let navLinks = document.querySelectorAll('.date-menu-list a');
 
       chapters.forEach(chapter => {
         let top = window.scrollY;
