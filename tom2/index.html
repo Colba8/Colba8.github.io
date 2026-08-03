@@ -14,27 +14,38 @@ layout: null
 
     html, body {
       width: 100%;
-      height: 100%;
+      min-height: 100vh;
       background-color: #050505;
       color: #e0d5b0;
       font-family: 'Georgia', 'Times New Roman', serif;
-      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
+      position: relative;
     }
 
-    /* ПОЛНОЦЕННЫЙ ПОСТЕР tom02.png БЕЗ НАЛОЖЕНИЙ ТЕКСТА */
-    .poster-wrapper {
+    /* ОСНОВНОЙ КОНТЕЙНЕР ПОСТЕРА */
+    .poster-container {
       position: relative;
       width: 100vw;
-      height: 100vh;
-      background: #050505 url('images/tom02.png') center center / contain no-repeat;
+      min-height: 100vh;
       display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
-      padding: 1.5rem;
     }
 
-    /* КНОПКА ВОЗВРАТА В ФОЙЕ (ВЕРХНИЙ ЛЕВЫЙ УГОЛ) */
+    /* ПРЯМАЯ КАРТИНКА-ПОСТЕР */
+    .poster-img {
+      max-width: 100vw;
+      max-height: 100vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    /* ВОЗВРАТ В ФОЙЕ (ВЕРХНИЙ ЛЕВЫЙ УГОЛ) */
     .top-bar {
       position: absolute;
       top: 1.5rem;
@@ -60,4 +71,51 @@ layout: null
       filter: drop-shadow(0 0 8px rgba(197, 160, 89, 0.6));
     }
 
-    .fla
+    .flask-icon {
+      width: 22px;
+      height: auto;
+    }
+
+    /* КНОПКА "ВХОД" НАД ГОРЛЫШКОМ КОЛБЫ */
+    .bottom-enter-container {
+      position: absolute;
+      bottom: 14%; /* Поднято выше над колбой */
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+
+    .enter-btn {
+      display: inline-block;
+      text-decoration: none;
+      background: rgba(10, 9, 7, 0.92);
+      border: 1.5px solid #C5A059;
+      color: #C5A059;
+      padding: 0.5rem 1.8rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      transition: all 0.35s ease;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+    }
+
+    .enter-btn:hover {
+      background: #C5A059;
+      color: #050505;
+      box-shadow: 0 0 20px rgba(197, 160, 89, 0.6);
+    }
+
+    @media (max-width: 768px) {
+      .top-bar { top: 1rem; left: 1rem; }
+      .bottom-enter-container { bottom: 12%; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="poster-container">
+
+    <!-- ВОЗВРАТ В ФОЙЕ -->
+    <header class="top-bar">
+      <a href="../index.html" class="home-link" title=
