@@ -76,17 +76,17 @@ layout: null
       height: auto;
     }
 
-    /* НИЖНИЙ БЛОК: КНОПКА "ВХОД" + КЛИКАБЕЛЬНАЯ КОЛБА (ПОДНЯТ ДО 12%) */
+    /* НИЖНИЙ БЛОК: КНОПКА "ВХОД" + УВЕЛИЧЕННАЯ КОЛБА */
     .bottom-action-container {
       position: absolute;
-      bottom: 12%; /* Поднято выше над нижним краем экрана */
+      bottom: 10%; /* Привязано над нижней рамкой */
       left: 50%;
       transform: translateX(-50%);
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.8rem;
-      z-index: 999; /* Максимальный приоритет поверх всех слоев */
+      gap: 0.6rem;
+      z-index: 999;
     }
 
     .enter-btn {
@@ -110,7 +110,7 @@ layout: null
       box-shadow: 0 0 20px rgba(197, 160, 89, 0.6);
     }
 
-    /* КЛИКАБЕЛЬНЫЙ ЛОГОТИП КОЛБЫ colba00.png */
+    /* КЛИКАБЕЛЬНЫЙ УВЕЛИЧЕННЫЙ ЛОГОТИП КОЛБЫ colba00.png */
     .flask-click-link {
       display: inline-block;
       text-decoration: none;
@@ -119,22 +119,22 @@ layout: null
     }
 
     .bottom-flask-img {
-      width: 55px;
+      width: 85px; /* Увеличено до 85px */
       height: auto;
       display: block;
-      filter: drop-shadow(0 0 8px rgba(197, 160, 89, 0.4));
+      filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.45));
       transition: all 0.35s ease;
     }
 
     .flask-click-link:hover .bottom-flask-img {
-      filter: drop-shadow(0 0 22px rgba(212, 175, 55, 0.9));
+      filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.95));
       transform: scale(1.08);
     }
 
     @media (max-width: 768px) {
       .top-bar { top: 1rem; left: 1rem; }
-      .bottom-action-container { bottom: 10%; }
-      .bottom-flask-img { width: 45px; }
+      .bottom-action-container { bottom: 8%; }
+      .bottom-flask-img { width: 65px; }
     }
   </style>
 </head>
@@ -150,10 +150,10 @@ layout: null
       </a>
     </header>
 
-    <!-- ПОСТЕР (ОЧИЩЕННЫЙ ОТ НАРИСОВАННОЙ КОЛБЫ) -->
+    <!-- ПОСТЕР -->
     <img src="/tom2/images/tom02.png" alt="Том II: Одуванчики" class="poster-img">
 
-    <!-- НИЖНИЙ БЛОК: КНОПКА "ВХОД" И КЛИКАБЕЛЬНАЯ КОЛБА colba00.png -->
+    <!-- НИЖНИЙ БЛОК: КНОПКА "ВХОД" И УВЕЛИЧЕННАЯ КОЛБА colba00.png -->
     <div class="bottom-action-container">
       <a href="/tom2/reader.html" class="enter-btn">ВХОД</a>
       
