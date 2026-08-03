@@ -35,7 +35,7 @@ layout: null
       align-items: center;
     }
 
-    /* ПРЯМАЯ КАРТИНКА-ПОСТЕР С АБСОЛЮТНЫМ ПУТЕМ */
+    /* ПРЯМАЯ КАРТИНКА-ПОСТЕР */
     .poster-img {
       max-width: 100vw;
       max-height: 100vh;
@@ -76,10 +76,10 @@ layout: null
       height: auto;
     }
 
-    /* КНОПКА "ВХОД" НАД ГОРЛЫШКОМ КОЛБЫ */
+    /* КНОПКА "ВХОД" (ПОДНЯТА ДО 20% ВЫШЕ НАД КОЛБОЙ) */
     .bottom-enter-container {
       position: absolute;
-      bottom: 15%; /* Поднято выше над колбой */
+      bottom: 20%; /* Значительно выше над горлышком колбы */
       left: 50%;
       transform: translateX(-50%);
       z-index: 10;
@@ -108,7 +108,7 @@ layout: null
 
     @media (max-width: 768px) {
       .top-bar { top: 1rem; left: 1rem; }
-      .bottom-enter-container { bottom: 13%; }
+      .bottom-enter-container { bottom: 18%; }
     }
   </style>
 </head>
@@ -124,7 +124,7 @@ layout: null
       </a>
     </header>
 
-    <!-- ПОСТЕР (ПРЯМОЙ АБСОЛЮТНЫЙ ПУТЬ) -->
+    <!-- ПОСТЕР -->
     <img src="/tom2/images/tom02.png" alt="Том II: Одуванчики" class="poster-img">
 
     <!-- КНОПКА "ВХОД" -->
