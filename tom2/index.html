@@ -1,1 +1,265 @@
-00
+---
+layout: null
+---
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Том II: Одуванчики — Дмитрий Ильин. Литературный проект «Театр теней»</title>
+  <link rel="icon" href="../images/51.png" type="image/png">
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      width: 100%;
+      min-height: 100vh;
+      background-color: #050505;
+      color: #e0d5b0;
+      font-family: 'Georgia', 'Times New Roman', serif;
+      overflow-x: hidden;
+    }
+
+    /* ФОНОВАЯ СЦЕНА С ЗАДНИКОМ tom02.png */
+    .tom2-wrapper {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      background: #050505 url('images/tom02.png') center center / contain no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2rem 1.5rem;
+    }
+
+    /* ВЕРХНИЙ МАРКЕР И ШАПКА */
+    .top-header {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      margin-top: 0.5rem;
+    }
+
+    .brand-top-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: #C5A059;
+      text-decoration: none;
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+    }
+
+    .brand-top-link:hover {
+      color: #f0d59e;
+      filter: drop-shadow(0 0 8px rgba(197, 160, 89, 0.6));
+    }
+
+    .brand-flask-icon {
+      width: 22px;
+      height: auto;
+    }
+
+    .volume-tag {
+      font-size: 0.8rem;
+      letter-spacing: 0.3em;
+      color: #C5A059;
+      text-transform: uppercase;
+      margin-top: 0.3rem;
+    }
+
+    .art-deco-line {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: #C5A059;
+      margin: 0.3rem 0;
+    }
+
+    .art-deco-line::before,
+    .art-deco-line::after {
+      content: '';
+      display: block;
+      width: 70px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #C5A059, transparent);
+    }
+
+    /* ОСНОВНОЙ КОНТЕНТ (ЛЕВАЯ ЧАСТЬ) */
+    .tom2-content {
+      position: relative;
+      z-index: 5;
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      margin: auto 0;
+      padding: 1rem 0;
+    }
+
+    .hero-text-block {
+      max-width: 480px;
+      background: rgba(8, 7, 5, 0.82);
+      border: 1px solid rgba(197, 160, 89, 0.35);
+      padding: 2rem 1.8rem;
+      backdrop-filter: blur(4px);
+    }
+
+    .author-name {
+      font-size: 0.85rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #C5A059;
+      margin-bottom: 0.4rem;
+    }
+
+    .title-tom {
+      font-size: 3rem;
+      font-weight: normal;
+      letter-spacing: 0.12em;
+      color: #C5A059;
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin: 0.4rem 0;
+    }
+
+    .synopsis-quote {
+      font-size: 0.92rem;
+      line-height: 1.65;
+      color: #d8ceb5;
+      font-style: italic;
+      margin: 1.2rem 0;
+    }
+
+    .year-tag {
+      font-size: 0.85rem;
+      letter-spacing: 0.25em;
+      color: #8A7E6B;
+      text-align: center;
+      margin-bottom: 1.2rem;
+    }
+
+    /* КНОПКА ЧИТАТЬ */
+    .btn-read-container {
+      display: flex;
+      justify-content: center;
+    }
+
+    .btn-read {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      background: rgba(10, 9, 7, 0.95);
+      border: 1.5px solid #C5A059;
+      color: #C5A059;
+      padding: 0.9rem 2.2rem;
+      transition: all 0.4s ease;
+      cursor: pointer;
+    }
+
+    .btn-read-main {
+      font-size: 1.1rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .btn-read-sub {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #8A7E6B;
+      margin-top: 0.2rem;
+      transition: color 0.3s;
+    }
+
+    .btn-read:hover {
+      background: #C5A059;
+      color: #050505;
+      box-shadow: 0 0 25px rgba(197, 160, 89, 0.6);
+    }
+
+    .btn-read:hover .btn-read-sub {
+      color: #151515;
+    }
+
+    /* НИЖНИЙ ЛОГОТИП КОЛБЫ */
+    .bottom-branding {
+      position: relative;
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .bottom-flask-img {
+      width: 45px;
+      height: auto;
+      filter: drop-shadow(0 0 8px rgba(197, 160, 89, 0.4));
+    }
+
+    @media (max-width: 850px) {
+      .tom2-wrapper { background-size: cover; padding: 1.5rem 1rem; }
+      .title-tom { font-size: 2.2rem; }
+      .hero-text-block { max-width: 100%; padding: 1.5rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="tom2-wrapper">
+
+    <!-- ВЕРХНИЙ МАРКЕР ПРОЕКТА -->
+    <header class="top-header">
+      <a href="../index.html" class="brand-top-link" title="Вернуться в Фойе Театра">
+        <img src="../images/colba main bright2.png" alt="Колба" class="brand-flask-icon">
+        <span>Театр теней</span>
+      </a>
+      <p class="volume-tag">Том II</p>
+      <div class="art-deco-line">◆</div>
+    </header>
+
+    <!-- ОСНОВНОЙ ТЕКСТОВЫЙ БЛОК ПРЕЗЕНТАЦИИ (СЛЕВА) -->
+    <main class="tom2-content">
+      <div class="hero-text-block">
+        <p class="author-name">Дмитрий Ильин</p>
+        <h1 class="title-tom">Одуванчики</h1>
+        <div class="art-deco-line">◆</div>
+
+        <p class="synopsis-quote">
+          Когда над миром опускается холодная тень политики, на сцену выходят те, кто говорит на языке музыки.<br><br>
+          Их оружие — ноты.<br>
+          Их защита — человечность.<br>
+          Их риск — остаться собой.
+        </p>
+
+        <p class="year-tag">— 1947 —</p>
+
+        <!-- КНОПКА ПЕРЕХОДА В ЧИТАЛКУ -->
+        <div class="btn-read-container">
+          <a href="reader.html" class="btn-read">
+            <span class="btn-read-main">Читать</span>
+            <span class="btn-read-sub">Погрузиться в историю</span>
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <!-- НИЖНЯЯ ЭМБЛЕМА КОЛБЫ -->
+    <footer class="bottom-branding">
+      <img src="../images/colba main bright2.png" alt="Colba8" class="bottom-flask-img">
+    </footer>
+
+  </div>
+
+</body>
+</html>
