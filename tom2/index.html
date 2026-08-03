@@ -14,36 +14,36 @@ layout: null
 
     html, body {
       width: 100%;
-      min-height: 100vh;
+      height: 100%;
       background-color: #050505;
       color: #e0d5b0;
       font-family: 'Georgia', 'Times New Roman', serif;
-      overflow-x: hidden;
+      overflow: hidden;
     }
 
-    /* ФОНОВАЯ СЦЕНА С ЗАДНИКОМ tom02.png */
-    .tom2-wrapper {
+    /* ПОЛНОЦЕННЫЙ ПОСТЕР tom02.png БЕЗ НАЛОЖЕНИЙ ТЕКСТА */
+    .poster-wrapper {
       position: relative;
-      width: 100%;
-      min-height: 100vh;
+      width: 100vw;
+      height: 100vh;
       background: #050505 url('images/tom02.png') center center / contain no-repeat;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
-      padding: 2rem 1.5rem;
+      padding: 1.5rem;
     }
 
-    /* ВЕРХНЯЯ КНОПКА ВОЗВРАТА В ФОЙЕ (ВЕРХНИЙ ЛЕВЫЙ УГОЛ) */
-    .top-header {
+    /* КНОПКА ВОЗВРАТА В ФОЙЕ (ВЕРХНИЙ ЛЕВЫЙ УГОЛ) */
+    .top-bar {
       position: absolute;
       top: 1.5rem;
       left: 2rem;
       z-index: 10;
     }
 
-    .brand-top-link {
-      display: inline-flex;
+    .home-link {
+      display: flex;
       align-items: center;
       gap: 0.6rem;
       color: #C5A059;
@@ -52,136 +52,72 @@ layout: null
       letter-spacing: 0.2em;
       text-transform: uppercase;
       transition: all 0.3s ease;
+      filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.9));
     }
 
-    .brand-top-link:hover {
+    .home-link:hover {
       color: #f0d59e;
       filter: drop-shadow(0 0 8px rgba(197, 160, 89, 0.6));
     }
 
-    .brand-flask-icon {
-      width: 24px;
+    .flask-icon {
+      width: 22px;
       height: auto;
     }
 
-    /* БЛОК С АННОТАЦИЕЙ И КНОПКОЙ (ВПИСАН В ТЕМНОЕ ПЯТНО СЛЕВА) */
-    .tom2-content {
-      position: relative;
-      z-index: 5;
-      width: 100%;
-      max-width: 1200px;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      margin: auto 0;
-      padding-top: 10rem; /* Сдвиг вниз под нарисованный заголовок ОДУВАНЧИКИ */
+    /* НЕБОЛЬШАЯ КНОПКА "ВХОД" НАД ГОРЛЫШКОМ КОЛБЫ (ВНИЗУ ПО ЦЕНТРУ) */
+    .bottom-enter-container {
+      position: absolute;
+      bottom: 11.5%; /* Ровно над горлышком нарисованной колбы */
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
     }
 
-    .hero-text-block {
-      max-width: 420px;
-      background: rgba(10, 9, 7, 0.88);
-      border: 1px solid rgba(197, 160, 89, 0.35);
-      padding: 1.8rem 1.5rem;
-      backdrop-filter: blur(4px);
-    }
-
-    .synopsis-quote {
-      font-size: 0.9rem;
-      line-height: 1.65;
-      color: #d8ceb5;
-      font-style: italic;
-      margin-bottom: 1.5rem;
-      text-align: left;
-    }
-
-    /* КНОПКА ЧИТАТЬ */
-    .btn-read-container {
-      display: flex;
-      justify-content: center;
-    }
-
-    .btn-read {
-      display: inline-flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+    .enter-btn {
+      display: inline-block;
       text-decoration: none;
-      background: rgba(10, 9, 7, 0.95);
+      background: rgba(10, 9, 7, 0.92);
       border: 1.5px solid #C5A059;
       color: #C5A059;
-      padding: 0.85rem 2rem;
-      transition: all 0.4s ease;
-      cursor: pointer;
-      width: 100%;
-    }
-
-    .btn-read-main {
-      font-size: 1.05rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
+      padding: 0.5rem 1.8rem;
+      font-size: 0.85rem;
       font-weight: 600;
-    }
-
-    .btn-read-sub {
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.35em;
       text-transform: uppercase;
-      color: #8A7E6B;
-      margin-top: 0.2rem;
-      transition: color 0.3s;
+      transition: all 0.35s ease;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
     }
 
-    .btn-read:hover {
+    .enter-btn:hover {
       background: #C5A059;
       color: #050505;
-      box-shadow: 0 0 25px rgba(197, 160, 89, 0.6);
+      box-shadow: 0 0 20px rgba(197, 160, 89, 0.6);
     }
 
-    .btn-read:hover .btn-read-sub {
-      color: #151515;
-    }
-
-    @media (max-width: 850px) {
-      .tom2-wrapper { background-size: cover; padding: 1.5rem 1rem; }
-      .tom2-content { padding-top: 8rem; justify-content: center; }
-      .hero-text-block { max-width: 100%; }
-      .top-header { top: 1rem; left: 1rem; }
+    @media (max-width: 768px) {
+      .poster-wrapper { background-size: cover; }
+      .top-bar { top: 1rem; left: 1rem; }
+      .bottom-enter-container { bottom: 10%; }
     }
   </style>
 </head>
 <body>
 
-  <div class="tom2-wrapper">
+  <div class="poster-wrapper">
 
-    <!-- КНОПКА ВОЗВРАТА В ФОЙЕ -->
-    <header class="top-header">
-      <a href="../index.html" class="brand-top-link" title="Вернуться в Фойе Театра">
-        <img src="../images/colba main bright2.png" alt="Колба" class="brand-flask-icon">
+    <!-- ВОЗВРАТ В ФОЙЕ -->
+    <header class="top-bar">
+      <a href="../index.html" class="home-link" title="Вернуться в Фойе Театра">
+        <img src="../images/colba main bright2.png" alt="Колба" class="flask-icon">
         <span>Театр теней</span>
       </a>
     </header>
 
-    <!-- АННОТАЦИЯ И КНОПКА ЧИТАТЬ (БЕЗ ДУБЛИРУЮЩИХ ЗАГОЛОВКОВ) -->
-    <main class="tom2-content">
-      <div class="hero-text-block">
-        
-        <p class="synopsis-quote">
-          Когда над миром опускается холодная тень политики, на сцену выходят те, кто говорит на языке музыки.<br><br>
-          Их оружие — ноты.<br>
-          Их защита — человечность.<br>
-          Их риск — остаться собой.
-        </p>
-
-        <!-- КНОПКА ПЕРЕХОДА В ЧИТАЛКУ -->
-        <div class="btn-read-container">
-          <a href="reader.html" class="btn-read">
-            <span class="btn-read-main">Читать</span>
-            <span class="btn-read-sub">Погрузиться в историю</span>
-          </a>
-        </div>
-
-      </div>
-    </main>
+    <!-- НЕБОЛЬШАЯ КНОПКА "ВХОД" НАД ГОРЛЫШКОМ КОЛБЫ -->
+    <div class="bottom-enter-container">
+      <a href="reader.html" class="enter-btn">ВХОД</a>
+    </div>
 
   </div>
 
