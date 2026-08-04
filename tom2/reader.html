@@ -91,8 +91,20 @@
       color: #C5A059; background: rgba(197,160,89,0.06); border-left-color: #C5A059;
     }
 
-    /* ПОЛЕ ТЕКСТА */
-    .book-content-area { flex: 1; max-width: 880px; margin: 0 auto; padding: 2.5rem 2rem 6rem; }
+    /* ПОЛЕ ТЕКСТА — ЧЁРНОЕ */
+    .book-content-area {
+      flex: 1; max-width: 880px; margin: 0 auto;
+      padding: 2.5rem 2rem 6rem;
+      background: #000000;
+    }
+
+    /* НАЧАЛЬНАЯ ПЛАШКА */
+    .header-plate-wrapper { text-align: center; margin: 0 0 3.5rem 0; }
+    .header-plate-img {
+      max-width: 100%; height: auto; display: inline-block;
+      border: 1px solid rgba(197,160,89,0.4);
+      box-shadow: 0 0 25px rgba(0,0,0,0.85);
+    }
 
     .chapter-block { margin-bottom: 5rem; scroll-margin-top: 80px; clear: both; }
     .chapter-date-header { font-size: 1.35rem; font-weight: bold; color: #C5A059; letter-spacing: 0.1em; margin-bottom: 0.3rem; }
@@ -195,7 +207,12 @@
       </ul>
     </nav>
 
-    <main class="book-content-area" id="book"></main>
+    <main class="book-content-area">
+      <div class="header-plate-wrapper">
+        <img src="images/plate00.png" alt="Театр теней. Одуванчики. Том II" class="header-plate-img">
+      </div>
+      <div id="book"></div>
+    </main>
   </div>
 
   <script>
