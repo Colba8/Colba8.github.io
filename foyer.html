@@ -63,19 +63,16 @@
       pointer-events: none;
     }
 
-    /* ДВЕРИ — КЛИКАБЕЛЬНЫЕ ПЛАШКИ НА ПОСТЕРЕ */
+    /* ДВЕРИ — МЯГКОЕ СИЯНИЕ БЕЗ РАМКИ И БЕЗ ПОДСКАЗОК */
     .door {
       position: absolute;
-      border: 1px solid transparent;
-      border-radius: 4px;
-      transition: all 0.3s;
       cursor: pointer;
       z-index: 3;
+      transition: box-shadow 0.4s ease, background 0.4s ease;
     }
     .door:hover {
-      border-color: rgba(201,169,110,0.8);
-      background: rgba(201,169,110,0.06);
-      box-shadow: 0 0 18px rgba(201,169,110,0.25);
+      background: rgba(201,169,110,0.05);
+      box-shadow: 0 0 30px rgba(201,169,110,0.28), inset 0 0 18px rgba(201,169,110,0.12);
     }
     #door-tom1 { left: 10.5%; top: 68%; width: 24.5%; height: 22%; }
     #door-tom2 { left: 65%;   top: 68%; width: 24.5%; height: 22%; }
@@ -113,8 +110,8 @@
   <div class="foyer-stage">
     <img src="tom2/images/tom00.png" alt="Театр теней — две истории, один мир">
     <div class="stage-cover"></div>
-    <a class="door" id="door-tom1" href="reader.html" title="Том I — Второй звонок"></a>
-    <a class="door" id="door-tom2" href="tom2/reader.html" title="Том II — Одуванчики"></a>
+    <a class="door" id="door-tom1" href="reader.html" aria-label="Том I — Второй звонок"></a>
+    <a class="door" id="door-tom2" href="tom2/reader.html" aria-label="Том II — Одуванчики"></a>
   </div>
 
   <div class="modal-overlay" id="contactModal">
