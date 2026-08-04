@@ -47,35 +47,38 @@
 
     /* ПОСТЕР ФОЙЕ */
     .foyer-stage {
+      position: relative;
       max-width: 1200px;
-      margin: 80px auto 2.5rem;
-      padding: 0 1rem;
+      margin: 80px auto 3rem;
     }
     .foyer-stage img { display: block; width: 100%; height: auto; }
 
-    /* ДВЕРИ */
-    .foyer-doors {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 2rem;
-      margin: 0 auto 4rem;
-      padding: 0 1rem;
+    /* ПЛАНКА, ЗАКРЫВАЮЩАЯ ЧУЖУЮ СТРОКУ ВНУТРИ КАРТИНКИ */
+    .stage-cover {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 8%;
+      background: #050505;
+      z-index: 2;
+      pointer-events: none;
     }
-    .custom-read-btn {
-      display: inline-block;
-      padding: 0.8rem 2.8rem;
-      background: rgba(0,0,0,0.7);
-      border: 1.5px solid rgba(201,169,110,0.5);
-      color: #C9A96E;
-      font-family: 'Georgia', 'Times New Roman', serif;
-      font-size: 1rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      text-decoration: none;
-      transition: all 0.3s ease;
+
+    /* ДВЕРИ — КЛИКАБЕЛЬНЫЕ ПЛАШКИ НА ПОСТЕРЕ */
+    .door {
+      position: absolute;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      transition: all 0.3s;
+      cursor: pointer;
+      z-index: 3;
     }
-    .custom-read-btn:hover { background: #C9A96E; color: #000; }
+    .door:hover {
+      border-color: rgba(201,169,110,0.8);
+      background: rgba(201,169,110,0.06);
+      box-shadow: 0 0 18px rgba(201,169,110,0.25);
+    }
+    #door-tom1 { left: 10.5%; top: 68%; width: 24.5%; height: 22%; }
+    #door-tom2 { left: 65%;   top: 68%; width: 24.5%; height: 22%; }
 
     /* МОДАЛЬНОЕ ОКНО КОНТАКТОВ */
     .modal-overlay {
@@ -95,8 +98,6 @@
     @media (max-width: 900px) {
       .top-navbar { gap: 0.8rem; }
       .nav-link { font-size: 0.65rem; }
-      .foyer-doors { flex-direction: column; align-items: center; }
-      .custom-read-btn { width: 100%; max-width: 320px; text-align: center; }
     }
   </style>
 </head>
@@ -111,11 +112,9 @@
 
   <div class="foyer-stage">
     <img src="tom2/images/tom00.png" alt="Театр теней — две истории, один мир">
-  </div>
-
-  <div class="foyer-doors">
-    <a class="custom-read-btn" href="reader.html">Второй звонок</a>
-    <a class="custom-read-btn" href="tom2/reader.html">Одуванчики</a>
+    <div class="stage-cover"></div>
+    <a class="door" id="door-tom1" href="reader.html" title="Том I — Второй звонок"></a>
+    <a class="door" id="door-tom2" href="tom2/reader.html" title="Том II — Одуванчики"></a>
   </div>
 
   <div class="modal-overlay" id="contactModal">
