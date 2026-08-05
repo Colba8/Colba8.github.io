@@ -26,7 +26,6 @@ body{
 ::-webkit-scrollbar-track { background: #000000; }
 ::-webkit-scrollbar-thumb { background: #C9A96E; border-radius: 3px; }
 
-/* Верхняя навигация */
 .top-navbar {
   position: fixed;
   top: 0; left: 0; right: 0; height: 60px;
@@ -40,38 +39,28 @@ body{
   line-height: 0;
 }
 .nav-logo img {
-  height: 36px;
-  width: auto;
-  display: block;
+  height: 36px; width: auto; display: block;
 }
 .nav-divider {
-  display: inline-block;
-  width: 1px;
-  height: 28px;
+  display: inline-block; width: 1px; height: 28px;
   background: rgba(201, 169, 110, 0.25);
 }
 .nav-link {
   color: #8A7E6B; font-size: 0.75rem; letter-spacing: 0.12em;
-  text-transform: uppercase; text-decoration: none;
-  transition: color 0.2s ease;
+  text-transform: uppercase; text-decoration: none; transition: color 0.2s ease;
 }
 .nav-link:hover, .nav-link.active { color: #C9A96E; }
 
 .main-layout {
-  display: flex;
-  margin-top: 60px;
+  display: flex; margin-top: 60px;
 }
 
-/* Левое боковое меню */
 .sidebar {
   width: 260px;
   background: rgba(11, 10, 8, 0.95);
   border-right: 1px solid rgba(201, 169, 110, 0.15);
-  position: fixed;
-  top: 60px; bottom: 0;
-  overflow-y: auto;
-  padding: 2rem 1rem;
-  z-index: 100;
+  position: fixed; top: 60px; bottom: 0;
+  overflow-y: auto; padding: 2rem 1rem; z-index: 100;
 }
 .sb-title {
   font-family: 'Oranienbaum', serif; color: #C9A96E;
@@ -82,22 +71,16 @@ body{
   display: block; width: 100%; padding: 0.6rem 0;
   background: transparent; border: none;
   color: #8A7E6B; text-align: left; cursor: pointer;
-  font-family: inherit; font-size: 0.85rem;
-  text-decoration: none;
+  font-family: inherit; font-size: 0.85rem; text-decoration: none;
 }
 .sb-item:hover, .sb-item.active { color: #C9A96E; }
 
 .content {
-  flex: 1;
-  margin-left: 260px;
-  padding: 2rem 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex: 1; margin-left: 260px;
+  padding: 2rem 0; display: flex; flex-direction: column; align-items: center;
 }
 .content-inner {
-  max-width: 1050px;
-  width: 92%;
+  max-width: 1050px; width: 92%;
   background: #0b0a08;
   padding: 4rem 4.5rem;
   box-shadow: 0 0 80px #000;
@@ -111,7 +94,7 @@ body{
   scroll-margin-top: 80px;
 }
 
-/* Автоматический подзаголовок (место и время) */
+/* Подзаголовок (место и время) — жирный курсив */
 .chapter-body .subhead {
   font-weight: bold;
   font-style: italic;
@@ -124,30 +107,45 @@ body{
   text-indent: 0 !important;
 }
 
-/* Дружественный текст (вариант 1) */
-.novel-text, .chapter-body p {
-  font-size: 1.35rem; line-height: 1.85; margin-bottom: 1.8rem;
+/* Текст: без красной строки, уменьшенный межстрочник, единый размер шрифта для всего */
+.novel-text, .chapter-body p, .chapter-body .translation {
+  font-size: 1.35rem;
+  line-height: 1.65; /* уменьшенный межстрочник */
+  margin-bottom: 1.4rem;
   font-weight: 300;
   text-align: left;
-  text-indent: 1.2em;
+  text-indent: 0 !important; /* красная строка убрана */
   hyphens: auto;
   word-break: break-word;
   color: #e0d5b0;
 }
 
+/* Перевод иноязычных фраз — тот же размер шрифта, другой цвет */
+.translation {
+  color: #8A7E6B;
+  font-style: normal;
+}
+
+.foreign {
+  font-style: italic;
+  color: #e0d5b0;
+}
+
 .img-inline, img {
   max-width: 100%; height: auto;
-  margin: 3rem auto; display: block;
+  margin: 2.5rem auto; display: block;
   border: 1px solid rgba(201, 169, 110, 0.2);
   box-shadow: 0 10px 30px rgba(0,0,0,0.8);
 }
 
+/* Документы: Courier жирный, плотный, без отступов */
 .document {
   background: #e4dcc4 !important;
   color: #1a1713 !important;
   font-family: 'Courier Prime', 'Courier New', monospace !important;
-  padding: 3rem; 
-  margin: 3rem 0;
+  font-weight: bold !important;
+  padding: 2.5rem; 
+  margin: 2.5rem 0;
   border-left: 5px solid #C9A96E;
   box-shadow: 0 5px 15px rgba(0,0,0,0.5), 0 20px 40px rgba(0,0,0,0.8);
   border-radius: 2px;
@@ -156,6 +154,7 @@ body{
 .document p {
   color: #1a1713 !important;
   font-family: 'Courier Prime', 'Courier New', monospace !important;
+  font-weight: bold !important;
   font-size: 1.1rem !important;
   line-height: 1.5 !important;
   text-indent: 0 !important;
@@ -164,67 +163,35 @@ body{
   letter-spacing: -0.02em;
 }
 
-.foreign {
-  font-style: italic;
-  color: #e0d5b0;
-}
-
-.translation {
-  font-size: 1.05rem;
-  color: #8A7E6B;
-  margin-left: 0.4rem;
-  font-style: normal;
-}
-
 .reader-controls {
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  display: flex;
-  gap: 0.6rem;
-  z-index: 1000;
+  position: fixed; bottom: 2rem; right: 2rem;
+  display: flex; gap: 0.6rem; z-index: 1000;
 }
 .btn-control {
   background: rgba(0,0,0,0.85);
   border: 1px solid #C9A96E;
   color: #C9A96E;
   font-family: inherit;
-  font-size: 0.75rem;
-  letter-spacing: 0.15em;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
+  font-size: 0.75rem; letter-spacing: 0.15em;
+  padding: 0.5rem 1rem; cursor: pointer;
   transition: all .3s;
 }
-.btn-control:hover {
-  background: #C9A96E;
-  color: #0b0a08;
-}
+.btn-control:hover { background: #C9A96E; color: #0b0a08; }
 #bm-status {
-  position: fixed;
-  bottom: 2.5rem;
-  right: 14rem;
-  font-size: 0.75rem;
-  color: #8A7E6B;
-  letter-spacing: 0.1em;
+  position: fixed; bottom: 2.5rem; right: 14rem;
+  font-size: 0.75rem; color: #8A7E6B; letter-spacing: 0.1em;
 }
 
-.load-error {
-  color: #a05555;
-  border: 1px dashed #a05555;
-  padding: 0.8rem;
-  margin: 1rem 0;
-}
+.load-error { color: #a05555; border: 1px dashed #a05555; padding: 0.8rem; margin: 1rem 0; }
 
 @media(max-width: 950px) {
   .sidebar { display: none; }
   .content { margin-left: 0; }
   .content-inner { padding: 2rem 1.2rem; width: 100%; }
   .document { padding: 1.5rem; }
-  .novel-text, .chapter-body p { text-align: left; text-indent: 1.2em; font-size: 1.15rem; }
+  .novel-text, .chapter-body p, .chapter-body .translation { font-size: 1.15rem; text-align: left; text-indent: 0 !important; }
   .reader-controls { bottom: 1rem; right: 1rem; }
   #bm-status { right: auto; left: 1rem; bottom: 1.5rem; }
-  
-  /* На мобильных верхнее меню сжимаем */
   .top-navbar { gap: 0.8rem; }
   .nav-link { font-size: 0.65rem; }
   .nav-logo img { height: 30px; }
@@ -316,6 +283,7 @@ var TITLES = [
       if (!r.ok) throw new Error(f);
       return r.text();
     }).then(function (html) {
+      // ИСПРАВЛЕНИЕ: заменяем пути к картинкам строго и без потерь
       html = html.replace(/^\ufeff?---[\s\S]*?---\s*\n/, '');
       html = html.replace(/\.\.\/images\//g, 'images/');
       
@@ -333,10 +301,11 @@ var TITLES = [
       div.className = 'chapter-body';
       div.innerHTML = html;
       
-      // Автоматическое оформление подзаголовка (место и время)
+      // Находим первый абзац с местом/датой и превращаем его в подзаголовок
       var firstP = div.querySelector('p');
       if (firstP) {
         var txt = firstP.textContent.trim();
+        // Проверяем наличие запятой и года (1946, 1947, 1948)
         if (/,\s*(19[4-6][0-9]|194[6-8])/.test(txt)) {
           firstP.className = 'subhead';
         }
