@@ -26,6 +26,7 @@ body{
 ::-webkit-scrollbar-track { background: #000000; }
 ::-webkit-scrollbar-thumb { background: #C9A96E; border-radius: 3px; }
 
+/* Верхняя навигация */
 .top-navbar {
   position: fixed;
   top: 0; left: 0; right: 0; height: 60px;
@@ -34,9 +35,25 @@ body{
   display: flex; justify-content: center; align-items: center;
   gap: 1.8rem; z-index: 1000;
 }
+.nav-logo {
+  display: flex; align-items: center;
+  line-height: 0;
+}
+.nav-logo img {
+  height: 36px;
+  width: auto;
+  display: block;
+}
+.nav-divider {
+  display: inline-block;
+  width: 1px;
+  height: 28px;
+  background: rgba(201, 169, 110, 0.25);
+}
 .nav-link {
   color: #8A7E6B; font-size: 0.75rem; letter-spacing: 0.12em;
   text-transform: uppercase; text-decoration: none;
+  transition: color 0.2s ease;
 }
 .nav-link:hover, .nav-link.active { color: #C9A96E; }
 
@@ -45,6 +62,7 @@ body{
   margin-top: 60px;
 }
 
+/* Левое боковое меню */
 .sidebar {
   width: 260px;
   background: rgba(11, 10, 8, 0.95);
@@ -90,13 +108,30 @@ body{
   font-family: 'Oranienbaum', serif; color: #C9A96E;
   font-size: 2rem; text-align: center; margin: 3rem 0;
   text-transform: uppercase; letter-spacing: 0.1em;
-  scroll-margin-top: 80px; /* ИСПРАВЛЕНИЕ: заголовок не прячется под меню */
+  scroll-margin-top: 80px;
 }
 
+/* Автоматический подзаголовок (место и время) */
+.chapter-body .subhead {
+  font-weight: bold;
+  font-style: italic;
+  color: #e0d5b0;
+  font-size: 1.35rem;
+  text-align: left;
+  margin: -1.5rem 0 2rem 0;
+  padding: 0;
+  line-height: 1.4;
+  text-indent: 0 !important;
+}
+
+/* Дружественный текст (вариант 1) */
 .novel-text, .chapter-body p {
   font-size: 1.35rem; line-height: 1.85; margin-bottom: 1.8rem;
-  font-weight: 300; text-align: justify; 
-  text-indent: 0 !important;
+  font-weight: 300;
+  text-align: left;
+  text-indent: 1.2em;
+  hyphens: auto;
+  word-break: break-word;
   color: #e0d5b0;
 }
 
@@ -185,21 +220,30 @@ body{
   .content { margin-left: 0; }
   .content-inner { padding: 2rem 1.2rem; width: 100%; }
   .document { padding: 1.5rem; }
-  .novel-text, .chapter-body p { text-align: left; text-indent: 0 !important; font-size: 1.15rem; }
+  .novel-text, .chapter-body p { text-align: left; text-indent: 1.2em; font-size: 1.15rem; }
   .reader-controls { bottom: 1rem; right: 1rem; }
   #bm-status { right: auto; left: 1rem; bottom: 1.5rem; }
+  
+  /* На мобильных верхнее меню сжимаем */
+  .top-navbar { gap: 0.8rem; }
+  .nav-link { font-size: 0.65rem; }
+  .nav-logo img { height: 30px; }
+  .nav-divider { height: 20px; }
 }
 </style>
 </head>
 <body>
 
 <nav class="top-navbar">
-  <a href="index.html" class="nav-link">Главная</a>
-  <a href="reader.html" class="nav-link active">Читать</a>
-  <a href="materials.html" class="nav-link">Архив</a>
-  <a href="foreigners.html" class="nav-link">Cooperation</a>
-  <a href="laboratory.html" class="nav-link">За кулисами</a>
-  <a href="contacts.html" class="nav-link">Контакты</a>
+  <a href="../index.html" class="nav-logo">
+    <img src="images/00.png" alt="Театр теней">
+  </a>
+  <span class="nav-divider"></span>
+  <a href="index.html" class="nav-link active">Второй звонок</a>
+  <a href="../tom2/index.html" class="nav-link">Одуванчики</a>
+  <span class="nav-divider"></span>
+  <a href="../foreigners.html" class="nav-link">Сотрудничество</a>
+  <a href="../contacts.html" class="nav-link">Контакты</a>
 </nav>
 
 <div class="main-layout">
@@ -222,7 +266,6 @@ body{
 </div>
 
 <script>
-// Файлы глав в порядке возрастания (01.html — 28.html)
 var FILES = [
   'chapters/01.html',
   'chapters/02.html',
@@ -254,36 +297,12 @@ var FILES = [
   'chapters/28.html'
 ];
 
-// Названия глав (строго по порядку, соответствуют индексам 01–28)
 var TITLES = [
-  'Пролог',
-  'НОЧЬ',
-  'УТРО',
-  'ТРАВИАТА',
-  'ВЫСТРЕЛ',
-  'ПЛАН «А»',
-  'ИНСПЕКТОР',
-  'ЛИССАБОН',
-  'ПЕРЕГОН',
-  'ФОРМАЛЬНОСТИ',
-  'МИЛАН',
-  'БАЗА',
-  'МАЛЬТА',
-  'ВЭСТ-ЭНД',
-  'Дневник Мастера',
-  'МАСТЕРСКАЯ',
-  'ДОСЬЕ',
-  'ПРИГЛАШЕНИЕ',
-  'ОХОТА',
-  'НОЧЬ ПОСЛЕ ОХОТЫ',
-  'В ЖЕНЕВУ',
-  'ВАЛЬТЕР',
-  'КЛЮЧ',
-  'ПОРТНОЙ',
-  'ШИРМА',
-  'ПОЕЗД В ЛЮЦЕРН',
-  'ПАПКА',
-  'ЭПИЛОГ'
+  'Пролог', 'НОЧЬ', 'УТРО', 'ТРАВИАТА', 'ВЫСТРЕЛ', 'ПЛАН «А»', 'ИНСПЕКТОР',
+  'ЛИССАБОН', 'ПЕРЕГОН', 'ФОРМАЛЬНОСТИ', 'МИЛАН', 'БАЗА', 'МАЛЬТА', 'ВЭСТ-ЭНД',
+  'Дневник Мастера', 'МАСТЕРСКАЯ', 'ДОСЬЕ', 'ПРИГЛАШЕНИЕ', 'ОХОТА',
+  'НОЧЬ ПОСЛЕ ОХОТЫ', 'В ЖЕНЕВУ', 'ВАЛЬТЕР', 'КЛЮЧ', 'ПОРТНОЙ', 'ШИРМА',
+  'ПОЕЗД В ЛЮЦЕРН', 'ПАПКА', 'ЭПИЛОГ'
 ];
 
 (function () {
@@ -299,18 +318,33 @@ var TITLES = [
     }).then(function (html) {
       html = html.replace(/^\ufeff?---[\s\S]*?---\s*\n/, '');
       html = html.replace(/\.\.\/images\//g, 'images/');
+      
       var section = document.createElement('section');
       section.id = 'ch-' + (i - 1);
       section.style.marginBottom = '5rem';
+      section.style.scrollMarginTop = '80px';
+
       var h2 = document.createElement('h2');
       h2.className = 'chapter-title';
       h2.textContent = t;
       section.appendChild(h2);
+      
       var div = document.createElement('div');
       div.className = 'chapter-body';
       div.innerHTML = html;
+      
+      // Автоматическое оформление подзаголовка (место и время)
+      var firstP = div.querySelector('p');
+      if (firstP) {
+        var txt = firstP.textContent.trim();
+        if (/,\s*(19[4-6][0-9]|194[6-8])/.test(txt)) {
+          firstP.className = 'subhead';
+        }
+      }
+      
       section.appendChild(div);
       book.appendChild(section);
+      
       var li = document.createElement('li');
       var a = document.createElement('a');
       a.className = 'sb-item';
