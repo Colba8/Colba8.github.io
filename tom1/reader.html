@@ -1,1 +1,180 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Том I: Второй звонок — Читалка | Дмитрий Ильин</title>
+  <link rel="icon" href="/images/51.png" type="image/png">
 
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #000; color: #E0D5B0; font-family: 'Georgia', 'Times New Roman', serif; min-height: 100vh; }
+
+    /* ШАПКА */
+    .reader-navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; justify-content: space-between; align-items: center; padding: 0.6rem 1.2rem; background: rgba(5,5,5,0.92); border-bottom: 1px solid rgba(197,160,89,0.35); }
+    .brand-back-link { display: flex; align-items: center; gap: 0.6rem; color: #C5A059; text-decoration: none; font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; }
+    .brand-back-link:hover { color: #f0d59e; }
+    .brand-flask-icon { width: 22px; height: auto; }
+    .reader-controls { display: flex; align-items: center; gap: 0.6rem; }
+    #bm-status { font-size: 0.75rem; color: #9a8f76; letter-spacing: 0.1em; }
+    .btn-control { background: transparent; border: 1px solid #C5A059; color: #C5A059; font-family: inherit; font-size: 0.75rem; letter-spacing: 0.15em; padding: 0.35rem 0.9rem; cursor: pointer; transition: all .3s; }
+    .btn-control:hover { background: #C5A059; color: #050505; }
+
+    /* КОНТЕЙНЕР */
+    .reader-container { padding-top: 3.4rem; }
+
+    /* ОГЛАВЛЕНИЕ СЛЕВА */
+    .sidebar-dates { position: fixed; top: 3.4rem; bottom: 0; left: 0; width: 280px; overflow-y: auto; background: rgba(8,7,5,0.9); border-right: 1px solid rgba(197,160,89,0.25); padding: 1.2rem 1rem 2rem; }
+    .sidebar-title { color: #C5A059; font-size: 0.8rem; letter-spacing: 0.25em; text-transform: uppercase; margin-bottom: 1rem; }
+    .date-menu-list { list-style: none; }
+    .date-menu-item { margin-bottom: 0.45rem; }
+    .date-menu-item a { color: #b7a87f; text-decoration: none; font-size: 0.85rem; line-height: 1.35; display: block; padding: 0.15rem 0.4rem; border-left: 2px solid transparent; transition: all .25s; }
+    .date-menu-item a:hover, .date-menu-item a.active { color: #f0d59e; border-left-color: #C5A059; background: rgba(197,160,89,0.08); }
+
+    /* ТЕКСТ */
+    .book-content-area { margin-left: 280px; max-width: 900px; padding: 2.5rem 1.5rem 6rem; }
+    .header-plate-wrapper { text-align: center; margin: 1rem 0 3rem; }
+    .header-plate-text { display: inline-block; color: #C5A059; border-top: 1px solid rgba(197,160,89,0.6); border-bottom: 1px solid rgba(197,160,89,0.6); padding: 0.9rem 2.2rem; font-size: 1.05rem; letter-spacing: 0.45em; text-transform: uppercase; }
+    .chapter-block { margin-bottom: 3.5rem; }
+    .novel-text { font-size: 1.25rem; line-height: 1.55; margin-bottom: 1.2rem; text-align: justify; hyphens: auto; text-indent: 1.5rem; }
+    .novel-text.no-indent { text-indent: 0; }
+    .foreign { font-style: italic; color: #d8c48f; }
+    .translation { color: #9a8f76; font-size: 0.95em; }
+    .img-inline { display: block; margin: 2.2rem auto; max-width: 100%; height: auto; border: 1px solid rgba(197,160,89,0.4); box-shadow: 0 0 25px rgba(0,0,0,0.85); }
+    .document { border: 1px solid rgba(197,160,89,0.35); background: rgba(255,255,255,0.03); padding: 1.6rem 1.8rem; margin: 2.2rem 0; font-family: 'Courier New', monospace; }
+    .doc-line { font-size: 0.95rem; line-height: 1.5; margin-bottom: 0.7rem; color: #d6cbaa; }
+    .doc-line.stamp { text-align: center; letter-spacing: 0.25em; color: #C5A059; font-weight: bold; }
+    .doc-line.dots { letter-spacing: 0.4em; }
+    .load-error { color: #a05555; border: 1px dashed #a05555; padding: 0.8rem; margin: 1rem 0; }
+
+    @media (max-width: 900px) {
+      .sidebar-dates { position: static; width: auto; height: auto; border-right: none; border-bottom: 1px solid rgba(197,160,89,0.25); }
+      .book-content-area { margin-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="reader-navbar">
+    <a href="/tom1/index.html" class="brand-back-link" title="Вернуться к афише Тома I">
+      <img src="/images/colba main bright2.png" alt="Колба" class="brand-flask-icon">
+      <span>Театр теней | Том I</span>
+    </a>
+    <div class="reader-controls">
+      <span id="bm-status"></span>
+      <button class="btn-control" onclick="saveBookmark()">🔖 Закладка</button>
+      <button class="btn-control" onclick="goToBookmark()">📍 К закладке</button>
+    </div>
+  </header>
+
+  <div class="reader-container">
+    <nav class="sidebar-dates">
+      <p class="sidebar-title">Оглавление</p>
+      <ul class="date-menu-list" id="toc"></ul>
+    </nav>
+
+    <main class="book-content-area">
+      <div class="header-plate-wrapper">
+        <div class="header-plate-text">Том I · Второй звонок</div>
+      </div>
+      <div id="book"></div>
+    </main>
+  </div>
+
+  <script>
+    /* 28 глав в порядке книги; дубль "20 - Hunt.html" не используется */
+    var FILES = [
+      'chapters/01-prologue.html',
+      'chapters/02%20-%20Night.html',
+      'chapters/03%20-%20Morning.html',
+      'chapters/04%20-%20Traviata.html',
+      'chapters/05%20-%20Shot.html',
+      'chapters/06%20-%20PlanA.html',
+      'chapters/07%20-%20Inspector.html',
+      'chapters/08%20-%20Lisbon.html',
+      'chapters/09%20-%20Transit.html',
+      'chapters/10%20-%20Formalities.html',
+      'chapters/11%20-%20Milan.html',
+      'chapters/12%20-%20Base.html',
+      'chapters/13%20-%20Malta.html',
+      'chapters/14%20-%20WestEnd.html',
+      'chapters/15%20-%20Diary.html',
+      'chapters/16%20-%20Workshop.html',
+      'chapters/17%20-%20Dossier.html',
+      'chapters/18%20-%20Invitation.html',
+      'chapters/19%20-%20Hunt.html',
+      'chapters/21%20-%20Aftermath.html',
+      'chapters/22%20-%20Geneva.html',
+      'chapters/23%20-%20Walter.html',
+      'chapters/24%20-%20Key.html',
+      'chapters/25%20-%20Tailor.html',
+      'chapters/26%20-%20Screen.html',
+      'chapters/27%20-%20Lucerne.html',
+      'chapters/28%20-%20Folder.html',
+      'chapters/29%20-%20Epilogue.html'
+    ];
+    var TITLES = [
+      'Пролог', 'НОЧЬ', 'УТРО', 'ТРАВИАТА', 'ВЫСТРЕЛ', 'ПЛАН «А»', 'ИНСПЕКТОР',
+      'ЛИССАБОН', 'ПЕРЕГОН', 'ФОРМАЛЬНОСТИ', 'МИЛАН', 'БАЗА', 'МАЛЬТА', 'ВЭСТ-ЭНД',
+      'Дневник Мастера', 'МАСТЕРСКАЯ', 'ДОСЬЕ', 'ПРИГЛАШЕНИЕ', 'ОХОТА',
+      'НОЧЬ ПОСЛЕ ОХОТЫ', 'В ЖЕНЕВУ', 'ВАЛЬТЕР', 'КЛЮЧ', 'ПОРТНОЙ', 'ШИРМА',
+      'ПОЕЗД В ЛЮЦЕРН', 'ПАПКА', 'ЭПИЛОГ'
+    ];
+
+    (function () {
+      var book = document.getElementById('book');
+      var toc = document.getElementById('toc');
+      var i = 0;
+      function next() {
+        if (i >= FILES.length) return;
+        var f = FILES[i], t = TITLES[i]; i++;
+        fetch(f).then(function (r) {
+          if (!r.ok) throw new Error(f);
+          return r.text();
+        }).then(function (html) {
+          /* убираем служебный блок --- idx / title --- */
+          html = html.replace(/^\ufeff?---[\s\S]*?---\s*\n/, '');
+          /* картинки: ../images/ -> images/ (папка тома 1) */
+          html = html.replace(/\.\.\/images\//g, 'images/');
+          var wrap = document.createElement('article');
+          wrap.className = 'chapter-block';
+          wrap.id = 'ch-' + (i - 1);
+          wrap.innerHTML = html;
+          book.appendChild(wrap);
+          var li = document.createElement('li');
+          li.className = 'date-menu-item';
+          var a = document.createElement('a');
+          a.href = '#ch-' + (i - 1);
+          a.textContent = t;
+          li.appendChild(a);
+          toc.appendChild(li);
+          next();
+        }).catch(function () {
+          var p = document.createElement('p');
+          p.className = 'load-error';
+          p.textContent = 'Глава не загрузилась: ' + f;
+          book.appendChild(p);
+          next();
+        });
+      }
+      next();
+    })();
+
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest('.date-menu-item a');
+      if (!a) return;
+      document.querySelectorAll('.date-menu-item a').forEach(function (x) { x.classList.remove('active'); });
+      a.classList.add('active');
+    });
+
+    function saveBookmark() {
+      localStorage.setItem('tom1_bm', String(window.scrollY));
+      document.getElementById('bm-status').textContent = 'закладка сохранена';
+    }
+    function goToBookmark() {
+      var y = parseInt(localStorage.getItem('tom1_bm') || '0', 10);
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
