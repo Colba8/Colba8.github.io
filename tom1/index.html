@@ -76,12 +76,11 @@ layout: null
       height: auto;
     }
 
-    /* НИЖНИЙ БЛОК: КНОПКА "ВХОД" + УВЕЛИЧЕННАЯ КОЛБА */
+    /* НИЖНИЙ БЛОК: КНОПКА "ВХОД" + КОЛБА — НА МЕСТЕ БЫВШЕЙ НАДПИСИ (СЛЕВА ВНИЗУ) */
     .bottom-action-container {
       position: absolute;
-      bottom: 10%; /* Привязано над нижней рамкой */
-      left: 50%;
-      transform: translateX(-50%);
+      bottom: 7%;
+      left: 13.7%; /* левая колонка постера, где раньше была надпись */
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -133,7 +132,7 @@ layout: null
 
     @media (max-width: 768px) {
       .top-bar { top: 1rem; left: 1rem; }
-      .bottom-action-container { bottom: 8%; }
+      .bottom-action-container { bottom: 8%; left: 1.2rem; }
       .bottom-flask-img { width: 65px; }
     }
   </style>
@@ -153,7 +152,7 @@ layout: null
     <!-- ПОСТЕР -->
     <img src="/tom1/images/64.png" alt="Том I: Второй звонок" class="poster-img">
 
-    <!-- НИЖНИЙ БЛОК: КНОПКА "ВХОД" И УВЕЛИЧЕННАЯ КОЛБА 00.png -->
+    <!-- НИЖНИЙ БЛОК: КНОПКА "ВХОД" И КОЛБА 00.png — СЛЕВА ВНИЗУ -->
     <div class="bottom-action-container">
       <a href="/tom1/reader.html" class="enter-btn">ВХОД</a>
       
