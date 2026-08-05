@@ -76,11 +76,11 @@ layout: null
       height: auto;
     }
 
-    /* КНОПКА "ВХОД" — ПОД АННОТАЦИЕЙ, ПО ОСИ ОБРАМЛЕНИЯ ЗАГОЛОВКА */
+    /* КНОПКА "ВХОД" — ПОД АННОТАЦИЕЙ, ТОЧНО ПО ОСИ ОБРАМЛЕНИЯ ЗАГОЛОВКА */
     .bottom-action-container {
       position: absolute;
-      bottom: 7%;
-      left: 25.5%; /* ось декоративного обрамления "ВТОРОЙ ЗВОНОК" */
+      bottom: 9.5%; /* поднята к нижней кромке аннотации */
+      left: 30.5%; /* ось декоративного обрамления "ВТОРОЙ ЗВОНОК" */
       transform: translateX(-50%);
       z-index: 999;
     }
@@ -122,7 +122,7 @@ layout: null
 
     @media (max-width: 768px) {
       .top-bar { top: 1rem; left: 1rem; }
-      .bottom-action-container { bottom: 6%; }
+      .bottom-action-container { bottom: 8%; }
       .stamp-flask { width: 60px; right: 1.2rem; bottom: 3%; }
     }
   </style>
@@ -142,7 +142,162 @@ layout: null
     <!-- ПОСТЕР -->
     <img src="/tom1/images/64.png" alt="Том I: Второй звонок" class="poster-img">
 
-    <!-- КНОПКА "ВХОД" — ПОД АННОТАЦИЕЙ, ПО ОСИ ОБРАМЛЕНИЯ -->
+    <!-- КНОПКА "ВХОД" — ПОД АННОТАЦИЕЙ, ТОЧНО ПО ОСИ ОБРАМЛЕНИЯ -->
+    <div class="bottom-action-container">
+      <a href="/tom1/reader.html" class="enter-btn">ВХОД</a>
+    </div>
+
+    <!-- КОЛБА-ПЕЧАТЬ ПРОЕКТА — СПРАВА ВНИЗУ, БЕЗ КЛИКА -->
+    <img src="/tom1/images/00.png" alt="Театр теней" class="stamp-flask">
+
+  </div>
+
+</body>
+</html>---
+layout: null
+---
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Том I: Второй звонок — Дмитрий Ильин. Литературный проект «Театр теней»</title>
+  <link rel="icon" href="/images/51.png" type="image/png">
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      width: 100%;
+      min-height: 100vh;
+      background-color: #050505;
+      color: #e0d5b0;
+      font-family: 'Georgia', 'Times New Roman', serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* ОСНОВНОЙ КОНТЕЙНЕР ПОСТЕРА */
+    .poster-container {
+      position: relative;
+      width: 100vw;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* ПРЯМАЯ КАРТИНКА-ПОСТЕР */
+    .poster-img {
+      max-width: 100vw;
+      max-height: 100vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    /* ВОЗВРАТ В ФОЙЕ (ВЕРХНИЙ ЛЕВЫЙ УГОЛ) */
+    .top-bar {
+      position: absolute;
+      top: 1.5rem;
+      left: 2rem;
+      z-index: 100;
+    }
+
+    .home-link {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: #C5A059;
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.9));
+    }
+
+    .home-link:hover {
+      color: #f0d59e;
+      filter: drop-shadow(0 0 8px rgba(197, 160, 89, 0.6));
+    }
+
+    .flask-icon {
+      width: 22px;
+      height: auto;
+    }
+
+    /* КНОПКА "ВХОД" — ПОД АННОТАЦИЕЙ, ТОЧНО ПО ОСИ ОБРАМЛЕНИЯ ЗАГОЛОВКА */
+    .bottom-action-container {
+      position: absolute;
+      bottom: 9.5%; /* поднята к нижней кромке аннотации */
+      left: 30.5%; /* ось декоративного обрамления "ВТОРОЙ ЗВОНОК" */
+      transform: translateX(-50%);
+      z-index: 999;
+    }
+
+    .enter-btn {
+      display: inline-block;
+      text-decoration: none;
+      background: rgba(10, 9, 7, 0.92);
+      border: 1.5px solid #C5A059;
+      color: #C5A059;
+      padding: 0.5rem 1.8rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      transition: all 0.35s ease;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+    }
+
+    .enter-btn:hover {
+      background: #C5A059;
+      color: #050505;
+      box-shadow: 0 0 20px rgba(197, 160, 89, 0.6);
+    }
+
+    /* КОЛБА — ПЕЧАТЬ ПРОЕКТА В ПРАВОМ НИЖНЕМ УГЛУ, НЕ КЛИКАЕТСЯ */
+    .stamp-flask {
+      position: absolute;
+      right: 2.5%;
+      bottom: 5%;
+      width: 90px;
+      height: auto;
+      display: block;
+      opacity: 0.95;
+      filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.35));
+      pointer-events: none;
+      z-index: 50;
+    }
+
+    @media (max-width: 768px) {
+      .top-bar { top: 1rem; left: 1rem; }
+      .bottom-action-container { bottom: 8%; }
+      .stamp-flask { width: 60px; right: 1.2rem; bottom: 3%; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="poster-container">
+
+    <!-- ВОЗВРАТ В ФОЙЕ -->
+    <header class="top-bar">
+      <a href="/index.html" class="home-link" title="Вернуться в Фойе Театра">
+        <img src="/images/colba main bright2.png" alt="Колба" class="flask-icon">
+        <span>Театр теней</span>
+      </a>
+    </header>
+
+    <!-- ПОСТЕР -->
+    <img src="/tom1/images/64.png" alt="Том I: Второй звонок" class="poster-img">
+
+    <!-- КНОПКА "ВХОД" — ПОД АННОТАЦИЕЙ, ТОЧНО ПО ОСИ ОБРАМЛЕНИЯ -->
     <div class="bottom-action-container">
       <a href="/tom1/reader.html" class="enter-btn">ВХОД</a>
     </div>
