@@ -80,41 +80,42 @@ body{
   padding: 2rem 0; display: flex; flex-direction: column; align-items: center;
 }
 .content-inner {
-  max-width: 1050px; width: 92%;
+  max-width: 720px; /* КНИЖНАЯ ШИРИНА — сужено для комфорта */
+  width: 92%;
   background: #0b0a08;
-  padding: 4rem 4.5rem;
+  padding: 3rem 3.5rem;
   box-shadow: 0 0 80px #000;
   border: 1px solid rgba(201, 169, 110, 0.1);
 }
 
 .chapter-title {
   font-family: 'Oranienbaum', serif; color: #C9A96E;
-  font-size: 2rem; text-align: center; margin: 3rem 0;
+  font-size: 2rem; text-align: center; margin: 2rem 0 2.5rem 0;
   text-transform: uppercase; letter-spacing: 0.1em;
   scroll-margin-top: 80px;
 }
 
-/* Подзаголовок (место и время) — жирный курсив */
+/* Подзаголовок (место и время) — жирный курсив, отделён от текста */
 .chapter-body .subhead {
   font-weight: bold;
   font-style: italic;
   color: #e0d5b0;
-  font-size: 1.35rem;
+  font-size: 1.25rem;
   text-align: left;
-  margin: -1.5rem 0 2rem 0;
+  margin: -1rem 0 2.5rem 0;
   padding: 0;
-  line-height: 1.4;
+  line-height: 1.5;
   text-indent: 0 !important;
 }
 
-/* Текст: без красной строки, уменьшенный межстрочник, единый размер шрифта для всего */
+/* Текст: без красной строки, плотные строки, заметный отступ между абзацами */
 .novel-text, .chapter-body p, .chapter-body .translation {
-  font-size: 1.35rem;
-  line-height: 1.65; /* уменьшенный межстрочник */
-  margin-bottom: 1.4rem;
+  font-size: 1.25rem;
+  line-height: 1.55; /* строки плотнее */
+  margin-bottom: 1.8rem; /* абзацы чётко отделены друг от друга */
   font-weight: 300;
   text-align: left;
-  text-indent: 0 !important; /* красная строка убрана */
+  text-indent: 0 !important;
   hyphens: auto;
   word-break: break-word;
   color: #e0d5b0;
@@ -138,7 +139,7 @@ body{
   box-shadow: 0 10px 30px rgba(0,0,0,0.8);
 }
 
-/* Документы: Courier жирный, плотный, без отступов */
+/* Документы: Courier жирный, плотный */
 .document {
   background: #e4dcc4 !important;
   color: #1a1713 !important;
@@ -187,9 +188,9 @@ body{
 @media(max-width: 950px) {
   .sidebar { display: none; }
   .content { margin-left: 0; }
-  .content-inner { padding: 2rem 1.2rem; width: 100%; }
+  .content-inner { padding: 1.5rem 1.2rem; width: 100%; max-width: 100%; }
   .document { padding: 1.5rem; }
-  .novel-text, .chapter-body p, .chapter-body .translation { font-size: 1.15rem; text-align: left; text-indent: 0 !important; }
+  .novel-text, .chapter-body p, .chapter-body .translation { font-size: 1.1rem; text-align: left; text-indent: 0 !important; }
   .reader-controls { bottom: 1rem; right: 1rem; }
   #bm-status { right: auto; left: 1rem; bottom: 1.5rem; }
   .top-navbar { gap: 0.8rem; }
@@ -283,13 +284,12 @@ var TITLES = [
       if (!r.ok) throw new Error(f);
       return r.text();
     }).then(function (html) {
-      // ИСПРАВЛЕНИЕ: заменяем пути к картинкам строго и без потерь
       html = html.replace(/^\ufeff?---[\s\S]*?---\s*\n/, '');
       html = html.replace(/\.\.\/images\//g, 'images/');
       
       var section = document.createElement('section');
       section.id = 'ch-' + (i - 1);
-      section.style.marginBottom = '5rem';
+      section.style.marginBottom = '4rem';
       section.style.scrollMarginTop = '80px';
 
       var h2 = document.createElement('h2');
@@ -301,11 +301,9 @@ var TITLES = [
       div.className = 'chapter-body';
       div.innerHTML = html;
       
-      // Находим первый абзац с местом/датой и превращаем его в подзаголовок
       var firstP = div.querySelector('p');
       if (firstP) {
         var txt = firstP.textContent.trim();
-        // Проверяем наличие запятой и года (1946, 1947, 1948)
         if (/,\s*(19[4-6][0-9]|194[6-8])/.test(txt)) {
           firstP.className = 'subhead';
         }
