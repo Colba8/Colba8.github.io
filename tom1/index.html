@@ -76,16 +76,12 @@ layout: null
       height: auto;
     }
 
-    /* НИЖНИЙ БЛОК: КНОПКА "ВХОД" + КОЛБА — ПРАВЕЕ И НИЖЕ ТЕКСТА АННОТАЦИИ */
+    /* КНОПКА "ВХОД" — ПОД АННОТАЦИЕЙ, ПО ОСИ ОБРАМЛЕНИЯ ЗАГОЛОВКА */
     .bottom-action-container {
       position: absolute;
-      bottom: 3%; /* опущено под последнюю строку аннотации */
-      left: 50%;
+      bottom: 7%;
+      left: 25.5%; /* ось декоративного обрамления "ВТОРОЙ ЗВОНОК" */
       transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.6rem;
       z-index: 999;
     }
 
@@ -110,31 +106,24 @@ layout: null
       box-shadow: 0 0 20px rgba(197, 160, 89, 0.6);
     }
 
-    /* КЛИКАБЕЛЬНЫЙ УВЕЛИЧЕННЫЙ ЛОГОТИП КОЛБЫ 00.png */
-    .flask-click-link {
-      display: inline-block;
-      text-decoration: none;
-      outline: none;
-      cursor: pointer;
-    }
-
-    .bottom-flask-img {
-      width: 85px; /* Увеличено до 85px */
+    /* КОЛБА — ПЕЧАТЬ ПРОЕКТА В ПРАВОМ НИЖНЕМ УГЛУ, НЕ КЛИКАЕТСЯ */
+    .stamp-flask {
+      position: absolute;
+      right: 2.5%;
+      bottom: 5%;
+      width: 90px;
       height: auto;
       display: block;
-      filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.45));
-      transition: all 0.35s ease;
-    }
-
-    .flask-click-link:hover .bottom-flask-img {
-      filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.95));
-      transform: scale(1.08);
+      opacity: 0.95;
+      filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.35));
+      pointer-events: none;
+      z-index: 50;
     }
 
     @media (max-width: 768px) {
       .top-bar { top: 1rem; left: 1rem; }
-      .bottom-action-container { bottom: 2.5%; }
-      .bottom-flask-img { width: 65px; }
+      .bottom-action-container { bottom: 6%; }
+      .stamp-flask { width: 60px; right: 1.2rem; bottom: 3%; }
     }
   </style>
 </head>
@@ -153,14 +142,13 @@ layout: null
     <!-- ПОСТЕР -->
     <img src="/tom1/images/64.png" alt="Том I: Второй звонок" class="poster-img">
 
-    <!-- НИЖНИЙ БЛОК: КНОПКА "ВХОД" И КОЛБА 00.png — ПО ЦЕНТРУ, НИЖЕ ТЕКСТА -->
+    <!-- КНОПКА "ВХОД" — ПОД АННОТАЦИЕЙ, ПО ОСИ ОБРАМЛЕНИЯ -->
     <div class="bottom-action-container">
       <a href="/tom1/reader.html" class="enter-btn">ВХОД</a>
-      
-      <a href="/tom1/reader.html" class="flask-click-link" title="Войти в читалку Тома I">
-        <img src="/tom1/images/00.png" alt="Вход в читалку" class="bottom-flask-img">
-      </a>
     </div>
+
+    <!-- КОЛБА-ПЕЧАТЬ ПРОЕКТА — СПРАВА ВНИЗУ, БЕЗ КЛИКА -->
+    <img src="/tom1/images/00.png" alt="Театр теней" class="stamp-flask">
 
   </div>
 
