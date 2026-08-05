@@ -76,11 +76,12 @@ layout: null
       height: auto;
     }
 
-    /* НИЖНИЙ БЛОК: КНОПКА "ВХОД" + КОЛБА — НА МЕСТЕ БЫВШЕЙ НАДПИСИ (СЛЕВА ВНИЗУ) */
+    /* НИЖНИЙ БЛОК: КНОПКА "ВХОД" + КОЛБА — ПРАВЕЕ И НИЖЕ ТЕКСТА АННОТАЦИИ */
     .bottom-action-container {
       position: absolute;
-      bottom: 7%;
-      left: 13.7%; /* левая колонка постера, где раньше была надпись */
+      bottom: 3%; /* опущено под последнюю строку аннотации */
+      left: 50%;
+      transform: translateX(-50%);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -106,62 +107,4 @@ layout: null
     .enter-btn:hover {
       background: #C5A059;
       color: #050505;
-      box-shadow: 0 0 20px rgba(197, 160, 89, 0.6);
-    }
-
-    /* КЛИКАБЕЛЬНЫЙ УВЕЛИЧЕННЫЙ ЛОГОТИП КОЛБЫ 00.png */
-    .flask-click-link {
-      display: inline-block;
-      text-decoration: none;
-      outline: none;
-      cursor: pointer;
-    }
-
-    .bottom-flask-img {
-      width: 85px; /* Увеличено до 85px */
-      height: auto;
-      display: block;
-      filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.45));
-      transition: all 0.35s ease;
-    }
-
-    .flask-click-link:hover .bottom-flask-img {
-      filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.95));
-      transform: scale(1.08);
-    }
-
-    @media (max-width: 768px) {
-      .top-bar { top: 1rem; left: 1rem; }
-      .bottom-action-container { bottom: 8%; left: 1.2rem; }
-      .bottom-flask-img { width: 65px; }
-    }
-  </style>
-</head>
-<body>
-
-  <div class="poster-container">
-
-    <!-- ВОЗВРАТ В ФОЙЕ -->
-    <header class="top-bar">
-      <a href="/index.html" class="home-link" title="Вернуться в Фойе Театра">
-        <img src="/images/colba main bright2.png" alt="Колба" class="flask-icon">
-        <span>Театр теней</span>
-      </a>
-    </header>
-
-    <!-- ПОСТЕР -->
-    <img src="/tom1/images/64.png" alt="Том I: Второй звонок" class="poster-img">
-
-    <!-- НИЖНИЙ БЛОК: КНОПКА "ВХОД" И КОЛБА 00.png — СЛЕВА ВНИЗУ -->
-    <div class="bottom-action-container">
-      <a href="/tom1/reader.html" class="enter-btn">ВХОД</a>
-      
-      <a href="/tom1/reader.html" class="flask-click-link" title="Войти в читалку Тома I">
-        <img src="/tom1/images/00.png" alt="Вход в читалку" class="bottom-flask-img">
-      </a>
-    </div>
-
-  </div>
-
-</body>
-</html>
+      box-shadow: 0 0 20px rgba(197,
