@@ -219,6 +219,24 @@ body{
   <main class="content">
     <article class="content-inner">
       <div id="book"></div>
+
+      <!-- ФИНАЛЬНАЯ ПЛАШКА С АВТОРСКИМИ ПРАВАМИ (в самом низу страницы) -->
+      <div id="legal-footer" style="
+        display: none;
+        margin-top: 4rem;
+        padding: 3rem 1rem 1rem 1rem;
+        border-top: 1px solid rgba(201, 169, 110, 0.15);
+        text-align: center;
+        background: transparent;
+      ">
+        <img src="images/005.png" alt="Авторские права" style="
+          max-width: 80%;
+          height: auto;
+          display: inline-block;
+          opacity: 0.6;
+        ">
+      </div>
+
     </article>
   </main>
 </div>
@@ -274,7 +292,14 @@ var TITLES = [
   var toc = document.getElementById('toc');
   var i = 0;
   function next() {
-    if (i >= FILES.length) return;
+    if (i >= FILES.length) {
+      // После загрузки всех глав показываем плашку с правами
+      var footer = document.getElementById('legal-footer');
+      if (footer) {
+        footer.style.display = 'block';
+      }
+      return;
+    }
     var f = FILES[i], t = TITLES[i]; i++;
     fetch(f).then(function (r) {
       if (!r.ok) throw new Error(f);
