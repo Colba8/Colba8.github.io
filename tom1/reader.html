@@ -181,23 +181,32 @@ body{
 
 .load-error { color: #a05555; border: 1px dashed #a05555; padding: 0.8rem; margin: 1rem 0; }
 
-/* ===== ПЛАШКА АВТОРСКИХ ПРАВ БЕЗ СЕРО-БЕЛОГО ОБРАМЛЕНИЯ ===== */
-.plate-frame{
-  position: relative;
-  width: 100%;
-  aspect-ratio: 2.6 / 1;   /* пропорции самой таблички (ширина/высота) */
-  overflow: hidden;        /* прячет белые поля картинки */
-  margin: 0;
+/* ===== ФИНАЛЬНАЯ ПЛАШКА С АВТОРСКИМИ ПРАВАМИ ===== */
+.copyright {
+  margin-top: 5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid rgba(201, 169, 110, 0.15);
+  text-align: center;
+  background: transparent;
 }
-.plate-frame img{
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  width: 113%;             /* увеличение, при котором белые края срезаются */
-  max-width: none;
-  margin: 0;
-  border: none;
-  box-shadow: none;
+.copyright p {
+  color: #C9A96E;
+  font-size: 1rem;
+  line-height: 1.7;
+  letter-spacing: 0.04em;
+  margin-bottom: 2.5rem;
+  text-align: center;
+  text-indent: 0 !important;
+}
+.copyright-flask {
+  display: block;
+  margin: 0 auto;
+  width: 160px;          /* размер колбы */
+  height: auto;
+  border: none;          /* убираем глобальную рамку */
+  box-shadow: none;      /* и тень */
+  background: transparent;
+  opacity: 0.9;
 }
 
 @media(max-width: 950px) {
@@ -212,6 +221,7 @@ body{
   .nav-link { font-size: 0.65rem; }
   .nav-logo img { height: 30px; }
   .nav-divider { height: 20px; }
+  .copyright-flask { width: 120px; }
 }
 </style>
 </head>
@@ -240,15 +250,12 @@ body{
       <div id="book"></div>
 
       <!-- ФИНАЛЬНАЯ ПЛАШКА С АВТОРСКИМИ ПРАВАМИ -->
-      <div style="
-        margin-top: 5rem;
-        padding-top: 2.5rem;
-        border-top: 1px solid rgba(201, 169, 110, 0.15);
-        text-align: center;
-      ">
-        <div class="plate-frame">
-          <img src="images/005.png" alt="Авторские права">
-        </div>
+      <div class="copyright">
+        <p>
+          Авторские права на произведение охраняются законом Российской Федерации.<br>
+          Единый номер депонирования литературного произведения в реестре: 226061100096.
+        </p>
+        <img src="images/00.png" alt="Колба" class="copyright-flask">
       </div>
 
     </article>
