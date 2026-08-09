@@ -80,7 +80,7 @@ body{
   padding: 2rem 0; display: flex; flex-direction: column; align-items: center;
 }
 .content-inner {
-  max-width: 720px; /* КНИЖНАЯ ШИРИНА — сужено для комфорта */
+  max-width: 720px;
   width: 92%;
   background: #0b0a08;
   padding: 3rem 3.5rem;
@@ -95,7 +95,6 @@ body{
   scroll-margin-top: 80px;
 }
 
-/* Подзаголовок (место и время) — жирный курсив, отделён от текста */
 .chapter-body .subhead {
   font-weight: bold;
   font-style: italic;
@@ -108,11 +107,10 @@ body{
   text-indent: 0 !important;
 }
 
-/* Текст: без красной строки, плотные строки, заметный отступ между абзацами */
 .novel-text, .chapter-body p, .chapter-body .translation {
   font-size: 1.25rem;
-  line-height: 1.55; /* строки плотнее */
-  margin-bottom: 1.8rem; /* абзацы чётко отделены друг от друга */
+  line-height: 1.55;
+  margin-bottom: 1.8rem;
   font-weight: 300;
   text-align: left;
   text-indent: 0 !important;
@@ -121,7 +119,6 @@ body{
   color: #e0d5b0;
 }
 
-/* Перевод иноязычных фраз — тот же размер шрифта, другой цвет */
 .translation {
   color: #8A7E6B;
   font-style: normal;
@@ -139,7 +136,6 @@ body{
   box-shadow: 0 10px 30px rgba(0,0,0,0.8);
 }
 
-/* Документы: Courier жирный, плотный */
 .document {
   background: #e4dcc4 !important;
   color: #1a1713 !important;
@@ -292,10 +288,13 @@ var TITLES = [
       section.style.marginBottom = '4rem';
       section.style.scrollMarginTop = '80px';
 
-      var h2 = document.createElement('h2');
-      h2.className = 'chapter-title';
-      h2.textContent = t;
-      section.appendChild(h2);
+      // ЗАГОЛОВОК ДОБАВЛЯЕМ ТОЛЬКО ДЛЯ ВСЕХ ГЛАВ, КРОМЕ ПЕРВОЙ
+      if (i - 1 !== 0) {
+        var h2 = document.createElement('h2');
+        h2.className = 'chapter-title';
+        h2.textContent = t;
+        section.appendChild(h2);
+      }
       
       var div = document.createElement('div');
       div.className = 'chapter-body';
