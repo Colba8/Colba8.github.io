@@ -181,6 +181,25 @@ body{
 
 .load-error { color: #a05555; border: 1px dashed #a05555; padding: 0.8rem; margin: 1rem 0; }
 
+/* ===== ПЛАШКА АВТОРСКИХ ПРАВ БЕЗ СЕРО-БЕЛОГО ОБРАМЛЕНИЯ ===== */
+.plate-frame{
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2.6 / 1;   /* пропорции самой таблички (ширина/высота) */
+  overflow: hidden;        /* прячет белые поля картинки */
+  margin: 0;
+}
+.plate-frame img{
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 113%;             /* увеличение, при котором белые края срезаются */
+  max-width: none;
+  margin: 0;
+  border: none;
+  box-shadow: none;
+}
+
 @media(max-width: 950px) {
   .sidebar { display: none; }
   .content { margin-left: 0; }
@@ -227,12 +246,9 @@ body{
         border-top: 1px solid rgba(201, 169, 110, 0.15);
         text-align: center;
       ">
-        <img src="images/005.png" alt="Авторские права" style="
-          max-width: 100%;
-          width: auto;
-          height: auto;
-          display: inline-block;
-        ">
+        <div class="plate-frame">
+          <img src="images/005.png" alt="Авторские права">
+        </div>
       </div>
 
     </article>
