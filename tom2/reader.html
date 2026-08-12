@@ -22,9 +22,11 @@ body{
 }
 
 .backdrop {
-  position: fixed; inset: 0;
+  position: fixed;
+  inset: 0;
   background: url('images/back.jpg') center / cover no-repeat;
-  opacity: 0.22; z-index: -1;
+  opacity: 0.22;
+  z-index: -1;
 }
 
 ::-webkit-scrollbar { width: 6px; height: 6px; }
@@ -32,8 +34,10 @@ body{
 ::-webkit-scrollbar-thumb { background: #C9A96E; border-radius: 3px; }
 
 .top-navbar {
-  position: fixed; top: 0; left: 0; right: 0; height: 60px;
-  background: #000000; border-bottom: 1px solid rgba(201, 169, 110, 0.2);
+  position: fixed;
+  top: 0; left: 0; right: 0; height: 60px;
+  background: #000000;
+  border-bottom: 1px solid rgba(201, 169, 110, 0.2);
   display: flex; justify-content: center; align-items: center;
   gap: 1.8rem; z-index: 1000;
 }
@@ -49,7 +53,8 @@ body{
 .main-layout { display: flex; margin-top: 60px; }
 
 .sidebar {
-  width: 260px; background: rgba(11, 10, 8, 0.95);
+  width: 260px;
+  background: rgba(11, 10, 8, 0.95);
   border-right: 1px solid rgba(201, 169, 110, 0.15);
   position: fixed; top: 60px; bottom: 0;
   overflow-y: auto; padding: 2rem 1rem; z-index: 100;
@@ -72,9 +77,12 @@ body{
   padding: 2rem 0; display: flex; flex-direction: column; align-items: center;
 }
 .content-inner {
-  max-width: 720px; width: 92%; background: #0b0a08;
+  max-width: 720px;
+  width: 92%;
+  background: #0b0a08;
   padding: 3rem 3.5rem;
-  box-shadow: 0 0 80px #000; border: 1px solid rgba(201, 169, 110, 0.1);
+  box-shadow: 0 0 80px #000;
+  border: 1px solid rgba(201, 169, 110, 0.1);
 }
 
 .header-plate {
@@ -84,21 +92,12 @@ body{
   box-shadow: 0 10px 30px rgba(0,0,0,0.8);
 }
 
-/* Основной текст: margin-bottom (2.4rem) > line-height (1.93rem) */
-.novel-text, .chapter-body p, .synopsis p {
-  font-size: 1.25rem;
-  line-height: 1.55;
-  margin-bottom: 2.4rem; 
-  font-weight: 300;
-  text-align: left;
-  text-indent: 0 !important;
-  hyphens: auto;
-  word-break: break-word;
-  color: #e0d5b0;
+.prologue-title {
+  font-family: 'Oranienbaum', serif; color: #C9A96E;
+  font-size: 2rem; text-align: center; margin: 2rem 0 2.5rem 0;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  scroll-margin-top: 80px;
 }
-
-/* Курсив только для синопсиса внутри 01.html */
-.synopsis { font-style: italic; }
 
 .chapter-date {
   font-family: 'Oranienbaum', serif; color: #C9A96E;
@@ -109,9 +108,38 @@ body{
 .chapter-location {
   font-weight: bold; font-style: italic; color: #e0d5b0;
   font-size: 1.25rem; text-align: left; margin: 0 0 2.5rem 0;
-  padding: 0; line-height: 1.5; text-indent: 0 !important;
+  padding: 0; line-height: 1.55; text-indent: 0 !important;
 }
 
+/* Основной текст — цвет идентичен Тому I */
+.novel-text, .chapter-body p, .synopsis p {
+  font-size: 1.25rem;
+  line-height: 1.55;
+  margin-bottom: 2.4rem;
+  font-weight: 300;
+  text-align: left;
+  text-indent: 0 !important;
+  hyphens: auto;
+  word-break: break-word;
+  color: #e0d5b0;
+}
+
+/* Синопсис пролога — курсив */
+.synopsis { font-style: italic; }
+
+/* Буквица первого абзаца главы */
+.first-paragraph::first-letter {
+  font-size: 3.8rem;
+  float: left;
+  line-height: 0.8;
+  margin-right: 0.6rem;
+  margin-top: 0.1rem;
+  color: #C9A96E;
+  font-family: 'Oranienbaum', serif;
+  font-weight: normal;
+}
+
+/* Переводы в квадратных скобках */
 .translation { color: #8A7E6B; font-style: normal; font-size: 1.1rem; }
 .translation::before { content: '['; }
 .translation::after { content: ']'; }
@@ -150,6 +178,21 @@ body{
 .letter-box h3 {
   color: #E8F0FE; font-size: 1.1rem; letter-spacing: 0.08em; margin-bottom: 1rem;
   text-transform: uppercase; font-family: 'Oranienbaum', serif;
+}
+
+.historical-note {
+  margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(201, 169, 110, 0.2);
+}
+.historical-note h2 {
+  font-family: 'Oranienbaum', serif; color: #C9A96E;
+  font-size: 1.6rem; text-align: center; margin-bottom: 2rem; letter-spacing: 0.08em;
+}
+.historical-note h3 {
+  font-family: 'Oranienbaum', serif; color: #C9A96E;
+  font-size: 1.2rem; margin: 2rem 0 1rem 0;
+}
+.historical-note p {
+  font-size: 1.15rem; line-height: 1.55; margin-bottom: 1.5rem; color: #e0d5b0;
 }
 
 .copyright {
@@ -224,13 +267,10 @@ body{
   <main class="content">
     <article class="content-inner">
       
-      <!-- Горизонтальная обложка -->
       <img src="images/plate00.png" alt="Одуванчики. Том II" class="header-plate">
       
-      <!-- Контейнер для глав (01.html загрузится сюда первым) -->
       <div id="book"></div>
 
-      <!-- ФИНАЛЬНАЯ ПЛАШКА -->
       <div class="copyright">
         <p>
           Авторские права на произведение охраняются законом Российской Федерации.<br>
@@ -318,11 +358,12 @@ var TITLES = [
     }).catch(function () {
       var p = document.createElement('p');
       p.className = 'load-error';
-      p.textContent = 'Глава не загрузилась: ' + f;
+      p.textContent = 'Файл не загрузился: ' + f;
       book.appendChild(p);
       next();
     });
   }
+  
   next();
 })();
 
