@@ -21,13 +21,10 @@ body{
   min-height:100vh;
 }
 
-/* Приглушённый фон */
 .backdrop {
-  position: fixed;
-  inset: 0;
+  position: fixed; inset: 0;
   background: url('images/back.jpg') center / cover no-repeat;
-  opacity: 0.22;
-  z-index: -1;
+  opacity: 0.22; z-index: -1;
 }
 
 ::-webkit-scrollbar { width: 6px; height: 6px; }
@@ -35,37 +32,24 @@ body{
 ::-webkit-scrollbar-thumb { background: #C9A96E; border-radius: 3px; }
 
 .top-navbar {
-  position: fixed;
-  top: 0; left: 0; right: 0; height: 60px;
-  background: #000000;
-  border-bottom: 1px solid rgba(201, 169, 110, 0.2);
+  position: fixed; top: 0; left: 0; right: 0; height: 60px;
+  background: #000000; border-bottom: 1px solid rgba(201, 169, 110, 0.2);
   display: flex; justify-content: center; align-items: center;
   gap: 1.8rem; z-index: 1000;
 }
-.nav-logo {
-  display: flex; align-items: center;
-  line-height: 0;
-}
-.nav-logo img {
-  height: 36px; width: auto; display: block;
-}
-.nav-divider {
-  display: inline-block; width: 1px; height: 28px;
-  background: rgba(201, 169, 110, 0.25);
-}
+.nav-logo { display: flex; align-items: center; line-height: 0; }
+.nav-logo img { height: 36px; width: auto; display: block; }
+.nav-divider { display: inline-block; width: 1px; height: 28px; background: rgba(201, 169, 110, 0.25); }
 .nav-link {
   color: #8A7E6B; font-size: 0.75rem; letter-spacing: 0.12em;
   text-transform: uppercase; text-decoration: none; transition: color 0.2s ease;
 }
 .nav-link:hover, .nav-link.active { color: #C9A96E; }
 
-.main-layout {
-  display: flex; margin-top: 60px;
-}
+.main-layout { display: flex; margin-top: 60px; }
 
 .sidebar {
-  width: 260px;
-  background: rgba(11, 10, 8, 0.95);
+  width: 260px; background: rgba(11, 10, 8, 0.95);
   border-right: 1px solid rgba(201, 169, 110, 0.15);
   position: fixed; top: 60px; bottom: 0;
   overflow-y: auto; padding: 2rem 1rem; z-index: 100;
@@ -88,76 +72,23 @@ body{
   padding: 2rem 0; display: flex; flex-direction: column; align-items: center;
 }
 .content-inner {
-  max-width: 720px;
-  width: 92%;
-  background: #0b0a08;
+  max-width: 720px; width: 92%; background: #0b0a08;
   padding: 3rem 3.5rem;
-  box-shadow: 0 0 80px #000;
-  border: 1px solid rgba(201, 169, 110, 0.1);
+  box-shadow: 0 0 80px #000; border: 1px solid rgba(201, 169, 110, 0.1);
 }
 
-/* Горизонтальная обложка */
 .header-plate {
-  max-width: 100%;
-  height: auto;
-  display: block;
+  max-width: 100%; height: auto; display: block;
   margin: 0 auto 3rem auto;
   border: 1px solid rgba(201, 169, 110, 0.3);
   box-shadow: 0 10px 30px rgba(0,0,0,0.8);
 }
 
-/* Заголовок ПРОЛОГ */
-.prologue-title {
-  font-family: 'Oranienbaum', serif;
-  color: #C9A96E;
-  font-size: 2rem;
-  text-align: center;
-  margin: 2rem 0 2.5rem 0;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  scroll-margin-top: 80px;
-}
-
-/* Синопсис пролога — курсив */
-.synopsis {
-  font-style: italic;
-  color: #e0d5b0;
+/* Основной текст: margin-bottom (2.4rem) > line-height (1.93rem) */
+.novel-text, .chapter-body p, .synopsis p {
   font-size: 1.25rem;
   line-height: 1.55;
-  margin-bottom: 1.8rem;
-  text-align: left;
-  text-indent: 0 !important;
-}
-
-/* Заголовок главы (дата) */
-.chapter-date {
-  font-family: 'Oranienbaum', serif;
-  color: #C9A96E;
-  font-size: 1.8rem;
-  text-align: center;
-  margin: 3rem 0 0.5rem 0;
-  letter-spacing: 0.08em;
-  scroll-margin-top: 80px;
-}
-
-/* Подзаголовок главы (место) */
-.chapter-location {
-  font-weight: bold;
-  font-style: italic;
-  color: #e0d5b0;
-  font-size: 1.25rem;
-  text-align: left;
-  margin: 0 0 2.5rem 0;
-  padding: 0;
-  line-height: 1.5;
-  text-indent: 0 !important;
-}
-
-/* Основной текст */
-.novel-text, .chapter-body p {
-  font-size: 1.25rem;
-  line-height: 1.55;
-  margin-bottom: 1.8rem;
+  margin-bottom: 2.4rem; 
   font-weight: 300;
   text-align: left;
   text-indent: 0 !important;
@@ -166,133 +97,72 @@ body{
   color: #e0d5b0;
 }
 
-/* Переводы в квадратных скобках */
-.translation {
-  color: #8A7E6B;
-  font-style: normal;
-  font-size: 1.1rem;
+/* Курсив только для синопсиса внутри 01.html */
+.synopsis { font-style: italic; }
+
+.chapter-date {
+  font-family: 'Oranienbaum', serif; color: #C9A96E;
+  font-size: 1.8rem; text-align: center; margin: 3rem 0 0.5rem 0;
+  letter-spacing: 0.08em; scroll-margin-top: 80px;
 }
+
+.chapter-location {
+  font-weight: bold; font-style: italic; color: #e0d5b0;
+  font-size: 1.25rem; text-align: left; margin: 0 0 2.5rem 0;
+  padding: 0; line-height: 1.5; text-indent: 0 !important;
+}
+
+.translation { color: #8A7E6B; font-style: normal; font-size: 1.1rem; }
 .translation::before { content: '['; }
 .translation::after { content: ']'; }
 
-/* Иностранный текст (оригинал) */
-.foreign {
-  font-style: italic;
-  color: #e0d5b0;
-}
+.foreign { font-style: italic; color: #e0d5b0; }
 
-/* Иллюстрации */
 .img-inline, img {
-  max-width: 100%; height: auto;
-  margin: 2.5rem auto; display: block;
+  max-width: 100%; height: auto; margin: 2.5rem auto; display: block;
   border: 1px solid rgba(201, 169, 110, 0.2);
   box-shadow: 0 10px 30px rgba(0,0,0,0.8);
 }
 
-/* Документы */
 .document {
-  background: #e4dcc4 !important;
-  color: #1a1713 !important;
+  background: #e4dcc4 !important; color: #1a1713 !important;
   font-family: 'Courier Prime', 'Courier New', monospace !important;
-  font-weight: bold !important;
-  padding: 2.5rem; 
-  margin: 2.5rem 0;
+  font-weight: bold !important; padding: 2.5rem; margin: 2.5rem 0;
   border-left: 5px solid #C9A96E;
   box-shadow: 0 5px 15px rgba(0,0,0,0.5), 0 20px 40px rgba(0,0,0,0.8);
   border-radius: 2px;
 }
-
 .document p {
-  color: #1a1713 !important;
-  font-family: 'Courier Prime', 'Courier New', monospace !important;
-  font-weight: bold !important;
-  font-size: 1.1rem !important;
-  line-height: 1.5 !important;
-  text-indent: 0 !important;
-  text-align: left !important;
-  margin-bottom: 1.2rem;
-  letter-spacing: -0.02em;
+  color: #1a1713 !important; font-family: 'Courier Prime', 'Courier New', monospace !important;
+  font-weight: bold !important; font-size: 1.1rem !important;
+  line-height: 1.5 !important; text-indent: 0 !important;
+  text-align: left !important; margin-bottom: 1.2rem; letter-spacing: -0.02em;
 }
 
-/* Письма */
 .letter-box {
-  background: rgba(180,205,230,0.08);
-  border: 1px solid rgba(180,205,230,0.3);
-  padding: 2rem 2.2rem;
-  margin: 2.2rem 0;
-  position: relative;
+  background: rgba(180,205,230,0.08); border: 1px solid rgba(180,205,230,0.3);
+  padding: 2rem 2.2rem; margin: 2.2rem 0; position: relative;
 }
 .letter-box p {
-  font-family: 'Marck Script', cursive;
-  font-size: 1.45rem;
-  line-height: 1.5;
-  color: #E8F0FE;
-  margin-bottom: 0.9rem;
-  text-align: left;
-  text-indent: 0 !important;
+  font-family: 'Marck Script', cursive; font-size: 1.45rem; line-height: 1.5;
+  color: #E8F0FE; margin-bottom: 0.9rem; text-align: left; text-indent: 0 !important;
 }
 .letter-box h3 {
-  color: #E8F0FE;
-  font-size: 1.1rem;
-  letter-spacing: 0.08em;
-  margin-bottom: 1rem;
-  text-transform: uppercase;
-  font-family: 'Oranienbaum', serif;
+  color: #E8F0FE; font-size: 1.1rem; letter-spacing: 0.08em; margin-bottom: 1rem;
+  text-transform: uppercase; font-family: 'Oranienbaum', serif;
 }
 
-/* Историческая справка */
-.historical-note {
-  margin-top: 4rem;
-  padding-top: 2rem;
-  border-top: 1px solid rgba(201, 169, 110, 0.2);
-}
-.historical-note h2 {
-  font-family: 'Oranienbaum', serif;
-  color: #C9A96E;
-  font-size: 1.6rem;
-  text-align: center;
-  margin-bottom: 2rem;
-  letter-spacing: 0.08em;
-}
-.historical-note h3 {
-  font-family: 'Oranienbaum', serif;
-  color: #C9A96E;
-  font-size: 1.2rem;
-  margin: 2rem 0 1rem 0;
-}
-.historical-note p {
-  font-size: 1.15rem;
-  line-height: 1.55;
-  margin-bottom: 1.5rem;
-  color: #e0d5b0;
-}
-
-/* Финальная плашка */
 .copyright {
-  margin-top: 5rem;
-  padding-top: 2.5rem;
-  border-top: 1px solid rgba(201, 169, 110, 0.15);
-  text-align: center;
-  background: transparent;
+  margin-top: 5rem; padding-top: 2.5rem;
+  border-top: 1px solid rgba(201, 169, 110, 0.15); text-align: center;
 }
 .copyright p {
-  color: #C9A96E;
-  font-size: 1rem;
-  line-height: 1.7;
-  letter-spacing: 0.04em;
-  margin-bottom: 2.5rem;
-  text-align: center;
-  text-indent: 0 !important;
+  color: #C9A96E; font-size: 1rem; line-height: 1.7; letter-spacing: 0.04em;
+  margin-bottom: 2.5rem; text-align: center; text-indent: 0 !important;
 }
 .copyright-flask {
-  display: block;
-  margin: 0 auto;
-  width: 160px;
-  height: auto;
-  border: none;
-  box-shadow: none;
-  background: transparent;
-  opacity: 0.9;
+  display: block; margin: 0 auto; width: 160px; height: auto;
+  border: none; box-shadow: none; background: transparent; opacity: 0.9;
 }
 
 .reader-controls {
@@ -300,13 +170,9 @@ body{
   display: flex; gap: 0.6rem; z-index: 1000;
 }
 .btn-control {
-  background: rgba(0,0,0,0.85);
-  border: 1px solid #C9A96E;
-  color: #C9A96E;
-  font-family: inherit;
-  font-size: 0.75rem; letter-spacing: 0.15em;
-  padding: 0.5rem 1rem; cursor: pointer;
-  transition: all .3s;
+  background: rgba(0,0,0,0.85); border: 1px solid #C9A96E; color: #C9A96E;
+  font-family: inherit; font-size: 0.75rem; letter-spacing: 0.15em;
+  padding: 0.5rem 1rem; cursor: pointer; transition: all .3s;
 }
 .btn-control:hover { background: #C9A96E; color: #0b0a08; }
 #bm-status {
@@ -321,7 +187,7 @@ body{
   .content { margin-left: 0; }
   .content-inner { padding: 1.5rem 1.2rem; width: 100%; max-width: 100%; }
   .document { padding: 1.5rem; }
-  .novel-text, .chapter-body p { font-size: 1.1rem; text-align: left; text-indent: 0 !important; }
+  .novel-text, .chapter-body p, .synopsis p { font-size: 1.1rem; text-align: left; text-indent: 0 !important; }
   .reader-controls { bottom: 1rem; right: 1rem; }
   #bm-status { right: auto; left: 1rem; bottom: 1.5rem; }
   .top-navbar { gap: 0.8rem; }
@@ -361,26 +227,7 @@ body{
       <!-- Горизонтальная обложка -->
       <img src="images/plate00.png" alt="Одуванчики. Том II" class="header-plate">
       
-      <!-- ПРОЛОГ -->
-      <section id="prologue" style="margin-bottom: 4rem;">
-        <h2 class="prologue-title">Пролог</h2>
-        
-        <!-- Иллюстрация с шахматами -->
-        <img src="images/01.jpg" alt="Шахматы" class="img-inline">
-        
-        <!-- Синопсис -->
-        <div class="synopsis">
-          <p>Второй звонок так и не прозвенел. В 1947 мир не стал безопаснее: старая бернская Сетка растворилась, уступив место жестким структурам новой эпохи.</p>
-          <p>В 1947 году скрытые оперативные каналы протянулись по оси Лондон — Париж — Марсель — Милан. За дипломатическими спорами вокруг Палестины разворачивался противоречивый израильский конфликт.</p>
-          <p>Первые заморозки Холодной войны ударили по культурным связям, превратив концертные залы и музыкантов в дипломатические инструменты: политические убийства планируются под музыку великих мастеров на подмостках великих сцен.</p>
-          <p>Фигуры на доске те же, но партия больше не принадлежит им. У каждой остался один ход. Каждый решает за себя, но решение порой принимают другие. Одуванчики – это выносливые многолетние цветы, которые каждый июнь отцветают, чтобы проснуться следующей весной.</p>
-        </div>
-        
-        <!-- Метеосправка картинкой -->
-        <img src="images/002.png" alt="Метеорологический доклад. Зима 1946-1947" class="img-inline">
-      </section>
-      
-      <!-- Основной контент глав -->
+      <!-- Контейнер для глав (01.html загрузится сюда первым) -->
       <div id="book"></div>
 
       <!-- ФИНАЛЬНАЯ ПЛАШКА -->
@@ -404,33 +251,16 @@ body{
 
 <script>
 var FILES = [
-  'chapters/1.html',
-  'chapters/2.html',
-  'chapters/3.html',
-  'chapters/4.html',
-  'chapters/5.html',
-  'chapters/6.html',
-  'chapters/7.html',
-  'chapters/8.html',
-  'chapters/9.html',
-  'chapters/10.html',
-  'chapters/11.html',
-  'chapters/12.html',
-  'chapters/13.html',
-  'chapters/14.html',
-  'chapters/15.html',
-  'chapters/16.html',
-  'chapters/17.html',
-  'chapters/18.html',
-  'chapters/19.html',
-  'chapters/20.html',
-  'chapters/21.html',
-  'chapters/22.html'
+  'chapters/01.html', 'chapters/02.html', 'chapters/03.html', 'chapters/04.html',
+  'chapters/05.html', 'chapters/06.html', 'chapters/07.html', 'chapters/08.html',
+  'chapters/09.html', 'chapters/10.html', 'chapters/11.html', 'chapters/12.html',
+  'chapters/13.html', 'chapters/14.html', 'chapters/15.html', 'chapters/16.html',
+  'chapters/17.html', 'chapters/18.html', 'chapters/19.html', 'chapters/20.html',
+  'chapters/21.html', 'chapters/22.html'
 ];
 
-// Заголовки для оглавления (даты)
 var TITLES = [
-  '5–8 января 1947', '18 января 1947', '21 января 1947', '23 января 1947',
+  'Пролог', '5–8 января 1947', '18 января 1947', '21 января 1947', '23 января 1947',
   '8 февраля 1947', '10 февраля 1947', '10 февраля 1947 (вечер)', '11 февраля 1947',
   '11 февраля 1947 (поезд)', '18 февраля 1947', 'Документ ЦРУ',
   '20 февраля 1947 (Люцерн)', '20 февраля 1947 (Берн)', '20 февраля 1947',
@@ -465,31 +295,13 @@ var TITLES = [
       section.style.marginBottom = '4rem';
       section.style.scrollMarginTop = '80px';
 
-      // Заголовок даты
-      var h2 = document.createElement('h2');
-      h2.className = 'chapter-date';
-      h2.textContent = t;
-      section.appendChild(h2);
-      
-      // Контент главы
       var div = document.createElement('div');
       div.className = 'chapter-body';
       div.innerHTML = html;
       
-      // Первый абзац — место (если содержит текст без даты)
-      var firstP = div.querySelector('p');
-      if (firstP) {
-        var txt = firstP.textContent.trim();
-        // Если первый абзац не содержит дату, делаем его подзаголовком места
-        if (!/,\s*(19[4-6][0-9]|194[6-8])/.test(txt) && txt.length < 100) {
-          firstP.className = 'chapter-location';
-        }
-      }
-      
       section.appendChild(div);
       book.appendChild(section);
       
-      // Добавляем в оглавление
       var li = document.createElement('li');
       var a = document.createElement('a');
       a.className = 'sb-item';
@@ -511,7 +323,6 @@ var TITLES = [
       next();
     });
   }
-  
   next();
 })();
 
