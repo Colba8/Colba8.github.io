@@ -1,276 +1,531 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Том II: Одуванчики — Читалка | Дмитрий Ильин</title>
-  <link rel="icon" href="/images/51.png" type="image/png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Одуванчики — Читальный зал | Дмитрий Ильин</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet">
+<link rel="icon" href="images/51.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oranienbaum&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Literatta:opsz,wght@6..72,300;6..72,400;6..72,500;6..72,600;6..72,700&family=Marck+Script&display=swap" rel="stylesheet">
 
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
 
-    body {
-      background-color: #000000;
-      color: #E0D5B0;
-      font-family: 'Georgia', 'Times New Roman', serif;
-      min-height: 100vh;
-    }
+body{
+  background:#0b0a08;
+  color:#e0d5b0;
+  font-family:'Literatta', Georgia, serif;
+  min-height:100vh;
+}
 
-    /* НЕПОДВИЖНЫЙ ПРИГЛУШЁННЫЙ ФОН */
-    .backdrop {
-      position: fixed;
-      inset: 0;
-      background: url('images/back.jpg') center / cover no-repeat;
-      opacity: 0.22;
-      z-index: -1;
-    }
+/* Приглушённый фон */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: url('images/back.jpg') center / cover no-repeat;
+  opacity: 0.22;
+  z-index: -1;
+}
 
-    /* ВЕРХНЯЯ ПАНЕЛЬ */
-    .reader-navbar {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      height: 55px;
-      background: rgba(0,0,0,0.92);
-      border-bottom: 1px solid rgba(197,160,89,0.3);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 1.5rem;
-      z-index: 1000;
-    }
-    .brand-back-link {
-      display: flex; align-items: center; gap: 0.6rem;
-      color: #C5A059; text-decoration: none;
-      font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase;
-      transition: color 0.3s;
-    }
-    .brand-back-link:hover { color: #F3E5AB; }
-    .brand-flask-icon { width: 22px; height: auto; }
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #000000; }
+::-webkit-scrollbar-thumb { background: #C9A96E; border-radius: 3px; }
 
-    .reader-controls { display: flex; align-items: center; gap: 0.8rem; }
-    .btn-control {
-      background: rgba(20,18,14,0.9);
-      border: 1px solid #C5A059;
-      color: #C5A059;
-      padding: 0.4rem 0.9rem;
-      font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
-      font-family: inherit; cursor: pointer; transition: all 0.3s;
-    }
-    .btn-control:hover { background: #C5A059; color: #050505; }
-    #bm-status { color: #8A7E6B; font-size: 0.72rem; letter-spacing: 0.08em; }
+.top-navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0; height: 60px;
+  background: #000000;
+  border-bottom: 1px solid rgba(201, 169, 110, 0.2);
+  display: flex; justify-content: center; align-items: center;
+  gap: 1.8rem; z-index: 1000;
+}
+.nav-logo {
+  display: flex; align-items: center;
+  line-height: 0;
+}
+.nav-logo img {
+  height: 36px; width: auto; display: block;
+}
+.nav-divider {
+  display: inline-block; width: 1px; height: 28px;
+  background: rgba(201, 169, 110, 0.25);
+}
+.nav-link {
+  color: #8A7E6B; font-size: 0.75rem; letter-spacing: 0.12em;
+  text-transform: uppercase; text-decoration: none; transition: color 0.2s ease;
+}
+.nav-link:hover, .nav-link.active { color: #C9A96E; }
 
-    .reader-container { display: flex; margin-top: 55px; min-height: calc(100vh - 55px); }
+.main-layout {
+  display: flex; margin-top: 60px;
+}
 
-    /* ЛЕВАЯ КОЛОНКА ДАТ */
-    .sidebar-dates {
-      width: 320px; flex-shrink: 0;
-      background: rgba(8,7,6,0.88);
-      border-right: 1px solid rgba(197,160,89,0.2);
-      padding: 1.5rem 1rem;
-      position: sticky; top: 55px;
-      height: calc(100vh - 55px);
-      overflow-y: auto;
-    }
-    .sidebar-title {
-      font-size: 0.8rem; letter-spacing: 0.2em; color: #8A7E6B;
-      text-transform: uppercase; margin-bottom: 1rem; padding-bottom: 0.5rem;
-      border-bottom: 1px solid rgba(197,160,89,0.15);
-    }
-    .date-menu-list { list-style: none; display: flex; flex-direction: column; gap: 0.35rem; }
-    .date-menu-item a {
-      display: block; color: #A0957D; text-decoration: none;
-      font-size: 0.85rem; line-height: 1.35;
-      padding: 0.45rem 0.6rem; border-left: 2px solid transparent; transition: all 0.25s;
-    }
-    .date-menu-item a:hover, .date-menu-item a.active {
-      color: #C5A059; background: rgba(197,160,89,0.06); border-left-color: #C5A059;
-    }
+.sidebar {
+  width: 260px;
+  background: rgba(11, 10, 8, 0.95);
+  border-right: 1px solid rgba(201, 169, 110, 0.15);
+  position: fixed; top: 60px; bottom: 0;
+  overflow-y: auto; padding: 2rem 1rem; z-index: 100;
+}
+.sb-title {
+  font-family: 'Oranienbaum', serif; color: #C9A96E;
+  font-size: 1.2rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(201, 169, 110, 0.2);
+}
+.sb-item {
+  display: block; width: 100%; padding: 0.6rem 0;
+  background: transparent; border: none;
+  color: #8A7E6B; text-align: left; cursor: pointer;
+  font-family: inherit; font-size: 0.85rem; text-decoration: none;
+}
+.sb-item:hover, .sb-item.active { color: #C9A96E; }
 
-    /* ПОЛЕ ТЕКСТА — ЧЁРНОЕ */
-    .book-content-area {
-      flex: 1; max-width: 880px; margin: 0 auto;
-      padding: 2.5rem 2rem 6rem;
-      background: #000000;
-    }
+.content {
+  flex: 1; margin-left: 260px;
+  padding: 2rem 0; display: flex; flex-direction: column; align-items: center;
+}
+.content-inner {
+  max-width: 720px;
+  width: 92%;
+  background: #0b0a08;
+  padding: 3rem 3.5rem;
+  box-shadow: 0 0 80px #000;
+  border: 1px solid rgba(201, 169, 110, 0.1);
+}
 
-    /* НАЧАЛЬНАЯ ПЛАШКА */
-    .header-plate-wrapper { text-align: center; margin: 0 0 3.5rem 0; }
-    .header-plate-img {
-      max-width: 100%; height: auto; display: inline-block;
-      border: 1px solid rgba(197,160,89,0.4);
-      box-shadow: 0 0 25px rgba(0,0,0,0.85);
-    }
+/* Горизонтальная обложка */
+.header-plate {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 3rem auto;
+  border: 1px solid rgba(201, 169, 110, 0.3);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+}
 
-    .chapter-block { margin-bottom: 5rem; scroll-margin-top: 80px; clear: both; }
-    .chapter-date-header { font-size: 1.35rem; font-weight: bold; color: #C5A059; letter-spacing: 0.1em; margin-bottom: 0.3rem; }
-    .chapter-location { font-size: 1rem; color: #8A7E6B; font-style: italic; margin-bottom: 2rem; }
+/* Заголовок ПРОЛОГ */
+.prologue-title {
+  font-family: 'Oranienbaum', serif;
+  color: #C9A96E;
+  font-size: 2rem;
+  text-align: center;
+  margin: 2rem 0 2.5rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  scroll-margin-top: 80px;
+}
 
-    .book-content-area p {
-      font-size: 1.25rem; line-height: 1.48; margin-bottom: 1.2rem;
-      text-indent: 0 !important; padding-left: 0 !important; margin-left: 0 !important;
-      text-align: justify; hyphens: auto;
-    }
-    .chapter-block p.first-paragraph::first-letter {
-      font-size: 3.8rem; float: left; line-height: 0.8; margin-right: 0.6rem;
-      color: #C5A059; font-family: 'Times New Roman', serif;
-    }
-    i, em { font-style: italic; color: #F0E6D2; }
-    .trans { font-style: normal; color: #A0957D; font-size: 0.95em; }
+/* Синопсис пролога — курсив */
+.synopsis {
+  font-style: italic;
+  color: #e0d5b0;
+  font-size: 1.25rem;
+  line-height: 1.55;
+  margin-bottom: 1.8rem;
+  text-align: left;
+  text-indent: 0 !important;
+}
 
-    /* ПИСЬМА */
-    .letter-box {
-      background: rgba(180,205,230,0.08);
-      border: 1px solid rgba(180,205,230,0.3);
-      padding: 2rem 2.2rem; margin: 2.2rem 0; position: relative; clear: both;
-    }
-    .letter-box p {
-      font-family: 'Marck Script', cursive;
-      font-size: 1.45rem; line-height: 1.5; color: #E8F0FE;
-      margin-bottom: 0.9rem; text-align: left; text-indent: 0 !important;
-    }
-    .letter-box h3 { color: #E8F0FE; font-size: 1.1rem; letter-spacing: 0.08em; margin-bottom: 1rem; text-transform: uppercase; }
+/* Заголовок главы (дата) */
+.chapter-date {
+  font-family: 'Oranienbaum', serif;
+  color: #C9A96E;
+  font-size: 1.8rem;
+  text-align: center;
+  margin: 3rem 0 0.5rem 0;
+  letter-spacing: 0.08em;
+  scroll-margin-top: 80px;
+}
 
-    /* ИЛЛЮСТРАЦИИ */
-    .book-illustration-wrapper { margin: 2.5rem 0; text-align: center; clear: both; }
-    .book-illustration {
-      max-width: 100%; height: auto; display: inline-block;
-      border: 1px solid rgba(197,160,89,0.4);
-      box-shadow: 0 0 25px rgba(0,0,0,0.85);
-    }
-    .img-wrap-right {
-      float: right; width: 330px; max-width: 45%; height: auto;
-      margin: 0.4rem 0 1.2rem 1.8rem; display: block;
-      border: 1px solid rgba(197,160,89,0.4); box-shadow: 0 0 20px rgba(0,0,0,0.9);
-    }
-    .img-wrap-left {
-      float: left; width: 330px; max-width: 45%; height: auto;
-      margin: 0.4rem 1.8rem 1.2rem 0; display: block;
-      border: 1px solid rgba(197,160,89,0.4); box-shadow: 0 0 20px rgba(0,0,0,0.9);
-    }
+/* Подзаголовок главы (место) */
+.chapter-location {
+  font-weight: bold;
+  font-style: italic;
+  color: #e0d5b0;
+  font-size: 1.25rem;
+  text-align: left;
+  margin: 0 0 2.5rem 0;
+  padding: 0;
+  line-height: 1.5;
+  text-indent: 0 !important;
+}
 
-    .load-error { color: #8A7E6B; font-style: italic; text-align: center; margin: 2rem 0; }
+/* Основной текст */
+.novel-text, .chapter-body p {
+  font-size: 1.25rem;
+  line-height: 1.55;
+  margin-bottom: 1.8rem;
+  font-weight: 300;
+  text-align: left;
+  text-indent: 0 !important;
+  hyphens: auto;
+  word-break: break-word;
+  color: #e0d5b0;
+}
 
-    @media (max-width: 900px) {
-      .sidebar-dates { display: none; }
-      .book-content-area { padding: 1.5rem 1rem 4rem; }
-      .book-content-area p { font-size: 1.1rem; text-align: left; }
-      .img-wrap-right, .img-wrap-left { float: none; width: 100%; max-width: 100%; margin: 1.5rem 0; }
-    }
-  </style>
+/* Переводы в квадратных скобках */
+.translation {
+  color: #8A7E6B;
+  font-style: normal;
+  font-size: 1.1rem;
+}
+.translation::before { content: '['; }
+.translation::after { content: ']'; }
+
+/* Иностранный текст (оригинал) */
+.foreign {
+  font-style: italic;
+  color: #e0d5b0;
+}
+
+/* Иллюстрации */
+.img-inline, img {
+  max-width: 100%; height: auto;
+  margin: 2.5rem auto; display: block;
+  border: 1px solid rgba(201, 169, 110, 0.2);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+}
+
+/* Документы */
+.document {
+  background: #e4dcc4 !important;
+  color: #1a1713 !important;
+  font-family: 'Courier Prime', 'Courier New', monospace !important;
+  font-weight: bold !important;
+  padding: 2.5rem; 
+  margin: 2.5rem 0;
+  border-left: 5px solid #C9A96E;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.5), 0 20px 40px rgba(0,0,0,0.8);
+  border-radius: 2px;
+}
+
+.document p {
+  color: #1a1713 !important;
+  font-family: 'Courier Prime', 'Courier New', monospace !important;
+  font-weight: bold !important;
+  font-size: 1.1rem !important;
+  line-height: 1.5 !important;
+  text-indent: 0 !important;
+  text-align: left !important;
+  margin-bottom: 1.2rem;
+  letter-spacing: -0.02em;
+}
+
+/* Письма */
+.letter-box {
+  background: rgba(180,205,230,0.08);
+  border: 1px solid rgba(180,205,230,0.3);
+  padding: 2rem 2.2rem;
+  margin: 2.2rem 0;
+  position: relative;
+}
+.letter-box p {
+  font-family: 'Marck Script', cursive;
+  font-size: 1.45rem;
+  line-height: 1.5;
+  color: #E8F0FE;
+  margin-bottom: 0.9rem;
+  text-align: left;
+  text-indent: 0 !important;
+}
+.letter-box h3 {
+  color: #E8F0FE;
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  font-family: 'Oranienbaum', serif;
+}
+
+/* Историческая справка */
+.historical-note {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(201, 169, 110, 0.2);
+}
+.historical-note h2 {
+  font-family: 'Oranienbaum', serif;
+  color: #C9A96E;
+  font-size: 1.6rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  letter-spacing: 0.08em;
+}
+.historical-note h3 {
+  font-family: 'Oranienbaum', serif;
+  color: #C9A96E;
+  font-size: 1.2rem;
+  margin: 2rem 0 1rem 0;
+}
+.historical-note p {
+  font-size: 1.15rem;
+  line-height: 1.55;
+  margin-bottom: 1.5rem;
+  color: #e0d5b0;
+}
+
+/* Финальная плашка */
+.copyright {
+  margin-top: 5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid rgba(201, 169, 110, 0.15);
+  text-align: center;
+  background: transparent;
+}
+.copyright p {
+  color: #C9A96E;
+  font-size: 1rem;
+  line-height: 1.7;
+  letter-spacing: 0.04em;
+  margin-bottom: 2.5rem;
+  text-align: center;
+  text-indent: 0 !important;
+}
+.copyright-flask {
+  display: block;
+  margin: 0 auto;
+  width: 160px;
+  height: auto;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+  opacity: 0.9;
+}
+
+.reader-controls {
+  position: fixed; bottom: 2rem; right: 2rem;
+  display: flex; gap: 0.6rem; z-index: 1000;
+}
+.btn-control {
+  background: rgba(0,0,0,0.85);
+  border: 1px solid #C9A96E;
+  color: #C9A96E;
+  font-family: inherit;
+  font-size: 0.75rem; letter-spacing: 0.15em;
+  padding: 0.5rem 1rem; cursor: pointer;
+  transition: all .3s;
+}
+.btn-control:hover { background: #C9A96E; color: #0b0a08; }
+#bm-status {
+  position: fixed; bottom: 2.5rem; right: 14rem;
+  font-size: 0.75rem; color: #8A7E6B; letter-spacing: 0.1em;
+}
+
+.load-error { color: #a05555; border: 1px dashed #a05555; padding: 0.8rem; margin: 1rem 0; }
+
+@media(max-width: 950px) {
+  .sidebar { display: none; }
+  .content { margin-left: 0; }
+  .content-inner { padding: 1.5rem 1.2rem; width: 100%; max-width: 100%; }
+  .document { padding: 1.5rem; }
+  .novel-text, .chapter-body p { font-size: 1.1rem; text-align: left; text-indent: 0 !important; }
+  .reader-controls { bottom: 1rem; right: 1rem; }
+  #bm-status { right: auto; left: 1rem; bottom: 1.5rem; }
+  .top-navbar { gap: 0.8rem; }
+  .nav-link { font-size: 0.65rem; }
+  .nav-logo img { height: 30px; }
+  .nav-divider { height: 20px; }
+  .copyright-flask { width: 120px; }
+  .chapter-date { font-size: 1.4rem; }
+}
+</style>
 </head>
 <body>
-  <div class="backdrop"></div>
 
-  <header class="reader-navbar">
-    <a href="/index.html" class="brand-back-link" title="Вернуться в Фойе Театра">
-      <img src="/images/colba main bright2.png" alt="Колба" class="brand-flask-icon">
-      <span>Театр теней | Том II</span>
-    </a>
-    <div class="reader-controls">
-      <span id="bm-status"></span>
-      <button class="btn-control" onclick="saveBookmark()">🔖 Закладка</button>
-      <button class="btn-control" onclick="goToBookmark()">📍 К закладке</button>
-    </div>
-  </header>
+<div class="backdrop"></div>
 
-  <div class="reader-container">
-    <nav class="sidebar-dates">
-      <p class="sidebar-title">Оглавление (Даты)</p>
-      <ul class="date-menu-list">
-        <li class="date-menu-item"><a href="#date-prologue">Вступление</a></li>
-        <li class="date-menu-item"><a href="#date-meteo">Метеодоклад 1946–1947</a></li>
-        <li class="date-menu-item"><a href="#date-5-jan">5–8 января 1947, Кент</a></li>
-        <li class="date-menu-item"><a href="#date-18-jan">18 января 1947, Кент</a></li>
-        <li class="date-menu-item"><a href="#date-21-jan">21 января 1947, Кент</a></li>
-        <li class="date-menu-item"><a href="#date-23-jan">23 января 1947, Кентербери</a></li>
-        <li class="date-menu-item"><a href="#date-8-feb">8 февраля 1947, Кент</a></li>
-        <li class="date-menu-item"><a href="#date-10-feb-paris">10 февраля 1947, Париж</a></li>
-        <li class="date-menu-item"><a href="#date-10-feb-bois">10 февраля 1947, Булонский лес</a></li>
-        <li class="date-menu-item"><a href="#date-11-feb-paris">11 февраля 1947, Париж</a></li>
-        <li class="date-menu-item"><a href="#date-11-feb-train">11 февраля 1947, поезд и паром</a></li>
-        <li class="date-menu-item"><a href="#date-18-feb-departure">18 февраля 1947, отъезд и паром</a></li>
-        <li class="date-menu-item"><a href="#date-18-feb-cia">18 февраля 1947, документ ЦРУ</a></li>
-        <li class="date-menu-item"><a href="#date-20-feb">20 февраля 1947, Берн и Люцерн</a></li>
-        <li class="date-menu-item"><a href="#date-march">1–20 марта 1947, Милан</a></li>
-        <li class="date-menu-item"><a href="#date-apr-may">15 апреля – 30 мая 1947</a></li>
-        <li class="date-menu-item"><a href="#date-06-jun">6 июня 1947, Милан и Марсель</a></li>
-        <li class="date-menu-item"><a href="#date-20-jun">20–23 июня 1947</a></li>
-        <li class="date-menu-item"><a href="#date-28-jun">28 июня 1947, Марсель</a></li>
-        <li class="date-menu-item"><a href="#date-15-jul">15 июля – 28 августа 1947</a></li>
-        <li class="date-menu-item"><a href="#date-sep">4–6 сентября 1947</a></li>
-        <li class="date-menu-item"><a href="#spravka">Историко-политическая справка</a></li>
-      </ul>
-    </nav>
+<nav class="top-navbar">
+  <a href="../index.html" class="nav-logo">
+    <img src="images/00.png" alt="Театр теней">
+  </a>
+  <span class="nav-divider"></span>
+  <a href="../tom1/index.html" class="nav-link">Второй звонок</a>
+  <a href="index.html" class="nav-link active">Одуванчики</a>
+  <span class="nav-divider"></span>
+  <a href="../foreigners.html" class="nav-link">Сотрудничество</a>
+  <a href="../contacts.html" class="nav-link">Контакты</a>
+</nav>
 
-    <main class="book-content-area">
-      <div class="header-plate-wrapper">
-        <img src="images/plate00.png" alt="Театр теней. Одуванчики. Том II" class="header-plate-img">
-      </div>
+<div class="main-layout">
+  <aside class="sidebar">
+    <div class="sb-title">Одуванчики</div>
+    <ul class="sb-list" id="toc"></ul>
+  </aside>
+
+  <main class="content">
+    <article class="content-inner">
+      
+      <!-- Горизонтальная обложка -->
+      <img src="images/plate00.png" alt="Одуванчики. Том II" class="header-plate">
+      
+      <!-- ПРОЛОГ -->
+      <section id="prologue" style="margin-bottom: 4rem;">
+        <h2 class="prologue-title">Пролог</h2>
+        
+        <!-- Иллюстрация с шахматами -->
+        <img src="images/01.jpg" alt="Шахматы" class="img-inline">
+        
+        <!-- Синопсис -->
+        <div class="synopsis">
+          <p>Второй звонок так и не прозвенел. В 1947 мир не стал безопаснее: старая бернская Сетка растворилась, уступив место жестким структурам новой эпохи.</p>
+          <p>В 1947 году скрытые оперативные каналы протянулись по оси Лондон — Париж — Марсель — Милан. За дипломатическими спорами вокруг Палестины разворачивался противоречивый израильский конфликт.</p>
+          <p>Первые заморозки Холодной войны ударили по культурным связям, превратив концертные залы и музыкантов в дипломатические инструменты: политические убийства планируются под музыку великих мастеров на подмостках великих сцен.</p>
+          <p>Фигуры на доске те же, но партия больше не принадлежит им. У каждой остался один ход. Каждый решает за себя, но решение порой принимают другие. Одуванчики – это выносливые многолетние цветы, которые каждый июнь отцветают, чтобы проснуться следующей весной.</p>
+        </div>
+        
+        <!-- Метеосправка картинкой -->
+        <img src="images/002.png" alt="Метеорологический доклад. Зима 1946-1947" class="img-inline">
+      </section>
+      
+      <!-- Основной контент глав -->
       <div id="book"></div>
-    </main>
-  </div>
 
-  <script>
-    var FILES = [
-      'chapters/1.html','chapters/2.html','chapters/3.html','chapters/4.html',
-      'chapters/5.html','chapters/6.html','chapters/7.html','chapters/8.html',
-      'chapters/9.html','chapters/10.html','chapters/11.html','chapters/12.html',
-      'chapters/13.html','chapters/14.html','chapters/15.html','chapters/16.html',
-      'chapters/17.html','chapters/18.html','chapters/19.html','chapters/20.html',
-      'chapters/21.html','chapters/22.html'
-    ];
+      <!-- ФИНАЛЬНАЯ ПЛАШКА -->
+      <div class="copyright">
+        <p>
+          Авторские права на произведение охраняются законом Российской Федерации.<br>
+          Единый номер депонирования литературного произведения в реестре: 226061100096.
+        </p>
+        <img src="images/00.png" alt="Колба" class="copyright-flask">
+      </div>
 
-    (function () {
-      var book = document.getElementById('book');
-      var i = 0;
-      function next() {
-        if (i >= FILES.length) {
-          if (location.hash) {
-            var el = document.querySelector(location.hash);
-            if (el) el.scrollIntoView();
-          }
-          return;
+    </article>
+  </main>
+</div>
+
+<div class="reader-controls">
+  <span id="bm-status"></span>
+  <button class="btn-control" onclick="saveBookmark()">🔖 Закладка</button>
+  <button class="btn-control" onclick="goToBookmark()">📍 К закладке</button>
+</div>
+
+<script>
+var FILES = [
+  'chapters/1.html',
+  'chapters/2.html',
+  'chapters/3.html',
+  'chapters/4.html',
+  'chapters/5.html',
+  'chapters/6.html',
+  'chapters/7.html',
+  'chapters/8.html',
+  'chapters/9.html',
+  'chapters/10.html',
+  'chapters/11.html',
+  'chapters/12.html',
+  'chapters/13.html',
+  'chapters/14.html',
+  'chapters/15.html',
+  'chapters/16.html',
+  'chapters/17.html',
+  'chapters/18.html',
+  'chapters/19.html',
+  'chapters/20.html',
+  'chapters/21.html',
+  'chapters/22.html'
+];
+
+// Заголовки для оглавления (даты)
+var TITLES = [
+  '5–8 января 1947', '18 января 1947', '21 января 1947', '23 января 1947',
+  '8 февраля 1947', '10 февраля 1947', '10 февраля 1947 (вечер)', '11 февраля 1947',
+  '11 февраля 1947 (поезд)', '18 февраля 1947', 'Документ ЦРУ',
+  '20 февраля 1947 (Люцерн)', '20 февраля 1947 (Берн)', '20 февраля 1947',
+  '1 марта 1947', '5 марта 1947', '15 марта 1947', '17 марта 1947',
+  '18 марта 1947', '19 марта 1947', '20 марта 1947', '15 апреля 1947',
+  '1 мая 1947', '17 мая 1947', '27 мая 1947', '28 мая 1947 (Ла Скала)',
+  '28 мая 1947 (реквизит)', '28 мая 1947 (отель)', '29 мая 1947', '30 мая 1947',
+  '29 мая 1947 (поезд)', '6 июня 1947 (Милан)', '6 июня 1947 (Марсель)',
+  '6 июня 1947 (письмо)', '20 июня 1947', '23 июня 1947', '28 июня 1947',
+  '4 августа 1947', '28 августа 1947', '4 сентября 1947', '5 сентября 1947',
+  '6 сентября 1947', 'Историческая справка'
+];
+
+(function () {
+  var book = document.getElementById('book');
+  var toc = document.getElementById('toc');
+  var i = 0;
+  
+  function next() {
+    if (i >= FILES.length) return;
+    var f = FILES[i], t = TITLES[i]; i++;
+    
+    fetch(f).then(function (r) {
+      if (!r.ok) throw new Error(f);
+      return r.text();
+    }).then(function (html) {
+      html = html.replace(/^\ufeff?---[\s\S]*?---\s*\n/, '');
+      html = html.replace(/\.\.\/images\//g, 'images/');
+      
+      var section = document.createElement('section');
+      section.id = 'ch-' + (i - 1);
+      section.style.marginBottom = '4rem';
+      section.style.scrollMarginTop = '80px';
+
+      // Заголовок даты
+      var h2 = document.createElement('h2');
+      h2.className = 'chapter-date';
+      h2.textContent = t;
+      section.appendChild(h2);
+      
+      // Контент главы
+      var div = document.createElement('div');
+      div.className = 'chapter-body';
+      div.innerHTML = html;
+      
+      // Первый абзац — место (если содержит текст без даты)
+      var firstP = div.querySelector('p');
+      if (firstP) {
+        var txt = firstP.textContent.trim();
+        // Если первый абзац не содержит дату, делаем его подзаголовком места
+        if (!/,\s*(19[4-6][0-9]|194[6-8])/.test(txt) && txt.length < 100) {
+          firstP.className = 'chapter-location';
         }
-        var f = FILES[i]; i++;
-        fetch(f).then(function (r) {
-          if (!r.ok) throw new Error(f);
-          return r.text();
-        }).then(function (html) {
-          var wrap = document.createElement('div');
-          wrap.innerHTML = html;
-          book.appendChild(wrap);
-          next();
-        }).catch(function () {
-          var p = document.createElement('p');
-          p.className = 'load-error';
-          p.textContent = 'Блок не загрузился: ' + f;
-          book.appendChild(p);
-          next();
-        });
       }
+      
+      section.appendChild(div);
+      book.appendChild(section);
+      
+      // Добавляем в оглавление
+      var li = document.createElement('li');
+      var a = document.createElement('a');
+      a.className = 'sb-item';
+      a.href = '#ch-' + (i - 1);
+      a.textContent = t;
+      a.onclick = function(e) {
+        document.querySelectorAll('.sb-item').forEach(function(x){x.classList.remove('active')});
+        a.classList.add('active');
+      };
+      li.appendChild(a);
+      toc.appendChild(li);
+      
       next();
-    })();
-
-    document.addEventListener('click', function (e) {
-      var a = e.target.closest('.date-menu-item a');
-      if (!a) return;
-      document.querySelectorAll('.date-menu-item a').forEach(function (x) { x.classList.remove('active'); });
-      a.classList.add('active');
+    }).catch(function () {
+      var p = document.createElement('p');
+      p.className = 'load-error';
+      p.textContent = 'Глава не загрузилась: ' + f;
+      book.appendChild(p);
+      next();
     });
+  }
+  
+  next();
+})();
 
-    function saveBookmark() {
-      localStorage.setItem('tom2_bm', String(window.scrollY));
-      document.getElementById('bm-status').textContent = 'закладка сохранена';
-    }
-    function goToBookmark() {
-      var y = parseInt(localStorage.getItem('tom2_bm') || '0', 10);
-      window.scrollTo({ top: y, behavior: 'smooth' });
-    }
-  </script>
+function saveBookmark() {
+  localStorage.setItem('tom2_bm', String(window.scrollY));
+  document.getElementById('bm-status').textContent = 'закладка сохранена';
+  setTimeout(function(){document.getElementById('bm-status').textContent=''}, 2000);
+}
+
+function goToBookmark() {
+  var y = parseInt(localStorage.getItem('tom2_bm') || '0', 10);
+  window.scrollTo({ top: y, behavior: 'smooth' });
+}
+</script>
+
 </body>
 </html>
