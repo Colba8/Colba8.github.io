@@ -18,7 +18,7 @@
       min-height: 100vh;
     }
 
-    /* ВСПОМОГАТЕЛЬНЫЕ ОКНА — СВЕРХУ */
+    /* ВСПОМОГАТЕЛЬНЫЕ ОКОШКИ — СВЕРХУ */
     .top-navbar {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -52,13 +52,8 @@
       position: relative;
       max-width: 1200px;
       margin: 80px auto 2.5rem;
-      padding: 0 1rem;
     }
-    .foyer-stage img { 
-      display: block; 
-      width: 100%; 
-      height: auto; 
-    }
+    .foyer-stage img { display: block; width: 100%; height: auto; }
 
     /* ПЛАНКА, ЗАКРЫВАЮЩАЯ ЧУЖУЮ СТРОКУ ВНУТРИ КАРТИНКИ */
     .stage-cover {
@@ -78,25 +73,11 @@
       transition: box-shadow 0.4s ease, background 0.4s ease;
     }
     .door:hover {
-      background: rgba(201,169,110,0.08);
+      background: rgba(201,169,110,0.05);
       box-shadow: 0 0 30px rgba(201,169,110,0.28), inset 0 0 18px rgba(201,169,110,0.12);
     }
-    
-    /* Левая дверь — Том 1 (пишущая машинка) */
-    #door-tom1 { 
-      left: 10.5%; 
-      top: 68%; 
-      width: 24.5%; 
-      height: 22%; 
-    }
-    
-    /* Правая дверь — Том 2 (рояль) */
-    #door-tom2 { 
-      left: 65%;   
-      top: 68%; 
-      width: 24.5%; 
-      height: 22%; 
-    }
+    #door-tom1 { left: 10.5%; top: 68%; width: 24.5%; height: 22%; }
+    #door-tom2 { left: 65%;   top: 68%; width: 24.5%; height: 22%; }
 
     /* МОДАЛЬНОЕ ОКНО КОНТАКТОВ */
     .modal-overlay {
@@ -116,13 +97,6 @@
     @media (max-width: 900px) {
       .top-navbar { gap: 0.8rem; }
       .nav-link { font-size: 0.65rem; }
-      #door-tom1 { left: 8%; top: 65%; width: 28%; height: 25%; }
-      #door-tom2 { left: 62%; top: 65%; width: 28%; height: 25%; }
-    }
-    
-    @media (max-width: 600px) {
-      #door-tom1 { left: 5%; top: 62%; width: 32%; height: 28%; }
-      #door-tom2 { left: 60%; top: 62%; width: 32%; height: 28%; }
     }
   </style>
 </head>
@@ -136,14 +110,10 @@
   </nav>
 
   <div class="foyer-stage">
-    <img src="images/tom00.png" alt="Театр теней — две истории, один мир">
+    <img src="tom2/images/tom00.png" alt="Театр теней — две истории, один мир">
     <div class="stage-cover"></div>
-    
-    <!-- Левая дверь: Том 1 (пишущая машинка) -->
-    <a class="door" id="door-tom1" href="tom1/index.html" aria-label="Том I — Второй звонок" title="Второй звонок"></a>
-    
-    <!-- Правая дверь: Том 2 (рояль) -->
-    <a class="door" id="door-tom2" href="tom2/index.html" aria-label="Том II — Одуванчики" title="Одуванчики"></a>
+    <a class="door" id="door-tom1" href="index.html" aria-label="Том I — Второй звонок"></a>
+    <a class="door" id="door-tom2" href="tom2/index.html" aria-label="Том II — Одуванчики"></a>
   </div>
 
   <div class="modal-overlay" id="contactModal">
