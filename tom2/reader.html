@@ -99,19 +99,28 @@ body{
   scroll-margin-top: 80px;
 }
 
+/* ЕДИНЫЙ СТИЛЬ ДЛЯ ДАТЫ И МЕСТА (полужирный курсив, как подзаголовок) */
+.chapter-date, .chapter-location {
+  font-weight: bold;
+  font-style: italic;
+  color: #e0d5b0;
+  font-size: 1.25rem;
+  text-align: left;
+  padding: 0;
+  line-height: 1.55;
+  text-indent: 0 !important;
+  scroll-margin-top: 80px;
+}
+
 .chapter-date {
-  font-family: 'Oranienbaum', serif; color: #C9A96E;
-  font-size: 1.8rem; text-align: center; margin: 3rem 0 0.5rem 0;
-  letter-spacing: 0.08em; scroll-margin-top: 80px;
+  margin: 3rem 0 0 0;
 }
 
 .chapter-location {
-  font-weight: bold; font-style: italic; color: #e0d5b0;
-  font-size: 1.25rem; text-align: left; margin: 0 0 2.5rem 0;
-  padding: 0; line-height: 1.55; text-indent: 0 !important;
+  margin: 0 0 2.5rem 0;
 }
 
-/* Основной текст — цвет идентичен Тому I */
+/* Основной текст */
 .novel-text, .chapter-body p, .synopsis p {
   font-size: 1.25rem;
   line-height: 1.55;
@@ -238,7 +247,7 @@ body{
   .nav-logo img { height: 30px; }
   .nav-divider { height: 20px; }
   .copyright-flask { width: 120px; }
-  .chapter-date { font-size: 1.4rem; }
+  .chapter-date, .chapter-location { font-size: 1.1rem; }
 }
 </style>
 </head>
@@ -347,10 +356,22 @@ var TITLES = [
       a.className = 'sb-item';
       a.href = '#ch-' + (i - 1);
       a.textContent = t;
+      
+      // ИСПРАВЛЕННЫЙ ОБРАБОТЧИК КЛИКА С РЕАЛЬНЫМ СКРОЛЛОМ
       a.onclick = function(e) {
+        e.preventDefault(); // Отменяем стандартный переход по ссылке
         document.querySelectorAll('.sb-item').forEach(function(x){x.classList.remove('active')});
         a.classList.add('active');
+        
+        // Находим целевой элемент и скроллим к нему с учетом высоты навигационной панели
+        var targetId = a.getAttribute('href').substring(1);
+        var target = document.getElementById(targetId);
+        if (target) {
+          var offset = target.offsetTop - 80; // 80px компенсация для фиксированной шапки
+          window.scrollTo({ top: offset, behavior: 'smooth' });
+        }
       };
+      
       li.appendChild(a);
       toc.appendChild(li);
       
