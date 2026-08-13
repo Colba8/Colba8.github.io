@@ -299,13 +299,19 @@ body{
 </div>
 
 <script>
+// ИСПРАВЛЕННЫЙ МАССИВ: теперь 44 файла соответствуют 44 разделам рукописи
 var FILES = [
   'chapters/01.html', 'chapters/02.html', 'chapters/03.html', 'chapters/04.html',
   'chapters/05.html', 'chapters/06.html', 'chapters/07.html', 'chapters/08.html',
   'chapters/09.html', 'chapters/10.html', 'chapters/11.html', 'chapters/12.html',
   'chapters/13.html', 'chapters/14.html', 'chapters/15.html', 'chapters/16.html',
   'chapters/17.html', 'chapters/18.html', 'chapters/19.html', 'chapters/20.html',
-  'chapters/21.html', 'chapters/22.html'
+  'chapters/21.html', 'chapters/22.html', 'chapters/23.html', 'chapters/24.html',
+  'chapters/25.html', 'chapters/26.html', 'chapters/27.html', 'chapters/28.html',
+  'chapters/29.html', 'chapters/30.html', 'chapters/31.html', 'chapters/32.html',
+  'chapters/33.html', 'chapters/34.html', 'chapters/35.html', 'chapters/36.html',
+  'chapters/37.html', 'chapters/38.html', 'chapters/39.html', 'chapters/40.html',
+  'chapters/41.html', 'chapters/42.html', 'chapters/43.html', 'chapters/44.html'
 ];
 
 var TITLES = [
@@ -357,17 +363,16 @@ var TITLES = [
       a.href = '#ch-' + (i - 1);
       a.textContent = t;
       
-      // ИСПРАВЛЕННЫЙ ОБРАБОТЧИК КЛИКА С РЕАЛЬНЫМ СКРОЛЛОМ
+      // Обработчик клика с реальным плавным скроллом
       a.onclick = function(e) {
-        e.preventDefault(); // Отменяем стандартный переход по ссылке
+        e.preventDefault();
         document.querySelectorAll('.sb-item').forEach(function(x){x.classList.remove('active')});
         a.classList.add('active');
         
-        // Находим целевой элемент и скроллим к нему с учетом высоты навигационной панели
         var targetId = a.getAttribute('href').substring(1);
         var target = document.getElementById(targetId);
         if (target) {
-          var offset = target.offsetTop - 80; // 80px компенсация для фиксированной шапки
+          var offset = target.offsetTop - 80;
           window.scrollTo({ top: offset, behavior: 'smooth' });
         }
       };
