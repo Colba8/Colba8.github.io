@@ -11,14 +11,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Oranienbaum&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Literatta:opsz,wght@6..72,300;6..72,400;6..72,500;6..72,600;6..72,700&family=Marck+Script&display=swap" rel="stylesheet">
 
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  background: #0b0a08;
-  color: #e0d5b0;
-  font-family: 'Literatta', Georgia, serif;
-  min-height: 100vh;
-  overflow-x: hidden;
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+
+body{
+  background:#0b0a08;
+  color:#e0d5b0;
+  font-family:'Literatta', Georgia, serif;
+  min-height:100vh;
 }
 
 .backdrop {
@@ -78,12 +78,11 @@ body {
 }
 .content-inner {
   max-width: 720px;
-  width: 100%;
+  width: 92%;
   background: #0b0a08;
   padding: 3rem 3.5rem;
   box-shadow: 0 0 80px #000;
   border: 1px solid rgba(201, 169, 110, 0.1);
-  box-sizing: border-box;
 }
 
 .header-plate {
@@ -111,8 +110,14 @@ body {
   text-indent: 0 !important;
   scroll-margin-top: 80px;
 }
-.chapter-date { margin: 3rem 0 0 0; }
-.chapter-location { margin: 0 0 2.5rem 0; }
+
+.chapter-date {
+  margin: 3rem 0 0 0;
+}
+
+.chapter-location {
+  margin: 0 0 2.5rem 0;
+}
 
 .novel-text, .chapter-body p, .synopsis p {
   font-size: 1.25rem;
@@ -258,7 +263,7 @@ body {
 
 <nav class="top-navbar">
   <a href="../index.html" class="nav-logo">
-    <img src="images/00.png" alt="Театр теней">
+    <img src="images/colba00.png" alt="Театр теней">
   </a>
   <span class="nav-divider"></span>
   <a href="../tom1/index.html" class="nav-link">Второй звонок</a>
@@ -276,8 +281,11 @@ body {
 
   <main class="content">
     <article class="content-inner">
+      
       <img src="images/plate00.png" alt="Одуванчики. Том II" class="header-plate">
+      
       <div id="book"></div>
+
       <div class="copyright">
         <p>
           Авторские права на произведение охраняются законом Российской Федерации.<br>
@@ -285,6 +293,7 @@ body {
         </p>
         <img src="images/00.png" alt="Колба" class="copyright-flask">
       </div>
+
     </article>
   </main>
 </div>
@@ -310,21 +319,6 @@ var FILES = [
   'chapters/41.html', 'chapters/42.html', 'chapters/43.html', 'chapters/44.html'
 ];
 
-var TITLES = [
-  'Пролог', '5–8 января 1947', '18 января 1947', '21 января 1947', '23 января 1947',
-  '8 февраля 1947', '10 февраля 1947', '10 февраля 1947 (вечер)', '11 февраля 1947',
-  '11 февраля 1947 (поезд)', '18 февраля 1947', 'Документ ЦРУ',
-  '20 февраля 1947 (Люцерн)', '20 февраля 1947 (Берн)', '20 февраля 1947',
-  '1 марта 1947', '5 марта 1947', '15 марта 1947', '17 марта 1947',
-  '18 марта 1947', '19 марта 1947', '20 марта 1947', '15 апреля 1947',
-  '1 мая 1947', '17 мая 1947', '27 мая 1947', '28 мая 1947 (Ла Скала)',
-  '28 мая 1947 (реквизит)', '28 мая 1947 (отель)', '29 мая 1947', '30 мая 1947',
-  '29 мая 1947 (поезд)', '6 июня 1947 (Милан)', '6 июня 1947 (Марсель)',
-  '6 июня 1947 (письмо)', '20 июня 1947', '23 июня 1947', '28 июня 1947',
-  '4 августа 1947', '28 августа 1947', '4 сентября 1947', '5 сентября 1947',
-  '6 сентября 1947', 'Историческая справка'
-];
-
 (function () {
   var book = document.getElementById('book');
   var toc = document.getElementById('toc');
@@ -332,7 +326,7 @@ var TITLES = [
   
   function next() {
     if (i >= FILES.length) return;
-    var f = FILES[i], t = TITLES[i]; i++;
+    var f = FILES[i]; i++;
     
     fetch(f).then(function (r) {
       if (!r.ok) throw new Error(f);
@@ -353,11 +347,26 @@ var TITLES = [
       section.appendChild(div);
       book.appendChild(section);
       
+      // Автоматически собираем заголовок из содержимого главы
+      var dateEl = div.querySelector('h2.chapter-date');
+      var locEl = div.querySelector('p.chapter-location');
+      var title = '';
+      if (dateEl) title = dateEl.textContent.trim();
+      if (locEl) {
+        var loc = locEl.textContent.trim();
+        if (title && loc && title !== loc) {
+          title = title + ', ' + loc;
+        } else if (!title && loc) {
+          title = loc;
+        }
+      }
+      if (!title) title = 'Глава ' + i;
+      
       var li = document.createElement('li');
       var a = document.createElement('a');
       a.className = 'sb-item';
       a.href = '#ch-' + (i - 1);
-      a.textContent = t;
+      a.textContent = title;
       
       a.onclick = function(e) {
         e.preventDefault();
