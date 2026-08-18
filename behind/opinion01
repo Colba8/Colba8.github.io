@@ -1,0 +1,253 @@
+---
+layout: null
+---
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Экспертное заключение № 447/47 — Одуванчики</title>
+<link rel="icon" href="../../images/51.png" type="image/png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  background:#0b0a08 url('../../images/62.png') no-repeat center center fixed;
+  background-size: cover;
+  color:#e0d5b0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  min-height:100vh;
+  overflow-x:hidden;
+  overflow-y:auto;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+.top-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 55px;
+  background: #000000;
+  border-bottom: 1px solid rgba(201, 169, 110, 0.15);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+  z-index: 150;
+}
+.nav-link {
+  color: #8A7E6B;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+.nav-link:hover, .nav-link.active {
+  color: #C9A96E;
+}
+.document-wrapper {
+  max-width: 900px;
+  width: 100%;
+  margin: 95px auto 4rem;
+  padding: 0 1.5rem;
+  z-index: 10;
+  animation: fadeIn 1.5s ease-out;
+}
+.paper-sheet {
+  background: #f4e4bc;
+  color: #1a1a1a;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 700;
+  font-size: 1.15rem;
+  line-height: 1.3;
+  padding: 4rem 4rem 5rem 6rem;
+  box-shadow: 0 15px 50px rgba(0,0,0,0.85);
+  position: relative;
+  border-left: 1px solid rgba(0, 0, 0, 0.05);
+}
+.paper-sheet::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.binder-hole {
+  position: absolute;
+  left: 2rem;
+  width: 16px;
+  height: 16px;
+  background: #0b0a08;
+  border-radius: 50%;
+  box-shadow: inset 2px 2px 4px rgba(0,0,0,0.6);
+}
+.hole-top { top: 15%; }
+.hole-mid { top: 50%; transform: translateY(-50%); }
+.hole-bot { bottom: 15%; }
+.doc-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+  border-bottom: 2px double #1a1a1a;
+  padding-bottom: 1rem;
+}
+.stamp-red {
+  color: #C00000;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.doc-title {
+  text-align: center;
+  font-size: 1.35rem;
+  margin-bottom: 2.5rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.doc-meta {
+  font-size: 0.95rem;
+  margin-bottom: 2.5rem;
+  padding: 1rem;
+  border: 1px solid #1a1a1a;
+  background: rgba(26, 26, 26, 0.03);
+}
+.doc-meta-line {
+  margin-bottom: 0.5rem;
+}
+.doc-section-title {
+  font-size: 1.2rem;
+  margin: 2.5rem 0 1rem;
+  text-transform: uppercase;
+  text-decoration: underline;
+}
+.doc-paragraph {
+  margin-bottom: 1.5rem;
+  text-align: justify;
+}
+.doc-list {
+  margin-bottom: 1.5rem;
+  padding-left: 2rem;
+  list-style-type: none;
+}
+.doc-list li {
+  margin-bottom: 0.8rem;
+  text-align: justify;
+}
+.doc-signature {
+  margin-top: 4rem;
+  border-top: 1px dashed #1a1a1a;
+  padding-top: 2rem;
+  text-align: right;
+}
+.doc-signature-line {
+  margin-bottom: 0.5rem;
+}
+.img-inline{max-width:100%;height:auto;margin:2rem auto;display:block;border:1px solid rgba(201,169,110,.15);box-shadow:0 4px 20px rgba(0,0,0,.4)}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(1%) scale(0.99); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@media(max-width: 768px){
+  .paper-sheet { padding: 3rem 1.5rem 3rem 3rem; }
+  .binder-hole { left: 0.8rem; width: 10px; height: 10px; }
+}
+</style>
+</head>
+<body oncontextmenu="return false;">
+
+<nav class="top-navbar">
+  <a href="../../materials.html" class="nav-link active">← Назад в архив</a>
+</nav>
+
+<div class="document-wrapper">
+  <div class="paper-sheet">
+    
+    <div class="binder-hole hole-top"></div>
+    <div class="binder-hole hole-mid"></div>
+    <div class="binder-hole hole-bot"></div>
+
+    <div class="doc-header">
+      <div>
+        <p>ГАЛЕРЕЯ УФФИЦИ — ФЛОРЕНЦИЯ</p>
+        <p>ЭКСПЕРТНОЕ ЗАКЛЮЧЕНИЕ № 447/47</p>
+      </div>
+      <div style="text-align: right;">
+        <p class="stamp-red">ПЕРЕВОД С ИТАЛЬЯНСКОГО</p>
+      </div>
+    </div>
+
+    <h2 class="doc-title">ЭКСПЕРТНОЕ ЗАКЛЮЧЕНИЕ № 447/47</h2>
+
+    <div class="doc-meta">
+      <div class="doc-meta-line"><strong>Дата:</strong> 22 сентября 1947 года</div>
+      <div class="doc-meta-line"><strong>Произведение:</strong> «Одуванчики на тёмном»</div>
+      <div class="doc-meta-line"><strong>Материал:</strong> холст, масло</div>
+      <div class="doc-meta-line"><strong>Размер:</strong> 65 × 50 см</div>
+      <div class="doc-meta-line"><strong>Происхождение:</strong> частное собрание, Швейцария</div>
+      <div class="doc-meta-line"><strong>Первоначальная атрибуция:</strong> неизвестный автор; предположительно О. Редон или французская школа конца XIX века.</div>
+    </div>
+
+    <!-- Если нужно добавить изображение картины, раскомментируйте строку ниже и укажите правильный путь к файлу -->
+    <!-- <img src="../../images/dandelions.jpg" alt="Одуванчики на тёмном" class="img-inline" loading="lazy"> -->
+
+    <h3 class="doc-section-title">I. ПРЕДМЕТ ЭКСПЕРТИЗЫ</h3>
+    <p class="doc-paragraph">На рассмотрение комиссии представлено живописное произведение «Одуванчики на тёмном», ранее не имевшее установленного авторства.</p>
+    <p class="doc-paragraph">Одновременно представлены четыре графических листа из личного альбома Хавьера Абриля Монтеро, датированные весной 1947 года и происходящие из Сан-Пеллегрино: три натурные штудии одуванчиков при различном освещении и один композиционный набросок.</p>
+    <p class="doc-paragraph">Сопоставление представленных материалов с произведением позволяет установить непосредственную связь между графическими подготовительными работами и живописным холстом.</p>
+
+    <h3 class="doc-section-title">II. КОМПОЗИЦИЯ</h3>
+    <p class="doc-paragraph">Композиция произведения неоднократно становилась предметом спора: изображено ли на холсте одно растение с двумя необычно расположенными семенными головками либо два растения, одно из которых как бы выросло из другого.</p>
+    <p class="doc-paragraph">Этот вопрос не может быть решён исключительно ботаническим наблюдением. Сам художник, по-видимому, намеренно сохранил двусмысленность изображения.</p>
+    <p class="doc-paragraph">Название произведения — <strong>«Одуванчики на тёмном»</strong> — представляет в данном отношении существенное свидетельство авторского замысла. Художник употребляет множественное число: речь идёт не об одном одуванчике, а об одуванчиках. Тем самым он не утверждает ботаническое единство изображённого растения и оставляет зрителю возможность воспринимать верхнюю и нижнюю головки как два самостоятельных состояния, две формы, связанные между собой одним движением.</p>
+    <p class="doc-paragraph">При этом стебель намеренно построен таким образом, что различие между двумя растениями и двумя состояниями одного растения остаётся неразрешимым.</p>
+    <p class="doc-paragraph">Верхняя головка сохраняет почти полную, замкнутую форму. Нижняя уже распадается: часть семян утрачена, отдельные семенные пушинки отделяются от головки и растворяются в окружающем пространстве.</p>
+    <p class="doc-paragraph">Обе формы соединены единым напряжённым движением стебля. Его изгиб не соответствует естественной пластике растения и производит впечатление внутреннего усилия — словно одна форма продолжает существовать в другой, уже изменившейся.</p>
+    <p class="doc-paragraph">Таким образом, ботаническая неопределённость является не недостатком изображения, а частью его художественной конструкции.</p>
+    <p class="doc-paragraph">Особое значение имеет тёмное пространство, окружающее изображённые формы. Оно не является нейтральным фоном. Светлые головки существуют внутри него как хрупкие, почти невесомые образования, причём нижняя, уже утратившая часть семян, постепенно теряется в темноте.</p>
+    <p class="doc-paragraph">Название <strong>«Одуванчики на тёмном»</strong> объединяет оба элемента композиции: множественность изображённых форм и тёмную среду, в которой они существуют. Оно тем самым разрешает спор о том, что именно изображено, не устраняя самой двусмысленности: это не ботаническое утверждение, а сознательно оставленная художником граница между одним и двумя, между продолжением и возникновением нового.</p>
+
+    <h3 class="doc-section-title">III. СВЯЗЬ С ОБСТОЯТЕЛЬСТВАМИ СОЗДАНИЯ</h3>
+    <p class="doc-paragraph">Согласно представленным сведениям, Хавьер Абриль Монтеро находился весной 1947 года в Сан-Пеллегрино в период лечения нервного расстройства.</p>
+    <p class="doc-paragraph">Предоставленный альбом свидетельствует, что мотив одуванчиков неоднократно привлекал внимание художника в течение этого периода. Три натурные штудии выполнены при различном освещении и показывают последовательное наблюдение одного и того же мотива. Композиционный рисунок свидетельствует о последующем сознательном преобразовании натурного материала.</p>
+    <p class="doc-paragraph">Характер произведения позволяет предположить непосредственную связь между состоянием художника в этот период и избранным им композиционным решением.</p>
+    <p class="doc-paragraph">Речь, однако, не идёт о прямом символическом изображении болезни. Психическое напряжение выражено не сюжетом, а построением формы: целостность противопоставлена распаду, устойчивость — движению, единое — множественному.</p>
+    <p class="doc-paragraph">В этом отношении особенно значимо соединение двух головок одним стеблем. Верхняя сохраняет завершённость, нижняя уже теряет её; одна форма как будто продолжает другую, одновременно оставаясь самостоятельной.</p>
+    <p class="doc-paragraph">Так возникает ощущение времени, заключённого внутри одного изображения: не последовательность двух картин, а два момента, существующие одновременно.</p>
+
+    <h3 class="doc-section-title">IV. АТРИБУЦИЯ</h3>
+    <p class="doc-paragraph">Сопоставление живописного произведения с представленными графическими материалами позволяет установить следующие совпадения:</p>
+    <ul class="doc-list">
+      <li>— характер построения стебля;</li>
+      <li>— положение и взаимное соотношение двух семенных головок;</li>
+      <li>— направление отдельных групп семян;</li>
+      <li>— особенности изображения листьев;</li>
+      <li>— характер линий и штрихов в подготовительных рисунках;</li>
+      <li>— последовательность композиционных изменений, отражённая в набросках и в живописном слое.</li>
+    </ul>
+    <p class="doc-paragraph">Совокупность этих признаков свидетельствует о непосредственном происхождении живописного произведения из представленного подготовительного материала.</p>
+    <p class="doc-paragraph">Первоначальная атрибуция произведения О. Редону либо французской школе конца XIX века не подтверждается.</p>
+    <p class="doc-paragraph">Комиссия считает установленным авторство:</p>
+    <p class="doc-paragraph" style="text-align: center; font-size: 1.25rem; margin: 2rem 0;"><strong>Хавьер Абриль Монтеро<br>(Javier Abril Montero)</strong></p>
+    <p class="doc-paragraph" style="text-align: center;"><strong>Название:</strong> «Одуванчики на тёмном»<br><strong>Дата создания:</strong> 1947 год<br><strong>Техника:</strong> масло, холст.</p>
+    <p class="doc-paragraph">Представленные графические листы признаются подготовительными материалами к данному произведению и подлежат сохранению вместе с соответствующей регистрационной документацией.</p>
+    <p class="doc-paragraph">Настоящая атрибуция может быть использована при внесении произведения в каталоги и справочные издания.</p>
+
+    <div class="doc-signature">
+      <p class="doc-signature-line"><strong>Флоренция, 22 сентября 1947 года</strong></p>
+      <p class="doc-signature-line" style="margin-top: 2rem;">Prof. Dott. A. Venturi<br><em>Galleria degli Uffizi</em></p>
+      <p class="doc-signature-line" style="margin-top: 1.5rem;">Dott. L. Berti<br><em>Soprintendenza alle Gallerie di Firenze</em></p>
+      <p class="doc-signature-line" style="margin-top: 1.5rem; font-size: 0.95rem;"><strong>Печать:</strong> Galleria degli Uffizi — Firenze</p>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
