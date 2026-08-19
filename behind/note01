@@ -140,6 +140,14 @@ body{
   margin-bottom: 0.8rem;
   text-align: justify;
 }
+.doc-footer {
+  margin-top: 3.5rem;
+  border-top: 1px dashed #1a1a1a;
+  padding-top: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.95rem;
+}
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(1%) scale(0.99); }
   to { opacity: 1; transform: translateY(0) scale(1); }
@@ -147,6 +155,7 @@ body{
 @media(max-width: 768px){
   .paper-sheet { padding: 3rem 1.5rem 3rem 3rem; }
   .binder-hole { left: 0.8rem; width: 10px; height: 10px; }
+  .doc-footer { flex-direction: column; gap: 1rem; }
 }
 </style>
 </head>
@@ -155,6 +164,7 @@ body{
 <nav class="top-navbar">
   <a href="../../materials.html" class="nav-link active">← Назад в архив</a>
 </nav>
+
 <div class="document-wrapper">
   <div class="paper-sheet">
     
@@ -229,5 +239,22 @@ body{
       <li><strong>Г) Блокировка усиления позиций Аргентины</strong>, дискредитация руководства страны по линии германского следа.</li>
     </ul>
 
-    <h3 class="doc-section-title">4. Краткосрочное планирование: Парижские мирные договоры</h3>
-    <p class="doc-paragraph">Пари
+    <h3 class="doc-section-title">4. КРАТКОСРОЧНОЕ ПЛАНИРОВАНИЕ: ПАРИЖСКИЕ МИРНЫЕ ДОГОВОРЫ</h3>
+    <p class="doc-paragraph">Парижский процесс подведения итогов Второй мировой войны выходит на финальную стадию. Завершение работы Совета министров иностранных дел в Нью-Йорке фиксирует окончательные тексты мирных договоров с Италией, Румынией, Венгрией, Болгарией и Финляндией. Подписание, назначенное на 10 февраля 1947 года в Париже, неизбежно спровоцирует масштабную перегруппировку капитала и ускоренный вывод серых активов из европейских юрисдикций.</p>
+    <p class="doc-paragraph">4.1. В срок до 1 февраля 1947 года ожидать максимальной активности держателей счетов, подпадающих под репарационные и компенсационные обязательства, по переводу депозитов в альпийские банковские ячейки и офшорные структуры Южной Америки.</p>
+    <p class="doc-paragraph">4.2. Оперативная задача Сетки — обеспечить плотный контроль за финансовыми агентами итальянских и венгерских промышленников в Женеве и Берне, задействовать резервную сеть для перехвата каналов вывода средств и фиксации компрометирующих связей.</p>
+
+    <div class="doc-footer">
+      <div>
+        <p>Составитель: «Мастер»</p>
+        <p>Рассылка: Экз. № 1 — в архив Сетки</p>
+      </div>
+      <div style="text-align: right;">
+        <p class="handwritten-blue">Утверждено. В работу. М.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
