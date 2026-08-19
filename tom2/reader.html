@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Одуванчики — Читальный зал | Дмитрий Ильин</title>
 
-<link rel="icon" href="images/51.png" type="image/png">
+<link rel="icon" href="/images/51.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oranienbaum&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Literatta:opsz,wght@6..72,300;6..72,400;6..72,500;6..72,600;6..72,700&family=Marck+Script&display=swap" rel="stylesheet">
@@ -24,7 +24,7 @@ body{
 .backdrop {
   position: fixed;
   inset: 0;
-  background: url('images/back.jpg') center / cover no-repeat;
+  background: url('/tom2/images/back.jpg') center / cover no-repeat;
   opacity: 0.22;
   z-index: -1;
 }
@@ -262,15 +262,15 @@ body{
 <div class="backdrop"></div>
 
 <nav class="top-navbar">
-  <a href="../index.html" class="nav-logo">
-    <img src="images/colba00.png" alt="Театр теней">
+  <a href="/index.html" class="nav-logo" title="Главная страница">
+    <img src="/tom2/images/colba00.png" alt="Театр теней">
   </a>
   <span class="nav-divider"></span>
-  <a href="../tom1/index.html" class="nav-link">Второй звонок</a>
-  <a href="index.html" class="nav-link active">Одуванчики</a>
-  <span class="nav-divider"></span>
-  <a href="../foreigners.html" class="nav-link">Сотрудничество</a>
-  <a href="../contacts.html" class="nav-link">Контакты</a>
+  <a href="/index.html" class="nav-link">Главная</a>
+  <a href="/tom1/index.html" class="nav-link">Второй звонок</a>
+  <a href="/tom2/index.html" class="nav-link active">Одуванчики</a>
+  <a href="/behind/" class="nav-link">За кулисами</a>
+  <a href="/foreigners.html" class="nav-link">Сотрудничество</a>
 </nav>
 
 <div class="main-layout">
@@ -282,7 +282,7 @@ body{
   <main class="content">
     <article class="content-inner">
       
-      <img src="images/plate00.png" alt="Одуванчики. Том II" class="header-plate">
+      <img src="/tom2/images/plate00.png" alt="Одуванчики. Том II" class="header-plate">
       
       <div id="book"></div>
 
@@ -291,7 +291,7 @@ body{
           Авторские права на произведение охраняются законом Российской Федерации.<br>
           Единый номер депонирования литературного произведения в реестре: 226061100096.
         </p>
-        <img src="images/00.png" alt="Колба" class="copyright-flask">
+        <img src="/tom2/images/00.png" alt="Колба" class="copyright-flask">
       </div>
 
     </article>
@@ -333,7 +333,7 @@ var FILES = [
       return r.text();
     }).then(function (html) {
       html = html.replace(/^\ufeff?---[\s\S]*?---\s*\n/, '');
-      html = html.replace(/\.\.\/images\//g, 'images/');
+      html = html.replace(/(?:\.\.\/)?images\//g, '/tom2/images/');
       
       var section = document.createElement('section');
       section.id = 'ch-' + (i - 1);
