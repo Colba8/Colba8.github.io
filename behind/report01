@@ -154,6 +154,7 @@ body{
   margin-bottom: 0.5rem;
   text-transform: uppercase;
 }
+.img-inline{max-width:100%;height:auto;margin:2rem auto;display:block;border:1px solid rgba(201,169,110,.15);box-shadow:0 4px 20px rgba(0,0,0,.4)}
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(1%) scale(0.99); }
   to { opacity: 1; transform: translateY(0) scale(1); }
@@ -197,6 +198,8 @@ body{
 
     <p class="doc-paragraph">Товарищ Молотов,</p>
     <p class="doc-paragraph">Довожу до Вашего сведения результаты культурно-дипломатических мероприятий, проведённых посольством в рамках подготовки и проведения церемонии подписания мирных договоров с бывшими странами-сателлитами Германии, состоявшейся 10 февраля с.г. в Елисейском дворце.</p>
+
+    <img src="../../images/01.png" alt="Докладная записка № 198/с" class="img-inline" loading="lazy">
 
     <h3 class="doc-section-title">I. Дипломатический приём 10 февраля</h3>
     <p class="doc-paragraph">Поставленная задача — обеспечить достойное представительство Советского Союза на дипломатическом приёме в Елисейском дворце, организованном Правительством Французской Республики в честь подписания мирных договоров, — достигнута в полном объёме.</p>
