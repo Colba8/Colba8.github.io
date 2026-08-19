@@ -7,11 +7,11 @@ layout: null
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Досье: Хавьер Абриль Монтеро — Театр теней</title>
-<link rel="icon" href="../../images/51.png" type="image/png">
+<link rel="icon" href="/images/51.png" type="image/png">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{
-  background:#0b0a08 url('../../images/62.png') no-repeat center center fixed;
+  background:#0b0a08 url('/images/62.png') no-repeat center center fixed;
   background-size: cover;
   color:#e0d5b0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -170,7 +170,7 @@ body{
 <body oncontextmenu="return false;">
 
 <nav class="top-navbar">
-  <a href="../../materials.html" class="nav-link active">← Назад в архив</a>
+  <a href="/behind/" class="nav-link active">← Назад в архив</a>
 </nav>
 
 <div class="document-wrapper">
@@ -194,7 +194,7 @@ body{
     <p class="doc-subtitle">Внутреннее обозначение: «Мастер»</p>
 
     <div class="doc-photo-container">
-      <img src="tom2/images/April.png" alt="Хавьер Абриль Монтеро" class="doc-photo">
+      <img src="/tom2/images/63.png" alt="Хавьер Абриль Монтеро" class="doc-photo">
     </div>
 
     <h3 class="doc-section-title">Биография</h3>
