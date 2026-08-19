@@ -1,18 +1,3 @@
-Вы абсолютно правы. Если фон — это фотография (даже очень темная), а текст — просто слой поверх, то при любом изменении яркости экрана или в другом браузере контраст «поплывет». Текст может слиться с тенями на портьере или, наоборот, выглядеть как наклейка.
-
-**Единственное профессиональное решение:**
-Сделать заголовок **«ЗА КУЛИСАМИ»** частью самого изображения `085.png`. То есть, чтобы дизайнер (или вы в графическом редакторе) вписал этот золотой текст прямо в картинку фона, учитывая освещение, тени и перспективу занавеса. Тогда это будет единый художественный объект, а не «текст на фоне».
-
-Поскольку я не могу редактировать ваши PNG-файлы, я подготовил код, который **максимально адаптирован** под использование такой составной картинки.
-
-В этом варианте:
-1.  **Заголовок убран из HTML.** Мы предполагаем, что он уже есть на картинке `tom2/images/085.png`.
-2.  **Добавлен верхний отступ (`padding-top`)**, чтобы контент начинался ниже заголовка на картинке.
-3.  **Колбы и рамки** остались графическими (как мы договорились ранее), чтобы сохранить стиль.
-
-Вот код для `behind/index.html`:
-
-```html
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -21,6 +6,7 @@
     <title>За кулисами — Театр теней</title>
     <link rel="icon" href="../images/51.png" type="image/png">
     
+    <!-- Шрифты -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Literatta:opsz,wght@6..72,300;400;500&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
@@ -39,15 +25,22 @@
 
         body {
             background-color: var(--bg-black);
-            /* Используем новую картинку 085.png как единый фон */
-            background-image: url('../tom2/images/085.png');
+            /* Чистый фон с портьерой */
+            background-image: url('../tom2/images/084.png');
             background-size: cover;
-            background-position: center top; /* Важно: центрируем по верху, где заголовок */
+            background-position: left center;
             background-attachment: fixed;
             color: var(--ivory);
             font-family: var(--font-body);
             min-height: 100vh;
             overflow-x: hidden;
+        }
+
+        /* Затемнение правой части для читаемости */
+        .overlay {
+            position: fixed; top: 0; right: 0; bottom: 0; width: 70%;
+            background: linear-gradient(to right, rgba(5,5,5,0) 0%, rgba(5,5,5,0.95) 20%, #050505 100%);
+            pointer-events: none; z-index: 1;
         }
 
         .top-navbar {
@@ -66,26 +59,32 @@
 
         .container {
             max-width: 1100px; margin: 0 auto; 
-            /* Большой отступ сверху, чтобы контент не наезжал на заголовок на картинке */
-            padding: 350px 20px 60px; 
+            padding: 120px 20px 60px; 
             position: relative; z-index: 10;
         }
 
-        /* Декоративный разделитель под заголовком (если его нет на картинке) */
+        /* ЗАГОЛОВОК-КАРТИНКА */
+        .page-header { text-align: center; margin-bottom: 4rem; }
+        .title-image {
+            max-width: 800px; width: 90%; height: auto; 
+            display: block; margin: 0 auto 1.5rem;
+            filter: drop-shadow(0 4px 15px rgba(0,0,0,0.8));
+        }
+        
         .divider-line {
             display: flex; align-items: center; justify-content: center; gap: 1rem;
-            color: var(--gold); opacity: 0.8; margin-bottom: 4rem;
+            color: var(--gold); opacity: 0.6; margin-top: 1rem;
         }
         .line { width: 60px; height: 1px; background: var(--gold); }
         .diamond { width: 8px; height: 8px; transform: rotate(45deg); border: 1px solid var(--gold); }
 
-        /* === БЛОК "О ПРОЕКТЕ" === */
+        /* БЛОК О ПРОЕКТЕ */
         .intro-section {
-            background: rgba(5, 5, 5, 0.85); /* Более плотный фон для читаемости */
+            background: rgba(5, 5, 5, 0.85);
             border: 1px solid rgba(201,169,110,0.15);
             padding: 3rem 2rem; margin-bottom: 3rem;
             text-align: center; backdrop-filter: blur(3px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.6);
         }
         .flasks-row { display: flex; justify-content: center; gap: 4rem; margin-bottom: 2rem; }
         .flask-btn {
@@ -113,7 +112,7 @@
             font-size: 1.4rem; margin-bottom: 1rem; font-weight: 400; letter-spacing: 0.05em;
         }
 
-        /* === СЕТКА ДОКУМЕНТОВ === */
+        /* СЕТКА ДОКУМЕНТОВ (Двойные рамки) */
         .docs-grid {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem; margin-bottom: 4rem;
@@ -151,7 +150,7 @@
         }
         .doc-link:hover { color: var(--gold); border-bottom-color: var(--gold); }
 
-        /* === БЛОК "ДЕЙСТВУЮЩИЕ ЛИЦА" === */
+        /* БЛОК ДЕЙСТВУЮЩИХ ЛИЦ */
         .cast-section { text-align: center; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(201,169,110,0.1); }
         .cast-title { font-family: var(--font-head); color: var(--gold); font-size: 1.8rem; margin-bottom: 3rem; letter-spacing: 0.1em; }
         .cast-row { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
@@ -173,7 +172,7 @@
         .cast-role { color: var(--taupe); font-size: 0.8rem; letter-spacing: 0.05em; }
 
         @media (max-width: 768px) {
-            .container { padding-top: 250px; } /* Меньше отступ на мобильных */
+            .container { padding-top: 100px; }
             .flasks-row { gap: 2rem; }
             .cast-row { gap: 1rem; }
             .cast-member { width: 45%; }
@@ -182,6 +181,9 @@
     </style>
 </head>
 <body>
+
+    <!-- Затемняющий слой справа -->
+    <div class="overlay"></div>
 
     <nav class="top-navbar">
         <a href="../index.html" class="nav-link">Главная</a>
@@ -194,15 +196,18 @@
 
     <div class="container">
         
-        <!-- Заголовок теперь часть фона (tom2/images/085.png) -->
-        <!-- Оставляем только декоративный разделитель, если он нужен визуально -->
-        <div class="divider-line">
-            <div class="line"></div>
-            <div class="diamond"></div>
-            <div class="line"></div>
-        </div>
+        <!-- Заголовок-картинка -->
+        <header class="page-header">
+            <img src="../images/behind-title.png" alt="За кулисами" class="title-image">
+            
+            <div class="divider-line">
+                <div class="line"></div>
+                <div class="diamond"></div>
+                <div class="line"></div>
+            </div>
+        </header>
 
-        <!-- БЛОК О ПРОЕКТЕ -->
+        <!-- Блок О проекте -->
         <section class="intro-section">
             <div class="flasks-row">
                 <button class="flask-btn active" onclick="showIntro('pitch', this)">
@@ -233,7 +238,7 @@
             </div>
         </section>
 
-        <!-- СЕТКА ДОКУМЕНТОВ -->
+        <!-- Сетка документов -->
         <div class="docs-grid">
             <div class="doc-card">
                 <h3 class="card-title">Историческая справка</h3>
@@ -267,7 +272,7 @@
             </div>
         </div>
 
-        <!-- БЛОК ДЕЙСТВУЮЩИХ ЛИЦ -->
+        <!-- Блок Действующих лиц -->
         <section class="cast-section">
             <h2 class="cast-title">Действующие лица</h2>
             <div class="cast-row">
@@ -336,4 +341,3 @@
     </script>
 </body>
 </html>
-```
