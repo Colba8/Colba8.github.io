@@ -42,12 +42,15 @@
       display: block;
     }
 
-    /* ВОЗВРАТ В ФОЙЕ (ВЕРХНИЙ ЛЕВЫЙ УГОЛ) */
+    /* ВЕРХНЯЯ НАВИГАЦИЯ (ВЕРХНИЙ ЛЕВЫЙ УГОЛ) */
     .top-bar {
       position: absolute;
       top: 1.5rem;
       left: 2rem;
       z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
     }
 
     .home-link {
@@ -71,6 +74,22 @@
     .flask-icon {
       width: 22px;
       height: auto;
+    }
+
+    /* ССЫЛКА НА ЗА КУЛИСАМИ */
+    .behind-link {
+      color: #8A7E6B;
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.9));
+    }
+
+    .behind-link:hover {
+      color: #C5A059;
+      filter: drop-shadow(0 0 8px rgba(197, 160, 89, 0.6));
     }
 
     /* КНОПКА "ВХОД" — ПОД АННОТАЦИЕЙ, ТОЧНО ПО ОСИ ОБРАМЛЕНИЯ ЗАГОЛОВКА */
@@ -118,9 +137,10 @@
     }
 
     @media (max-width: 768px) {
-      .top-bar { top: 1rem; left: 1rem; }
+      .top-bar { top: 1rem; left: 1rem; gap: 1rem; }
       .bottom-action-container { bottom: 8%; }
       .stamp-flask { width: 60px; right: 1.2rem; bottom: 3%; }
+      .home-link span, .behind-link { font-size: 0.7rem; }
     }
   </style>
 </head>
@@ -128,12 +148,13 @@
 
   <div class="poster-container">
 
-    <!-- ВОЗВРАТ В ФОЙЕ -->
+    <!-- ВЕРХНЯЯ НАВИГАЦИЯ -->
     <header class="top-bar">
       <a href="/index.html" class="home-link" title="Вернуться в Фойе Театра">
         <img src="/images/colba main bright2.png" alt="Колба" class="flask-icon">
         <span>Театр теней</span>
       </a>
+      <a href="/behind.html" class="behind-link" title="За кулисами проекта">За кулисами</a>
     </header>
 
     <!-- ПОСТЕР -->
