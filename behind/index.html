@@ -81,9 +81,66 @@ body{
 .behind-text {
   font-size: 1.25rem;
   line-height: 1.6;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   font-weight: 300;
   color: #e0d5b0;
+  text-align: center;
+}
+
+/* Блок архива и досье */
+.archive-section {
+  margin-top: 2rem;
+}
+.archive-title {
+  font-family: 'Oranienbaum', serif;
+  color: #C9A96E;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-bottom: 1px solid rgba(201, 169, 110, 0.2);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+.dossier-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.2rem;
+}
+.dossier-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.2rem 1.5rem;
+  background: rgba(201, 169, 110, 0.03);
+  border: 1px solid rgba(201, 169, 110, 0.15);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.dossier-card:hover {
+  background: rgba(201, 169, 110, 0.08);
+  border-color: #C9A96E;
+  transform: translateY(-2px);
+}
+.dossier-tag {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.75rem;
+  color: #8A7E6B;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.4rem;
+}
+.dossier-name {
+  font-family: 'Oranienbaum', serif;
+  font-size: 1.3rem;
+  color: #e0d5b0;
+  margin-bottom: 0.2rem;
+}
+.dossier-card:hover .dossier-name {
+  color: #C9A96E;
+}
+.dossier-sub {
+  font-size: 0.9rem;
+  color: #8A7E6B;
+  font-style: italic;
 }
 
 /* Финальная плашка */
@@ -117,6 +174,7 @@ body{
   .page-title { font-size: 1.8rem; }
   .behind-text { font-size: 1.1rem; }
   .copyright-flask { width: 120px; }
+  .dossier-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -141,6 +199,25 @@ body{
     <div class="behind-text">
       <p>Материалы, черновики, архивные документы и заметки к роману.</p>
     </div>
+
+    <section class="archive-section">
+      <h2 class="archive-title">Действующие лица и досье</h2>
+      <div class="dossier-grid">
+        
+        <a href="/tom1/khozyain.html" class="dossier-card">
+          <span class="dossier-tag">Том 1 / Раздел 4.1</span>
+          <span class="dossier-name">Хозяин</span>
+          <span class="dossier-sub">Личное дело и архивные материалы</span>
+        </a>
+
+        <a href="/tom2/master.html" class="dossier-card">
+          <span class="dossier-tag">Том 2 / Раздел 4.4</span>
+          <span class="dossier-name">Хавьер Абриль Монтеро</span>
+          <span class="dossier-sub">Внутреннее обозначение: «Мастер»</span>
+        </a>
+
+      </div>
+    </section>
 
     <div class="copyright">
       <p>
