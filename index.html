@@ -6,7 +6,7 @@
   <title>Театр теней | Дмитрий Ильин — литературный проект</title>
   <meta name="description" content="Театр теней — литературный проект Дмитрия Ильина. Две истории, один мир: «Второй звонок» и «Одуванчики».">
   <link rel="canonical" href="https://colba8.ru/">
-  <link rel="icon" href="images/51.png" type="image/png">
+  <link rel="icon" href="/images/51.png" type="image/png">
 
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -45,7 +45,7 @@
       border: none;
       outline: none;
     }
-    .nav-link:hover { color: #C9A96E; }
+    .nav-link:hover, .nav-link.active { color: #C9A96E; }
 
     /* ПОСТЕР ФОЙЕ */
     .foyer-stage {
@@ -102,20 +102,25 @@
 </head>
 <body>
 
+  <!-- Навигационное меню -->
   <nav class="top-navbar">
-    <!-- Ссылка "Архив" удалена -->
-    <a href="behind/" class="nav-link">За кулисами</a>
-    <a href="foreigners.html" class="nav-link">Сотрудничество</a>
+    <a href="/" class="nav-link active">Главная</a>
+    <a href="/tom1/index.html" class="nav-link">Второй звонок</a>
+    <a href="/tom2/index.html" class="nav-link">Одуванчики</a>
+    <a href="/behind/" class="nav-link">За кулисами</a>
+    <a href="/foreigners.html" class="nav-link">Сотрудничество</a>
     <button class="nav-link" onclick="document.getElementById('contactModal').style.display='flex'">Контакты</button>
   </nav>
 
+  <!-- Интерактивный постер -->
   <div class="foyer-stage">
-    <img src="tom2/images/tom00.png" alt="Театр теней — две истории, один мир">
+    <img src="/tom2/images/tom00.png" alt="Театр теней — две истории, один мир">
     <div class="stage-cover"></div>
-    <a class="door" id="door-tom1" href="tom1/index.html" aria-label="Том I — Второй звонок"></a>
-    <a class="door" id="door-tom2" href="tom2/index.html" aria-label="Том II — Одуванчики"></a>
+    <a class="door" id="door-tom1" href="/tom1/index.html" aria-label="Том I — Второй звонок"></a>
+    <a class="door" id="door-tom2" href="/tom2/index.html" aria-label="Том II — Одуванчики"></a>
   </div>
 
+  <!-- Модальное окно обратной связи -->
   <div class="modal-overlay" id="contactModal">
     <div class="modal-card">
       <button class="modal-close" onclick="document.getElementById('contactModal').style.display='none'">✕</button>
