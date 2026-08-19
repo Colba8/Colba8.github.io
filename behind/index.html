@@ -2,320 +2,92 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>За кулисами — Театр теней</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Literatta:wght@400;500;600&display=swap" rel="stylesheet">
-
     <style>
-        :root {
-            --font-head: 'Cinzel', serif;
-            --font-body: 'Literatta', serif;
-            
-            --gold-bright: #F5E5C0;
-            --gold-main: #D4AF37;
-            --gold-muted: #A88F52;
-            --text-main: #EADEC7;
-            --bg-dark: #050403;
-        }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            font-family: var(--font-body);
+            background-color: #050403;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             min-height: 100vh;
-            padding-bottom: 90px;
-            overflow-x: hidden;
+        }
+
+        /* Контейнер шкафа */
+        .archive-cabinet {
             position: relative;
+            width: 100%;
+            max-width: 1200px; /* Размер вашего изображения */
         }
 
-        /* ЛЕВАЯ КУЛИСА С КИСТЬЮ */
-        .left-curtain {
-            position: fixed;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            width: 320px;
-            z-index: 10;
-            pointer-events: none;
-            background-image: url('../tom2/images/084.png');
-            background-size: cover;
-            background-position: left center;
-            background-repeat: no-repeat;
-            filter: brightness(0.85) contrast(1.1);
-            box-shadow: 20px 0 50px rgba(0,0,0,0.9);
-        }
-
-        /* Навигация */
-        .top-navbar {
-            position: fixed; top: 0; left: 0; right: 0; height: 60px;
-            background: rgba(5, 4, 3, 0.95);
-            backdrop-filter: blur(10px);
-            display: flex; justify-content: center; align-items: center; gap: 2.5rem;
-            z-index: 100; 
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-        }
-        .nav-link {
-            color: var(--gold-muted); 
-            font-size: 0.85rem; 
-            letter-spacing: 0.18em;
-            text-transform: uppercase; 
-            text-decoration: none; 
-            transition: all 0.3s;
-            font-weight: 600; 
-            font-family: var(--font-head);
-        }
-        .nav-link:hover, .nav-link.active { 
-            color: var(--gold-bright); 
-            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5); 
-        }
-
-        /* Главный контейнер со сдвигом вправо от кулисы */
-        .main-content {
-            margin-left: 320px;
-            max-width: 900px;
-            padding: 90px 40px 40px 40px;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Шапка */
-        .header-section {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-        .header-banner {
-            max-width: 520px;
+        .archive-bg {
             width: 100%;
             height: auto;
-            margin: 0 auto 20px auto;
             display: block;
-            mix-blend-mode: screen;
-        }
-        .intro-text {
-            font-size: 1.05rem;
-            line-height: 1.7;
-            color: var(--text-main);
-            max-width: 700px;
-            margin: 0 auto;
-            font-weight: 400;
         }
 
-        /* Секция 1: Питч и Синопсисы (с Колбой) */
-        .synopsis-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin-bottom: 50px;
-            text-align: center;
-        }
-        .grid-item {
-            text-decoration: none;
-            color: var(--text-main);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            transition: transform 0.3s ease;
-        }
-        .grid-item:hover {
-            transform: translateY(-4px);
-        }
-        .flask-icon {
-            height: 42px;
-            width: auto;
-            margin-bottom: 12px;
-            filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.3));
-        }
-        .item-title {
-            font-family: var(--font-head);
-            font-size: 0.95rem;
-            color: var(--gold-bright);
-            line-height: 1.4;
-            letter-spacing: 0.05em;
-        }
-        .grid-item:hover .item-title {
-            color: #FFF;
-            text-shadow: 0 0 10px rgba(212, 175, 55, 0.6);
-        }
-
-        /* Секция 2: Архив документов */
-        .docs-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 35px 20px;
-            margin-bottom: 60px;
-            text-align: center;
-        }
-        
-        /* Иконка документа */
-        .doc-icon {
-            width: 48px;
-            height: 60px;
-            background: #D4AF37;
-            clip-path: polygon(0 0, 70% 0, 100% 25%, 100% 100%, 0 100%);
-            margin-bottom: 14px;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-            transition: all 0.3s ease;
-        }
-        .doc-icon::before {
-            content: '';
+        /* Общий стиль для кликабельных ящиков */
+        .drawer-btn {
             position: absolute;
-            top: 2px; left: 2px; right: 2px; bottom: 2px;
-            background: var(--bg-dark);
-            clip-path: polygon(0 0, 68% 0, 96% 24%, 96% 96%, 0 96%);
-        }
-        /* Полоски текста внутри иконки документа */
-        .doc-icon::after {
-            content: '';
-            width: 22px;
-            height: 2px;
-            background: var(--gold-main);
-            box-shadow: 0 6px 0 var(--gold-main), 0 12px 0 var(--gold-main), 0 18px 0 var(--gold-main);
-            z-index: 1;
-        }
-        .grid-item:hover .doc-icon {
-            background: #FFF;
-            transform: scale(1.05);
+            /* border: 1px solid red; */ /* Раскомментируйте для точной настройки координат */
+            transition: background 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            border-radius: 4px;
         }
 
-        .doc-title {
-            font-size: 0.9rem;
-            line-height: 1.4;
-            color: var(--text-main);
-        }
-
-        /* Секция 3: Персонажи */
-        .heroes-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            text-align: center;
-            border-top: 1px solid rgba(212, 175, 55, 0.2);
-            padding-top: 40px;
-        }
-        .hero-avatar {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid var(--gold-muted);
-            margin-bottom: 12px;
-            filter: grayscale(100%) contrast(1.1);
-            transition: all 0.3s ease;
-        }
-        .grid-item:hover .hero-avatar {
-            filter: grayscale(0%);
-            border-color: var(--gold-bright);
+        /* Эффект подсветки ящика при наведении */
+        .drawer-btn:hover {
+            background: rgba(212, 175, 55, 0.15);
             box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
         }
 
-        @media (max-width: 900px) {
-            .left-curtain { display: none; }
-            .main-content { margin-left: 0; padding: 80px 20px 30px 20px; }
-            .docs-grid { grid-template-columns: repeat(2, 1fr); }
-            .heroes-grid { grid-template-columns: repeat(2, 1fr); }
-        }
+        /* Настройка координат ящиков в процентах (%) */
+        /* Колонка 1 */
+        .btn-pitch       { top: 40%; left: 11.5%; width: 13.5%; height: 7.5%; }
+        .btn-synopsis-1  { top: 50%; left: 11.5%; width: 13.5%; height: 7.5%; }
+        .btn-synopsis-2  { top: 60%; left: 11.5%; width: 13.5%; height: 7.5%; }
+
+        /* Колонка 2 */
+        .btn-bern        { top: 40%; left: 26.5%; width: 13.5%; height: 7.5%; }
+        .btn-israel      { top: 50%; left: 26.5%; width: 13.5%; height: 7.5%; }
+        .btn-paris       { top: 60%; left: 26.5%; width: 13.5%; height: 7.5%; }
+        .btn-italy       { top: 70%; left: 41.5%; width: 13.5%; height: 7.5%; }
+
+        /* Колонка 3 & 4 (Документы и Персонажи) */
+        .btn-master      { top: 40%; left: 41.5%; width: 13.5%; height: 7.5%; }
+        .btn-canaris     { top: 40%; left: 56.5%; width: 13.5%; height: 7.5%; }
+        .btn-alex        { top: 40%; left: 71.5%; width: 13.5%; height: 7.5%; }
+        .btn-april       { top: 50%; left: 71.5%; width: 13.5%; height: 7.5%; }
+        .btn-olga        { top: 60%; left: 71.5%; width: 13.5%; height: 7.5%; }
+        .btn-maya        { top: 70%; left: 71.5%; width: 13.5%; height: 7.5%; }
+        .btn-marta       { top: 80%; left: 71.5%; width: 13.5%; height: 7.5%; }
     </style>
 </head>
 <body>
 
-    <!-- ВЕРТИКАЛЬНАЯ КУЛИСА СЛЕВА -->
-    <div class="left-curtain"></div>
+    <div class="archive-cabinet">
+        <!-- Ваша сгенерированная картинка -->
+        <img src="../tom2/images/67.png" alt="Архив Дела" class="archive-bg">
 
-    <nav class="top-navbar">
-        <a href="../index.html" class="nav-link">Главная</a>
-        <a href="../reader.html" class="nav-link">Второй звонок</a>
-        <a href="../dandelions.html" class="nav-link">Одуванчики</a>
-        <a href="index.html" class="nav-link active">За кулисами</a>
-        <a href="../foreigners.html" class="nav-link">Сотрудничество</a>
-    </nav>
-
-    <main class="main-content">
+        <!-- Прозрачные кликабельные зоны поверх ящиков -->
+        <a href="pitch.html" class="drawer-btn btn-pitch" title="Питч проекта"></a>
+        <a href="synopsis-tom1.html" class="drawer-btn btn-synopsis-1" title="Синопсис Том I"></a>
+        <a href="synopsis-tom2.html" class="drawer-btn btn-synopsis-2" title="Синопсис Том II"></a>
         
-        <header class="header-section">
-            <img src="../tom2/images/085.png" alt="За кулисами" class="header-banner">
-            <p class="intro-text">
-                Здесь собраны материалы, которые не вошли в текст романа. С их помощью читатель может разгадать хитросплетения сюжета и судеб героев и найти взаимосвязи их поступков с геополитической ситуацией в 1946–1948 годах.
-            </p>
-        </header>
+        <a href="bern-1946.html" class="drawer-btn btn-bern" title="Берн 1946"></a>
+        <a href="palestine-1947.html" class="drawer-btn btn-israel" title="Создание Израиля"></a>
+        <a href="france-note.html" class="drawer-btn btn-paris" title="Парижский мир 1947"></a>
+        <a href="italy-note.html" class="drawer-btn btn-italy" title="Музыканты в Италии"></a>
 
-        <!-- БЛОК 1: Питч и Синопсисы -->
-        <section class="synopsis-grid">
-            <a href="pitch.html" class="grid-item">
-                <img src="../tom1/images/colba00.png" alt="Колба" class="flask-icon" onerror="this.style.display='none'">
-                <div class="item-title">Питч проекта<br>Театр теней</div>
-            </a>
-            <a href="synopsis-tom1.html" class="grid-item">
-                <img src="../tom1/images/colba00.png" alt="Колба" class="flask-icon" onerror="this.style.display='none'">
-                <div class="item-title">Синопсис<br>Второй звонок</div>
-            </a>
-            <a href="synopsis-tom2.html" class="grid-item">
-                <img src="../tom1/images/colba00.png" alt="Колба" class="flask-icon" onerror="this.style.display='none'">
-                <div class="item-title">Синопсис<br>Одуванчики</div>
-            </a>
-        </section>
+        <a href="report-master.html" class="drawer-btn btn-master" title="Рапорт Мастера"></a>
+        <a href="canaris-folder.html" class="drawer-btn btn-canaris" title="Архив Канариса"></a>
 
-        <!-- БЛОК 2: Документы -->
-        <section class="docs-grid">
-            <a href="bern-1946.html" class="grid-item">
-                <div class="doc-icon"></div>
-                <div class="doc-title">Аналитическая записка о шпионском Берне</div>
-            </a>
-            <a href="palestine-1947.html" class="grid-item">
-                <div class="doc-icon"></div>
-                <div class="doc-title">Донесение Аргентинского посольства по Израилю</div>
-            </a>
-            <a href="canaris-folder.html" class="grid-item">
-                <div class="doc-icon"></div>
-                <div class="doc-title">Комментарий эксперта о папке Канариса</div>
-            </a>
-            <a href="dandelions-painting.html" class="grid-item">
-                <div class="doc-icon"></div>
-                <div class="doc-title">Заключение об авторстве «Одуванчики на темном»</div>
-            </a>
-            <a href="report-master.html" class="grid-item">
-                <div class="doc-icon"></div>
-                <div class="doc-title">Рапорт Мастера о событиях 12–13 декабря 1946</div>
-            </a>
-            <a href="france-note.html" class="grid-item">
-                <div class="doc-icon"></div>
-                <div class="doc-title">Доклад посла СССР во Франции</div>
-            </a>
-            <a href="italy-note.html" class="grid-item">
-                <div class="doc-icon"></div>
-                <div class="doc-title">Доклад посла СССР в Италии</div>
-            </a>
-        </section>
-
-        <!-- БЛОК 3: Персонажи -->
-        <section class="heroes-grid">
-            <a href="character-alex.html" class="grid-item">
-                <img src="../tom2/images/81.png" alt="Хозяин" class="hero-avatar" onerror="this.style.background='#222'">
-                <div class="doc-title">Александр фон Планта<br><small style="color:var(--gold-muted)">«Хозяин»</small></div>
-            </a>
-            <a href="character-april.html" class="grid-item">
-                <img src="../tom2/images/April.png" alt="Мастер" class="hero-avatar" onerror="this.style.background='#222'">
-                <div class="doc-title">Хавьер Абриль Монтеро<br><small style="color:var(--gold-muted)">«Мастер»</small></div>
-            </a>
-            <a href="character-olga.html" class="grid-item">
-                <img src="../tom2/images/Olga.png" alt="Королева" class="hero-avatar" onerror="this.style.background='#222'">
-                <div class="doc-title">Ольга Титофф<br><small style="color:var(--gold-muted)">«Королева»</small></div>
-            </a>
-            <a href="character-maya.html" class="grid-item">
-                <img src="../tom2/images/Maya.png" alt="Пианистка" class="hero-avatar" onerror="this.style.background='#222'">
-                <div class="doc-title">Майя-Роза Пфланц<br><small style="color:var(--gold-muted)">«Пианистка»</small></div>
-            </a>
-        </section>
-
-    </main>
+        <a href="character-alex.html" class="drawer-btn btn-alex" title="Александр фон Планта"></a>
+        <a href="character-april.html" class="drawer-btn btn-april" title="Хавьер Абриль Монтеро"></a>
+        <a href="character-olga.html" class="drawer-btn btn-olga" title="Ольга Титофф"></a>
+        <a href="character-maya.html" class="drawer-btn btn-maya" title="Майя-Роза Пфланц"></a>
+        <a href="character-marta.html" class="drawer-btn btn-marta" title="Марта Мендес"></a>
+    </div>
 
 </body>
 </html>
