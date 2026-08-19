@@ -1,0 +1,249 @@
+---
+layout: null
+---
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Докладная записка № 198/с — Посольство СССР во Франции</title>
+<link rel="icon" href="../../images/51.png" type="image/png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  background:#0b0a08 url('../../images/62.png') no-repeat center center fixed;
+  background-size: cover;
+  color:#e0d5b0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  min-height:100vh;
+  overflow-x:hidden;
+  overflow-y:auto;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+.top-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 55px;
+  background: #000000;
+  border-bottom: 1px solid rgba(201, 169, 110, 0.15);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+  z-index: 150;
+}
+.nav-link {
+  color: #8A7E6B;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+.nav-link:hover, .nav-link.active {
+  color: #C9A96E;
+}
+.document-wrapper {
+  max-width: 900px;
+  width: 100%;
+  margin: 95px auto 4rem;
+  padding: 0 1.5rem;
+  z-index: 10;
+  animation: fadeIn 1.5s ease-out;
+}
+.paper-sheet {
+  background: #f4e4bc;
+  color: #1a1a1a;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 700;
+  font-size: 1.15rem;
+  line-height: 1.3;
+  padding: 4rem 4rem 5rem 6rem;
+  box-shadow: 0 15px 50px rgba(0,0,0,0.85);
+  position: relative;
+  border-left: 1px solid rgba(0, 0, 0, 0.05);
+}
+.paper-sheet::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.binder-hole {
+  position: absolute;
+  left: 2rem;
+  width: 16px;
+  height: 16px;
+  background: #0b0a08;
+  border-radius: 50%;
+  box-shadow: inset 2px 2px 4px rgba(0,0,0,0.6);
+}
+.hole-top { top: 15%; }
+.hole-mid { top: 50%; transform: translateY(-50%); }
+.hole-bot { bottom: 15%; }
+.doc-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+  border-bottom: 2px double #1a1a1a;
+  padding-bottom: 1rem;
+}
+.stamp-red {
+  color: #C00000;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.doc-title {
+  text-align: center;
+  font-size: 1.35rem;
+  margin-bottom: 2.5rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.doc-subject {
+  text-align: center;
+  font-size: 1.05rem;
+  margin-bottom: 2.5rem;
+  font-style: italic;
+}
+.doc-section-title {
+  font-size: 1.2rem;
+  margin: 2.5rem 0 1rem;
+  text-transform: uppercase;
+  text-decoration: underline;
+}
+.doc-paragraph {
+  margin-bottom: 1.5rem;
+  text-align: justify;
+}
+.doc-list {
+  margin-bottom: 1.5rem;
+  padding-left: 2rem;
+  list-style-type: none;
+}
+.doc-list li {
+  margin-bottom: 0.8rem;
+  text-align: justify;
+}
+.doc-signature {
+  margin-top: 4rem;
+  border-top: 1px dashed #1a1a1a;
+  padding-top: 2rem;
+  text-align: right;
+}
+.doc-signature-line {
+  margin-bottom: 0.5rem;
+}
+.doc-distribution {
+  margin-top: 2rem;
+  font-size: 0.95rem;
+}
+.doc-distribution-title {
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(1%) scale(0.99); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@media(max-width: 768px){
+  .paper-sheet { padding: 3rem 1.5rem 3rem 3rem; }
+  .binder-hole { left: 0.8rem; width: 10px; height: 10px; }
+}
+</style>
+</head>
+<body oncontextmenu="return false;">
+
+<nav class="top-navbar">
+  <a href="../../materials.html" class="nav-link active">← Назад в архив</a>
+</nav>
+
+<div class="document-wrapper">
+  <div class="paper-sheet">
+    
+    <div class="binder-hole hole-top"></div>
+    <div class="binder-hole hole-mid"></div>
+    <div class="binder-hole hole-bot"></div>
+
+    <div class="doc-header">
+      <div>
+        <p class="stamp-red">СОВЕРШЕННО СЕКРЕТНО</p>
+        <p class="stamp-red">ОСОБАЯ ПАПКА</p>
+        <p style="margin-top: 0.5rem;">ПОСОЛЬСТВО СССР ВО ФРАНЦИИ</p>
+        <p style="margin-top: 0.5rem;">№ 198/с</p>
+        <p>18 февраля 1947 года</p>
+        <p>г. Париж</p>
+      </div>
+      <div style="text-align: right;">
+        <p>Министру иностранных дел СССР</p>
+        <p>Товарищу В.М. МОЛОТОВУ</p>
+      </div>
+    </div>
+
+    <h2 class="doc-title">ДОКЛАДНАЯ ЗАПИСКА</h2>
+    <p class="doc-subject">О результатах мероприятий, проведённых посольством в связи с церемонией подписания Парижских мирных договоров 10 февраля 1947 года</p>
+
+    <p class="doc-paragraph">Товарищ Молотов,</p>
+    <p class="doc-paragraph">Довожу до Вашего сведения результаты культурно-дипломатических мероприятий, проведённых посольством в рамках подготовки и проведения церемонии подписания мирных договоров с бывшими странами-сателлитами Германии, состоявшейся 10 февраля с.г. в Елисейском дворце.</p>
+
+    <h3 class="doc-section-title">I. Дипломатический приём 10 февраля</h3>
+    <p class="doc-paragraph">Поставленная задача — обеспечить достойное представительство Советского Союза на дипломатическом приёме в Елисейском дворце, организованном Правительством Французской Республики в честь подписания мирных договоров, — достигнута в полном объёме.</p>
+    <p class="doc-paragraph">Французская сторона, выступая хозяйкой церемонии, уделила особое внимание вопросам протокола и культурной программы.</p>
+    <p class="doc-paragraph">Советская делегация во главе с Министром иностранных дел произвела благоприятное впечатление на французское руководство и представителей других держав-победительниц. Присутствие на приёме министров иностранных дел СССР, США, Великобритании и других государств подтвердило статус Франции как одной из ведущих держав послевоенной Европы.</p>
+
+    <h3 class="doc-section-title">II. Успех советских музыкантов</h3>
+    <p class="doc-paragraph">Особое внимание было уделено культурной программе приёма. В соответствии с Вашими указаниями, на приёме выступил советский музыкальный коллектив, исполнивший произведения советских композиторов.</p>
+    <p class="doc-paragraph">Выступление советских музыкантов стало одним из центральных событий вечера. В программе были исполнены малоизвестные во Франции произведения С.С. Прокофьева, в частности его камерные сочинения, включая <em>Трио для скрипки, кларнета и виолончели</em>. Исполнение произвело сильнейшее впечатление на присутствовавшую публику, включая представителей дипломатического корпуса, деятелей французской культуры и простой парижской публики, допущенной на отдельные мероприятия.</p>
+    <p class="doc-paragraph">Французская пресса на следующий день единодушно отметила высокий уровень исполнения. Газеты «Le Monde», «Le Figaro», «L'Humanité» и ряд других изданий опубликовали развёрнутые рецензии, в которых подчёркивается, что великая русская культура продолжает вызывать живой отклик у простого народа Европы, несмотря на послевоенные трудности и идеологические разногласия.</p>
+
+    <h3 class="doc-section-title">III. Реакция французской общественности</h3>
+    <p class="doc-paragraph">По имеющимся в нашем распоряжении данным, выступления советских музыкантов вызвали значительный резонанс во французском обществе. В театральных и музыкальных кругах Парижа возрос интерес к советскому исполнительскому искусству. Поступают запросы о возможности организации дополнительных концертов.</p>
+    <p class="doc-paragraph">Особое значение имеет реакция простого народа Франции. Несмотря на экономические трудности (нехватка угля, продовольственные карточки, холодная зима), французские граждане с энтузиазмом восприняли возможность приобщиться к великой русской культуре. Это свидетельствует о том, что культурная дипломатия остаётся эффективным инструментом укрепления авторитета Советского Союза во Франции.</p>
+
+    <h3 class="doc-section-title">IV. Предложения</h3>
+    <p class="doc-paragraph">В связи с вышеизложенным, посольство СССР во Франции считает необходимым:</p>
+    <ul class="doc-list">
+      <li>— Увеличить количество концертов проверенных советских исполнителей во Франции, а также рассмотреть возможность организации гастрольных туров советских коллективов по французским городам (Лион, Марсель, Бордо, Тулуза), с тем чтобы расширить аудиторию и укрепить культурное присутствие Советского Союза за пределами Парижа.</li>
+      <li>— Активизировать работу по приглашению во Францию ведущих советских специалистов в области классического искусства для проведения мастер-классов и совместных выступлений с французскими коллегами: выдающихся пианистов и скрипачей для работы с учащимися Парижской консерватории; балетмейстеров для обмена опытом с труппой Парижской оперы; мастеров оперного искусства для совместных постановок на французской сцене.</li>
+      <li>— Организовать через посольство встречи с руководством ведущих французских театральных и музыкальных заведений: Парижской оперы, Парижской консерватории, театра «Шатле», концертного зала «Плейель».</li>
+      <li>— Рассмотреть возможность создания при посольстве постоянного культурного центра, который координировал бы все мероприятия советского культурного присутствия во Франции.</li>
+    </ul>
+
+    <h3 class="doc-section-title">V. Заключение</h3>
+    <p class="doc-paragraph">Парижские мирные договоры создали благоприятные условия для расширения культурного присутствия Советского Союза во Франции. Необходимо использовать этот момент для укрепления авторитета советской культуры и установления долгосрочных связей с французскими деятелями искусства.</p>
+    <p class="doc-paragraph">Прошу Ваших указаний по дальнейшим действиям.</p>
+
+    <div class="doc-signature">
+      <p class="doc-signature-line"><strong>Посол СССР во Франции</strong></p>
+      <p class="doc-signature-line" style="font-size: 1.25rem; margin-top: 1rem;"><strong>А. БОГОМОЛОВ</strong></p>
+      <p class="doc-signature-line" style="margin-top: 2rem;">Верно:</p>
+      <p class="doc-signature-line">Советник посольства</p>
+      <p class="doc-signature-line" style="font-style: italic;">[подпись]</p>
+    </div>
+
+    <div class="doc-distribution">
+      <p class="doc-distribution-title"><strong>Рассылка:</strong></p>
+      <ul class="doc-list">
+        <li>— Тов. Сталину И.В.</li>
+        <li>— Тов. Молотову В.М.</li>
+        <li>— Тов. Жданову А.А.</li>
+        <li>— В дело.</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
