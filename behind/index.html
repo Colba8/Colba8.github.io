@@ -1,93 +1,156 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>За кулисами — Театр теней</title>
-    <style>
-        body {
-            background-color: #050403;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>За кулисами | Театр теней — Дмитрий Ильин</title>
 
-        /* Контейнер шкафа */
-        .archive-cabinet {
-            position: relative;
-            width: 100%;
-            max-width: 1200px; /* Размер вашего изображения */
-        }
+<link rel="icon" href="/images/51.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oranienbaum&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Literatta:opsz,wght@6..72,300;6..72,400;6..72,500;6..72,600;6..72,700&display=swap" rel="stylesheet">
 
-        .archive-bg {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
 
-        /* Общий стиль для кликабельных ящиков */
-        .drawer-btn {
-            position: absolute;
-            /* border: 1px solid red; */ /* Раскомментируйте для точной настройки координат */
-            transition: background 0.3s, box-shadow 0.3s;
-            cursor: pointer;
-            border-radius: 4px;
-        }
+body{
+  background:#0b0a08;
+  color:#e0d5b0;
+  font-family:'Literatta', Georgia, serif;
+  min-height:100vh;
+}
 
-        /* Эффект подсветки ящика при наведении */
-        .drawer-btn:hover {
-            background: rgba(212, 175, 55, 0.15);
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
-        }
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #000000; }
+::-webkit-scrollbar-thumb { background: #C9A96E; border-radius: 3px; }
 
-        /* Настройка координат ящиков в процентах (%) */
-        /* Колонка 1 */
-        .btn-pitch       { top: 40%; left: 11.5%; width: 13.5%; height: 7.5%; }
-        .btn-synopsis-1  { top: 50%; left: 11.5%; width: 13.5%; height: 7.5%; }
-        .btn-synopsis-2  { top: 60%; left: 11.5%; width: 13.5%; height: 7.5%; }
+/* Единое верхнее меню */
+.top-navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0; height: 60px;
+  background: #000000;
+  border-bottom: 1px solid rgba(201, 169, 110, 0.2);
+  display: flex; justify-content: center; align-items: center;
+  gap: 1.8rem; z-index: 1000;
+}
+.nav-logo {
+  display: flex; align-items: center;
+  line-height: 0;
+}
+.nav-logo img {
+  height: 36px; width: auto; display: block;
+}
+.nav-divider {
+  display: inline-block; width: 1px; height: 28px;
+  background: rgba(201, 169, 110, 0.25);
+}
+.nav-link {
+  color: #8A7E6B; font-size: 0.75rem; letter-spacing: 0.12em;
+  text-transform: uppercase; text-decoration: none; transition: color 0.2s ease;
+}
+.nav-link:hover, .nav-link.active { color: #C9A96E; }
 
-        /* Колонка 2 */
-        .btn-bern        { top: 40%; left: 26.5%; width: 13.5%; height: 7.5%; }
-        .btn-israel      { top: 50%; left: 26.5%; width: 13.5%; height: 7.5%; }
-        .btn-paris       { top: 60%; left: 26.5%; width: 13.5%; height: 7.5%; }
-        .btn-italy       { top: 70%; left: 41.5%; width: 13.5%; height: 7.5%; }
+/* Основной контейнер */
+.main-layout {
+  margin-top: 60px;
+  padding: 3rem 1rem;
+  display: flex;
+  justify-content: center;
+}
 
-        /* Колонка 3 & 4 (Документы и Персонажи) */
-        .btn-master      { top: 40%; left: 41.5%; width: 13.5%; height: 7.5%; }
-        .btn-canaris     { top: 40%; left: 56.5%; width: 13.5%; height: 7.5%; }
-        .btn-alex        { top: 40%; left: 71.5%; width: 13.5%; height: 7.5%; }
-        .btn-april       { top: 50%; left: 71.5%; width: 13.5%; height: 7.5%; }
-        .btn-olga        { top: 60%; left: 71.5%; width: 13.5%; height: 7.5%; }
-        .btn-maya        { top: 70%; left: 71.5%; width: 13.5%; height: 7.5%; }
-        .btn-marta       { top: 80%; left: 71.5%; width: 13.5%; height: 7.5%; }
-    </style>
+.content-inner {
+  max-width: 800px;
+  width: 100%;
+  background: #0b0a08;
+  padding: 3rem 3.5rem;
+  box-shadow: 0 0 80px #000;
+  border: 1px solid rgba(201, 169, 110, 0.1);
+}
+
+.page-title {
+  font-family: 'Oranienbaum', serif;
+  color: #C9A96E;
+  font-size: 2.2rem;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.behind-text {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  font-weight: 300;
+  color: #e0d5b0;
+}
+
+/* Финальная плашка */
+.copyright {
+  margin-top: 5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid rgba(201, 169, 110, 0.15);
+  text-align: center;
+}
+.copyright p {
+  color: #C9A96E;
+  font-size: 1rem;
+  line-height: 1.7;
+  letter-spacing: 0.04em;
+  margin-bottom: 2.5rem;
+}
+.copyright-flask {
+  display: block;
+  margin: 0 auto;
+  width: 160px;
+  height: auto;
+  opacity: 0.9;
+}
+
+@media(max-width: 950px) {
+  .top-navbar { gap: 0.8rem; }
+  .nav-link { font-size: 0.65rem; }
+  .nav-logo img { height: 30px; }
+  .nav-divider { height: 20px; }
+  .content-inner { padding: 1.5rem 1.2rem; }
+  .page-title { font-size: 1.8rem; }
+  .behind-text { font-size: 1.1rem; }
+  .copyright-flask { width: 120px; }
+}
+</style>
 </head>
 <body>
 
-    <div class="archive-cabinet">
-        <!-- Ваша сгенерированная картинка -->
-        <img src="../tom2/images/67.png" alt="Архив Дела" class="archive-bg">
+<nav class="top-navbar">
+  <a href="/index.html" class="nav-logo" title="Главная страница">
+    <img src="/tom1/images/00.png" alt="Театр теней">
+  </a>
+  <span class="nav-divider"></span>
+  <a href="/index.html" class="nav-link">Главная</a>
+  <a href="/tom1/index.html" class="nav-link">Второй звонок</a>
+  <a href="/tom2/index.html" class="nav-link">Одуванчики</a>
+  <a href="/behind/" class="nav-link active">За кулисами</a>
+  <a href="/foreigners.html" class="nav-link">Сотрудничество</a>
+</nav>
 
-        <!-- Прозрачные кликабельные зоны поверх ящиков -->
-        <a href="pitch.html" class="drawer-btn btn-pitch" title="Питч проекта"></a>
-        <a href="synopsis-tom1.html" class="drawer-btn btn-synopsis-1" title="Синопсис Том I"></a>
-        <a href="synopsis-tom2.html" class="drawer-btn btn-synopsis-2" title="Синопсис Том II"></a>
-        
-        <a href="bern-1946.html" class="drawer-btn btn-bern" title="Берн 1946"></a>
-        <a href="palestine-1947.html" class="drawer-btn btn-israel" title="Создание Израиля"></a>
-        <a href="france-note.html" class="drawer-btn btn-paris" title="Парижский мир 1947"></a>
-        <a href="italy-note.html" class="drawer-btn btn-italy" title="Музыканты в Италии"></a>
+<div class="main-layout">
+  <main class="content-inner">
+    <h1 class="page-title">За кулисами</h1>
 
-        <a href="report-master.html" class="drawer-btn btn-master" title="Рапорт Мастера"></a>
-        <a href="canaris-folder.html" class="drawer-btn btn-canaris" title="Архив Канариса"></a>
-
-        <a href="character-alex.html" class="drawer-btn btn-alex" title="Александр фон Планта"></a>
-        <a href="character-april.html" class="drawer-btn btn-april" title="Хавьер Абриль Монтеро"></a>
-        <a href="character-olga.html" class="drawer-btn btn-olga" title="Ольга Титофф"></a>
-        <a href="character-maya.html" class="drawer-btn btn-maya" title="Майя-Роза Пфланц"></a>
-        <a href="character-marta.html" class="drawer-btn btn-marta" title="Марта Мендес"></a>
+    <div class="behind-text">
+      <p>Материалы, черновики, архивные документы и заметки к роману.</p>
     </div>
+
+    <div class="copyright">
+      <p>
+        Авторские права на произведение охраняются законом Российской Федерации.<br>
+        Единый номер депонирования литературного произведения в реестре: 226061100096.
+      </p>
+      <img src="/tom1/images/00.png" alt="Колба" class="copyright-flask">
+    </div>
+  </main>
+</div>
 
 </body>
 </html>
