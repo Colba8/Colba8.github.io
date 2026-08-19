@@ -1,0 +1,232 @@
+---
+layout: null
+---
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Досье: Александр фон Планта — Театр теней</title>
+<link rel="icon" href="../../images/51.png" type="image/png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  background:#0b0a08 url('../../images/62.png') no-repeat center center fixed;
+  background-size: cover;
+  color:#e0d5b0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  min-height:100vh;
+  overflow-x:hidden;
+  overflow-y:auto;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+.top-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 55px;
+  background: #000000;
+  border-bottom: 1px solid rgba(201, 169, 110, 0.15);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+  z-index: 150;
+}
+.nav-link {
+  color: #8A7E6B;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+.nav-link:hover, .nav-link.active {
+  color: #C9A96E;
+}
+.document-wrapper {
+  max-width: 900px;
+  width: 100%;
+  margin: 95px auto 4rem;
+  padding: 0 1.5rem;
+  z-index: 10;
+  animation: fadeIn 1.5s ease-out;
+}
+.paper-sheet {
+  background: #f4e4bc;
+  color: #1a1a1a;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 700;
+  font-size: 1.15rem;
+  line-height: 1.3;
+  padding: 4rem 4rem 5rem 6rem;
+  box-shadow: 0 15px 50px rgba(0,0,0,0.85);
+  position: relative;
+  border-left: 1px solid rgba(0, 0, 0, 0.05);
+}
+.paper-sheet::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.binder-hole {
+  position: absolute;
+  left: 2rem;
+  width: 16px;
+  height: 16px;
+  background: #0b0a08;
+  border-radius: 50%;
+  box-shadow: inset 2px 2px 4px rgba(0,0,0,0.6);
+}
+.hole-top { top: 15%; }
+.hole-mid { top: 50%; transform: translateY(-50%); }
+.hole-bot { bottom: 15%; }
+.doc-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+  border-bottom: 2px double #1a1a1a;
+  padding-bottom: 1rem;
+}
+.stamp-red {
+  color: #C00000;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.doc-title {
+  text-align: center;
+  font-size: 1.35rem;
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.doc-subtitle {
+  text-align: center;
+  font-size: 1.15rem;
+  margin-bottom: 2.5rem;
+  font-style: italic;
+}
+.doc-photo-container {
+  text-align: center;
+  margin: 2rem auto 3rem;
+  max-width: 400px;
+}
+.doc-photo {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border: 8px solid #fff;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  filter: grayscale(100%) contrast(1.1);
+}
+.doc-section-title {
+  font-size: 1.2rem;
+  margin: 2.5rem 0 1rem;
+  text-transform: uppercase;
+  text-decoration: underline;
+}
+.doc-paragraph {
+  margin-bottom: 1.5rem;
+  text-align: justify;
+}
+.doc-list {
+  margin-bottom: 1.5rem;
+  padding-left: 2rem;
+  list-style-type: none;
+}
+.doc-list li {
+  margin-bottom: 0.8rem;
+  text-align: justify;
+}
+.timeline-year {
+  font-weight: 900;
+  color: #1a1a1a;
+  display: inline-block;
+  min-width: 3.5rem;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(1%) scale(0.99); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@media(max-width: 768px){
+  .paper-sheet { padding: 3rem 1.5rem 3rem 3rem; }
+  .binder-hole { left: 0.8rem; width: 10px; height: 10px; }
+  .doc-photo { max-width: 100%; }
+}
+</style>
+</head>
+<body oncontextmenu="return false;">
+
+<nav class="top-navbar">
+  <a href="../../materials.html" class="nav-link active">← Назад в архив</a>
+</nav>
+
+<div class="document-wrapper">
+  <div class="paper-sheet">
+    
+    <div class="binder-hole hole-top"></div>
+    <div class="binder-hole hole-mid"></div>
+    <div class="binder-hole hole-bot"></div>
+
+    <div class="doc-header">
+      <div>
+        <p>АРХИВ ПРОЕКТА</p>
+        <p>РАЗДЕЛ 4.4: ДЕЙСТВУЮЩИЕ ЛИЦА</p>
+      </div>
+      <div style="text-align: right;">
+        <p class="stamp-red">Dramatis Personae</p>
+      </div>
+    </div>
+
+    <h2 class="doc-title">АЛЕКСАНДР ФОН ПЛАНТА</h2>
+    <p class="doc-subtitle">Внутреннее обозначение: «Хозяин»</p>
+
+    <div class="doc-photo-container">
+      <img src="tom2/images/81.png" alt="Александр фон Планта" class="doc-photo">
+    </div>
+
+    <h3 class="doc-section-title">Биография</h3>
+    <p class="doc-paragraph">Родился около 1892 года в Центральной или Восточной Европе. По официальной, никогда не оспоренной версии — потомок обедневшего рето-романского дворянского рода фон Планта (кантон Граубюнден, Верхний Энгадин).</p>
+    <p class="doc-paragraph"><strong>Языки:</strong> романш (родной), немецкий (швейцарский вариант), французский, итальянский, английский (с континентальным акцентом) и кубинский вариант испанского.</p>
+    <p class="doc-paragraph">До 1927 года вёл вторую, музыкальную жизнь, о которой в Европе 1940-х годов не знает никто из его нового окружения: Венская консерватория, работа с архивом Нового баховского общества в Лейпциге, занятия с Ферруччо Бузони в Берлине, концерты в нейтральной Швейцарии в годы Первой мировой войны, триумфальные гастроли 1920-х годов (Берлин, Париж, Лондон, Амстердам). Этот период завершился инсценированной гибелью в автомобильной катастрофе на набережной Малекон в Гаване. Тело не было найдено; европейские газеты напечатали некрологи.</p>
+    <p class="doc-paragraph">С этого момента и на двадцать лет вперёд — <strong>полное музыкальное молчание</strong>. Ни одного публичного выступления, ни одной ноты, сыгранной вслух. Единственный инструмент, которым он продолжает пользоваться, — собственная память.</p>
+
+    <h3 class="doc-section-title">Послужной список</h3>
+    <ul class="doc-list">
+      <li><span class="timeline-year">1927</span> Гавана. Обучение у частного наставника Пеппе Руджеро («Ассорбенте»), сицилийского портового практика конспирации.</li>
+      <li><span class="timeline-year">1929</span> Ассорбенте умирает. Курс завершён без формального экзамена.</li>
+      <li><span class="timeline-year">1929</span> Базель / Цюрих. Аудитор в банкирском доме Ротшильдов. Специализация — точность отчётности, соблюдение протокола, работа с крупными частными состояниями.</li>
+      <li><span class="timeline-year">1931</span> Операция «Гроссбух». В ходе плановой ревизии выявляет частную сеть обедневшей европейской аристократии, годами выводящую фамильные состояния через подставные счета. Приглашён в сеть («Ковчег») как финансовый ревизор.</li>
+      <li><span class="timeline-year">1932</span> Операция «Ревизия», Берлин. Расширение специализации на тяжёлую промышленность и металлургию Германии, включая оценку активов концерна Круппа.</li>
+      <li><span class="timeline-year">1934</span> Поглощение сети «Ковчег» более крупной структурой («Сетка»). Переход без потери статуса — принят сразу как опытный финансовый аналитик.</li>
+      <li><span class="timeline-year">1936</span> Операция «Опись». Первое задание уже по линии «Сетки»: ревизия активов, унаследованных сетью от поглощённого «Ковчега».</li>
+      <li><span class="timeline-year">1938</span> Вена. Ревизионная поездка на фоне передела активов после Аншлюса. В свободный вечер — «Травиата», Юсси Бьёрлинг в партии Альфреда. Единственный документированный случай личного присутствия на опере за все двадцать лет молчания.</li>
+      <li><span class="timeline-year">1939</span> Швейцария. Самостоятельное освоение радиоэлектроники: сборка и разбор радиоаппаратуры, изучение немецких патентных материалов по СВЧ-технике.</li>
+      <li><span class="timeline-year">1941</span> Операция «Курсив». Первое задание, совмещающее все три компетенции: финансы, промышленность, радиотехника.</li>
+      <li><span class="timeline-year">1943</span> Лиссабон. Наблюдение за ликвидацией офицера связи Абвера под легендой железнодорожного инспектора.</li>
+      <li><span class="timeline-year">1943</span> Операция «Зеркало». Экспертная оценка образцов и документов по радиолокационным технологиям, поступающих в распоряжение «Сетки».</li>
+      <li><span class="timeline-year">1944</span> По совокупности результатов трёх линий (финансовая ревизия, промышленная экспертиза, техническая оценка) переведён с исполнительских заданий на административную должность. Получает постоянный кабинет в Берне и полномочия утверждать или отклонять операции сети, связанные с финансами, промышленными и техническими активами. С этого момента — внутреннее обозначение <strong>«Хозяин»</strong>.</li>
+      <li><span class="timeline-year">1946</span> Операция «Камелия». Обмен микрофильма (радары Campton) через оперный канал связи, Берн.</li>
+      <li><span class="timeline-year">1946</span> Операция «Домна». Выявление лиц, выдающих себя за квалифицированных инженеров концерна Крупп с целью эмиграции в США или Аргентину без реальной технической подготовки.</li>
+      <li><span class="timeline-year">1946</span> Операция «Подпись». Формальное закрепление за «Хозяином» права окончательной визы на операции с привлечением крупных сумм или промышленных активов.</li>
+      <li><span class="timeline-year">1946</span> Берн. Формально не у дел; праздный образ жизни — охота, путешествия, театр.</li>
+      <li><span class="timeline-year">1947</span> Переезд в Англию, деревня Гарлиндж, графство Кент. Для местных властей и духовенства — швейцарский дворянин, потерявший состояние и ищущий покоя.</li>
+      <li><span class="timeline-year">1947</span> Париж, Елисейский дворец. Впервые за двадцать лет садится за инструмент не мысленно, а по-настоящему.</li>
+    </ul>
+
+  </div>
+</div>
+</body>
+</html>
