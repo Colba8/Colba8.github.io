@@ -9,13 +9,16 @@
     <!-- Шрифты -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Literatta:opsz,wght@6..72,300;400;500&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Literatta:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
 
     <style>
         :root {
             --gold: #C9A96E;
-            --gold-dim: rgba(201, 169, 110, 0.5);
-            --ivory: #e0d5b0;
+            --gold-light: #E5C98B;
+            --gold-dim: rgba(201, 169, 110, 0.35);
+            --bg-dark: #050505;
+            --card-bg: rgba(12, 12, 12, 0.85);
+            --text-ivory: #E0D5B0;
             --font-head: 'Cinzel', serif;
             --font-body: 'Literatta', serif;
         }
@@ -23,186 +26,224 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            background-color: #050505;
-            /* Исправление качества: не растягиваем, а центрируем */
-            background-image: url('../tom2/images/086.png'); 
-            background-size: contain; /* Картинка будет видна целиком, без обрезки */
-            background-position: center top;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            color: var(--ivory);
+            background-color: var(--bg-dark);
+            background-image: radial-gradient(circle at center, #111111 0%, #050505 100%);
+            color: var(--text-ivory);
             font-family: var(--font-body);
             min-height: 100vh;
-            overflow-x: hidden;
+            padding-bottom: 60px;
         }
 
         /* Навигация */
         .top-navbar {
             position: fixed; top: 0; left: 0; right: 0; height: 60px;
             background: rgba(5,5,5,0.95);
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(8px);
             display: flex; justify-content: center; align-items: center; gap: 2rem;
-            z-index: 100; border-bottom: 1px solid rgba(201,169,110,0.1);
+            z-index: 100; border-bottom: 1px solid var(--gold-dim);
         }
         .nav-link {
             color: var(--gold-dim); font-size: 0.75rem; letter-spacing: 0.12em;
             text-transform: uppercase; text-decoration: none; transition: all 0.3s;
-            font-weight: 600; cursor: pointer;
+            font-weight: 600; font-family: var(--font-head);
         }
         .nav-link:hover, .nav-link.active { color: var(--gold); text-shadow: 0 0 8px rgba(201,169,110,0.4); }
 
-        /* Контейнер сцены */
-        .stage-container {
-            position: relative;
-            width: 100%;
-            max-width: 1200px; /* Ограничиваем ширину, чтобы не разъезжалось на больших экранах */
-            margin: 0 auto;
-            height: 100vh;
-            min-height: 800px;
+        /* Контейнер макета */
+        .main-container {
+            max-width: 960px;
+            margin: 90px auto 0 auto;
+            padding: 0 20px;
         }
 
-        /* === ЗОНА 1: 4 ВЕРТИКАЛЬНЫХ БЛОКА (ГЕРОИ) === */
-        .cast-grid {
-            position: absolute;
-            /* ИСПРАВЛЕНИЕ: Сдвигаем ниже (было 33%, стало 42%), чтобы не перекрывать заголовок */
-            top: 42%; 
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 1.5%;
-            width: 70%; /* Немного уже, чтобы точно попасть в рамки */
-            height: 35%; 
-            z-index: 10;
-        }
-
-        .cast-card {
-            flex: 1;
-            position: relative;
-            cursor: pointer;
-            overflow: hidden;
-            border: 1px solid rgba(201,169,110,0.1); /* Тонкая рамка на случай, если фон не совпадет идеально */
-            transition: all 0.4s ease;
-            background: rgba(0,0,0,0.6); /* Более темная подложка */
-        }
-
-        .cast-card:hover {
-            border-color: var(--gold);
-            box-shadow: 0 0 15px rgba(201,169,110,0.2);
-            z-index: 11;
-        }
-
-        .cast-photo {
-            width: 100%; height: 100%;
-            object-fit: cover;
-            filter: grayscale(100%) contrast(1.2) brightness(0.5);
-            transition: all 0.5s ease;
-        }
-        
-        .cast-card:hover .cast-photo {
-            filter: grayscale(0%) contrast(1.1) brightness(0.7);
-        }
-
-        .cast-info {
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            padding: 15px 5px;
-            background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, transparent 100%);
+        /* Шапка страницы */
+        .page-header {
             text-align: center;
+            margin-bottom: 30px;
+        }
+        .page-title {
+            font-family: var(--font-head);
+            font-size: 2.2rem;
+            color: var(--gold);
+            letter-spacing: 0.15em;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+        .page-intro {
+            font-size: 0.82rem;
+            line-height: 1.6;
+            color: var(--text-ivory);
+            max-width: 780px;
+            margin: 0 auto 15px auto;
+            opacity: 0.85;
+            font-style: italic;
+        }
+        .flask-icon {
+            height: 45px;
+            width: auto;
+            opacity: 0.85;
+            margin: 10px auto 0 auto;
+            display: block;
+            filter: drop-shadow(0 0 6px rgba(201,169,110,0.3));
         }
 
-        .cast-name {
+        /* Сетка основных рамок */
+        .categories-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+
+        .category-card {
+            background: var(--card-bg);
+            border: 1px solid var(--gold-dim);
+            padding: 18px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .category-card:hover {
+            border-color: var(--gold);
+            box-shadow: 0 0 12px rgba(201, 169, 110, 0.12);
+        }
+
+        /* Левая часть: Описание */
+        .category-info {
+            width: 38%;
+            padding-right: 20px;
+            border-right: 1px solid rgba(201, 169, 110, 0.2);
+        }
+        .category-title {
             font-family: var(--font-head);
             color: var(--gold);
-            font-size: 0.9rem; /* Чуть меньше шрифт */
+            font-size: 1rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+        .category-desc {
+            font-size: 0.78rem;
+            color: var(--text-ivory);
+            opacity: 0.75;
+            line-height: 1.45;
+        }
+
+        /* Правая часть: Ссылки */
+        .category-links {
+            width: 58%;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .doc-link {
+            color: var(--text-ivory);
+            text-decoration: none;
+            font-size: 0.83rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 8px;
+            border-radius: 2px;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .doc-link:hover {
+            color: var(--gold-light);
+            background: rgba(201, 169, 110, 0.08);
+            padding-left: 12px;
+        }
+        .doc-link::after {
+            content: "›";
+            font-size: 1.2rem;
+            color: var(--gold);
+            margin-left: 10px;
+            line-height: 1;
+        }
+
+        /* Раздел: Главные герои */
+        .heroes-section {
+            margin-top: 20px;
+        }
+        .heroes-title {
+            font-family: var(--font-head);
+            color: var(--gold);
+            text-align: center;
+            font-size: 1.1rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        .heroes-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+        .hero-card {
+            background: var(--card-bg);
+            border: 1px solid var(--gold-dim);
+            text-decoration: none;
+            overflow: hidden;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        .hero-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(201,169,110,0.15);
+        }
+        .hero-photo {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            filter: grayscale(80%) contrast(1.1);
+            transition: filter 0.3s;
+            background: #111;
+        }
+        .hero-card:hover .hero-photo {
+            filter: grayscale(0%) contrast(1.1);
+        }
+        .hero-info {
+            padding: 10px 6px;
+            text-align: center;
+            background: rgba(5,5,5,0.9);
+            border-top: 1px solid var(--gold-dim);
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .hero-name {
+            font-family: var(--font-head);
+            color: var(--gold);
+            font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 0.05em;
             margin-bottom: 3px;
         }
-
-        .cast-role {
-            font-size: 0.75rem;
-            color: var(--ivory);
+        .hero-role {
+            font-size: 0.7rem;
+            color: var(--text-ivory);
+            opacity: 0.75;
             font-style: italic;
-            opacity: 0.8;
         }
 
-        /* === ЗОНА 2: НИЖНИЙ БЛОК (АРХИВ) === */
-        .archive-section {
-            position: absolute;
-            /* Позиционируем относительно низа, чтобы не зависеть от высоты заголовка */
-            bottom: 12%; 
-            left: 50%;
-            transform: translateX(-50%);
-            width: 75%;
-            height: 20%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 10;
-        }
-
-        .archive-col {
-            flex: 1;
-            text-align: center;
-            padding: 0 10px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .archive-title {
-            font-family: var(--font-head);
-            color: var(--gold);
-            font-size: 0.9rem;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .archive-list {
-            list-style: none;
-            font-size: 0.75rem;
-            color: var(--ivory);
-            line-height: 1.5;
-            opacity: 0.8;
-        }
-
-        .archive-list li:hover { color: var(--gold); }
-
-        /* ИСПРАВЛЕНИЕ: Колба теперь маленькая и аккуратная */
-        .flask-center {
-            height: 80px; /* Фиксированный небольшой размер */
-            width: auto;
-            opacity: 0.9;
-            filter: drop-shadow(0 0 5px rgba(201,169,110,0.3));
-            margin-bottom: 10px;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Адаптивность */
-        @media (max-width: 1024px) {
-            .stage-container { height: auto; min-height: 100vh; padding-top: 80px; padding-bottom: 50px; }
-            
-            .cast-grid {
-                position: relative; top: 0; transform: none; left: 0;
-                flex-wrap: wrap; height: auto; width: 90%; margin: 40px auto;
-                gap: 10px;
-            }
-            .cast-card { height: 250px; width: calc(50% - 5px); flex: none; }
-            
-            .archive-section {
-                position: relative; bottom: 0; transform: none; left: 0;
-                flex-direction: column; height: auto; width: 90%; margin: 40px auto;
-                gap: 30px; padding: 20px; background: rgba(0,0,0,0.8);
-                border: 1px solid var(--gold-dim);
-            }
-            .flask-center { height: 50px; margin: 10px 0; }
+        /* Адаптивность для телефонов */
+        @media (max-width: 768px) {
+            .category-card { flex-direction: column; align-items: flex-start; gap: 12px; }
+            .category-info { width: 100%; border-right: none; border-bottom: 1px solid rgba(201, 169, 110, 0.2); padding-right: 0; padding-bottom: 10px; }
+            .category-links { width: 100%; }
+            .heroes-grid { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 </head>
 <body>
 
+    <!-- Меню -->
     <nav class="top-navbar">
         <a href="../index.html" class="nav-link">Главная</a>
         <a href="../reader.html" class="nav-link">Второй звонок</a>
@@ -211,82 +252,115 @@
         <a href="../foreigners.html" class="nav-link">Сотрудничество</a>
     </nav>
 
-    <div class="stage-container">
+    <div class="main-container">
         
-        <!-- 4 Вертикальных блока: Действующие лица -->
-        <div class="cast-grid">
-            <!-- Алекс -->
-            <div class="cast-card" onclick="location.href='character-alex.html'">
-                <img src="../tom2/images/81.png" alt="Алекс" class="cast-photo" onerror="this.style.background='#111'">
-                <div class="cast-info">
-                    <div class="cast-name">Александр фон Планта</div>
-                    <div class="cast-role">«Хозяин»</div>
-                </div>
-            </div>
-            
-            <!-- Апрель -->
-            <div class="cast-card" onclick="location.href='character-april.html'">
-                <img src="../tom2/images/April.png" alt="Апрель" class="cast-photo" onerror="this.style.background='#111'">
-                <div class="cast-info">
-                    <div class="cast-name">Хавьер Абриль Монтеро</div>
-                    <div class="cast-role">«Мастер»</div>
-                </div>
-            </div>
+        <!-- Шапка -->
+        <header class="page-header">
+            <h1 class="page-title">За кулисами</h1>
+            <p class="page-intro">
+                Здесь собраны материалы, непосредственно относящиеся к текстам первого и второго томов проекта «Театр теней», но по разным причинам в них не вошедшие. Они помогут разобраться в хитросплетениях сюжетных линий, причинно-следственных связях внешнеполитического контурa и обстоятельствах, в которых оказываются герои.
+            </p>
+            <img src="../tom2/images/colba00.png" alt="Символ проекта" class="flask-icon" onerror="this.style.display='none'">
+        </header>
 
-            <!-- Ольга -->
-            <div class="cast-card" onclick="location.href='character-olga.html'">
-                <div class="cast-photo" style="background: #1a1a1a;"></div> 
-                <div class="cast-info">
-                    <div class="cast-name">Ольга</div>
-                    <div class="cast-role">«Королева»</div>
+        <!-- Основной блок с плашками -->
+        <div class="categories-grid">
+
+            <!-- 1. О ПРОЕКТЕ -->
+            <div class="category-card">
+                <div class="category-info">
+                    <div class="category-title">О проекте</div>
+                    <div class="category-desc">Пересказ всех событий в той последовательности, в какой они изложены в текстах.</div>
+                </div>
+                <div class="category-links">
+                    <a href="pitch.html" class="doc-link">Питч проекта</a>
+                    <a href="synopsis-tom1.html" class="doc-link">Синопсис Тома I «Второй звонок»</a>
+                    <a href="synopsis-tom2.html" class="doc-link">Синопсис Тома II «Одуванчики»</a>
                 </div>
             </div>
 
-            <!-- Майя -->
-            <div class="cast-card" onclick="location.href='character-maya.html'">
-                <div class="cast-photo" style="background: #1a1a1a;"></div>
-                <div class="cast-info">
-                    <div class="cast-name">Майя</div>
-                    <div class="cast-role">«Пианистка»</div>
+            <!-- 2. ИСТОРИЧЕСКАЯ СПРАВКА -->
+            <div class="category-card">
+                <div class="category-info">
+                    <div class="category-title">Историческая справка</div>
+                    <div class="category-desc">Описание внешнеполитических обстоятельств, вокруг которых развертываются события томов.</div>
+                </div>
+                <div class="category-links">
+                    <a href="bern-1946.html" class="doc-link">Аналитическая записка о шпионском Берне 1946 года</a>
+                    <a href="palestine-1947.html" class="doc-link">Донесение аргентинского посольства о событиях вокруг создания Израиля</a>
                 </div>
             </div>
-        </div>
 
-        <!-- Нижний широкий блок: Архив -->
-        <div class="archive-section">
-            
-            <!-- Левая колонка: История -->
-            <div class="archive-col" onclick="location.href='history.html'">
-                <div class="archive-title">Историческая справка</div>
-                <ul class="archive-list">
-                    <li>Берн, 1946 год</li>
-                    <li>Палестина, 1947 год</li>
-                    <li>Геополитика теней</li>
-                </ul>
+            <!-- 3. ДОКУМЕНТЫ ПРОЕКТА -->
+            <div class="category-card">
+                <div class="category-info">
+                    <div class="category-title">Документы проекта</div>
+                    <div class="category-desc">Материалы, изначально созданные как часть текста, но перенесенные в закулисье.</div>
+                </div>
+                <div class="category-links">
+                    <a href="report-master.html" class="doc-link">Рапорт Мастера о результатах расследования событий 12-13 декабря 1946 года в Берне</a>
+                    <a href="france-note.html" class="doc-link">Докладная записка посла СССР во Франции о резонансе мирных договоров (10 февраля 1947)</a>
+                    <a href="italy-note.html" class="doc-link">Докладная записка посла СССР в Италии о командировке советских музыкантов</a>
+                </div>
             </div>
 
-            <!-- Центральная колонка: Экспертиза + Колба -->
-            <div class="archive-col" onclick="location.href='expertise.html'">
-                <img src="../tom2/images/colba00.png" alt="Колба" class="flask-center">
-                <div class="archive-title">Комментарий эксперта</div>
-                <ul class="archive-list">
-                    <li>Картина «Одуванчики»</li>
-                    <li>Папка Канариса</li>
-                    <li>Скрытые слои</li>
-                </ul>
-            </div>
-
-            <!-- Правая колонка: Документы -->
-            <div class="archive-col" onclick="location.href='documents.html'">
-                <div class="archive-title">Документы проекта</div>
-                <ul class="archive-list">
-                    <li>Рапорт Мастера</li>
-                    <li>Докладная (Франция)</li>
-                    <li>Докладная (Италия)</li>
-                </ul>
+            <!-- 4. КОММЕНТАРИЙ ЭКСПЕРТА -->
+            <div class="category-card">
+                <div class="category-info">
+                    <div class="category-title">Комментарий эксперта</div>
+                    <div class="category-desc">Субъективный взгляд на скрытые слои событий и ключевые артефакты романа.</div>
+                </div>
+                <div class="category-links">
+                    <a href="canaris-folder.html" class="doc-link">О серой папке – архиве Канариса</a>
+                    <a href="dandelions-painting.html" class="doc-link">О подлинности картины «Одуванчики на темном»</a>
+                </div>
             </div>
 
         </div>
+
+        <!-- Карточки героев -->
+        <section class="heroes-section">
+            <h2 class="heroes-title">Главные герои</h2>
+            <div class="heroes-grid">
+
+                <!-- Алекс -->
+                <a href="character-alex.html" class="hero-card">
+                    <img src="../tom2/images/81.png" alt="Александр фон Планта" class="hero-photo" onerror="this.src=''">
+                    <div class="hero-info">
+                        <div class="hero-name">Александр фон Планта</div>
+                        <div class="hero-role">Алекс / «Хозяин»</div>
+                    </div>
+                </a>
+
+                <!-- Апрель -->
+                <a href="character-april.html" class="hero-card">
+                    <img src="../tom2/images/April.png" alt="Хавьер Абриль Монтеро" class="hero-photo" onerror="this.src=''">
+                    <div class="hero-info">
+                        <div class="hero-name">Хавьер Абриль Монтеро</div>
+                        <div class="hero-role">Апрель / «Мастер»</div>
+                    </div>
+                </a>
+
+                <!-- Ольга -->
+                <a href="character-olga.html" class="hero-card">
+                    <img src="../tom2/images/Olga.png" alt="Ольга Титофф" class="hero-photo" onerror="this.src=''">
+                    <div class="hero-info">
+                        <div class="hero-name">Ольга Титофф</div>
+                        <div class="hero-role">Виолетта / «Королева»</div>
+                    </div>
+                </a>
+
+                <!-- Майя -->
+                <a href="character-maya.html" class="hero-card">
+                    <img src="../tom2/images/Maya.png" alt="Майя-Роза Пфланц" class="hero-photo" onerror="this.src=''">
+                    <div class="hero-info">
+                        <div class="hero-name">Майя-Роза Пфланц</div>
+                        <div class="hero-role">«Пианистка»</div>
+                    </div>
+                </a>
+
+            </div>
+        </section>
 
     </div>
 
