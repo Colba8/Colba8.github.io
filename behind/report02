@@ -1,0 +1,256 @@
+```html
+---
+layout: null
+---
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Докладная записка № 214/с — Посольство СССР в Италии</title>
+<link rel="icon" href="../../images/51.png" type="image/png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  background:#0b0a08 url('../../images/62.png') no-repeat center center fixed;
+  background-size: cover;
+  color:#e0d5b0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  min-height:100vh;
+  overflow-x:hidden;
+  overflow-y:auto;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+.top-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 55px;
+  background: #000000;
+  border-bottom: 1px solid rgba(201, 169, 110, 0.15);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+  z-index: 150;
+}
+.nav-link {
+  color: #8A7E6B;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+.nav-link:hover, .nav-link.active {
+  color: #C9A96E;
+}
+.document-wrapper {
+  max-width: 900px;
+  width: 100%;
+  margin: 95px auto 4rem;
+  padding: 0 1.5rem;
+  z-index: 10;
+  animation: fadeIn 1.5s ease-out;
+}
+.paper-sheet {
+  background: #f4e4bc;
+  color: #1a1a1a;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 700;
+  font-size: 1.15rem;
+  line-height: 1.3;
+  padding: 4rem 4rem 5rem 6rem;
+  box-shadow: 0 15px 50px rgba(0,0,0,0.85);
+  position: relative;
+  border-left: 1px solid rgba(0, 0, 0, 0.05);
+}
+.paper-sheet::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.binder-hole {
+  position: absolute;
+  left: 2rem;
+  width: 16px;
+  height: 16px;
+  background: #0b0a08;
+  border-radius: 50%;
+  box-shadow: inset 2px 2px 4px rgba(0,0,0,0.6);
+}
+.hole-top { top: 15%; }
+.hole-mid { top: 50%; transform: translateY(-50%); }
+.hole-bot { bottom: 15%; }
+.doc-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+  border-bottom: 2px double #1a1a1a;
+  padding-bottom: 1rem;
+}
+.stamp-red {
+  color: #C00000;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.doc-title {
+  text-align: center;
+  font-size: 1.35rem;
+  margin-bottom: 2.5rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.doc-subject {
+  text-align: center;
+  font-size: 1.05rem;
+  margin-bottom: 2.5rem;
+  font-style: italic;
+}
+.doc-section-title {
+  font-size: 1.2rem;
+  margin: 2.5rem 0 1rem;
+  text-transform: uppercase;
+  text-decoration: underline;
+}
+.doc-paragraph {
+  margin-bottom: 1.5rem;
+  text-align: justify;
+}
+.doc-list {
+  margin-bottom: 1.5rem;
+  padding-left: 2rem;
+  list-style-type: none;
+}
+.doc-list li {
+  margin-bottom: 0.8rem;
+  text-align: justify;
+}
+.doc-signature {
+  margin-top: 4rem;
+  border-top: 1px dashed #1a1a1a;
+  padding-top: 2rem;
+  text-align: right;
+}
+.doc-signature-line {
+  margin-bottom: 0.5rem;
+}
+.doc-distribution {
+  margin-top: 2rem;
+  font-size: 0.95rem;
+}
+.doc-distribution-title {
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(1%) scale(0.99); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@media(max-width: 768px){
+  .paper-sheet { padding: 3rem 1.5rem 3rem 3rem; }
+  .binder-hole { left: 0.8rem; width: 10px; height: 10px; }
+}
+</style>
+</head>
+<body oncontextmenu="return false;">
+
+<nav class="top-navbar">
+  <a href="../../materials.html" class="nav-link active">← Назад в архив</a>
+</nav>
+
+<div class="document-wrapper">
+  <div class="paper-sheet">
+    
+    <div class="binder-hole hole-top"></div>
+    <div class="binder-hole hole-mid"></div>
+    <div class="binder-hole hole-bot"></div>
+
+    <div class="doc-header">
+      <div>
+        <p class="stamp-red">СОВЕРШЕННО СЕКРЕТНО</p>
+        <p class="stamp-red">ОСОБАЯ ПАПКА</p>
+        <p style="margin-top: 0.5rem;">ПОСОЛЬСТВО СССР В ИТАЛИИ</p>
+        <p style="margin-top: 0.5rem;">№ 214/с</p>
+        <p>5 июля 1947 года</p>
+        <p>г. Рим</p>
+      </div>
+      <div style="text-align: right;">
+        <p>Министру иностранных дел СССР</p>
+        <p>Товарищу В.М. МОЛОТОВУ</p>
+      </div>
+    </div>
+
+    <h2 class="doc-title">ДОКЛАДНАЯ ЗАПИСКА</h2>
+    <p class="doc-subject">О результатах культурной миссии тт. Шебалина В.Я. и Голованова Н.С. и инциденте с лидером Итальянской коммунистической партии П. Тольятти</p>
+
+    <p class="doc-paragraph">Товарищ Молотов,</p>
+    <p class="doc-paragraph">Довожу до Вашего сведения итоги командировки в Италию директора Московской консерватории т. Шебалина В.Я. и главного дирижёра Большого театра т. Голованова Н.С., а также отчёт о предотвращении покушения на лидера Итальянской коммунистической партии (ИКП) товарища П. Тольятти.</p>
+
+    <h3 class="doc-section-title">I. Результаты переговоров</h3>
+    <p class="doc-paragraph">В период с мая по июнь с.г. советская делегация посетила Рим, Флоренцию, Милан и Венецию. В ходе переговоров были проработаны кандидатуры 17 ведущих профессоров вокала. Советской стороной были предложены исключительно благоприятные условия: трёхлетний контракт, полностью оплачиваемый переезд, государственное жильё, высокое жалование, продовольственное обеспечение и преподавание в крупнейших консерваториях Союза.</p>
+    <p class="doc-paragraph">Несмотря на привлекательность материальных условий, миссия завершилась практически безрезультатно. Из 17 профессоров лишь двое выразили предварительное согласие. Остальные 15 категорически отказались.</p>
+    <p class="doc-paragraph">Причины срыва носят политический и профессиональный характер:</p>
+    <ul class="doc-list">
+      <li>1. В условиях нарастающей Холодной войны поездка в СССР воспринимается итальянской интеллигенцией как необратимый политический шаг.</li>
+      <li>2. Ватикан оказывает скрытое, но мощное давление на профессуру, рассматривая любое сотрудничество с Москвой как идеологическую угрозу.</li>
+      <li>3. Ведущие педагоги не готовы разрушать собственные школы и выпадать из европейской музыкальной среды на три года.</li>
+    </ul>
+
+    <h3 class="doc-section-title">II. Инцидент в Милане (27–30 мая 1947 года)</h3>
+    <p class="doc-paragraph">Особого внимания заслуживает инцидент, произошедший в Милане в период пребывания делегации, непосредственно угрожавший жизни товарища Пальмиро Тольятти.</p>
+    <p class="doc-paragraph">В ходе подготовки к его публичному выступлению сотрудники советской музыкальной делегации, проявив исключительную бдительность, обратили внимание на подозрительные обстоятельства вокруг банкета, организованного в честь советских гостей. Ими было выявлено, что в предназначенную для товарища Тольятти пищу (банку с икрой) было подмешано отравляющее вещество.</p>
+    <p class="doc-paragraph">Благодаря грамотным и оперативным действиям сотрудников делегации, которые своевременно обнаружили подмену, нейтрализовали угрозу и обеспечили экстренную эвакуацию товарища Тольятти, покушение было полностью предотвращено. Лидер Итальянской компартии не пострадал.</p>
+    <p class="doc-paragraph">По имеющимся у резидентуры данным, данная диверсия была подготовлена иностранными спецслужбами (предположительно британской разведкой) с целью физической ликвидации товарища Тольятти. Целью акции являлось не только устранение лидера коммунистов, но и компрометация советской культурной миссии, которая должна была быть представлена как «провокаторы», отравившие итальянского политика. Провал этой операции нанёс серьёзный удар по планам иностранных разведок.</p>
+
+    <h3 class="doc-section-title">III. Политический контекст</h3>
+    <p class="doc-paragraph">Политическая обстановка в Италии остаётся крайне напряжённой. Подписание Парижского мирного договора 10 февраля с.г. не стабилизировало ситуацию. Правительство де Гаспери (Христианско-демократическая партия) балансирует между давлением США (будущий план Маршалла) и влиянием Итальянской коммунистической партии во главе с т. Тольятти.</p>
+    <p class="doc-paragraph">Особое внимание привлекает реакция итальянского общества на недавнюю речь т. Громыко в ООН (14 мая с.г.) по палестинскому вопросу. Левые силы (ИКП и социалисты) полностью поддерживают линию Москвы, видя в создании Израиля инструмент подрыва британского мандата. Христианские демократы и Ватикан занимают выжидательную, но враждебную позицию. Папа Пий XII настаивает на международном статусе Иерусалима (<em>corpus separatum</em>), что фактически блокирует поддержку раздела Палестины католическим электоратом.</p>
+    <p class="doc-paragraph">Этот идеологический раскол делает любую советскую инициативу, включая культурную, мишенью для политической борьбы. Де Гаспери избегает любых шагов, которые могут быть истолкованы как сближение с Москвой.</p>
+
+    <h3 class="doc-section-title">IV. Выводы и предложения</h3>
+    <ul class="doc-list">
+      <li>1. Культурная дипломатия в текущих условиях не может быть эффективным инструментом без прямого политического давления и усиленных мер безопасности. Привлечение «звёзд» первой величины в Италию в данный момент невозможно.</li>
+      <li>2. Попытка устранения Тольятти свидетельствует о том, что иностранные спецслужбы перешли к методам прямого физического воздействия для сдерживания влияния СССР в Италии.</li>
+      <li>3. Успешное предотвращение покушения силами нашей делегации укрепило авторитет советских представителей в глазах итальянских левых сил и лично товарища Тольятти.</li>
+      <li>4. Предлагается сместить фокус культурной работы на менее известных, но талантливых исполнителей, находящихся в тяжёлом материальном положении.</li>
+      <li>5. Впредь при организации визитов советских делегаций, пересекающихся с политическими мероприятиями ИКП, обязательно включать в состав группы сотрудников госбезопасности под прикрытием технического персонала.</li>
+    </ul>
+
+    <p class="doc-paragraph">Прошу Ваших указаний.</p>
+
+    <div class="doc-signature">
+      <p class="doc-signature-line"><strong>Посол СССР в Италии</strong></p>
+      <p class="doc-signature-line" style="font-size: 1.25rem; margin-top: 1rem;"><strong>[Подпись]</strong></p>
+      <p class="doc-signature-line" style="margin-top: 2rem;">Верно:</p>
+      <p class="doc-signature-line">Советник посольства</p>
+      <p class="doc-signature-line" style="font-style: italic;">[подпись]</p>
+    </div>
+
+    <div class="doc-distribution">
+      <p class="doc-distribution-title"><strong>Рассылка:</strong></p>
+      <ul class="doc-list">
+        <li>— Тов. Сталину И.В.</li>
+        <li>— Тов. Жданову А.А.</li>
+        <li>— Председателю Комитета информации при СМ СССР</li>
+        <li>— В дело.</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
+```
