@@ -5,266 +5,303 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>За кулисами — Театр теней</title>
     
-    <!-- Подключение шрифтов -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Literatta:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Literatta:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 
     <style>
         :root {
             --font-head: 'Cinzel', serif;
             --font-body: 'Literatta', serif;
+            
+            /* Единая гамма тёплого винтажного золота */
+            --gold-bright: #F5E5C0;
+            --gold-main: #D4AF37;
+            --gold-muted: #A88F52;
+            --text-main: #EADEC7;
+            --text-sub: #BCAE93;
+            --bg-dark: #070605;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            background-color: #030303;
-            /* Фон: кулиса 084.png + глубокая нуарная виньетка */
-            background-image: 
-                radial-gradient(circle at 50% 30%, rgba(15, 12, 9, 0.5) 0%, rgba(3, 3, 3, 0.94) 80%),
-                linear-gradient(to right, rgba(0,0,0,0.9) 0%, transparent 20%, transparent 80%, rgba(0,0,0,0.9) 100%),
-                url('../tom2/images/084.png');
-            background-position: left top;
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-attachment: fixed;
-            color: #E0D5B0;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
             font-family: var(--font-body);
             min-height: 100vh;
-            padding-bottom: 80px;
+            padding-bottom: 90px;
             overflow-x: hidden;
+            position: relative;
+        }
+
+        /* КУЛИСЫ ПО БОКАМ (Левая и Правая шторы) */
+        body::before, body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            width: 240px; /* Ширина боковой кулисы */
+            z-index: 10;
+            pointer-events: none;
+            background-image: url('../tom2/images/084.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            filter: brightness(0.65) contrast(1.15);
+        }
+        body::before {
+            left: 0;
+            background-position: left top;
+            box-shadow: inset -30px 0 5px rgba(7, 6, 5, 0.8);
+        }
+        body::after {
+            right: 0;
+            background-position: right top;
+            transform: scaleX(-1); /* Зеркалим правую кулису */
+            box-shadow: inset -30px 0 50px rgba(7, 6, 5, 0.8);
         }
 
         /* Навигация */
         .top-navbar {
-            position: fixed; top: 0; left: 0; right: 0; height: 65px;
-            background: linear-gradient(to bottom, rgba(3,3,3,0.98) 0%, rgba(3,3,3,0.85) 100%);
-            backdrop-filter: blur(10px);
-            display: flex; justify-content: center; align-items: center; gap: 2.5rem;
+            position: fixed; top: 0; left: 0; right: 0; height: 70px;
+            background: linear-gradient(to bottom, rgba(7,6,5,0.98) 0%, rgba(7,6,5,0.88) 100%);
+            backdrop-filter: blur(12px);
+            display: flex; justify-content: center; align-items: center; gap: 3rem;
             z-index: 100; 
-            border-bottom: 1px solid rgba(201, 169, 110, 0.2);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.25);
         }
         .nav-link {
-            color: #A39274; font-size: 0.75rem; letter-spacing: 0.18em;
-            text-transform: uppercase; text-decoration: none; transition: all 0.3s;
-            font-weight: 600; font-family: var(--font-head);
+            color: var(--gold-muted); 
+            font-size: 0.88rem; 
+            letter-spacing: 0.22em;
+            text-transform: uppercase; 
+            text-decoration: none; 
+            transition: all 0.3s;
+            font-weight: 700; 
+            font-family: var(--font-head);
         }
         .nav-link:hover, .nav-link.active { 
-            color: #FFE6A7; 
-            text-shadow: 0 0 12px rgba(229, 201, 139, 0.5); 
+            color: var(--gold-bright); 
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.6); 
         }
 
-        /* Основной контейнер */
+        /* Основной контейнер между кулисами */
         .main-container {
-            max-width: 980px;
-            margin: 95px auto 0 auto;
-            padding: 0 25px;
+            max-width: 900px;
+            margin: 105px auto 0 auto;
+            padding: 0 20px;
             position: relative;
-            z-index: 2;
+            z-index: 20;
         }
 
-        /* Шапка с заглавным Art Deco баннером (085.png) */
+        /* Шапка страницы */
         .page-header {
             text-align: center;
-            margin-bottom: 35px;
+            margin-bottom: 45px;
         }
         
+        /* Заглавный арт-баннер (бесшовно сливается с фоном) */
         .header-banner {
-            max-width: 680px;
+            max-width: 760px;
             width: 100%;
             height: auto;
-            margin: 0 auto 20px auto;
+            margin: 0 auto 15px auto;
             display: block;
-            filter: drop-shadow(0 5px 20px rgba(0,0,0,0.95)) drop-shadow(0 0 15px rgba(201, 169, 110, 0.15));
+            /* Убираем черный прямоугольник картинки через режим наложения */
+            mix-blend-mode: screen; 
+            filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.3));
         }
 
+        /* Главный вводный текст — крупнее и читаемее */
         .page-intro {
-            font-size: 0.88rem;
-            line-height: 1.7;
-            color: #C2B69D;
-            max-width: 720px;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text-main);
+            max-width: 780px;
             margin: 0 auto;
             font-style: italic;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.9);
-            opacity: 0.9;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.95);
+            font-weight: 400;
         }
 
-        /* Колба из первого тома (tom1/images/colba00.png) */
         .flask-icon {
-            height: 50px;
+            height: 55px;
             width: auto;
-            margin: 20px auto 0 auto;
+            margin: 25px auto 0 auto;
             display: block;
-            filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.35));
+            filter: drop-shadow(0 0 14px rgba(212, 175, 55, 0.4));
         }
 
-        /* Рамки категорий */
+        /* Блоки категорий */
         .categories-grid {
             display: flex;
             flex-direction: column;
-            gap: 22px;
-            margin-bottom: 50px;
+            gap: 28px;
+            margin-bottom: 60px;
         }
 
         .category-card {
-            background: rgba(10, 9, 8, 0.82);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(201, 169, 110, 0.25);
-            padding: 24px 28px;
+            background: rgba(15, 12, 10, 0.92);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 28px 32px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: relative;
-            box-shadow: inset 0 0 25px rgba(0,0,0,0.85), 0 12px 35px rgba(0,0,0,0.7);
-            transition: all 0.4s ease;
+            box-shadow: inset 0 0 35px rgba(0,0,0,0.9), 0 15px 35px rgba(0,0,0,0.85);
+            transition: all 0.3s ease;
         }
 
+        /* Уголки Art Deco */
         .category-card::before, .category-card::after {
             content: '';
             position: absolute;
-            width: 8px;
-            height: 8px;
-            border: 1px solid #D4AF37;
-            transition: all 0.3s;
+            width: 10px;
+            height: 10px;
+            border: 2px solid var(--gold-main);
         }
-        .category-card::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
-        .category-card::after { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+        .category-card::before { top: -2px; left: -2px; border-right: none; border-bottom: none; }
+        .category-card::after { bottom: -2px; right: -2px; border-left: none; border-top: none; }
 
         .category-card:hover {
-            border-color: rgba(212, 175, 55, 0.6);
-            box-shadow: inset 0 0 20px rgba(212, 175, 55, 0.08), 0 15px 40px rgba(0,0,0,0.9);
-            transform: translateY(-2px);
+            border-color: var(--gold-main);
+            box-shadow: inset 0 0 25px rgba(212, 175, 55, 0.12), 0 18px 45px rgba(0,0,0,0.95);
         }
 
         .category-info {
-            width: 38%;
+            width: 36%;
             padding-right: 25px;
-            border-right: 1px solid rgba(201, 169, 110, 0.15);
+            border-right: 1px solid rgba(212, 175, 55, 0.2);
         }
         .category-title {
             font-family: var(--font-head);
-            font-size: 1.05rem;
-            letter-spacing: 0.12em;
+            font-size: 1.25rem;
+            letter-spacing: 0.14em;
             text-transform: uppercase;
-            background: linear-gradient(180deg, #FFE6A7 0%, #C9A96E 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 8px;
+            color: var(--gold-bright);
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+            margin-bottom: 10px;
+            font-weight: 700;
         }
         .category-desc {
-            font-size: 0.8rem;
-            color: #A09580;
-            line-height: 1.5;
+            font-size: 0.92rem;
+            color: var(--text-sub);
+            line-height: 1.6;
         }
 
         .category-links {
-            width: 58%;
+            width: 60%;
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 12px;
         }
         .doc-link {
-            color: #D6C9B0;
+            color: var(--text-main);
             text-decoration: none;
-            font-size: 0.85rem;
+            font-size: 1rem; /* Увеличен размер шрифта ссылок */
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 8px 12px;
-            background: rgba(255,255,255,0.015);
-            border: 1px solid rgba(201, 169, 110, 0.08);
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(212, 175, 55, 0.15);
             transition: all 0.3s ease;
             cursor: pointer;
         }
         .doc-link:hover {
-            color: #FFF0CA;
-            background: rgba(201, 169, 110, 0.08);
-            border-color: rgba(212, 175, 55, 0.4);
-            padding-left: 18px;
-            box-shadow: 0 0 10px rgba(212, 175, 55, 0.1);
+            color: var(--gold-bright);
+            background: rgba(212, 175, 55, 0.12);
+            border-color: var(--gold-main);
+            padding-left: 22px;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.18);
         }
         .doc-link::after {
             content: "›";
-            font-size: 1.3rem;
-            color: #C9A96E;
+            font-size: 1.5rem;
+            color: var(--gold-main);
+            line-height: 1;
             transition: transform 0.3s;
         }
         .doc-link:hover::after {
-            transform: translateX(4px);
-            color: #FFE6A7;
+            transform: translateX(5px);
+            color: var(--gold-bright);
         }
 
         /* Персонажи */
         .heroes-section {
-            margin-top: 30px;
+            margin-top: 40px;
         }
         .heroes-title {
             font-family: var(--font-head);
             text-align: center;
-            font-size: 1.15rem;
-            letter-spacing: 0.18em;
+            font-size: 1.35rem;
+            letter-spacing: 0.2em;
             text-transform: uppercase;
-            background: linear-gradient(180deg, #FFE6A7 0%, #C9A96E 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 25px;
+            color: var(--gold-bright);
+            text-shadow: 0 0 12px rgba(212, 175, 55, 0.4);
+            margin-bottom: 30px;
         }
         .heroes-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 18px;
+            gap: 20px;
         }
         .hero-card {
-            background: rgba(10, 9, 8, 0.88);
-            border: 1px solid rgba(201, 169, 110, 0.2);
+            background: rgba(15, 12, 10, 0.95);
+            border: 1px solid rgba(212, 175, 55, 0.25);
             text-decoration: none;
             overflow: hidden;
             transition: all 0.4s ease;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.7);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
         }
         .hero-card:hover {
-            border-color: #D4AF37;
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.9), 0 0 15px rgba(212, 175, 55, 0.2);
+            border-color: var(--gold-main);
+            transform: translateY(-6px);
+            box-shadow: 0 18px 35px rgba(0,0,0,0.95), 0 0 20px rgba(212, 175, 55, 0.25);
         }
         .hero-photo {
             width: 100%;
-            height: 220px;
+            height: 230px;
             object-fit: cover;
-            filter: grayscale(100%) contrast(1.2) brightness(0.7);
+            filter: grayscale(100%) contrast(1.2) brightness(0.75);
             transition: all 0.5s ease;
-            background: #111111; /* Заглушка, пока нет файла изображения */
+            background: #111;
         }
         .hero-card:hover .hero-photo {
-            filter: grayscale(0%) contrast(1.1) brightness(0.9);
+            filter: grayscale(0%) contrast(1.1) brightness(0.95);
         }
         .hero-info {
-            padding: 12px 8px;
+            padding: 14px 10px;
             text-align: center;
-            background: rgba(5,5,5,0.95);
-            border-top: 1px solid rgba(201, 169, 110, 0.2);
+            background: rgba(5,5,5,0.98);
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
         }
         .hero-name {
             font-family: var(--font-head);
-            color: #D4AF37;
-            font-size: 0.78rem;
+            color: var(--gold-bright);
+            font-size: 0.85rem;
             text-transform: uppercase;
-            letter-spacing: 0.06em;
+            letter-spacing: 0.08em;
             margin-bottom: 4px;
+            font-weight: 700;
         }
         .hero-role {
-            font-size: 0.72rem;
-            color: #A09580;
+            font-size: 0.8rem;
+            color: var(--text-sub);
             font-style: italic;
         }
 
+        /* Адаптивность для узких экранов */
+        @media (max-width: 1100px) {
+            body::before, body::after { width: 100px; } /* Сужаем кулисы на планшетах */
+        }
         @media (max-width: 768px) {
-            .category-card { flex-direction: column; align-items: flex-start; gap: 15px; }
-            .category-info { width: 100%; border-right: none; border-bottom: 1px solid rgba(201, 169, 110, 0.15); padding-right: 0; padding-bottom: 12px; }
+            body::before, body::after { display: none; } /* Скрываем боковые кулисы на телефонах */
+            .category-card { flex-direction: column; align-items: flex-start; gap: 18px; }
+            .category-info { width: 100%; border-right: none; border-bottom: 1px solid rgba(212, 175, 55, 0.2); padding-right: 0; padding-bottom: 15px; }
             .category-links { width: 100%; }
             .heroes-grid { grid-template-columns: repeat(2, 1fr); }
-            .header-banner { width: 90%; }
         }
     </style>
 </head>
@@ -281,13 +318,12 @@
     <div class="main-container">
         
         <header class="page-header">
-            <!-- Графический заголовок 085.png из tom2/images/ -->
+            <!-- Графический заголовок 085.png c режимом бесшовного наложения -->
             <img src="../tom2/images/085.png" alt="За кулисами" class="header-banner">
             
             <p class="page-intro">
                 Здесь собраны материалы, непосредственно относящиеся к текстам первого и второго томов проекта «Театр теней», но по разным причинам в них не вошедшие. Они помогут разобраться в хитросплетениях сюжетных линий, причинно-следственных связях внешнеполитического контура и обстоятельствах, в которых оказываются герои.
             </p>
-            <!-- Колба из tom1/images/ -->
             <img src="../tom1/images/colba00.png" alt="Символ проекта" class="flask-icon" onerror="this.style.display='none'">
         </header>
 
@@ -346,7 +382,7 @@
             <div class="heroes-grid">
 
                 <a href="character-alex.html" class="hero-card">
-                    <img src="../tom2/images/81.png" alt="Александр фон Планта" class="hero-photo" onerror="this.style.opacity='0.2'">
+                    <img src="../tom2/images/81.png" alt="Александр фон Планта" class="hero-photo" onerror="this.style.opacity='0.15'">
                     <div class="hero-info">
                         <div class="hero-name">Александр фон Планта</div>
                         <div class="hero-role">Алекс / «Хозяин»</div>
@@ -354,7 +390,7 @@
                 </a>
 
                 <a href="character-april.html" class="hero-card">
-                    <img src="../tom2/images/April.png" alt="Хавьер Абриль Монтеро" class="hero-photo" onerror="this.style.opacity='0.2'">
+                    <img src="../tom2/images/April.png" alt="Хавьер Абриль Монтеро" class="hero-photo" onerror="this.style.opacity='0.15'">
                     <div class="hero-info">
                         <div class="hero-name">Хавьер Абриль Монтеро</div>
                         <div class="hero-role">Апрель / «Мастер»</div>
@@ -362,8 +398,7 @@
                 </a>
 
                 <a href="character-olga.html" class="hero-card">
-                    <!-- Заглушка для портрета Ольги -->
-                    <img src="../tom2/images/Olga.png" alt="Ольга Титофф" class="hero-photo" onerror="this.style.opacity='0.2'">
+                    <img src="../tom2/images/Olga.png" alt="Ольга Титофф" class="hero-photo" onerror="this.style.opacity='0.15'">
                     <div class="hero-info">
                         <div class="hero-name">Ольга Титофф</div>
                         <div class="hero-role">Виолетта / «Королева»</div>
@@ -371,8 +406,7 @@
                 </a>
 
                 <a href="character-maya.html" class="hero-card">
-                    <!-- Заглушка для портрета Майи -->
-                    <img src="../tom2/images/Maya.png" alt="Майя-Роза Пфланц" class="hero-photo" onerror="this.style.opacity='0.2'">
+                    <img src="../tom2/images/Maya.png" alt="Майя-Роза Пфланц" class="hero-photo" onerror="this.style.opacity='0.15'">
                     <div class="hero-info">
                         <div class="hero-name">Майя-Роза Пфланц</div>
                         <div class="hero-role">«Пианистка»</div>
