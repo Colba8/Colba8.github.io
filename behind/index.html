@@ -23,7 +23,6 @@
       overflow-x: hidden;
     }
 
-    /* Контейнер-оболочка для точного наложения ссылок */
     .archive-wrapper {
       position: relative;
       width: 100%;
@@ -31,7 +30,6 @@
       margin: 0 auto;
     }
 
-    /* Главная картинка секретера */
     .archive-img {
       width: 100%;
       height: auto;
@@ -39,7 +37,6 @@
       box-shadow: 0 0 40px rgba(0, 0, 0, 0.95);
     }
 
-    /* Общий стиль для всех кликабельных ящиков */
     .hotspot {
       position: absolute;
       display: block;
@@ -50,124 +47,84 @@
       z-index: 10;
     }
 
-    /* Эффект легкой золотистой подсветки при наведении на ящик */
     .hotspot:hover {
       background: rgba(201, 169, 110, 0.18);
       box-shadow: inset 0 0 10px rgba(201, 169, 110, 0.6), 0 0 8px rgba(201, 169, 110, 0.4);
       outline: 1px solid rgba(201, 169, 110, 0.7);
     }
 
-    /* =========================================================
-       КООРДИНАТЫ ПРИВЯЗКИ ССЫЛОК К ЯЩИКАМ (В %)
-       ========================================================= */
-
-    /* ВЕРХНЕЕ МЕНЮ */
+    /* Шапка сайта */
     .nav-theater { top: 1.5%; left: 2.2%; width: 9%; height: 4.5%; }
     .nav-behind  { top: 1.5%; left: 37.5%; width: 10%; height: 4.5%; }
     .nav-coop    { top: 1.5%; left: 49%; width: 11%; height: 4.5%; }
     .nav-contact { top: 1.5%; left: 61.5%; width: 8.5%; height: 4.5%; }
 
-    /* 1. ЛЕВАЯ КОЛОНКА */
-    .drawer-about     { top: 21%; left: 12.2%; width: 12.3%; height: 8.8%; } /* О ПРОЕКТЕ */
-    .drawer-pitch     { top: 38.8%; left: 12.2%; width: 12.3%; height: 8.8%; } /* ПИТЧ */
-    .drawer-synopsis1 { top: 50.8%; left: 12.2%; width: 12.3%; height: 8.8%; } /* СИНОПСИС ТОМА I */
-    .drawer-synopsis2 { top: 62.8%; left: 12.2%; width: 12.3%; height: 8.8%; } /* СИНОПСИС ТОМА II */
+    /* Колонка 1 */
+    .drawer-about     { top: 21%; left: 12.2%; width: 12.3%; height: 8.8%; }
+    .drawer-pitch     { top: 38.8%; left: 12.2%; width: 12.3%; height: 8.8%; }
+    .drawer-synopsis1 { top: 50.8%; left: 12.2%; width: 12.3%; height: 8.8%; }
+    .drawer-synopsis2 { top: 62.8%; left: 12.2%; width: 12.3%; height: 8.8%; }
 
-    /* 2. ВТОРАЯ КОЛОНКА */
-    .drawer-bern   { top: 38.8%; left: 27.2%; width: 12.3%; height: 8.8%; } /* БЕРН 1946 */
-    .drawer-israel { top: 50.8%; left: 27.2%; width: 12.3%; height: 8.8%; } /* СОЗДАНИЕ ИЗРАИЛЯ */
+    /* Колонка 2 */
+    .drawer-bern   { top: 38.8%; left: 27.2%; width: 12.3%; height: 8.8%; }
+    .drawer-israel { top: 50.8%; left: 27.2%; width: 12.3%; height: 8.8%; }
 
-    /* 3. ЦЕНТРАЛЬНАЯ КОЛОНКА */
-    .drawer-report-master { top: 35.5%; left: 42.2%; width: 12.3%; height: 12%; } /* РАПОРТ МАСТЕРА (с папкой) */
-    .drawer-paris1947     { top: 50.8%; left: 42.2%; width: 12.3%; height: 8.8%; } /* ПАРИЖСКИЙ МИР 1947 */
-    .drawer-musicians     { top: 62.8%; left: 42.2%; width: 12.3%; height: 8.8%; } /* СОВЕТСКИЕ МУЗЫКАНТЫ */
+    /* Колонка 3 */
+    .drawer-report-master { top: 35.5%; left: 42.2%; width: 12.3%; height: 12%; }
+    .drawer-paris1947     { top: 50.8%; left: 42.2%; width: 12.3%; height: 8.8%; }
+    .drawer-musicians     { top: 62.8%; left: 42.2%; width: 12.3%; height: 8.8%; }
 
-    /* 4. ЧЕТВЕРТАЯ КОЛОНКА */
-    .drawer-canaris    { top: 38.8%; left: 57.2%; width: 12.3%; height: 8.8%; } /* АРХИВ КАНАРИСА */
-    .drawer-dandelions { top: 50.8%; left: 57.2%; width: 12.3%; height: 8.8%; } /* КАРТИНА ОДУВАНЧИКИ */
+    /* Колонка 4 */
+    .drawer-canaris    { top: 38.8%; left: 57.2%; width: 12.3%; height: 8.8%; }
+    .drawer-dandelions { top: 50.8%; left: 57.2%; width: 12.3%; height: 8.8%; }
 
-    /* 5. ПРАВАЯ КОЛОНКА (ГЕРОИ) */
-    .drawer-heroes-main { top: 21%; left: 73.2%; width: 12.3%; height: 8.8%; } /* ГЛАВНЫЕ ГЕРОИ */
-    .drawer-planta      { top: 35.5%; left: 73.2%; width: 12.3%; height: 12%; } /* АЛЕКСАНДР ФОН ПЛАНТА */
-    .drawer-montero     { top: 50.8%; left: 73.2%; width: 12.3%; height: 8.8%; } /* ХАВЬЕР АБРИЛЬ МОНТЕРО */
-    .drawer-titoff      { top: 60%; left: 73.2%; width: 12.3%; height: 6.8%; }  /* ОЛЬГА ТИТОФФ */
-    .drawer-pflanz      { top: 68%; left: 73.2%; width: 12.3%; height: 7.8%; }  /* МАЙЯ-РОЗА ПФЛАНЦ */
-    .drawer-mendes      { top: 77%; left: 73.2%; width: 12.3%; height: 8.8%; }  /* МАРТА МЕНДЕС */
+    /* Колонка 5 (Герои) */
+    .drawer-heroes-main { top: 21%; left: 73.2%; width: 12.3%; height: 8.8%; }
+    .drawer-planta      { top: 35.5%; left: 73.2%; width: 12.3%; height: 12%; }
+    .drawer-montero     { top: 50.8%; left: 73.2%; width: 12.3%; height: 8.8%; }
+    .drawer-titoff      { top: 60%; left: 73.2%; width: 12.3%; height: 6.8%; }
+    .drawer-pflanz      { top: 68%; left: 73.2%; width: 12.3%; height: 7.8%; }
+    .drawer-mendes      { top: 77%; left: 73.2%; width: 12.3%; height: 8.8%; }
   </style>
 </head>
 <body>
 
   <div class="archive-wrapper">
-    <!-- Фоновое изображение секретера -->
-    <!-- Если файл 67.png лежит выше, замените src на "../tom2/images/67.png" -->
-    <img src="tom2/images/67.png" alt="Архив дела — За кулисами" class="archive-img">
+    <!-- Относительный путь к картинке из папки behind -->
+    <img src="../tom2/images/67.png" alt="Архив дела — За кулисами" class="archive-img">
 
-    <!-- =========================================================
-         ПРИВЯЗКА ФАЙЛОВ К ЯЩИКАМ
-         Меняйте имена файлов в href="..." на нужные вам адреса
-         ========================================================= -->
-
-    <!-- ВЕРХНЕЕ МЕНЮ ШАПКИ -->
+    <!-- Верхнее меню -->
     <a href="../index.html" class="hotspot nav-theater" title="Театр Теней"></a>
     <a href="index.html" class="hotspot nav-behind" title="За кулисами"></a>
     <a href="cooperation.html" class="hotspot nav-coop" title="Сотрудничество"></a>
     <a href="contacts.html" class="hotspot nav-contact" title="Контакты"></a>
 
-    <!-- КОЛОНКА 1 -->
-    <!-- Ящик: О ПРОЕКТЕ -->
+    <!-- Колонка 1 -->
     <a href="about.html" class="hotspot drawer-about" title="О проекте"></a>
-    
-    <!-- Ящик: ПИТЧ (ПЕРЕСКАЗ СОБЫТИЙ) -->
     <a href="pitch.html" class="hotspot drawer-pitch" title="Питч (Пересказ событий)"></a>
-    
-    <!-- Ящик: СИНОПСИС ТОМА I: «ВТОРОЙ ЗВОНОК» -->
-    <a href="synopsis1.html" class="hotspot drawer-synopsis1" title="Синопсис Тома I: Второй звонок"></a>
-    
-    <!-- Ящик: СИНОПСИС ТОМА II: «ОДУВАНЧИКИ» -->
-    <a href="synopsis2.html" class="hotspot drawer-synopsis2" title="Синопсис Тома II: Одуванчики"></a>
+    <a href="synopsis-tom1.html" class="hotspot drawer-synopsis1" title="Синопсис Тома I: Второй звонок"></a>
+    <a href="synopsis-tom2.html" class="hotspot drawer-synopsis2" title="Синопсис Тома II: Одуванчики"></a>
 
-    <!-- КОЛОНКА 2 -->
-    <!-- Ящик: БЕРН 1946: ШПИОНСКИЙ КОНТЕКСТ -->
-    <a href="bern1946.html" class="hotspot drawer-bern" title="Берн 1946: Шпионский контекст"></a>
-    
-    <!-- Ящик: СОЗДАНИЕ ИЗРАИЛЯ: АРГЕНТИНСКИЙ ОТЧЕТ -->
-    <a href="israel.html" class="hotspot drawer-israel" title="Создание Израиля: Аргентинский отчет"></a>
+    <!-- Колонка 2 -->
+    <a href="bern-1946.html" class="hotspot drawer-bern" title="Берн 1946: Шпионский контекст"></a>
+    <a href="palestine-1947.html" class="hotspot drawer-israel" title="Создание Израиля: Аргентинский отчет"></a>
 
-    <!-- КОЛОНКА 3 (ЦЕНТР) -->
-    <!-- Ящик: РАПОРТ МАСТЕРА: 12-13 ДЕКАБРЯ 1946 -->
-    <a href="report_master.html" class="hotspot drawer-report-master" title="Рапорт Мастера: 12-13 декабря 1946"></a>
-    
-    <!-- Ящик: ПАРИЖСКИЙ МИР 1947: СССР И ФРАНЦИЯ (Здесь может быть ваша Докладная записка) -->
-    <a href="report02.html" class="hotspot drawer-paris1947" title="Парижский мир 1947: СССР и Франция"></a>
-    
-    <!-- Ящик: СОВЕТСКИЕ МУЗЫКАНТЫ В ИТАЛИИ -->
-    <a href="musicians.html" class="hotspot drawer-musicians" title="Советские музыканты в Италии"></a>
+    <!-- Колонка 3 -->
+    <a href="report-master.html" class="hotspot drawer-report-master" title="Рапорт Мастера: 12-13 декабря 1946"></a>
+    <a href="france-note.html" class="hotspot drawer-paris1947" title="Парижский мир 1947: СССР и Франция"></a>
+    <a href="italy-note.html" class="hotspot drawer-musicians" title="Советские музыканты в Италии"></a>
 
-    <!-- КОЛОНКА 4 -->
-    <!-- Ящик: АРХИВ КАНАРИСА: «СЕРАЯ ПАПКА» -->
-    <a href="canaris.html" class="hotspot drawer-canaris" title="Архив Канариса: Серая папка"></a>
-    
-    <!-- Ящик: КАРТИНА «ОДУВАНЧИКИ»: ПОДЛИННОСТЬ -->
-    <a href="dandelions_art.html" class="hotspot drawer-dandelions" title="Картина Одуванчики: Подлинность"></a>
+    <!-- Колонка 4 -->
+    <a href="canaris-folder.html" class="hotspot drawer-canaris" title="Архив Канариса: Серая папка"></a>
+    <a href="dandelions-painting.html" class="hotspot drawer-dandelions" title="Картина Одуванчики: Подлинность"></a>
 
-    <!-- КОЛОНКА 5 (ГЕРОИ) -->
-    <!-- Ящик: ГЛАВНЫЕ ГЕРОИ -->
+    <!-- Колонка 5 (Герои) -->
     <a href="heroes.html" class="hotspot drawer-heroes-main" title="Главные герои"></a>
-    
-    <!-- Ящик: АЛЕКСАНДР ФОН ПЛАНТА -->
-    <a href="planta.html" class="hotspot drawer-planta" title="Александр фон Планта"></a>
-    
-    <!-- Ящик: ХАВЬЕР АБРИЛЬ МОНТЕРО -->
-    <a href="montero.html" class="hotspot drawer-montero" title="Хавьер Бриль Монтеро"></a>
-    
-    <!-- Ящик: ОЛЬГА ТИТОФФ -->
-    <a href="titoff.html" class="hotspot drawer-titoff" title="Ольга Титофф"></a>
-    
-    <!-- Ящик: МАЙЯ-РОЗА ПФЛАНЦ -->
-    <a href="pflanz.html" class="hotspot drawer-pflanz" title="Майя-Роза Пфланц"></a>
-    
-    <!-- Ящик: МАРТА МЕНДЕС -->
-    <a href="mendes.html" class="hotspot drawer-mendes" title="Марта Мендес"></a>
+    <a href="character-alex.html" class="hotspot drawer-planta" title="Александр фон Планта"></a>
+    <a href="character-april.html" class="hotspot drawer-montero" title="Хавьер Бриль Монтеро"></a>
+    <a href="character-olga.html" class="hotspot drawer-titoff" title="Ольга Титофф"></a>
+    <a href="character-maya.html" class="hotspot drawer-pflanz" title="Майя-Роза Пфланц"></a>
+    <a href="character-marta.html" class="hotspot drawer-mendes" title="Марта Мендес"></a>
   </div>
 
 </body>
