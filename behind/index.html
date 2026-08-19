@@ -1,28 +1,316 @@
-<div class="section-header" style="
-  background: #0b0a08;
-  padding: 3rem 1.5rem;
-  border-bottom: 1px solid rgba(201,169,110,0.15);
-  text-align: center;
-">
-  <img src="images/typewriter-icon.png" alt="" style="
-    width: 80px;
-    height: auto;
-    opacity: 0.6;
-    margin-bottom: 1.5rem;
-    filter: sepia(1) hue-rotate(20deg) saturate(0.6);
-  ">
-  <h1 style="
-    font-family: 'Courier New', monospace;
-    color: #e0d5b0;
-    font-size: 1.6rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-  ">За кулисами</h1>
-  <p style="
-    color: #8A7E6B;
-    font-size: 0.9rem;
-    font-style: italic;
-  ">архив проекта «Театр теней»</p>
-</div>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>За кулисами — Театр теней</title>
+    <!-- Путь к иконке теперь через ../ -->
+    <link rel="icon" href="../images/51.png" type="image/png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Literatta:opsz,wght@6..72,300;400;500&family=Oranienbaum&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-black: #050505;
+            --gold: #C9A96E;
+            --taupe: #8A7E6B;
+            --ivory: #e0d5b0;
+            --font-head: 'Oranienbaum', serif;
+            --font-body: 'Literatta', serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--bg-black);
+            /* Путь к фону теперь через ../ */
+            background-image: 
+                linear-gradient(to right, rgba(5,5,5,0.3) 0%, rgba(5,5,5,0.8) 30%, #050505 60%),
+                url('../tom2/images/084.png');
+            background-size: cover;
+            background-position: left center;
+            background-attachment: fixed;
+            color: var(--ivory);
+            font-family: var(--font-body);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .top-navbar {
+            position: fixed; top: 0; left: 0; right: 0; height: 60px;
+            background: rgba(0,0,0,0.95);
+            border-bottom: 1px solid rgba(201,169,110,0.15);
+            display: flex; justify-content: center; align-items: center; gap: 2rem;
+            z-index: 100; backdrop-filter: blur(5px);
+        }
+        .nav-link {
+            color: var(--taupe); font-size: 0.75rem; letter-spacing: 0.12em;
+            text-transform: uppercase; text-decoration: none; transition: color 0.3s;
+            font-weight: 600; cursor: pointer;
+        }
+        .nav-link:hover, .nav-link.active { color: var(--gold); }
+
+        .container {
+            max-width: 1100px; margin: 0 auto; padding: 100px 20px 60px;
+            position: relative; z-index: 10;
+        }
+
+        .page-header { text-align: center; margin-bottom: 4rem; }
+        .page-title {
+            font-family: var(--font-head); color: var(--gold);
+            font-size: 3rem; letter-spacing: 0.1em; text-transform: uppercase;
+            margin-bottom: 1rem; font-weight: 400;
+        }
+        .divider-line {
+            display: flex; align-items: center; justify-content: center; gap: 1rem;
+            color: var(--gold); opacity: 0.6;
+        }
+        .line { width: 60px; height: 1px; background: var(--gold); }
+        .diamond { width: 8px; height: 8px; transform: rotate(45deg); border: 1px solid var(--gold); }
+
+        .intro-section {
+            background: rgba(11, 10, 8, 0.6);
+            border: 1px solid rgba(201,169,110,0.1);
+            padding: 3rem 2rem; margin-bottom: 3rem;
+            text-align: center; backdrop-filter: blur(2px);
+        }
+        .flasks-row { display: flex; justify-content: center; gap: 4rem; margin-bottom: 2rem; }
+        .flask-btn {
+            background: none; border: none; cursor: pointer;
+            display: flex; flex-direction: column; align-items: center; gap: 1rem;
+            transition: all 0.3s ease; opacity: 0.5;
+        }
+        .flask-btn:hover, .flask-btn.active { opacity: 1; transform: translateY(-3px); }
+        .flask-icon { width: 40px; height: 40px; fill: none; stroke: var(--gold); stroke-width: 1.5; }
+        .flask-label {
+            font-family: var(--font-head); color: var(--gold);
+            font-size: 0.9rem; letter-spacing: 0.1em; text-transform: uppercase;
+        }
+
+        .intro-content {
+            max-width: 700px; margin: 0 auto; min-height: 120px;
+            font-size: 1.1rem; line-height: 1.6; color: var(--ivory);
+            opacity: 0; transition: opacity 0.4s ease;
+        }
+        .intro-content.visible { opacity: 1; }
+        .intro-content h3 {
+            font-family: var(--font-head); color: var(--gold);
+            font-size: 1.4rem; margin-bottom: 1rem; font-weight: 400;
+        }
+
+        .docs-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem; margin-bottom: 4rem;
+        }
+        .doc-card {
+            border: 1px solid rgba(201,169,110,0.2);
+            padding: 2rem; position: relative;
+            background: rgba(5,5,5,0.4);
+            transition: border-color 0.3s;
+        }
+        .doc-card:hover { border-color: var(--gold); }
+        .card-diamond {
+            position: absolute; bottom: -6px; left: 50%; transform: translateX(-50%) rotate(45deg);
+            width: 10px; height: 10px; background: var(--bg-black);
+            border: 1px solid var(--gold);
+        }
+
+        .card-title {
+            font-family: var(--font-head); color: var(--gold);
+            font-size: 1.3rem; margin-bottom: 1.5rem; letter-spacing: 0.05em;
+        }
+        .card-desc { color: var(--taupe); font-size: 0.95rem; margin-bottom: 1.5rem; line-height: 1.5; }
+        .doc-list { list-style: none; }
+        .doc-list li { margin-bottom: 0.8rem; }
+        .doc-link {
+            color: var(--ivory); text-decoration: none; font-size: 0.95rem;
+            transition: color 0.3s; display: inline-block; border-bottom: 1px solid transparent;
+        }
+        .doc-link:hover { color: var(--gold); border-bottom-color: var(--gold); }
+
+        .cast-section { text-align: center; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(201,169,110,0.1); }
+        .cast-title { font-family: var(--font-head); color: var(--gold); font-size: 1.8rem; margin-bottom: 3rem; letter-spacing: 0.1em; }
+        .cast-row { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
+        .cast-member { text-align: center; width: 200px; cursor: pointer; transition: transform 0.3s; }
+        .cast-member:hover { transform: translateY(-5px); }
+        
+        .portrait-frame {
+            width: 160px; height: 200px; margin: 0 auto 1rem;
+            border: 1px solid var(--gold); padding: 4px;
+            background: rgba(201,169,110,0.05); overflow: hidden; position: relative;
+        }
+        .portrait-img {
+            width: 100%; height: 100%; object-fit: cover;
+            filter: grayscale(100%) sepia(20%) contrast(1.1); transition: filter 0.3s;
+        }
+        .cast-member:hover .portrait-img { filter: grayscale(0%) sepia(0%); }
+        
+        .cast-name { font-family: var(--font-head); color: var(--ivory); font-size: 1.1rem; margin-bottom: 0.3rem; }
+        .cast-role { color: var(--taupe); font-size: 0.8rem; letter-spacing: 0.05em; }
+
+        @media (max-width: 768px) {
+            .page-title { font-size: 2rem; }
+            .flasks-row { gap: 2rem; }
+            .cast-row { gap: 1rem; }
+            .cast-member { width: 45%; }
+            .portrait-frame { width: 120px; height: 150px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="top-navbar">
+        <!-- Ссылки ведут на уровень выше (../) -->
+        <a href="../index.html" class="nav-link">Главная</a>
+        <a href="../reader.html" class="nav-link">Второй звонок</a>
+        <a href="../dandelions.html" class="nav-link">Одуванчики</a>
+        <a href="index.html" class="nav-link active">За кулисами</a>
+        <a href="../foreigners.html" class="nav-link">Сотрудничество</a>
+        <button class="nav-link" onclick="document.getElementById('contactModal').style.display='flex'">Контакты</button>
+    </nav>
+
+    <div class="container">
+        
+        <header class="page-header">
+            <h1 class="page-title">За кулисами</h1>
+            <div class="divider-line">
+                <div class="line"></div>
+                <div class="diamond"></div>
+                <div class="line"></div>
+            </div>
+        </header>
+
+        <section class="intro-section">
+            <div class="flasks-row">
+                <button class="flask-btn active" onclick="showIntro('pitch', this)">
+                    <svg class="flask-icon" viewBox="0 0 24 24"><path d="M9 3h6v4l5 9a2 2 0 0 1-1.7 3H5.7A2 2 0 0 1 4 16l5-9V3z"/></svg>
+                    <span class="flask-label">Питч</span>
+                </button>
+                <button class="flask-btn" onclick="showIntro('tom1', this)">
+                    <svg class="flask-icon" viewBox="0 0 24 24"><path d="M9 3h6v4l5 9a2 2 0 0 1-1.7 3H5.7A2 2 0 0 1 4 16l5-9V3z"/></svg>
+                    <span class="flask-label">Том I</span>
+                </button>
+                <button class="flask-btn" onclick="showIntro('tom2', this)">
+                    <svg class="flask-icon" viewBox="0 0 24 24"><path d="M9 3h6v4l5 9a2 2 0 0 1-1.7 3H5.7A2 2 0 0 1 4 16l5-9V3z"/></svg>
+                    <span class="flask-label">Том II</span>
+                </button>
+            </div>
+            
+            <div id="intro-pitch" class="intro-content visible">
+                <h3>Две истории. Один мир.</h3>
+                <p>«Театр теней» — это интеллектуальный шпионский нуар о людях, которые работают шпионами, но пытаются остаться людьми. История о выборе, который определяет судьбу, и о музыке, которая спасает тех, кто сумел не потерять себя в игре.</p>
+            </div>
+            <div id="intro-tom1" class="intro-content" style="display:none;">
+                <h3>Том I: Второй звонок (1946–1948)</h3>
+                <p>Берн, послевоенная Европа. Хозяин бернской резидентуры получает сигнал: его раскрыли. За ним следуют тени прошлого — Вальтер, Мастер и таинственная Королева. Роман-архив, где каждый документ хранит тайну, а каждая сцена — шифр.</p>
+            </div>
+            <div id="intro-tom2" class="intro-content" style="display:none;">
+                <h3>Том II: Одуванчики (1947)</h3>
+                <p>Когда над миром опускается холодная тень политики, на сцену выходят те, кто говорит на языке музыки. Их оружие — ноты. Их защита — человечность. Их риск — остаться собой, когда всё вокруг стало игрой.</p>
+            </div>
+        </section>
+
+        <div class="docs-grid">
+            <div class="doc-card">
+                <h3 class="card-title">Историческая справка</h3>
+                <p class="card-desc">Документы эпохи, фиксирующие геополитику и конфликты времени.</p>
+                <ul class="doc-list">
+                    <!-- Ссылки на файлы в той же папке behind -->
+                    <li><a href="note01.html" class="doc-link">Аналитическая записка о Берне, 1946</a></li>
+                    <li><a href="note02.html" class="doc-link">Донесение аргентинского посольства о Палестине, 1947</a></li>
+                </ul>
+                <div class="card-diamond"></div>
+            </div>
+
+            <div class="doc-card">
+                <h3 class="card-title">Комментарий эксперта</h3>
+                <p class="card-desc">Экспертный взгляд на скрытые слои событий и артефактов.</p>
+                <ul class="doc-list">
+                    <li><a href="opinion01.html" class="doc-link">Атрибуция картины «Одуванчики»</a></li>
+                    <li><a href="opinion02.html" class="doc-link">Досье «Папка Канариса»</a></li>
+                </ul>
+                <div class="card-diamond"></div>
+            </div>
+
+            <div class="doc-card">
+                <h3 class="card-title">Документы проекта</h3>
+                <p class="card-desc">Официальные документы и донесения — сухой текст, за которым стоит драма.</p>
+                <ul class="doc-list">
+                    <li><a href="report00.html" class="doc-link">Рапорт Мастера о ликвидации</a></li>
+                    <li><a href="report01.html" class="doc-link">Докладная Посольства СССР во Франции</a></li>
+                    <li><a href="report02.html" class="doc-link">Докладная Посольства СССР в Италии</a></li>
+                </ul>
+                <div class="card-diamond"></div>
+            </div>
+        </div>
+
+        <section class="cast-section">
+            <h2 class="cast-title">Действующие лица</h2>
+            <div class="cast-row">
+                <div class="cast-member">
+                    <div class="portrait-frame">
+                        <!-- Путь к фото через ../ -->
+                        <img src="../tom2/images/81.png" alt="Алекс" class="portrait-img">
+                    </div>
+                    <div class="cast-name">Александр фон Планта</div>
+                    <div class="cast-role">«Хозяин»</div>
+                </div>
+                
+                <div class="cast-member">
+                    <div class="portrait-frame">
+                        <img src="../tom2/images/April.png" alt="Апрель" class="portrait-img">
+                    </div>
+                    <div class="cast-name">Хавьер Абриль Монтеро</div>
+                    <div class="cast-role">«Мастер»</div>
+                </div>
+
+                <div class="cast-member">
+                    <div class="portrait-frame">
+                        <div style="width:100%; height:100%; background:#111; display:flex; align-items:center; justify-content:center; color:#333;">?</div>
+                    </div>
+                    <div class="cast-name">Ольга</div>
+                    <div class="cast-role">«Королева»</div>
+                </div>
+
+                <div class="cast-member">
+                    <div class="portrait-frame">
+                        <div style="width:100%; height:100%; background:#111; display:flex; align-items:center; justify-content:center; color:#333;">?</div>
+                    </div>
+                    <div class="cast-name">Майя</div>
+                    <div class="cast-role">«Пианистка»</div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <div class="modal-overlay" id="contactModal" style="position:fixed; inset:0; background:rgba(0,0,0,0.9); display:none; align-items:center; justify-content:center; z-index:200;">
+        <div style="background:#0b0a08; border:1px solid #C9A96E; padding:2.5rem; max-width:450px; width:90%; position:relative;">
+            <button onclick="document.getElementById('contactModal').style.display='none'" style="position:absolute; top:1rem; right:1rem; background:none; border:none; color:#8A7E6B; font-size:1.5rem; cursor:pointer;">✕</button>
+            <h2 style="color:#C9A96E; text-align:center; margin-bottom:1rem; font-family:'Oranienbaum',serif;">Контакты</h2>
+            <form style="display:flex; flex-direction:column; gap:1rem;" action="https://formspree.io/f/mgojzbba" method="POST">
+                <input type="text" name="name" placeholder="Ваш позывной" required style="background:#161512; border:1px solid #333; color:#e0d5b0; padding:0.8rem; font-family:inherit;">
+                <input type="email" name="email" placeholder="Ваша почта" required style="background:#161512; border:1px solid #333; color:#e0d5b0; padding:0.8rem; font-family:inherit;">
+                <textarea name="message" placeholder="Сообщение" required style="background:#161512; border:1px solid #333; color:#e0d5b0; padding:0.8rem; min-height:80px; font-family:inherit;"></textarea>
+                <button type="submit" style="background:transparent; border:1px solid #C9A96E; color:#C9A96E; padding:0.8rem; cursor:pointer; text-transform:uppercase; font-family:inherit; font-weight:600;">Отправить</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function showIntro(tabId, btnElement) {
+            document.querySelectorAll('.intro-content').forEach(el => {
+                el.style.display = 'none';
+                el.classList.remove('visible');
+            });
+            document.querySelectorAll('.flask-btn').forEach(btn => btn.classList.remove('active'));
+            const target = document.getElementById('intro-' + tabId);
+            target.style.display = 'block';
+            setTimeout(() => target.classList.add('visible'), 10);
+            btnElement.classList.add('active');
+        }
+    </script>
+</body>
+</html>
