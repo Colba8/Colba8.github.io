@@ -37,6 +37,17 @@
       box-shadow: 0 0 40px rgba(0, 0, 0, 0.95);
     }
 
+    /* Чёрная полоса, закрывающая рисованное меню на подложке */
+    .top-cover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6%;
+      background: #060504;
+      z-index: 15;
+    }
+
     /* Hotspots — БЕЗ рамок, только подсветка фона */
     .hotspot {
       position: absolute;
@@ -51,14 +62,16 @@
       background: rgba(201, 169, 110, 0.25);
     }
 
-    /* Программное верхнее меню — как на главной странице */
+    /* Программное верхнее меню — поверх чёрной полосы */
     .top-nav {
       position: absolute;
-      top: 0.8%;
+      top: 0;
       left: 0;
       right: 0;
+      height: 6%;
       display: flex;
       justify-content: center;
+      align-items: center;
       gap: 2rem;
       z-index: 20;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -95,7 +108,7 @@
     .drawer-canaris       { top: 38.8%; left: 57.2%; width: 12.3%; height: 8.8%; }
     .drawer-dandelions    { top: 50.8%; left: 57.2%; width: 12.3%; height: 8.8%; }
 
-    /* Колонка 5 — порядок ящиков: Алекс, Апрель, Марта, Ольга, Майя */
+    /* Колонка 5 — порядок на изображении: Алекс, Апрель, Ольга, Майя, Марта */
     .drawer-heroes-main   { top: 21%;   left: 73.2%; width: 12.3%; height: 8.8%; }
     .drawer-planta        { top: 35.5%; left: 73.2%; width: 12.3%; height: 12%;  }
     .drawer-montero       { top: 50.8%; left: 73.2%; width: 12.3%; height: 8.8%; }
@@ -108,6 +121,9 @@
 
   <div class="archive-wrapper">
     <img src="../tom2/images/67.png" alt="Архив дела — За кулисами" class="archive-img">
+
+    <!-- Чёрная полоса, закрывающая рисованное меню -->
+    <div class="top-cover"></div>
 
     <!-- Программное верхнее меню -->
     <nav class="top-nav">
@@ -138,13 +154,13 @@
     <a href="opinion02.html" class="hotspot drawer-canaris" aria-label="Архив Канариса"></a>
     <a href="opinion01.html" class="hotspot drawer-dandelions" aria-label="Картина Одуванчики"></a>
 
-    <!-- Колонка 5 (Герои): Алекс → Апрель → Марта → Ольга → Майя -->
+    <!-- Колонка 5 (Герои): Алекс → Апрель → Ольга → Майя → Марта -->
     <a href="heroes.html" class="hotspot drawer-heroes-main" aria-label="Главные герои"></a>
     <a href="cv01.html" class="hotspot drawer-planta" aria-label="Александр фон Планта"></a>
     <a href="cv02.html" class="hotspot drawer-montero" aria-label="Хавьер Абриль Монтеро"></a>
-    <a href="cv03.html" class="hotspot drawer-mendes" aria-label="Марта Мендес"></a>
-    <a href="cv04.html" class="hotspot drawer-titoff" aria-label="Ольга Титофф"></a>
-    <a href="cv05.html" class="hotspot drawer-pflanz" aria-label="Майя-Роза Пфланц"></a>
+    <a href="cv04.html" class="hotspot drawer-mendes" aria-label="Ольга Титофф"></a>
+    <a href="cv05.html" class="hotspot drawer-titoff" aria-label="Майя-Роза Пфланц"></a>
+    <a href="cv03.html" class="hotspot drawer-pflanz" aria-label="Марта Мендес"></a>
   </div>
 
 </body>
