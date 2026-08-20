@@ -33,12 +33,12 @@
       box-shadow: 0 0 40px rgba(0, 0, 0, 0.95);
     }
 
+    /* Навигация размещена внутри верхнего поля изображения над заголовком "ГАЛЕРЕЯ" */
     .top-nav {
       position: absolute;
-      top: -4%;
+      top: 3%;
       left: 0;
       right: 0;
-      height: 4%;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -54,12 +54,14 @@
     .top-nav a {
       color: #c9a96e;
       text-decoration: none;
-      transition: color 0.3s ease;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
       padding: 0.5rem 1rem;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
     }
 
     .top-nav a:hover {
       color: #e8d5a3;
+      text-shadow: 0 0 8px rgba(232, 213, 163, 0.5);
     }
 
     /* ==========================================
@@ -158,6 +160,7 @@
     <!-- Фоновое изображение сцены со шторами -->
     <img src="../tom2/images/69.png" alt="За кулисами — Галерея" class="archive-img">
 
+    <!-- Навигация над табличкой "ГАЛЕРЕЯ" -->
     <nav class="top-nav">
       <a href="../index.html">Главная</a>
       <a href="../tom1/index.html">Второй звонок</a>
