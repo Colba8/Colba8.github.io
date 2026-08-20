@@ -37,32 +37,6 @@
       box-shadow: 0 0 40px rgba(0, 0, 0, 0.95);
     }
 
-    /* Чёрная полоса, закрывающая рисованное меню на подложке — УВЕЛИЧЕНА */
-    .top-cover {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 6%;
-      background: #060504;
-      z-index: 15;
-    }
-
-    /* Hotspots — БЕЗ рамок, только подсветка фона */
-    .hotspot {
-      position: absolute;
-      display: block;
-      text-decoration: none;
-      cursor: pointer;
-      z-index: 10;
-      transition: background 0.2s ease;
-    }
-
-    .hotspot:hover {
-      background: rgba(201, 169, 110, 0.25);
-    }
-
-    /* Программное верхнее меню — поднято ещё выше */
     .top-nav {
       position: absolute;
       top: -4%;
@@ -92,23 +66,30 @@
       color: #e8d5a3;
     }
 
-    /* Позиции ящиков */
+    .hotspot {
+      position: absolute;
+      display: block;
+      text-decoration: none;
+      cursor: pointer;
+      z-index: 10;
+      transition: background 0.2s ease;
+    }
+
+    .hotspot:hover {
+      background: rgba(201, 169, 110, 0.25);
+    }
+
     .drawer-about         { top: 21%;   left: 12.2%; width: 12.3%; height: 8.8%; }
     .drawer-pitch         { top: 38.8%; left: 12.2%; width: 12.3%; height: 8.8%; }
     .drawer-synopsis1     { top: 50.8%; left: 12.2%; width: 12.3%; height: 8.8%; }
     .drawer-synopsis2     { top: 62.8%; left: 12.2%; width: 12.3%; height: 8.8%; }
-
     .drawer-bern          { top: 38.8%; left: 27.2%; width: 12.3%; height: 8.8%; }
     .drawer-israel        { top: 50.8%; left: 27.2%; width: 12.3%; height: 8.8%; }
-
     .drawer-report-master { top: 35.5%; left: 42.2%; width: 12.3%; height: 12%;  }
     .drawer-paris1947     { top: 50.8%; left: 42.2%; width: 12.3%; height: 8.8%; }
     .drawer-musicians     { top: 62.8%; left: 42.2%; width: 12.3%; height: 8.8%; }
-
     .drawer-canaris       { top: 38.8%; left: 57.2%; width: 12.3%; height: 8.8%; }
     .drawer-dandelions    { top: 50.8%; left: 57.2%; width: 12.3%; height: 8.8%; }
-
-    /* Колонка 5 — порядок на изображении: Алекс, Апрель, Ольга, Майя, Марта */
     .drawer-heroes-main   { top: 21%;   left: 73.2%; width: 12.3%; height: 8.8%; }
     .drawer-planta        { top: 35.5%; left: 73.2%; width: 12.3%; height: 12%;  }
     .drawer-montero       { top: 50.8%; left: 73.2%; width: 12.3%; height: 8.8%; }
@@ -122,45 +103,36 @@
   <div class="archive-wrapper">
     <img src="../tom2/images/67.png" alt="Архив дела — За кулисами" class="archive-img">
 
-    <!-- Чёрная полоса, закрывающая рисованное меню — УВЕЛИЧЕНА -->
-    <div class="top-cover"></div>
-
-    <!-- Программное верхнее меню — поднято ещё выше -->
     <nav class="top-nav">
-      <a href="/index.html">Главная</a>
-      <a href="/tom1/index.html">Второй звонок</a>
-      <a href="/tom2/index.html">Одуванчики</a>
-      <a href="/behind/index.html">За кулисами</a>
-      <a href="/cooperation.html">Сотрудничество</a>
-      <a href="/contacts.html">Контакты</a>
+      <a href="../index.html">Главная</a>
+      <a href="../tom1/index.html">Второй звонок</a>
+      <a href="../tom2/index.html">Одуванчики</a>
+      <a href="index.html">За кулисами</a>
+      <a href="../cooperation.html">Сотрудничество</a>
+      <a href="../contacts.html">Контакты</a>
     </nav>
 
-    <!-- Колонка 1 -->
     <a href="about.html" class="hotspot drawer-about" aria-label="О проекте"></a>
     <a href="pitch.html" class="hotspot drawer-pitch" aria-label="Питч"></a>
     <a href="vtoroy-zvonok.html" class="hotspot drawer-synopsis1" aria-label="Синопсис Тома I"></a>
     <a href="oduvanchiki.html" class="hotspot drawer-synopsis2" aria-label="Синопсис Тома II"></a>
 
-    <!-- Колонка 2 -->
     <a href="note01.html" class="hotspot drawer-bern" aria-label="Берн 1946"></a>
     <a href="note02.html" class="hotspot drawer-israel" aria-label="Создание Израиля"></a>
 
-    <!-- Колонка 3 -->
     <a href="report00.html" class="hotspot drawer-report-master" aria-label="Рапорт Мастера"></a>
     <a href="report01.html" class="hotspot drawer-paris1947" aria-label="Парижский мир 1947"></a>
     <a href="report02.html" class="hotspot drawer-musicians" aria-label="Советские музыканты"></a>
 
-    <!-- Колонка 4 -->
     <a href="opinion02.html" class="hotspot drawer-canaris" aria-label="Архив Канариса"></a>
     <a href="opinion01.html" class="hotspot drawer-dandelions" aria-label="Картина Одуванчики"></a>
 
-    <!-- Колонка 5 (Герои): Алекс → Апрель → Ольга → Майя → Марта -->
-    <a href="heroes.html" class="hotspot drawer-heroes-main" aria-label="Главные герои"></a>
-    <a href="cv01.html" class="hotspot drawer-planta" aria-label="Александр фон Планта"></a>
-    <a href="cv02.html" class="hotspot drawer-montero" aria-label="Хавьер Абриль Монтеро"></a>
-    <a href="cv04.html" class="hotspot drawer-mendes" aria-label="Ольга Титофф"></a>
-    <a href="cv05.html" class="hotspot drawer-titoff" aria-label="Майя-Роза Пфланц"></a>
-    <a href="cv03.html" class="hotspot drawer-pflanz" aria-label="Марта Мендес"></a>
+    <a href="gallery.html" class="hotspot drawer-heroes-main" aria-label="Главные герои"></a>
+    <a href="gallery.html" class="hotspot drawer-planta" aria-label="Александр фон Планта"></a>
+    <a href="gallery.html" class="hotspot drawer-montero" aria-label="Хавьер Абриль Монтеро"></a>
+    <a href="gallery.html" class="hotspot drawer-mendes" aria-label="Ольга Титофф"></a>
+    <a href="gallery.html" class="hotspot drawer-titoff" aria-label="Майя-Роза Пфланц"></a>
+    <a href="gallery.html" class="hotspot drawer-pflanz" aria-label="Марта Мендес"></a>
   </div>
 
 </body>
