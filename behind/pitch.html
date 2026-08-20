@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Питч проекта — Театр Теней</title>
   <style>
+    :root {
+      --bg-color: #fcfcfc;
+      --text-color: #111111;
+      --accent-color: #d90000;
+      --border-color: #111111;
+      --muted-color: #666666;
+      --font-stack: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -12,95 +21,160 @@
     }
 
     body {
-      background-color: #060504;
-      color: #d0c29d;
-      font-family: 'Times New Roman', Times, Georgia, serif;
-      min-height: 100vh;
-      padding: 2rem 1rem;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: var(--font-stack);
       line-height: 1.6;
+      font-size: 17px;
+      padding: 40px 20px 80px 20px;
+      -webkit-font-smoothing: antialiased;
     }
 
     .container {
-      max-width: 800px;
+      max-width: 760px;
       margin: 0 auto;
-      background: #0d0b09;
-      border: 1px solid #3a3022;
-      padding: 2.5rem;
-      box-shadow: 0 0 30px rgba(0, 0, 0, 0.9);
     }
 
-    .back-link {
-      display: inline-block;
-      color: #c9a96e;
-      text-decoration: none;
-      font-size: 0.95rem;
-      margin-bottom: 2rem;
-      border-bottom: 1px dashed #c9a96e;
-    }
-
-    .back-link:hover {
-      color: #e5c88f;
-      border-bottom-style: solid;
-    }
-
-    h1 {
-      color: #c9a96e;
-      font-size: 2rem;
-      text-align: center;
-      letter-spacing: 2px;
-      margin-bottom: 0.5rem;
+    .top-nav {
+      margin-bottom: 40px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
     }
 
+    .top-nav a {
+      color: var(--text-color);
+      text-decoration: none;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.2s ease;
+    }
+
+    .top-nav a:hover {
+      border-color: var(--text-color);
+    }
+
+    header {
+      border-bottom: 3px solid var(--border-color);
+      padding-bottom: 20px;
+      margin-bottom: 30px;
+    }
+
+    .project-tag {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent-color);
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
     .subtitle {
-      text-align: center;
-      font-style: italic;
-      color: #8a7a63;
-      margin-bottom: 2rem;
-      border-bottom: 1px solid #2a2218;
-      padding-bottom: 1rem;
+      font-size: 1.2rem;
+      color: var(--muted-color);
+      font-weight: 400;
     }
 
-    p {
-      margin-bottom: 1.2rem;
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 20px 0;
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 40px;
+      font-size: 14px;
+    }
+
+    .meta-item strong {
+      display: block;
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      color: var(--muted-color);
+      margin-bottom: 4px;
+    }
+
+    .synopsis-content p {
+      margin-bottom: 1.4em;
       text-align: justify;
-      text-indent: 1.5rem;
+      hyphens: auto;
     }
 
-    p:first-of-type {
-      text-indent: 0;
+    .synopsis-content p strong {
+      font-weight: 700;
     }
 
-    p:first-of-type::first-letter {
-      font-size: 2.5rem;
-      float: left;
-      line-height: 1;
-      margin-right: 0.5rem;
-      color: #c9a96e;
+    .conclusion-box {
+      margin-top: 40px;
+      padding: 24px;
+      background: #f0f0f0;
+      border-left: 4px solid var(--accent-color);
+      font-weight: 500;
     }
 
-    .highlight {
-      color: #e5c88f;
+    @media (max-width: 600px) {
+      h1 { font-size: 2.1rem; }
+      body { padding: 20px 15px 40px 15px; }
     }
   </style>
 </head>
 <body>
 
   <div class="container">
-    <a href="index.html" class="back-link">&larr; Вернуться к Архиву (За кулисами)</a>
+    <div class="top-nav">
+      <a href="index.html">&larr; НАЗАД В АРХИВ</a>
+    </div>
 
-    <h1>ПИТЧ</h1>
-    <div class="subtitle">Параллельная структура и механика невидимой войны</div>
+    <header>
+      <div class="project-tag">Проект «Театр теней»</div>
+      <h1>Питч</h1>
+      <div class="subtitle">Параллельная структура и механика невидимой войны</div>
+    </header>
 
-    <p><span class="highlight">«Театр теней»</span> — завершённая дилогия, интеллектуальный шпионский роман с параллельной структурой: два тома смотрят на один и тот же 1946–1947 год с двух ракурсов, служебного и человеческого, и вместе дают стереоэффект — одна и та же сцена означает разное для резидента и для человека.</p>
+    <div class="meta-grid">
+      <div class="meta-item">
+        <strong>Формат</strong>
+        Завершённая дилогия
+      </div>
+      <div class="meta-item">
+        <strong>Жанр</strong>
+        Интеллектуальный шпионский роман
+      </div>
+      <div class="meta-item">
+        <strong>Структура</strong>
+        Параллельное повествование
+      </div>
+      <div class="meta-item">
+        <strong>Перспектива</strong>
+        Потенциальная трилогия
+      </div>
+    </div>
 
-    <p><span class="highlight">Том I, «Второй звонок»</span>, — нуар о механике невидимой войны. Берн, декабрь 1946-го: резидент ждёт сигнала к самоликвидации, а микрофильм уходит из театра в корзине с камелиями. За всем этим стоит охота на серую папку с архивом Канариса — и именно эта охота заставляет главу сети пожертвовать собственными агентами, приводя в движение всю дилогию.</p>
+    <article class="synopsis-content">
+      <p><strong>«Театр теней»</strong> — завершённая дилогия, интеллектуальный шпионский роман с параллельной структурой: два тома смотрят на один и тот же 1946–1947 год с двух ракурсов, служебного и человеческого, и вместе дают стереоэффект — одна и та же сцена означает разное для резидента и для человека.</p>
 
-    <p><span class="highlight">Том II, «Одуванчики»</span>, — та же история со стороны людей, которых система выбросила. Пианист получает приказ убить рукопожатием — и впервые за двадцать лет говорит «нет». Художник вместо стилета получает укол иглой в щёку — и свободу. Шпионская интрига никуда не уходит (покушение на Тольятти в Ла Скала, голосование по Палестине в ООН), но становится материалом для другого вопроса: что остаётся от человека, когда у него отбирают легенду, и можно ли стать отцом задним числом — дочери, выросшей без него.</p>
+      <p><strong>Том I, «Второй звонок»</strong>, — нуар о механике невидимой войны. Берн, декабрь 1946-го: резидент ждёт сигнала к самоликвидации, а микрофильм уходит из театра в корзине с камелиями. За всем этим стоит охота на серую папку с архивом Канариса — и именно эта охота заставляет главу сети пожертвовать собственными агентами, приводя в движение всю дилогию.</p>
 
-    <p>Историческая канва подлинная: радары Compton, маршруты нацистского золота, Нюрнберг, Парижские договоры. Основой одной из сюжетных линий послужил реальный факт из биографии Тольятти — его сын Альдо, выросший в СССР, так и не принял Италию; письмо к Сталину, вокруг которого строится сюжетная развязка, — художественный вымысел, вписанный в подлинный исторический контекст. Документы, вшитые в текст — перехваты, справки, вырезки, — делают роман «романом-архивом»: именно так уже устроена его сетевая версия на <span class="highlight">colba8.ru</span>.</p>
+      <p><strong>Том II, «Одуванчики»</strong>, — та же история со стороны людей, которых система выбросила. Пианист получает приказ убить рукопожатием — и впервые за двадцать лет говорит «нет». Художник вместо стилета получает укол иглой в щёку — и свободу. Шпионская интрига никуда не уходит (покушение на Тольятти в Ла Скала, голосование по Палестине в ООН), но становится материалом для другого вопроса: что остаётся от человека, когда у него отбирают легенду, и можно ли стать отцом задним числом — дочери, выросшей без него.</p>
 
-    <p>Читатель — тот, кто ценит интеллектуальный нуар и послевоенную историческую прозу, и, шире, всякий, для кого Европа 1946 года — точка сборки современного мира. Тома самостоятельны, но задуманы как одно целое; при успехе дилогия способна вырасти в трилогию — третий том, <span class="highlight">«Дочь»</span>.</p>
+      <p>Историческая канва подлинная: радары Compton, маршруты нацистского золота, Нюрнберг, Парижские договоры. Основой одной из сюжетных линий послужил реальный факт из биографии Тольятти — его сын Альдо, выросший в СССР, так и не принял Италию; письмо к Сталину, вокруг которого строится сюжетная развязка, — художественный вымысел, вписанный в подлинный исторический контекст. Документы, вшитые в текст — перехваты, справки, вырезки, — делают роман «романом-архивом»: именно так уже устроена его сетевая версия на <strong>colba8.ru</strong>.</p>
+
+      <p>Читатель — тот, кто ценит интеллектуальный нуар и послевоенную историческую прозу, и, шире, всякий, для кого Европа 1946 года — точка сборки современного мира. Тома самостоятельны, но задуманы как одно целое; при успехе дилогия способна вырасти в трилогию — третий том, <strong>«Дочь»</strong>.</p>
+
+      <div class="conclusion-box">
+        «Театр теней» — роман о мире разведок, в котором человек пытается сохранить человеческое в себе после того, как всю жизнь учился быть безупречной функцией.
+      </div>
+    </article>
   </div>
 
 </body>
