@@ -42,55 +42,35 @@
       display: block;
     }
 
-    /* ВЕРХНЯЯ НАВИГАЦИЯ (ВЕРХНИЙ ЛЕВЫЙ УГОЛ) */
-    .top-bar {
+    /* ПОЛНОЕ ВЕРХНЕЕ МЕНЮ */
+    .top-nav {
       position: absolute;
       top: 1.5rem;
-      left: 2rem;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
       z-index: 100;
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
     }
 
-    .home-link {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
+    .top-nav a {
       color: #C5A059;
       text-decoration: none;
-      font-size: 0.8rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      transition: all 0.3s ease;
-      filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.9));
+      transition: color 0.3s ease;
+      padding: 0.5rem 1rem;
     }
 
-    .home-link:hover {
+    .top-nav a:hover {
       color: #f0d59e;
-      filter: drop-shadow(0 0 8px rgba(197, 160, 89, 0.6));
     }
 
-    .flask-icon {
-      width: 22px;
-      height: auto;
-    }
-
-    /* ССЫЛКА НА ЗА КУЛИСАМИ */
-    .behind-link {
-      color: #8A7E6B;
-      text-decoration: none;
-      font-size: 0.8rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      transition: all 0.3s ease;
-      filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.9));
-    }
-
-    .behind-link:hover {
-      color: #C5A059;
-      filter: drop-shadow(0 0 8px rgba(197, 160, 89, 0.6));
-    }
+    /* ЛЕВАЯ НАВИГАЦИЯ (убрана, заменена на полное меню) */
 
     /* КНОПКА "ВХОД" — ПОД АННОТАЦИЕЙ, ТОЧНО ПО ОСИ ОБРАМЛЕНИЯ ЗАГОЛОВКА */
     .bottom-action-container {
@@ -137,10 +117,13 @@
     }
 
     @media (max-width: 768px) {
-      .top-bar { top: 1rem; left: 1rem; gap: 1rem; }
+      .top-nav { 
+        top: 1rem; 
+        gap: 1.2rem;
+        font-size: 0.7rem;
+      }
       .bottom-action-container { bottom: 8%; }
       .stamp-flask { width: 60px; right: 1.2rem; bottom: 3%; }
-      .home-link span, .behind-link { font-size: 0.7rem; }
     }
   </style>
 </head>
@@ -148,14 +131,15 @@
 
   <div class="poster-container">
 
-    <!-- ВЕРХНЯЯ НАВИГАЦИЯ -->
-    <header class="top-bar">
-      <a href="/index.html" class="home-link" title="Вернуться в Фойе Театра">
-        <img src="/images/colba main bright2.png" alt="Колба" class="flask-icon">
-        <span>Театр теней</span>
-      </a>
-      <a href="/behind/" class="behind-link" title="За кулисами проекта">За кулисами</a>
-    </header>
+    <!-- ПОЛНОЕ ВЕРХНЕЕ МЕНЮ -->
+    <nav class="top-nav">
+      <a href="/index.html">Главная</a>
+      <a href="/tom1/index.html">Второй звонок</a>
+      <a href="/tom2/index.html">Одуванчики</a>
+      <a href="/behind/index.html">За кулисами</a>
+      <a href="/cooperation.html">Сотрудничество</a>
+      <a href="/contacts.html">Контакты</a>
+    </nav>
 
     <!-- ПОСТЕР -->
     <img src="/tom1/images/64.png" alt="Том I: Второй звонок" class="poster-img">
