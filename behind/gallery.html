@@ -15,7 +15,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 2rem 0;
+      padding: 1rem 0;
       overflow-x: hidden;
     }
 
@@ -63,59 +63,44 @@
     }
 
     /* ==========================================
-       СТИЛИ ГАЛЕРЕИ ПЕРСОНАЖЕЙ
+       ПОЗИЦИОНИРОВАНИЕ НА СЦЕНЕ (МЕЖДУ ШТОР)
        ========================================== */
-    .gallery-container {
-      padding: 2rem 2rem 4rem 2rem;
+    .stage-gallery {
+      position: absolute;
+      top: 25%;  /* Высота расположения сцены между кистями штор */
+      left: 17%; /* Отступ от левой шторы */
+      width: 66%; /* Ширина рабочей области сцены */
       display: flex;
-      flex-direction: column;
-      gap: 3.5rem;
-    }
-
-    .section-title {
-      text-align: center;
-      font-size: 1.4rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: #c9a96e;
-      border-bottom: 1px solid rgba(201, 169, 110, 0.25);
-      padding-bottom: 0.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    /* --- Главные герои в одну линию --- */
-    .main-characters {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 1.25rem;
-      align-items: start;
+      justify-content: space-between;
+      align-items: flex-end;
+      z-index: 10;
     }
 
     .character-card {
       display: flex;
       flex-direction: column;
       align-items: center;
+      width: 18%; /* Строго одинаковая ширина для всех карточек */
     }
 
-    /* Контейнер рамки с одинаковым кадрированием */
+    /* Одинаковый размер рамок для всех фото */
     .img-frame {
       width: 100%;
       aspect-ratio: 3 / 4;
       overflow: hidden;
-      background-color: #11100e;
-      border: 1px solid #2a241e;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
-      position: relative;
+      border: 1px solid #3a3125;
+      background-color: #0d0c0a;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
     }
 
     .img-frame img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      object-position: center 35%; /* Фокус на глазах */
+      object-fit: cover; /* Единый масштаб и заполнение без искажений */
+      object-position: center center;
       display: block;
-      filter: sepia(15%) contrast(105%);
-      transition: transform 0.4s ease, filter 0.4s ease;
+      filter: sepia(10%) contrast(105%);
+      transition: filter 0.3s ease;
     }
 
     .character-card:hover .img-frame img {
@@ -123,63 +108,54 @@
     }
 
     .character-name {
-      margin-top: 0.8rem;
-      font-size: 1.1rem;
+      margin-top: 0.5rem;
+      font-size: 0.95rem;
       letter-spacing: 0.1em;
       color: #e8d5a3;
       text-align: center;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
     }
 
-    /* --- Масштабирование голов главных персонажей --- */
-    /* Коррекция размера голов для создания одинаковой крупности */
-    .scale-maya { transform: scale(1.00); }
-    .scale-aleks { transform: scale(0.84); }
-    .scale-april { transform: scale(0.88); }
-    .scale-olga  { transform: scale(0.95); }
-    .scale-marta { transform: scale(0.98); }
+    /* ==========================================
+       СЕКЦИЯ ВТОРОСТЕПЕННЫХ ПЕРСОНАЖЕЙ (ПОД СЦЕНОЙ)
+       ========================================== */
+    .secondary-section {
+      margin-top: 3rem;
+      padding: 0 2rem;
+    }
 
-    /* --- Второстепенные персонажи (2 ряда) --- */
-    .secondary-characters {
+    .section-title {
+      text-align: center;
+      font-size: 1.2rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #c9a96e;
+      border-bottom: 1px solid rgba(201, 169, 110, 0.2);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .secondary-grid {
       display: grid;
-      grid-template-columns: repeat(6, 1fr); /* 6 колонок для размещения до 12 персонажей в 2 ряда */
-      gap: 1rem;
+      grid-template-columns: repeat(6, 1fr); /* 2 ряда по 6 карточек */
+      gap: 1.2rem;
       row-gap: 2rem;
     }
 
-    .secondary-card .img-frame {
-      aspect-ratio: 3 / 4;
-      border-color: #1e1a15;
+    .secondary-card {
+      width: 100%;
     }
 
     .secondary-card .character-name {
-      font-size: 0.95rem;
+      font-size: 0.85rem;
       color: #b0a283;
-    }
-
-    /* Адаптивность для небольших экранов */
-    @media (max-width: 1024px) {
-      .main-characters {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1.5rem;
-      }
-      .secondary-characters {
-        grid-template-columns: repeat(4, 1fr);
-      }
-    }
-
-    @media (max-width: 600px) {
-      .main-characters {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      .secondary-characters {
-        grid-template-columns: repeat(3, 1fr);
-      }
     }
   </style>
 </head>
 <body>
 
   <div class="archive-wrapper">
+    <!-- Фоновое изображение сцены со шторами -->
     <img src="../tom2/images/69.png" alt="За кулисами — Галерея" class="archive-img">
 
     <nav class="top-nav">
@@ -191,147 +167,111 @@
       <a href="../contacts.html">Контакты</a>
     </nav>
 
-    <!-- Содержимое галереи -->
-    <div class="gallery-container">
+    <!-- Главные герои прямо на сцене между кисточками штор -->
+    <div class="stage-gallery">
       
-      <!-- Главные герои -->
-      <section>
-        <h2 class="section-title">Главные герои</h2>
-        <div class="main-characters">
-          
-          <div class="character-card">
-            <div class="img-frame">
-              <img src="../tom2/images/60.png" class="scale-maya" alt="Майя">
-            </div>
-            <div class="character-name">Майя</div>
-          </div>
-
-          <div class="character-card">
-            <div class="img-frame">
-              <img src="../tom2/images/61-2.png" class="scale-aleks" alt="Алекс">
-            </div>
-            <div class="character-name">Алекс</div>
-          </div>
-
-          <div class="character-card">
-            <div class="img-frame">
-              <img src="../tom2/images/63.png" class="scale-april" alt="Априль">
-            </div>
-            <div class="character-name">Априль</div>
-          </div>
-
-          <div class="character-card">
-            <div class="img-frame">
-              <img src="../tom2/images/65-1.png" class="scale-olga" alt="Ольга">
-            </div>
-            <div class="character-name">Ольга</div>
-          </div>
-
-          <div class="character-card">
-            <div class="img-frame">
-              <img src="../tom2/images/66.png" class="scale-marta" alt="Марта">
-            </div>
-            <div class="character-name">Марта</div>
-          </div>
-
+      <!-- 1. Алекс -->
+      <div class="character-card">
+        <div class="img-frame">
+          <img src="../tom2/images/61-2.png" alt="Алекс">
         </div>
-      </section>
+        <div class="character-name">Алекс</div>
+      </div>
 
-      <!-- Второстепенные персонажи (Секция на 2 ряда) -->
-      <section>
-        <h2 class="section-title">Второстепенные персонажи</h2>
-        <div class="secondary-characters">
-          
-          <!-- РЯД 1 -->
-          <div class="character-card secondary-card">
-            <div class="img-frame">
-              <img src="../tom2/images/placeholder.png" alt="Персонаж">
-            </div>
-            <div class="character-name">Персонаж 1</div>
-          </div>
-
-          <div class="character-card secondary-card">
-            <div class="img-frame">
-              <img src="../tom2/images/placeholder.png" alt="Персонаж">
-            </div>
-            <div class="character-name">Персонаж 2</div>
-          </div>
-
-          <div class="character-card secondary-card">
-            <div class="img-frame">
-              <img src="../tom2/images/placeholder.png" alt="Персонаж">
-            </div>
-            <div class="character-name">Персонаж 3</div>
-          </div>
-
-          <div class="character-card secondary-card">
-            <div class="img-frame">
-              <img src="../tom2/images/placeholder.png" alt="Персонаж">
-            </div>
-            <div class="character-name">Персонаж 4</div>
-          </div>
-
-          <div class="character-card secondary-card">
-            <div class="img-frame">
-              <img src="../tom2/images/placeholder.png" alt="Персонаж">
-            </div>
-            <div class="character-name">Персонаж 5</div>
-          </div>
-
-          <div class="character-card secondary-card">
-            <div class="img-frame">
-              <img src="../tom2/images/placeholder.png" alt="Персонаж">
-            </div>
-            <div class="character-name">Персонаж 6</div>
-          </div>
-
-          <!-- РЯД 2 -->
-          <div class="character-card secondary-card">
-            <div class="img-frame">
-              <img src="../tom2/images/placeholder.png" alt="Персонаж">
-            </div>
-            <div class="character-name">Персонаж 7</div>
-          </div>
-
-          <div class="character-card secondary-card">
-            <div class="img-frame">
-              <img src="../tom2/images/placeholder.png" alt="Персонаж">
-            </div>
-            <div class="character-name">Персонаж 8</div>
-          </div>
-
-          <div class="character-card secondary-card">
-            <div class="img-frame">
-              <img src="../tom2/images/placeholder.png" alt="Персонаж">
-            </div>
-            <div class="character-name">Персонаж 9</div>
-          </div>
-
-          <div class="character-card secondary-card">
-            <div class="img-frame">
-              <img src="../tom2/images/placeholder.png" alt="Персонаж">
-            </div>
-            <div class="character-name">Персонаж 10</div>
-          </div>
-
-          <div class="character-card secondary-card">
-            <div class="img-frame">
-              <img src="../tom2/images/placeholder.png" alt="Персонаж">
-            </div>
-            <div class="character-name">Персонаж 11</div>
-          </div>
-
-          <div class="character-card secondary-card">
-            <div class="img-frame">
-              <img src="../tom2/images/placeholder.png" alt="Персонаж">
-            </div>
-            <div class="character-name">Персонаж 12</div>
-          </div>
-
+      <!-- 2. Априль -->
+      <div class="character-card">
+        <div class="img-frame">
+          <img src="../tom2/images/63.png" alt="Априль">
         </div>
-      </section>
+        <div class="character-name">Априль</div>
+      </div>
+
+      <!-- 3. Ольга -->
+      <div class="character-card">
+        <div class="img-frame">
+          <img src="../tom2/images/65-1.png" alt="Ольга">
+        </div>
+        <div class="character-name">Ольга</div>
+      </div>
+
+      <!-- 4. Майя -->
+      <div class="character-card">
+        <div class="img-frame">
+          <img src="../tom2/images/60.png" alt="Майя">
+        </div>
+        <div class="character-name">Майя</div>
+      </div>
+
+      <!-- 5. Марта -->
+      <div class="character-card">
+        <div class="img-frame">
+          <img src="../tom2/images/66.png" alt="Марта">
+        </div>
+        <div class="character-name">Марта</div>
+      </div>
 
     </div>
+
+    <!-- Второстепенные персонажи (2 ряда ниже) -->
+    <div class="secondary-section">
+      <h2 class="section-title">Второстепенные персонажи</h2>
+      <div class="secondary-grid">
+        
+        <!-- РЯД 1 -->
+        <div class="character-card secondary-card">
+          <div class="img-frame"><img src="../tom2/images/placeholder.png" alt="Персонаж"></div>
+          <div class="character-name">Персонаж 1</div>
+        </div>
+        <div class="character-card secondary-card">
+          <div class="img-frame"><img src="../tom2/images/placeholder.png" alt="Персонаж"></div>
+          <div class="character-name">Персонаж 2</div>
+        </div>
+        <div class="character-card secondary-card">
+          <div class="img-frame"><img src="../tom2/images/placeholder.png" alt="Персонаж"></div>
+          <div class="character-name">Персонаж 3</div>
+        </div>
+        <div class="character-card secondary-card">
+          <div class="img-frame"><img src="../tom2/images/placeholder.png" alt="Персонаж"></div>
+          <div class="character-name">Персонаж 4</div>
+        </div>
+        <div class="character-card secondary-card">
+          <div class="img-frame"><img src="../tom2/images/placeholder.png" alt="Персонаж"></div>
+          <div class="character-name">Персонаж 5</div>
+        </div>
+        <div class="character-card secondary-card">
+          <div class="img-frame"><img src="../tom2/images/placeholder.png" alt="Персонаж"></div>
+          <div class="character-name">Персонаж 6</div>
+        </div>
+
+        <!-- РЯД 2 -->
+        <div class="character-card secondary-card">
+          <div class="img-frame"><img src="../tom2/images/placeholder.png" alt="Персонаж"></div>
+          <div class="character-name">Персонаж 7</div>
+        </div>
+        <div class="character-card secondary-card">
+          <div class="img-frame"><img src="../tom2/images/placeholder.png" alt="Персонаж"></div>
+          <div class="character-name">Персонаж 8</div>
+        </div>
+        <div class="character-card secondary-card">
+          <div class="img-frame"><img src="../tom2/images/placeholder.png" alt="Персонаж"></div>
+          <div class="character-name">Персонаж 9</div>
+        </div>
+        <div class="character-card secondary-card">
+          <div class="img-frame"><img src="../tom2/images/placeholder.png" alt="Персонаж"></div>
+          <div class="character-name">Персонаж 10</div>
+        </div>
+        <div class="character-card secondary-card">
+          <div class="img-frame"><img src="../tom2/images/placeholder.png" alt="Персонаж"></div>
+          <div class="character-name">Персонаж 11</div>
+        </div>
+        <div class="character-card secondary-card">
+          <div class="img-frame"><img src="../tom2/images/placeholder.png" alt="Персонаж"></div>
+          <div class="character-name">Персонаж 12</div>
+        </div>
+
+      </div>
+    </div>
+
   </div>
 
 </body>
