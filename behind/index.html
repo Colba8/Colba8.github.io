@@ -45,19 +45,22 @@
       transition: all 0.2s ease;
       cursor: pointer;
       z-index: 10;
+      border: 1px solid transparent; /* Резервируем место под border */
     }
 
     .hotspot:hover {
-      background: rgba(201, 169, 110, 0.18);
-      box-shadow: inset 0 0 10px rgba(201, 169, 110, 0.6), 0 0 8px rgba(201, 169, 110, 0.4);
-      outline: 1px solid rgba(201, 169, 110, 0.7);
+      background: rgba(201, 169, 110, 0.15);
+      border: 1px solid rgba(201, 169, 110, 0.8);
+      box-shadow: inset 0 0 8px rgba(201, 169, 110, 0.5);
     }
 
-    /* Шапка сайта */
-    .nav-theater { top: 0.8%; left: 14.1%; width: 9%;   height: 2.8%; }
-    .nav-behind  { top: 0.8%; left: 45.1%; width: 8%;   height: 2.8%; }
-    .nav-coop    { top: 0.8%; left: 54.2%; width: 9.8%; height: 2.8%; }
-    .nav-contact { top: 0.8%; left: 65.1%; width: 6.8%; height: 2.8%; }
+    /* Верхнее меню - идентично главному */
+    .nav-main       { top: 0.8%; left: 14.1%; width: 7%;   height: 2.8%; }
+    .nav-bell       { top: 0.8%; left: 22.2%; width: 13%;  height: 2.8%; }
+    .nav-dandelions { top: 0.8%; left: 36.3%; width: 10%;  height: 2.8%; }
+    .nav-behind     { top: 0.8%; left: 47.4%; width: 9%;   height: 2.8%; }
+    .nav-coop       { top: 0.8%; left: 57.5%; width: 11%;  height: 2.8%; }
+    .nav-contact    { top: 0.8%; left: 69.6%; width: 8%;   height: 2.8%; }
 
     /* Колонка 1 */
     .drawer-about      { top: 21%; left: 12.2%; width: 12.3%; height: 8.8%; }
@@ -92,8 +95,10 @@
   <div class="archive-wrapper">
     <img src="../tom2/images/67.png" alt="Архив дела — За кулисами" class="archive-img">
 
-    <!-- Верхнее меню -->
-    <a href="../index.html" class="hotspot nav-theater" title="Театр Теней"></a>
+    <!-- Верхнее меню - идентично главному -->
+    <a href="../index.html" class="hotspot nav-main" title="Главная"></a>
+    <a href="../vtoroy-zvonok.html" class="hotspot nav-bell" title="Второй звонок"></a>
+    <a href="../oduvanchiki.html" class="hotspot nav-dandelions" title="Одуванчики"></a>
     <a href="index.html" class="hotspot nav-behind" title="За кулисами"></a>
     <a href="cooperation.html" class="hotspot nav-coop" title="Сотрудничество"></a>
     <a href="contacts.html" class="hotspot nav-contact" title="Контакты"></a>
