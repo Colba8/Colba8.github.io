@@ -32,61 +32,12 @@
     }
 
     .poster-img {
-      max-width: 90vw;
-      max-height: 85vh;
+      max-width: 80vw;
+      max-height: 75vh;
       width: auto;
       height: auto;
       object-fit: contain;
       display: block;
-    }
-
-    /* ЛЕВАЯ НАВИГАЦИЯ — ЛОГОТИП + ЗА КУЛИСАМИ */
-    .top-bar {
-      position: absolute;
-      top: 1.5rem;
-      left: 2rem;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-    }
-
-    .home-link {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      color: #C5A059;
-      text-decoration: none;
-      font-size: 0.8rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      transition: all 0.3s ease;
-      filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.9));
-    }
-
-    .home-link:hover {
-      color: #f0d59e;
-      filter: drop-shadow(0 0 8px rgba(197, 160, 89, 0.6));
-    }
-
-    .flask-icon {
-      width: 22px;
-      height: auto;
-    }
-
-    .behind-link {
-      color: #8A7E6B;
-      text-decoration: none;
-      font-size: 0.8rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      transition: all 0.3s ease;
-      filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.9));
-    }
-
-    .behind-link:hover {
-      color: #C5A059;
-      filter: drop-shadow(0 0 8px rgba(197, 160, 89, 0.6));
     }
 
     /* ЦЕНТРАЛЬНОЕ МЕНЮ НАВИГАЦИИ */
@@ -160,30 +111,19 @@
     }
 
     @media (max-width: 768px) {
-      .top-bar { top: 1rem; left: 1rem; gap: 1rem; }
       .top-nav { 
-        top: 3.5rem; 
+        top: 1rem; 
         gap: 1.2rem;
         font-size: 0.7rem;
       }
       .bottom-action-container { bottom: 8%; }
       .stamp-flask { width: 60px; right: 1.2rem; bottom: 3%; }
-      .home-link span, .behind-link { font-size: 0.7rem; }
     }
   </style>
 </head>
 <body>
 
   <div class="poster-container">
-
-    <!-- ЛЕВАЯ НАВИГАЦИЯ: ЛОГОТИП + ЗА КУЛИСАМИ -->
-    <header class="top-bar">
-      <a href="/index.html" class="home-link" title="Вернуться в Фойе Театра">
-        <img src="/images/colba main bright2.png" alt="Колба" class="flask-icon">
-        <span>Театр теней</span>
-      </a>
-      <a href="/behind/" class="behind-link" title="За кулисами проекта">За кулисами</a>
-    </header>
 
     <!-- ЦЕНТРАЛЬНОЕ МЕНЮ НАВИГАЦИИ -->
     <nav class="top-nav">
