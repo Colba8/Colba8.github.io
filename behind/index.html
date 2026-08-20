@@ -45,7 +45,7 @@
       transition: all 0.2s ease;
       cursor: pointer;
       z-index: 10;
-      border: 1px solid transparent; /* Резервируем место под border */
+      border: 1px solid transparent;
     }
 
     .hotspot:hover {
@@ -54,7 +54,7 @@
       box-shadow: inset 0 0 8px rgba(201, 169, 110, 0.5);
     }
 
-    /* Верхнее меню - идентично главному */
+    /* Верхнее меню */
     .nav-main       { top: 0.8%; left: 14.1%; width: 7%;   height: 2.8%; }
     .nav-bell       { top: 0.8%; left: 22.2%; width: 13%;  height: 2.8%; }
     .nav-dandelions { top: 0.8%; left: 36.3%; width: 10%;  height: 2.8%; }
@@ -95,40 +95,40 @@
   <div class="archive-wrapper">
     <img src="../tom2/images/67.png" alt="Архив дела — За кулисами" class="archive-img">
 
-    <!-- Верхнее меню - идентично главному -->
-    <a href="../index.html" class="hotspot nav-main" title="Главная"></a>
-    <a href="../vtoroy-zvonok.html" class="hotspot nav-bell" title="Второй звонок"></a>
-    <a href="../oduvanchiki.html" class="hotspot nav-dandelions" title="Одуванчики"></a>
-    <a href="index.html" class="hotspot nav-behind" title="За кулисами"></a>
-    <a href="cooperation.html" class="hotspot nav-coop" title="Сотрудничество"></a>
-    <a href="contacts.html" class="hotspot nav-contact" title="Контакты"></a>
+    <!-- Верхнее меню -->
+    <a href="../index.html" class="hotspot nav-main" aria-label="Главная"></a>
+    <a href="../vtoroy-zvonok.html" class="hotspot nav-bell" aria-label="Второй звонок"></a>
+    <a href="../oduvanchiki.html" class="hotspot nav-dandelions" aria-label="Одуванчики"></a>
+    <a href="index.html" class="hotspot nav-behind" aria-label="За кулисами"></a>
+    <a href="cooperation.html" class="hotspot nav-coop" aria-label="Сотрудничество"></a>
+    <a href="contacts.html" class="hotspot nav-contact" aria-label="Контакты"></a>
 
     <!-- Колонка 1 -->
-    <a href="about.html" class="hotspot drawer-about" title="О проекте"></a>
-    <a href="pitch.html" class="hotspot drawer-pitch" title="Питч (Пересказ событий)"></a>
-    <a href="vtoroy-zvonok.html" class="hotspot drawer-synopsis1" title="Синопсис Тома I: Второй звонок"></a>
-    <a href="oduvanchiki.html" class="hotspot drawer-synopsis2" title="Синопсис Тома II: Одуванчики"></a>
+    <a href="about.html" class="hotspot drawer-about" aria-label="О проекте"></a>
+    <a href="pitch.html" class="hotspot drawer-pitch" aria-label="Питч"></a>
+    <a href="vtoroy-zvonok.html" class="hotspot drawer-synopsis1" aria-label="Синопсис Тома I"></a>
+    <a href="oduvanchiki.html" class="hotspot drawer-synopsis2" aria-label="Синопсис Тома II"></a>
 
     <!-- Колонка 2 -->
-    <a href="note01.html" class="hotspot drawer-bern" title="Берн 1946: Шпионский контекст"></a>
-    <a href="note02.html" class="hotspot drawer-israel" title="Создание Израиля: Аргентинский отчет"></a>
+    <a href="note01.html" class="hotspot drawer-bern" aria-label="Берн 1946"></a>
+    <a href="note02.html" class="hotspot drawer-israel" aria-label="Создание Израиля"></a>
 
     <!-- Колонка 3 -->
-    <a href="report00.html" class="hotspot drawer-report-master" title="Рапорт Мастера: 12-13 декабря 1946"></a>
-    <a href="report01.html" class="hotspot drawer-paris1947" title="Парижский мир 1947: СССР и Франция"></a>
-    <a href="report02.html" class="hotspot drawer-musicians" title="Советские музыканты в Италии"></a>
+    <a href="report00.html" class="hotspot drawer-report-master" aria-label="Рапорт Мастера"></a>
+    <a href="report01.html" class="hotspot drawer-paris1947" aria-label="Парижский мир 1947"></a>
+    <a href="report02.html" class="hotspot drawer-musicians" aria-label="Советские музыканты"></a>
 
     <!-- Колонка 4 -->
-    <a href="opinion02.html" class="hotspot drawer-canaris" title="Архив Канариса: Серая папка"></a>
-    <a href="opinion01.html" class="hotspot drawer-dandelions" title="Картина Одуванчики: Подлинность"></a>
+    <a href="opinion02.html" class="hotspot drawer-canaris" aria-label="Архив Канариса"></a>
+    <a href="opinion01.html" class="hotspot drawer-dandelions" aria-label="Картина Одуванчики"></a>
 
-    <!-- Колонка 5 (Герои) -->
-    <a href="heroes.html" class="hotspot drawer-heroes-main" title="Главные герои"></a>
-    <a href="cv01.html" class="hotspot drawer-planta" title="Александр фон Планта"></a>
-    <a href="cv02.html" class="hotspot drawer-montero" title="Хавьер Абриль Монтеро"></a>
-    <a href="cv04.html" class="hotspot drawer-titoff" title="Ольга Титофф"></a>
-    <a href="cv05.html" class="hotspot drawer-pflanz" title="Майя-Роза Пфланц"></a>
-    <a href="cv03.html" class="hotspot drawer-mendes" title="Марта Мендес"></a>
+    <!-- Колонка 5 (Герои) — порядок: Алекс, Апрель, Марта, Ольга, Майя -->
+    <a href="heroes.html" class="hotspot drawer-heroes-main" aria-label="Главные герои"></a>
+    <a href="cv01.html" class="hotspot drawer-planta" aria-label="Александр фон Планта"></a>
+    <a href="cv02.html" class="hotspot drawer-montero" aria-label="Хавьер Абриль Монтеро"></a>
+    <a href="cv03.html" class="hotspot drawer-titoff" aria-label="Марта Мендес"></a>
+    <a href="cv04.html" class="hotspot drawer-pflanz" aria-label="Ольга Титофф"></a>
+    <a href="cv05.html" class="hotspot drawer-mendes" aria-label="Майя-Роза Пфланц"></a>
   </div>
 
 </body>
