@@ -37,57 +37,71 @@
       box-shadow: 0 0 40px rgba(0, 0, 0, 0.95);
     }
 
+    /* Hotspots — БЕЗ рамок, только подсветка фона */
     .hotspot {
       position: absolute;
       display: block;
       text-decoration: none;
-      border-radius: 3px;
-      transition: all 0.2s ease;
       cursor: pointer;
       z-index: 10;
-      border: 1px solid transparent;
+      transition: background 0.2s ease;
     }
 
     .hotspot:hover {
-      background: rgba(201, 169, 110, 0.15);
-      border: 1px solid rgba(201, 169, 110, 0.8);
-      box-shadow: inset 0 0 8px rgba(201, 169, 110, 0.5);
+      background: rgba(201, 169, 110, 0.25);
     }
 
-    /* Верхнее меню */
-    .nav-main       { top: 0.8%; left: 14.1%; width: 7%;   height: 2.8%; }
-    .nav-bell       { top: 0.8%; left: 22.2%; width: 13%;  height: 2.8%; }
-    .nav-dandelions { top: 0.8%; left: 36.3%; width: 10%;  height: 2.8%; }
-    .nav-behind     { top: 0.8%; left: 47.4%; width: 9%;   height: 2.8%; }
-    .nav-coop       { top: 0.8%; left: 57.5%; width: 11%;  height: 2.8%; }
-    .nav-contact    { top: 0.8%; left: 69.6%; width: 8%;   height: 2.8%; }
+    /* Программное верхнее меню — как на главной странице */
+    .top-nav {
+      position: absolute;
+      top: 0.8%;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      z-index: 20;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
 
-    /* Колонка 1 */
-    .drawer-about      { top: 21%; left: 12.2%; width: 12.3%; height: 8.8%; }
-    .drawer-pitch      { top: 38.8%; left: 12.2%; width: 12.3%; height: 8.8%; }
-    .drawer-synopsis1 { top: 50.8%; left: 12.2%; width: 12.3%; height: 8.8%; }
-    .drawer-synopsis2 { top: 62.8%; left: 12.2%; width: 12.3%; height: 8.8%; }
+    .top-nav a {
+      color: #c9a96e;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      padding: 0.5rem 1rem;
+    }
 
-    /* Колонка 2 */
-    .drawer-bern   { top: 38.8%; left: 27.2%; width: 12.3%; height: 8.8%; }
-    .drawer-israel { top: 50.8%; left: 27.2%; width: 12.3%; height: 8.8%; }
+    .top-nav a:hover {
+      color: #e8d5a3;
+    }
 
-    /* Колонка 3 */
-    .drawer-report-master { top: 35.5%; left: 42.2%; width: 12.3%; height: 12%; }
+    /* Позиции ящиков */
+    .drawer-about         { top: 21%;   left: 12.2%; width: 12.3%; height: 8.8%; }
+    .drawer-pitch         { top: 38.8%; left: 12.2%; width: 12.3%; height: 8.8%; }
+    .drawer-synopsis1     { top: 50.8%; left: 12.2%; width: 12.3%; height: 8.8%; }
+    .drawer-synopsis2     { top: 62.8%; left: 12.2%; width: 12.3%; height: 8.8%; }
+
+    .drawer-bern          { top: 38.8%; left: 27.2%; width: 12.3%; height: 8.8%; }
+    .drawer-israel        { top: 50.8%; left: 27.2%; width: 12.3%; height: 8.8%; }
+
+    .drawer-report-master { top: 35.5%; left: 42.2%; width: 12.3%; height: 12%;  }
     .drawer-paris1947     { top: 50.8%; left: 42.2%; width: 12.3%; height: 8.8%; }
     .drawer-musicians     { top: 62.8%; left: 42.2%; width: 12.3%; height: 8.8%; }
 
-    /* Колонка 4 */
-    .drawer-canaris    { top: 38.8%; left: 57.2%; width: 12.3%; height: 8.8%; }
-    .drawer-dandelions { top: 50.8%; left: 57.2%; width: 12.3%; height: 8.8%; }
+    .drawer-canaris       { top: 38.8%; left: 57.2%; width: 12.3%; height: 8.8%; }
+    .drawer-dandelions    { top: 50.8%; left: 57.2%; width: 12.3%; height: 8.8%; }
 
-    /* Колонка 5 (Герои) */
-    .drawer-heroes-main { top: 21%; left: 73.2%; width: 12.3%; height: 8.8%; }
-    .drawer-planta      { top: 35.5%; left: 73.2%; width: 12.3%; height: 12%; }
-    .drawer-montero     { top: 50.8%; left: 73.2%; width: 12.3%; height: 8.8%; }
-    .drawer-titoff      { top: 60%; left: 73.2%; width: 12.3%; height: 6.8%; }
-    .drawer-pflanz      { top: 68%; left: 73.2%; width: 12.3%; height: 7.8%; }
-    .drawer-mendes      { top: 77%; left: 73.2%; width: 12.3%; height: 8.8%; }
+    /* Колонка 5 — порядок ящиков: Алекс, Апрель, Марта, Ольга, Майя */
+    .drawer-heroes-main   { top: 21%;   left: 73.2%; width: 12.3%; height: 8.8%; }
+    .drawer-planta        { top: 35.5%; left: 73.2%; width: 12.3%; height: 12%;  }
+    .drawer-montero       { top: 50.8%; left: 73.2%; width: 12.3%; height: 8.8%; }
+    .drawer-mendes        { top: 60%;   left: 73.2%; width: 12.3%; height: 6.8%; }
+    .drawer-titoff        { top: 68%;   left: 73.2%; width: 12.3%; height: 7.8%; }
+    .drawer-pflanz        { top: 77%;   left: 73.2%; width: 12.3%; height: 8.8%; }
   </style>
 </head>
 <body>
@@ -95,13 +109,15 @@
   <div class="archive-wrapper">
     <img src="../tom2/images/67.png" alt="Архив дела — За кулисами" class="archive-img">
 
-    <!-- Верхнее меню -->
-    <a href="../index.html" class="hotspot nav-main" aria-label="Главная"></a>
-    <a href="../vtoroy-zvonok.html" class="hotspot nav-bell" aria-label="Второй звонок"></a>
-    <a href="../oduvanchiki.html" class="hotspot nav-dandelions" aria-label="Одуванчики"></a>
-    <a href="index.html" class="hotspot nav-behind" aria-label="За кулисами"></a>
-    <a href="cooperation.html" class="hotspot nav-coop" aria-label="Сотрудничество"></a>
-    <a href="contacts.html" class="hotspot nav-contact" aria-label="Контакты"></a>
+    <!-- Программное верхнее меню -->
+    <nav class="top-nav">
+      <a href="../index.html">Главная</a>
+      <a href="../vtoroy-zvonok.html">Второй звонок</a>
+      <a href="../oduvanchiki.html">Одуванчики</a>
+      <a href="index.html">За кулисами</a>
+      <a href="cooperation.html">Сотрудничество</a>
+      <a href="contacts.html">Контакты</a>
+    </nav>
 
     <!-- Колонка 1 -->
     <a href="about.html" class="hotspot drawer-about" aria-label="О проекте"></a>
@@ -122,13 +138,13 @@
     <a href="opinion02.html" class="hotspot drawer-canaris" aria-label="Архив Канариса"></a>
     <a href="opinion01.html" class="hotspot drawer-dandelions" aria-label="Картина Одуванчики"></a>
 
-    <!-- Колонка 5 (Герои) — порядок: Алекс, Апрель, Марта, Ольга, Майя -->
+    <!-- Колонка 5 (Герои): Алекс → Апрель → Марта → Ольга → Майя -->
     <a href="heroes.html" class="hotspot drawer-heroes-main" aria-label="Главные герои"></a>
     <a href="cv01.html" class="hotspot drawer-planta" aria-label="Александр фон Планта"></a>
     <a href="cv02.html" class="hotspot drawer-montero" aria-label="Хавьер Абриль Монтеро"></a>
-    <a href="cv03.html" class="hotspot drawer-titoff" aria-label="Марта Мендес"></a>
-    <a href="cv04.html" class="hotspot drawer-pflanz" aria-label="Ольга Титофф"></a>
-    <a href="cv05.html" class="hotspot drawer-mendes" aria-label="Майя-Роза Пфланц"></a>
+    <a href="cv03.html" class="hotspot drawer-mendes" aria-label="Марта Мендес"></a>
+    <a href="cv04.html" class="hotspot drawer-titoff" aria-label="Ольга Титофф"></a>
+    <a href="cv05.html" class="hotspot drawer-pflanz" aria-label="Майя-Роза Пфланц"></a>
   </div>
 
 </body>
