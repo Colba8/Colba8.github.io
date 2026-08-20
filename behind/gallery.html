@@ -26,24 +26,17 @@
       margin: 0 auto;
     }
 
-    .archive-img {
-      width: 100%;
-      height: auto;
-      display: block;
-      box-shadow: 0 0 40px rgba(0, 0, 0, 0.95);
-    }
-
-    /* Навигация размещена внутри верхнего поля изображения над заголовком "ГАЛЕРЕЯ" */
+    /* Аккуратная навигация над изображением, чтобы ничего не перекрывалось */
     .top-nav {
-      position: absolute;
-      top: 3%;
-      left: 0;
-      right: 0;
+      width: 100%;
+      background: linear-gradient(180deg, rgba(10, 8, 6, 0.95) 0%, rgba(6, 5, 4, 0.8) 100%);
+      padding: 0.8rem 0;
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 2rem;
-      z-index: 20;
+      gap: 2.5rem;
+      border-bottom: 1px solid rgba(201, 169, 110, 0.2);
+      margin-bottom: 0.5rem;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       font-weight: 700;
       font-size: 0.85rem;
@@ -54,14 +47,25 @@
     .top-nav a {
       color: #c9a96e;
       text-decoration: none;
-      transition: color 0.3s ease, text-shadow 0.3s ease;
-      padding: 0.5rem 1rem;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+      transition: all 0.3s ease;
+      padding: 0.3rem 0.6rem;
     }
 
     .top-nav a:hover {
       color: #e8d5a3;
-      text-shadow: 0 0 8px rgba(232, 213, 163, 0.5);
+      text-shadow: 0 0 10px rgba(232, 213, 163, 0.4);
+    }
+
+    .archive-img-container {
+      position: relative;
+      width: 100%;
+    }
+
+    .archive-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.95);
     }
 
     /* ==========================================
@@ -69,9 +73,9 @@
        ========================================== */
     .stage-gallery {
       position: absolute;
-      top: 25%;  /* Высота расположения сцены между кистями штор */
-      left: 17%; /* Отступ от левой шторы */
-      width: 66%; /* Ширина рабочей области сцены */
+      top: 55%;  /* Позиционирование ровно под табличкой «ГАЛЕРЕЯ» */
+      left: 17%;
+      width: 66%;
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
@@ -82,10 +86,9 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      width: 18%; /* Строго одинаковая ширина для всех карточек */
+      width: 18%;
     }
 
-    /* Одинаковый размер рамок для всех фото */
     .img-frame {
       width: 100%;
       aspect-ratio: 3 / 4;
@@ -98,7 +101,7 @@
     .img-frame img {
       width: 100%;
       height: 100%;
-      object-fit: cover; /* Единый масштаб и заполнение без искажений */
+      object-fit: cover;
       object-position: center center;
       display: block;
       filter: sepia(10%) contrast(105%);
@@ -119,7 +122,7 @@
     }
 
     /* ==========================================
-       СЕКЦИЯ ВТОРОСТЕПЕННЫХ ПЕРСОНАЖЕЙ (ПОД СЦЕНОЙ)
+       СЕКЦИЯ ВТОРОСТЕПЕННЫХ ПЕРСОНАЖЕЙ
        ========================================== */
     .secondary-section {
       margin-top: 3rem;
@@ -139,7 +142,7 @@
 
     .secondary-grid {
       display: grid;
-      grid-template-columns: repeat(6, 1fr); /* 2 ряда по 6 карточек */
+      grid-template-columns: repeat(6, 1fr);
       gap: 1.2rem;
       row-gap: 2rem;
     }
@@ -157,10 +160,8 @@
 <body>
 
   <div class="archive-wrapper">
-    <!-- Фоновое изображение сцены со шторами -->
-    <img src="../tom2/images/69.png" alt="За кулисами — Галерея" class="archive-img">
 
-    <!-- Навигация над табличкой "ГАЛЕРЕЯ" -->
+    <!-- Вынесенное чистая навигационная панель над изображением -->
     <nav class="top-nav">
       <a href="../index.html">Главная</a>
       <a href="../tom1/index.html">Второй звонок</a>
@@ -170,57 +171,61 @@
       <a href="../contacts.html">Контакты</a>
     </nav>
 
-    <!-- Главные герои прямо на сцене между кисточками штор -->
-    <div class="stage-gallery">
-      
-      <!-- 1. Алекс -->
-      <div class="character-card">
-        <div class="img-frame">
-          <img src="../tom2/images/61-2.png" alt="Алекс">
-        </div>
-        <div class="character-name">Алекс</div>
-      </div>
+    <div class="archive-img-container">
+      <!-- Фоновое изображение сцены -->
+      <img src="../tom2/images/69.png" alt="За кулисами — Галерея" class="archive-img">
 
-      <!-- 2. Априль -->
-      <div class="character-card">
-        <div class="img-frame">
-          <img src="../tom2/images/63.png" alt="Априль">
+      <!-- Главные герои -->
+      <div class="stage-gallery">
+        
+        <!-- 1. Алекс -->
+        <div class="character-card">
+          <div class="img-frame">
+            <img src="../tom2/images/61-2.png" alt="Алекс">
+          </div>
+          <div class="character-name">Алекс</div>
         </div>
-        <div class="character-name">Априль</div>
-      </div>
 
-      <!-- 3. Ольга -->
-      <div class="character-card">
-        <div class="img-frame">
-          <img src="../tom2/images/65-1.png" alt="Ольга">
+        <!-- 2. Априль -->
+        <div class="character-card">
+          <div class="img-frame">
+            <img src="../tom2/images/63.png" alt="Априль">
+          </div>
+          <div class="character-name">Априль</div>
         </div>
-        <div class="character-name">Ольга</div>
-      </div>
 
-      <!-- 4. Майя -->
-      <div class="character-card">
-        <div class="img-frame">
-          <img src="../tom2/images/60.png" alt="Майя">
+        <!-- 3. Ольга -->
+        <div class="character-card">
+          <div class="img-frame">
+            <img src="../tom2/images/65-1.png" alt="Ольга">
+          </div>
+          <div class="character-name">Ольга</div>
         </div>
-        <div class="character-name">Майя</div>
-      </div>
 
-      <!-- 5. Марта -->
-      <div class="character-card">
-        <div class="img-frame">
-          <img src="../tom2/images/66.png" alt="Марта">
+        <!-- 4. Майя -->
+        <div class="character-card">
+          <div class="img-frame">
+            <img src="../tom2/images/60.png" alt="Майя">
+          </div>
+          <div class="character-name">Майя</div>
         </div>
-        <div class="character-name">Марта</div>
-      </div>
 
+        <!-- 5. Марта -->
+        <div class="character-card">
+          <div class="img-frame">
+            <img src="../tom2/images/66.png" alt="Марта">
+          </div>
+          <div class="character-name">Марта</div>
+        </div>
+
+      </div>
     </div>
 
-    <!-- Второстепенные персонажи (2 ряда ниже) -->
+    <!-- Второстепенные персонажи -->
     <div class="secondary-section">
       <h2 class="section-title">Второстепенные персонажи</h2>
       <div class="secondary-grid">
         
-        <!-- РЯД 1 -->
         <div class="character-card secondary-card">
           <div class="img-frame"><img src="../tom2/images/placeholder.png" alt="Персонаж"></div>
           <div class="character-name">Персонаж 1</div>
@@ -246,7 +251,6 @@
           <div class="character-name">Персонаж 6</div>
         </div>
 
-        <!-- РЯД 2 -->
         <div class="character-card secondary-card">
           <div class="img-frame"><img src="../tom2/images/placeholder.png" alt="Персонаж"></div>
           <div class="character-name">Персонаж 7</div>
