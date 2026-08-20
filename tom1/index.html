@@ -22,7 +22,6 @@
       position: relative;
     }
 
-    /* ОСНОВНОЙ КОНТЕЙНЕР ПОСТЕРА */
     .poster-container {
       position: relative;
       width: 100vw;
@@ -32,17 +31,65 @@
       align-items: center;
     }
 
-    /* ПРЯМАЯ КАРТИНКА-ПОСТЕР */
     .poster-img {
-      max-width: 100vw;
-      max-height: 100vh;
+      max-width: 90vw;
+      max-height: 85vh;
       width: auto;
       height: auto;
       object-fit: contain;
       display: block;
     }
 
-    /* ПОЛНОЕ ВЕРХНЕЕ МЕНЮ */
+    /* ЛЕВАЯ НАВИГАЦИЯ — ЛОГОТИП + ЗА КУЛИСАМИ */
+    .top-bar {
+      position: absolute;
+      top: 1.5rem;
+      left: 2rem;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .home-link {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: #C5A059;
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.9));
+    }
+
+    .home-link:hover {
+      color: #f0d59e;
+      filter: drop-shadow(0 0 8px rgba(197, 160, 89, 0.6));
+    }
+
+    .flask-icon {
+      width: 22px;
+      height: auto;
+    }
+
+    .behind-link {
+      color: #8A7E6B;
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.9));
+    }
+
+    .behind-link:hover {
+      color: #C5A059;
+      filter: drop-shadow(0 0 8px rgba(197, 160, 89, 0.6));
+    }
+
+    /* ЦЕНТРАЛЬНОЕ МЕНЮ НАВИГАЦИИ */
     .top-nav {
       position: absolute;
       top: 1.5rem;
@@ -70,13 +117,10 @@
       color: #f0d59e;
     }
 
-    /* ЛЕВАЯ НАВИГАЦИЯ (убрана, заменена на полное меню) */
-
-    /* КНОПКА "ВХОД" — ПОД АННОТАЦИЕЙ, ТОЧНО ПО ОСИ ОБРАМЛЕНИЯ ЗАГОЛОВКА */
     .bottom-action-container {
       position: absolute;
       bottom: 9.5%;
-      left: 30.5%; /* ось декоративного обрамления "ВТОРОЙ ЗВОНОК" */
+      left: 30.5%;
       transform: translateX(-50%);
       z-index: 999;
     }
@@ -102,7 +146,6 @@
       box-shadow: 0 0 20px rgba(197, 160, 89, 0.6);
     }
 
-    /* КОЛБА — ПЕЧАТЬ ПРОЕКТА В ПРАВОМ НИЖНЕМ УГЛУ, НЕ КЛИКАЕТСЯ */
     .stamp-flask {
       position: absolute;
       right: 2.5%;
@@ -117,13 +160,15 @@
     }
 
     @media (max-width: 768px) {
+      .top-bar { top: 1rem; left: 1rem; gap: 1rem; }
       .top-nav { 
-        top: 1rem; 
+        top: 3.5rem; 
         gap: 1.2rem;
         font-size: 0.7rem;
       }
       .bottom-action-container { bottom: 8%; }
       .stamp-flask { width: 60px; right: 1.2rem; bottom: 3%; }
+      .home-link span, .behind-link { font-size: 0.7rem; }
     }
   </style>
 </head>
@@ -131,7 +176,16 @@
 
   <div class="poster-container">
 
-    <!-- ПОЛНОЕ ВЕРХНЕЕ МЕНЮ -->
+    <!-- ЛЕВАЯ НАВИГАЦИЯ: ЛОГОТИП + ЗА КУЛИСАМИ -->
+    <header class="top-bar">
+      <a href="/index.html" class="home-link" title="Вернуться в Фойе Театра">
+        <img src="/images/colba main bright2.png" alt="Колба" class="flask-icon">
+        <span>Театр теней</span>
+      </a>
+      <a href="/behind/" class="behind-link" title="За кулисами проекта">За кулисами</a>
+    </header>
+
+    <!-- ЦЕНТРАЛЬНОЕ МЕНЮ НАВИГАЦИИ -->
     <nav class="top-nav">
       <a href="/index.html">Главная</a>
       <a href="/tom1/index.html">Второй звонок</a>
@@ -144,12 +198,12 @@
     <!-- ПОСТЕР -->
     <img src="/tom1/images/64.png" alt="Том I: Второй звонок" class="poster-img">
 
-    <!-- КНОПКА "ВХОД" — ПОД АННОТАЦИЕЙ, ТОЧНО ПО ОСИ ОБРАМЛЕНИЯ -->
+    <!-- КНОПКА "ВХОД" -->
     <div class="bottom-action-container">
       <a href="/tom1/reader.html" class="enter-btn">ВХОД</a>
     </div>
 
-    <!-- КОЛБА-ПЕЧАТЬ ПРОЕКТА — СПРАВА ВНИЗУ, БЕЗ КЛИКА -->
+    <!-- КОЛБА-ПЕЧАТЬ ПРОЕКТА -->
     <img src="/tom1/images/00.png" alt="Театр теней" class="stamp-flask">
 
   </div>
