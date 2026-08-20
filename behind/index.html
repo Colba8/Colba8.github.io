@@ -43,7 +43,7 @@
       top: 0;
       left: 0;
       right: 0;
-      height: 6%;
+      height: 4%;
       background: #060504;
       z-index: 15;
     }
@@ -62,13 +62,13 @@
       background: rgba(201, 169, 110, 0.25);
     }
 
-    /* Программное верхнее меню — поверх чёрной полосы */
+    /* Программное верхнее меню — поднято выше */
     .top-nav {
       position: absolute;
-      top: 0;
+      top: -2%;
       left: 0;
       right: 0;
-      height: 6%;
+      height: 4%;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -120,13 +120,12 @@
 <body>
 
   <div class="archive-wrapper">
-    <!-- Примечание: проверьте путь к изображению, если файл лежит в /behind/, то ../tom2/images/67.png верно -->
     <img src="../tom2/images/67.png" alt="Архив дела — За кулисами" class="archive-img">
 
     <!-- Чёрная полоса, закрывающая рисованное меню -->
     <div class="top-cover"></div>
 
-    <!-- Программное верхнее меню с АБСОЛЮТНЫМИ путями -->
+    <!-- Программное верхнее меню — поднято выше -->
     <nav class="top-nav">
       <a href="/index.html">Главная</a>
       <a href="/tom1/index.html">Второй звонок</a>
