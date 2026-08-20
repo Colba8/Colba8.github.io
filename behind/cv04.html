@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Досье: Ольга Титофф — Театр теней</title>
+<link rel="icon" href="/images/51.png" type="image/png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  background:#0b0a08 url('/images/62.png') no-repeat center center fixed;
+  background-size: cover;
+  color:#e0d5b0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  min-height:100vh;
+  overflow-x:hidden;
+  overflow-y:auto;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+.top-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 55px;
+  background: #000000;
+  border-bottom: 1px solid rgba(201, 169, 110, 0.15);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+  z-index: 150;
+}
+.nav-link {
+  color: #8A7E6B;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+.nav-link:hover, .nav-link.active {
+  color: #C9A96E;
+}
+.document-wrapper {
+  max-width: 900px;
+  width: 100%;
+  margin: 95px auto 4rem;
+  padding: 0 1.5rem;
+  z-index: 10;
+  animation: fadeIn 1.5s ease-out;
+}
+.paper-sheet {
+  background: #f4e4bc;
+  color: #1a1a1a;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 700;
+  font-size: 1.15rem;
+  line-height: 1.3;
+  padding: 4rem 4rem 5rem 6rem;
+  box-shadow: 0 15px 50px rgba(0,0,0,0.85);
+  position: relative;
+  border-left: 1px solid rgba(0, 0, 0, 0.05);
+}
+.paper-sheet::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.binder-hole {
+  position: absolute;
+  left: 2rem;
+  width: 16px;
+  height: 16px;
+  background: #0b0a08;
+  border-radius: 50%;
+  box-shadow: inset 2px 2px 4px rgba(0,0,0,0.6);
+}
+.hole-top { top: 15%; }
+.hole-mid { top: 50%; transform: translateY(-50%); }
+.hole-bot { bottom: 15%; }
+.doc-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+  border-bottom: 2px double #1a1a1a;
+  padding-bottom: 1rem;
+}
+.stamp-red {
+  color: #C00000;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.doc-title {
+  text-align: center;
+  font-size: 1.35rem;
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.doc-subtitle {
+  text-align: center;
+  font-size: 1.15rem;
+  margin-bottom: 2.5rem;
+  font-style: italic;
+}
+.doc-photo-container {
+  text-align: center;
+  margin: 2rem auto 3rem;
+  max-width: 400px;
+}
+.doc-photo {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border: 8px solid #fff;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  filter: grayscale(100%) contrast(1.1);
+}
+.doc-section-title {
+  font-size: 1.2rem;
+  margin: 2.5rem 0 1rem;
+  text-transform: uppercase;
+  text-decoration: underline;
+}
+.doc-paragraph {
+  margin-bottom: 1.5rem;
+  text-align: justify;
+}
+.doc-list {
+  margin-bottom: 1.5rem;
+  padding-left: 2rem;
+  list-style-type: none;
+}
+.doc-list li {
+  margin-bottom: 0.8rem;
+  text-align: justify;
+}
+.timeline-year {
+  font-weight: 900;
+  color: #1a1a1a;
+  display: inline-block;
+  min-width: 3.5rem;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(1%) scale(0.99); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@media(max-width: 768px){
+  .paper-sheet { padding: 3rem 1.5rem 3rem 3rem; }
+  .binder-hole { left: 0.8rem; width: 10px; height: 10px; }
+  .doc-photo { max-width: 100%; }
+}
+</style>
+</head>
+<body oncontextmenu="return false;">
+
+<nav class="top-navbar">
+  <a href="/behind/" class="nav-link active">← Назад в архив</a>
+</nav>
+
+<div class="document-wrapper">
+  <div class="paper-sheet">
+    
+    <div class="binder-hole hole-top"></div>
+    <div class="binder-hole hole-mid"></div>
+    <div class="binder-hole hole-bot"></div>
+
+    <div class="doc-header">
+      <div>
+        <p>АРХИВ ПРОЕКТА</p>
+        <p>РАЗДЕЛ 4.4: ДЕЙСТВУЮЩИЕ ЛИЦА</p>
+      </div>
+      <div style="text-align: right;">
+        <p class="stamp-red">Dramatis Personae</p>
+      </div>
+    </div>
+
+    <h2 class="doc-title">ОЛЬГА ТИТОФФ</h2>
+    <p class="doc-subtitle">Внутреннее обозначение: «Виолетта», «Королева»</p>
+
+    <div class="doc-photo-container">
+      <img src="/tom2/images/65-1.png" alt="Ольга Титофф" class="doc-photo">
+    </div>
+
+    <h3 class="doc-section-title">Биография</h3>
+    <p class="doc-paragraph">Родилась в 1906 году, Петроград. Дочь Елизаветы Самуэловны Маршал (по мужу — Титофф), в девичестве — артистки Императорского балета.</p>
+
+    <ul class="doc-list">
+      <li><span class="timeline-year">1917</span> Первый выход в театр (Нежданова, Собинов).</li>
+      <li><span class="timeline-year">1918</span> Революция. Дед пропадает в Петрограде.</li>
+      <li><span class="timeline-year">1919</span> Бабушка умирает от тифа. Бегство с матерью в Краков.</li>
+      <li><span class="timeline-year">1920–1925</span> Вена, Зальцбург, Берлин. Скитания по эмигрантским артистическим кругам.</li>
+    </ul>
+
+    <h3 class="doc-section-title">Математическое образование (1927–1932)</h3>
+    <ul class="doc-list">
+      <li><span class="timeline-year">1927–1929</span> Берлинский университет. Младший научный ассистент в группе Эрвина Шрёдингера.</li>
+      <li><span class="timeline-year">1928</span> Первая публикация в <em>Zeitschrift für Physik</em>, соавторство со Шрёдингером. Работа по спектральной теории уравнения Шрёдингера в многомерных пространствах.</li>
+      <li><span class="timeline-year">1929</span> Самостоятельная публикация в <em>Mathematische Annalen</em>. Обобщение теоремы Вейля о распределении собственных значений. Работа отмечена Курантом и Вейлем.</li>
+      <li><span class="timeline-year">1930</span> Доклад на Международном конгрессе математиков в Цюрихе. Тема: вероятностные интерпретации волновой функции. Отмечен Бором и Паули.</li>
+      <li><span class="timeline-year">1931</span> Публикация в <em>Proceedings of the Royal Society</em> (Лондон). Математические основания статистических ансамблей в квантовой механике. Позже цитировалась фон Нейманом.</li>
+      <li><span class="timeline-year">1932</span> Диссертация на соискание степени доктора математических наук в Берлинском университете полностью готова. Оппоненты: Шрёдингер, фон Мизес, Хекке. Защита отменена по условию вербовки в Сетку.</li>
+    </ul>
+
+    <h3 class="doc-section-title">Краков (1929)</h3>
+    <p class="doc-paragraph">Провокация, организованная европейским куратором Ассорбенте Журовским для проверки лояльности матери. Тяжелейшая травма. Пожизненное последствие — бесплодие.</p>
+
+    <h3 class="doc-section-title">Вербовка и подготовка (1932–1944)</h3>
+    <ul class="doc-list">
+      <li><span class="timeline-year">1932</span> Вербовка в Сетку. Куратор — Журовский. Условие: уход из науки, карьера оперной певицы.</li>
+      <li><span class="timeline-year">1932–1938</span> Подготовка (Вена / Италия): вокал, сценическое движение, психология восприятия, шифрование через музыкальные фразы, языки (итальянский, французский, немецкий, русский, испанский), политологический анализ.</li>
+      <li><span class="timeline-year">1938–1944</span> Легендирование: «немка с русской фамилией». Дебют на сцене.</li>
+    </ul>
+
+    <h3 class="doc-section-title">Сценическая карьера</h3>
+    <p class="doc-paragraph">Единственная партия — Виолетта («Травиата»). Других ролей в репертуаре нет. Уровень вокального мастерства позволяет выступать на одной сцене с Дж. Ди Стефано.</p>
+
+    <h3 class="doc-section-title">Навыки</h3>
+    <p class="doc-paragraph">Математика (теория вероятностей, теория игр, спектральная теория). Политологический анализ. Вокал. Пять языков. Латынь.</p>
+
+    <h3 class="doc-section-title">Послужной список</h3>
+    <ul class="doc-list">
+      <li><span class="timeline-year">1933</span> Вена. Операция «Канцлер». Внедрение в окружение австрийских политиков через оперные круги.</li>
+      <li><span class="timeline-year">1935</span> Рим. Операция «Легион». Сбор информации о планах Муссолини. Прогноз вторжения в Эфиопию.</li>
+      <li><span class="timeline-year">1936–1937</span> Испания. Операция «Фаланга». Совместно с Апрелем. Работа на стороне Франко.</li>
+      <li><span class="timeline-year">1938</span> Вена. Операция «Аншлюс». Фиксация перераспределения активов.</li>
+      <li><span class="timeline-year">1939</span> Москва/Берлин. Операция «Пакт». Анализ пакта Молотова-Риббентропа. Прогноз временного характера соглашения.</li>
+      <li><span class="timeline-year">1940</span> Париж. Операция «Коллаборация». Работа с режимом Виши.</li>
+      <li><span class="timeline-year">1942–1943</span> Ватикан. Операция «Конклав». Работа с ватиканскими кругами.</li>
+      <li><span class="timeline-year">1944</span> Назначена Королевой.</li>
+      <li><span class="timeline-year">1944–1945</span> Италия. Операция «Республика». Координация действий Сетки после падения Муссолини.</li>
+      <li><span class="timeline-year">1946</span> Швейцария. Операция «Нейтралитет». Стратегия присутствия в нейтральных странах.</li>
+      <li><span class="timeline-year">1947</span> Европа. Операция «Доктрина». Анализ начала холодной войны. Рекомендация переориентации на Ближний Восток и Латинскую Америку.</li>
+      <li><span class="timeline-year">1947</span> Февраль. Самоотстранение от функции Королевы. Формальный выход из Сетки.</li>
+    </ul>
+
+  </div>
+</div>
+</body>
+</html>
