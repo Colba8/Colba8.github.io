@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Досье: Марта Мендес — Театр теней</title>
+<link rel="icon" href="/images/51.png" type="image/png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  background:#0b0a08 url('/images/62.png') no-repeat center center fixed;
+  background-size: cover;
+  color:#e0d5b0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  min-height:100vh;
+  overflow-x:hidden;
+  overflow-y:auto;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+.top-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 55px;
+  background: #000000;
+  border-bottom: 1px solid rgba(201, 169, 110, 0.15);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+  z-index: 150;
+}
+.nav-link {
+  color: #8A7E6B;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+.nav-link:hover, .nav-link.active {
+  color: #C9A96E;
+}
+.document-wrapper {
+  max-width: 900px;
+  width: 100%;
+  margin: 95px auto 4rem;
+  padding: 0 1.5rem;
+  z-index: 10;
+  animation: fadeIn 1.5s ease-out;
+}
+.paper-sheet {
+  background: #f4e4bc;
+  color: #1a1a1a;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 700;
+  font-size: 1.15rem;
+  line-height: 1.3;
+  padding: 4rem 4rem 5rem 6rem;
+  box-shadow: 0 15px 50px rgba(0,0,0,0.85);
+  position: relative;
+  border-left: 1px solid rgba(0, 0, 0, 0.05);
+}
+.paper-sheet::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.binder-hole {
+  position: absolute;
+  left: 2rem;
+  width: 16px;
+  height: 16px;
+  background: #0b0a08;
+  border-radius: 50%;
+  box-shadow: inset 2px 2px 4px rgba(0,0,0,0.6);
+}
+.hole-top { top: 15%; }
+.hole-mid { top: 50%; transform: translateY(-50%); }
+.hole-bot { bottom: 15%; }
+.doc-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+  border-bottom: 2px double #1a1a1a;
+  padding-bottom: 1rem;
+}
+.stamp-red {
+  color: #C00000;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.doc-title {
+  text-align: center;
+  font-size: 1.35rem;
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.doc-subtitle {
+  text-align: center;
+  font-size: 1.15rem;
+  margin-bottom: 2.5rem;
+  font-style: italic;
+}
+.doc-photo-container {
+  text-align: center;
+  margin: 2rem auto 3rem;
+  max-width: 400px;
+}
+.doc-photo {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border: 8px solid #fff;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  filter: grayscale(100%) contrast(1.1);
+}
+.doc-section-title {
+  font-size: 1.2rem;
+  margin: 2.5rem 0 1rem;
+  text-transform: uppercase;
+  text-decoration: underline;
+}
+.doc-paragraph {
+  margin-bottom: 1.5rem;
+  text-align: justify;
+}
+.doc-list {
+  margin-bottom: 1.5rem;
+  padding-left: 2rem;
+  list-style-type: none;
+}
+.doc-list li {
+  margin-bottom: 0.8rem;
+  text-align: justify;
+}
+.timeline-year {
+  font-weight: 900;
+  color: #1a1a1a;
+  display: inline-block;
+  min-width: 3.5rem;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(1%) scale(0.99); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@media(max-width: 768px){
+  .paper-sheet { padding: 3rem 1.5rem 3rem 3rem; }
+  .binder-hole { left: 0.8rem; width: 10px; height: 10px; }
+  .doc-photo { max-width: 100%; }
+}
+</style>
+</head>
+<body oncontextmenu="return false;">
+
+<nav class="top-navbar">
+  <a href="/behind/" class="nav-link active">← Назад в архив</a>
+</nav>
+
+<div class="document-wrapper">
+  <div class="paper-sheet">
+    
+    <div class="binder-hole hole-top"></div>
+    <div class="binder-hole hole-mid"></div>
+    <div class="binder-hole hole-bot"></div>
+
+    <div class="doc-header">
+      <div>
+        <p>АРХИВ ПРОЕКТА</p>
+        <p>РАЗДЕЛ 4.4: ДЕЙСТВУЮЩИЕ ЛИЦА</p>
+      </div>
+      <div style="text-align: right;">
+        <p class="stamp-red">Dramatis Personae</p>
+      </div>
+    </div>
+
+    <h2 class="doc-title">МАРТА МЕНДЕС</h2>
+    <p class="doc-subtitle">Королева, основательница Сетки</p>
+
+    <div class="doc-photo-container">
+      <img src="/tom2/images/66.png" alt="Марта Мендес" class="doc-photo">
+    </div>
+
+    <h3 class="doc-section-title">Биография</h3>
+    <p class="doc-paragraph">Родилась в 1908 году в Андалусии, в многодетной семье. С детства предоставлена сама себе. Интересовалась музыкой и танцами, много читала. Обучалась в католической школе со строгими правилами, отличница.</p>
+    <p class="doc-paragraph"><strong>1920 год</strong> (эпидемия испанки) — гибель родителей. Марте 12 лет. Самостоятельно воспитывает четырёх младших братьев.</p>
+    <p class="doc-paragraph">С 17 лет — гастрольная труппа артистов. Импресарио скрылся во время турне, труппа осталась на Кубе. Десять лет без связи с семьёй.</p>
+    <p class="doc-paragraph">Легенда прикрытия — офицер военной разведки Италии (SIM, Servizio Informazioni Militare). Италия считала её своей разведчицей; реальным хозяином была Сетка — организация, основанная ею самой.</p>
+
+    <h3 class="doc-section-title">Навыки</h3>
+    <p class="doc-paragraph"><strong>Языки:</strong> испанский, итальянский, английский, немецкий, японский — свободно; фарси — разговорный уровень. Рукопашный бой. Экзотические виды азиатского холодного оружия. Управление всеми видами техники, включая танки.</p>
+
+    <h3 class="doc-section-title">Послужной список</h3>
+    <ul class="doc-list">
+      <li><span class="timeline-year">1925</span> Куба (после исчезновения импресарио). Преподаёт танцы и изящные искусства в частных пансионах и американских семьях. Осваивает английский.</li>
+      <li><span class="timeline-year">1926</span> оканчивает школу стенографисток. Курсы по радиоделу.</li>
+      <li><span class="timeline-year">1927</span> Гавана. Школа Ассорбенте. Личная связь с наставником.</li>
+      <li><span class="timeline-year">1928</span> оканчивает курсы авиаотряда, право управления самолётом.</li>
+      <li><span class="timeline-year">1929</span> Ассорбенте умирает. Марта основывает Сетку на базе его методики и учеников. Вербует Алекса (когорта Ассорбенте) и Апреля (программа «Кола»).</li>
+      <li><span class="timeline-year">1930</span> 21 января, рождение дочери (Мая-Роза), Куба. Вскоре после рождения Сетка вывозит девочку в Швейцарию — пансион под Люцерном.</li>
+      <li><span class="timeline-year">1936–1939</span> Испания, гражданская война. Совместная работа с Апрелем, уже как её человеком. Сторонница Франко. Трое братьев погибают, воюя на стороне республиканцев; четвёртый остаётся инвалидом — Марта анонимно его содержит.</li>
+      <li><span class="timeline-year">1938</span> конкурсный отбор, сотрудничество с итальянской разведкой (SIM), без ведома о Сетке.</li>
+      <li><span class="timeline-year">1938</span> подготовка агента для работы в Иране. Итоговый экзамен не пройден.</li>
+      <li><span class="timeline-year">1939–1941</span> Япония. Двойной агент — SIM и Сетка одновременно.</li>
+      <li><span class="timeline-year">1941</span> дело Зорге. Действует без санкции — первый эпизод самоуправства основательницы против собственной структуры.</li>
+      <li><span class="timeline-year">1941–1944</span> дела Клеммера и Напони, тем же порядком.</li>
+      <li><span class="timeline-year">1945</span> захвачена итальянской стороной, требовавшей выкуп. Сетка (структура, ею же созданная) в выкупе отказала, вынесла приговор о «чистой ликвидации». Гибель, Лацио.</li>
+    </ul>
+
+  </div>
+</div>
+</body>
+</html>
